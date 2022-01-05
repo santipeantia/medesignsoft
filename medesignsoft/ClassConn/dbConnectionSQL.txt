@@ -1,0 +1,1 @@
+﻿server=santi-it;database=DB_WOODDEN;uid=sa;pwd=1qaz@WSX;

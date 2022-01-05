@@ -1,0 +1,253 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace medesignsoft
+{
+    public partial class medesignsoft : System.Web.UI.MasterPage
+    {
+        public string stropt = "";
+        public string optenterprise = "";
+        public string optgen = "";
+        public string optap = "";
+        public string optar = "";
+        public string optcq = "";
+        public string optgl = "";
+        public string optic = "";
+        public string optmc = "";
+        public string optcrm = "";
+        public string optso = "";
+        public string opttax = "";
+        public string optwh = "";
+
+        public string optaccoutspayment = "";
+        public string optape = "";
+        public string optapc = "";
+        public string optapr = "";
+        public string optapa = "";
+        public string optaph = "";
+
+        public string optaccoutsreceivable = "";
+        public string optare = "";
+        public string optarc = "";
+        public string optarr = "";
+        public string optara = "";
+        public string optarh = "";
+
+        public string optbudgetcontrol = "";
+        public string optbge = "";
+        public string optbgr = "";
+
+        public string optchequerec = "";
+        public string optcqr = "";
+        public string optcqp = "";
+        public string optcqb = "";
+        public string optcqc = "";
+        public string optcqre = "";
+        public string optcqa = "";
+        public string optcqh = "";
+
+        public string optfinancial = "";
+        public string optfma = "";
+        public string optfmr = "";
+
+        public string optgeneralledger = "";
+        public string optgle = "";
+        public string optglr = "";
+        public string optglf = "";
+        public string optglh = "";
+
+        public string optinventory = "";
+        public string optice = "";
+        public string opticr = "";
+        public string optica = "";
+        public string opticc = "";
+        public string optics = "";
+
+        public string optlettercredit = "";
+        public string optlce = "";
+        public string optlcr = "";
+
+        public string optpettycash = "";
+        public string optpce = "";
+        public string optpcr = "";
+
+        public string optpurchaseorder = "";
+        public string optpoe = "";
+        public string optpoc = "";
+        public string optpor = "";
+        public string optpoa = "";
+        public string optpoh = "";
+
+        public string optsalesorder = "";
+        public string optsoe = "";
+        public string optsoc = "";
+        public string optsor = "";
+        public string optsoa = "";
+        public string optsoh = "";
+
+        public string optmessanger = "";
+        public string optmms = "";
+        public string optmme = "";
+        public string optmmc = "";
+        public string optmmr = "";
+        public string optmma = "";
+
+        public string optcrmsys = "";
+        public string optcrme = "";
+        public string optcrmc = "";
+        public string optcrmr = "";
+        public string optcrma = "";
+
+        public string optadvsys = "";
+        public string optadve = "";
+        public string optadvr = "";
+
+        public string optwhms = "";
+        public string optwhme = "";
+        public string optwhmc = "";
+        public string optwhmr = "";
+        public string optwhma = "";
+        public string optwhml = "";
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            getPointer();
+        }
+
+        protected void getPointer()
+        {
+            try
+            {
+                stropt = Request.QueryString["opt"].ToString();
+                // Enterprise master
+                if (stropt == "optgen") { optenterprise = "active"; optgen = "active text-red"; }
+                else if (stropt == "optap") { optenterprise = "active  "; optap = "active text-red"; }
+                else if (stropt == "optar") { optenterprise = "active  "; optar = "active text-red"; }
+                else if (stropt == "optcq") { optenterprise = "active  "; optcq = "active text-red"; }
+                else if (stropt == "optgl") { optenterprise = "active  "; optgl = "active text-red"; }
+                else if (stropt == "optic") { optenterprise = "active  "; optic = "active text-red"; }
+                else if (stropt == "optmc") { optenterprise = "active  "; optmc = "active text-red"; }
+                else if (stropt == "optcrm") { optenterprise = "active  "; optcrm = "active text-red"; }
+                else if (stropt == "optso") { optenterprise = "active  "; optso = "active text-red"; }
+                else if (stropt == "opttax") { optenterprise = "active  "; opttax = "active text-red"; }
+                else if (stropt == "optwh") { optenterprise = "active  "; optwh = "active text-red"; }
+                else { optenterprise = ""; optgen = ""; optap = ""; optar = ""; optcq = ""; optgl = ""; optic = ""; optmc = ""; optcrm = ""; optso = ""; opttax = ""; optwh = ""; }
+
+                // Accounts Paymentable
+                if (stropt == "optape") { optaccoutspayment = "active  "; optape = "active text-red"; }
+                else if (stropt == "optapc") { optaccoutspayment = "active  "; optapc = "active text-red"; }
+                else if (stropt == "optapr") { optaccoutspayment = "active  "; optapr = "active text-red"; }
+                else if (stropt == "optapa") { optaccoutspayment = "active  "; optapa = "active text-red"; }
+                else if (stropt == "optaph") { optaccoutspayment = "active  "; optaph = "active text-red"; }
+                else { optaccoutspayment = ""; optape = ""; optapc = ""; optapr = ""; optapa = ""; optaph = ""; }
+
+                // Accounts Receivable
+                if (stropt == "optare") { optaccoutsreceivable = "active  "; optare = "active text-red"; }
+                else if (stropt == "optarc") { optaccoutsreceivable = "active  "; optarc = "active text-red"; }
+                else if (stropt == "optarr") { optaccoutsreceivable = "active  "; optarr = "active text-red"; }
+                else if (stropt == "optara") { optaccoutsreceivable = "active  "; optara = "active text-red"; }
+                else if (stropt == "optarh") { optaccoutsreceivable = "active  "; optarh = "active text-red"; }
+                else { optaccoutsreceivable = ""; optare = ""; optarc = ""; optarr = ""; optara = ""; optarh = ""; }
+
+                // Budger Control
+                if (stropt == "optbge") { optbudgetcontrol = "active  "; optbge = "active text-red"; }
+                else if (stropt == "optbgr") { optbudgetcontrol = "active  "; optbgr = "active text-red"; }
+                else { optbudgetcontrol = ""; optbge = ""; optbgr = ""; }
+
+                // Cheque and Bank
+                if (stropt == "optcqr") { optchequerec = "active  "; optcqr = "active text-red"; }
+                else if (stropt == "optcqp") { optchequerec = "active  "; optcqp = "active text-red"; }
+                else if (stropt == "optcqb") { optchequerec = "active  "; optcqb = "active text-red"; }
+                else if (stropt == "optcqc") { optchequerec = "active  "; optcqc = "active text-red"; }
+                else if (stropt == "optcqre") { optchequerec = "active  "; optcqre = "active text-red"; }
+                else if (stropt == "optcqa") { optchequerec = "active  "; optcqa = "active text-red"; }
+                else if (stropt == "optcqh") { optchequerec = "active  "; optcqh = "active text-red"; }
+                else { optchequerec = ""; optcqr = ""; optcqp = ""; optcqb = ""; optcqc = ""; optcqre = ""; optcqa = ""; optcqh = ""; }
+
+                // Financial Management
+                if (stropt == "optfma") { optfinancial = "active  "; optfma = "active text-red"; }
+                else if (stropt == "optfmr") { optfinancial = "active  "; optfmr = "active text-red"; }
+                else { optfinancial = ""; optfma = ""; optfmr = ""; }
+
+                // General Ledger
+                if (stropt == "optgle") { optgeneralledger = "active  "; optgle = "active text-red"; }
+                else if (stropt == "optglr") { optgeneralledger = "active  "; optglr = "active text-red"; }
+                else if (stropt == "optglf") { optgeneralledger = "active  "; optglf = "active text-red"; }
+                else if (stropt == "optglh") { optgeneralledger = "active  "; optglh = "active text-red"; }
+                else { optgeneralledger = ""; optgle = ""; optglr = ""; optglf = ""; optglh = ""; }
+
+                // Inventory Control
+                if (stropt == "optice") { optinventory = "active  "; optice = "active text-red"; }
+                else if (stropt == "opticr") { optinventory = "active  "; opticr = "active text-red"; }
+                else if (stropt == "optica") { optinventory = "active  "; optica = "active text-red"; }
+                else if (stropt == "opticc") { optinventory = "active  "; opticc = "active text-red"; }
+                else if (stropt == "optics") { optinventory = "active  "; optics = "active text-red"; }
+                else { optinventory = ""; optice = ""; opticr = ""; optica = ""; opticc = ""; optics = ""; }
+
+                // Letter Of Credit
+                if (stropt == "optlce") { optlettercredit = "active  "; optlce = "active text-red"; }
+                else if (stropt == "optlcr") { optlettercredit = "active  "; optlcr = "active text-red"; }
+                else { optlettercredit = ""; optlce = ""; optlcr = ""; }
+
+                // petty cash
+                if (stropt == "optpce") { optpettycash = "active  "; optpce = "active text-red"; }
+                else if (stropt == "optpcr") { optpettycash = "active  "; optpcr = "active text-red"; }
+                else { optpettycash = ""; optpce = ""; optpcr = ""; }
+
+                // purchase order
+                if (stropt == "optpoe") { optpurchaseorder = "active  "; optpoe = "active text-red"; }
+                else if (stropt == "optpoc") { optpurchaseorder = "active  "; optpoc = "active text-red"; }
+                else if (stropt == "optpor") { optpurchaseorder = "active  "; optpor = "active text-red"; }
+                else if (stropt == "optpoa") { optpurchaseorder = "active  "; optpoa = "active text-red"; }
+                else if (stropt == "optpoh") { optpurchaseorder = "active  "; optpoh = "active text-red"; }
+                else { optpurchaseorder = ""; optpoe = ""; optpoc = ""; optpor = ""; optpoa = ""; optpoh = ""; }
+
+                // sales order
+                if (stropt == "optsoe") { optsalesorder = "active  "; optsoe = "active text-red"; }
+                else if (stropt == "optsoc") { optsalesorder = "active  "; optsoc = "active text-red"; }
+                else if (stropt == "optsor") { optsalesorder = "active  "; optsor = "active text-red"; }
+                else if (stropt == "optsoa") { optsalesorder = "active  "; optsoa = "active text-red"; }
+                else if (stropt == "optsoh") { optsalesorder = "active  "; optsoh = "active text-red"; }
+                else { optsalesorder = ""; optsoe = ""; optsoc = ""; optsor = ""; optsoa = ""; optsoh = ""; }
+
+                // Messenger Management
+                if (stropt == "optmms") { optmessanger = "active  "; optmms = "active text-red"; }
+                else if (stropt == "optmme") { optmessanger = "active  "; optmme = "active text-red"; }
+                else if (stropt == "optmmc") { optmessanger = "active  "; optmmc = "active text-red"; }
+                else if (stropt == "optmmr") { optmessanger = "active  "; optmmr = "active text-red"; }
+                else if (stropt == "optmma") { optmessanger = "active  "; optmma = "active text-red"; }
+                else { optmessanger = ""; optmms = ""; optmme = ""; optmmc = ""; optmmr = ""; optmma = ""; }
+
+                // CRM System
+                if (stropt == "optcrme") { optcrmsys = "active  "; optcrme = "active text-red"; }
+                else if (stropt == "optcrmc") { optcrmsys = "active  "; optcrmc = "active text-red"; }
+                else if (stropt == "optcrmr") { optcrmsys = "active  "; optcrmr = "active text-red"; }
+                else if (stropt == "optcrma") { optcrmsys = "active  "; optcrma = "active text-red"; }
+                else { optcrmsys = ""; optcrme = ""; optcrmc = ""; optcrmr = ""; optcrma = ""; }
+
+                // Advance System
+                if (stropt == "optadve") { optadvsys = "active  "; optadve = "active text-red"; }
+                else if (stropt == "optadvr") { optadvsys = "active  "; optadvr = "active text-red"; }
+                else { optadvsys = ""; optadve = ""; optadvr = ""; }
+
+                // Warehouse Management System
+                if (stropt == "optwhme") { optwhms = "active  "; optwhme = "active text-red"; }
+                else if (stropt == "optwhmc") { optwhms = "active  "; optwhmc = "active text-red"; }
+                else if (stropt == "optwhmr") { optwhms = "active  "; optwhmr = "active text-red"; }
+                else if (stropt == "optwhma") { optwhms = "active  "; optwhma = "active text-red"; }
+                else if (stropt == "optwhml") { optwhms = "active  "; optwhml = "active text-red"; }
+                else { optwhms = ""; optwhme = ""; optwhmc = ""; optwhmr = ""; optwhma = ""; optwhml = ""; }
+
+
+
+            }
+            catch
+            {
+            }
+        }
+    }
+}
