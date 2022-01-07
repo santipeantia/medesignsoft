@@ -860,5 +860,96 @@ namespace medesignsoft.meenterprise_management
             conn.CloseConn();
         }
 
+        [WebMethod]
+        public void getAutorunList() {
+            List<cAutorunList> datas = new List<cAutorunList>();
+            SqlCommand comm = new SqlCommand("spGetAutorunList", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cAutorunList data = new cAutorunList();
+                data.AutoRunID = rdr["AutoRunID"].ToString();
+                data.AutoRunCode = rdr["AutoRunCode"].ToString();
+                data.AutoRunDesc = rdr["AutoRunDesc"].ToString();
+                data.imBranchGid = rdr["imBranchGid"].ToString();
+                data.BranchName = rdr["BranchName"].ToString();
+                data.AutoRunFormat = rdr["AutoRunFormat"].ToString();
+                data.AutoRunTitle = rdr["AutoRunTitle"].ToString();
+                data.AutoRunYear = rdr["AutoRunYear"].ToString();
+                data.AutoRunSplit = rdr["AutoRunSplit"].ToString();
+                data.AutoRunNo = rdr["AutoRunNo"].ToString();
+                data.DocuNo = rdr["DocuNo"].ToString();
+                data.edit = rdr["edit"].ToString();
+                data.trash = rdr["trash"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getAutorunById(string gid) {
+            List<cAutorunList> datas = new List<cAutorunList>();
+            SqlCommand comm = new SqlCommand("spGetAutorunById", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+            comm.Parameters.AddWithValue("@gid", gid);
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cAutorunList data = new cAutorunList();
+                data.AutoRunID = rdr["AutoRunID"].ToString();
+                data.AutoRunCode = rdr["AutoRunCode"].ToString();
+                data.AutoRunDesc = rdr["AutoRunDesc"].ToString();
+                data.imBranchGid = rdr["imBranchGid"].ToString();
+                data.BranchName = rdr["BranchName"].ToString();
+                data.AutoRunFormat = rdr["AutoRunFormat"].ToString();
+                data.AutoRunTitle = rdr["AutoRunTitle"].ToString();
+                data.AutoRunYear = rdr["AutoRunYear"].ToString();
+                data.AutoRunSplit = rdr["AutoRunSplit"].ToString();
+                data.AutoRunNo = rdr["AutoRunNo"].ToString();
+                data.DocuNo = rdr["DocuNo"].ToString();
+                data.edit = rdr["edit"].ToString();
+                data.trash = rdr["trash"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getAutorunUpdateEntry(string acttrans, string Gid, string AutoRunCode, string AutoRunDesc, string imBranchGid, string AutoRunFormat
+                                            , string AutoRunTitle, string AutoRunYear, string AutoRunSplit, string AutoRunNo, string CreateUserID
+                                            , string CreateDate, string CreateTime, string adUserID, string Lastdate, string LastTime) {
+            SqlCommand comm = new SqlCommand("spGetAutorunUpdateEntry", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            comm.Parameters.AddWithValue("@acttrans", acttrans);
+            comm.Parameters.AddWithValue("@Gid", Gid);
+            comm.Parameters.AddWithValue("@AutoRunCode", AutoRunCode);
+            comm.Parameters.AddWithValue("@AutoRunDesc", AutoRunDesc);
+            comm.Parameters.AddWithValue("@imBranchGid", imBranchGid);
+            comm.Parameters.AddWithValue("@AutoRunFormat", AutoRunFormat);
+            comm.Parameters.AddWithValue("@AutoRunTitle", AutoRunTitle);
+            comm.Parameters.AddWithValue("@AutoRunYear", AutoRunYear);
+            comm.Parameters.AddWithValue("@AutoRunSplit", AutoRunSplit);
+            comm.Parameters.AddWithValue("@AutoRunNo", AutoRunNo);
+            comm.Parameters.AddWithValue("@CreateUserID", CreateUserID);
+            comm.Parameters.AddWithValue("@CreateDate", CreateDate);
+            comm.Parameters.AddWithValue("@CreateTime", CreateTime);
+            comm.Parameters.AddWithValue("@adUserID", adUserID);
+            comm.Parameters.AddWithValue("@Lastdate", Lastdate);
+            comm.Parameters.AddWithValue("@LastTime", LastTime);
+            comm.ExecuteNonQuery();
+            conn.CloseConn();
+        }
     }
 }

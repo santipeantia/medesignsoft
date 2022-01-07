@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/medesignsoft.Master" AutoEventWireup="true" CodeBehind="gm-employees-setup.aspx.cs" Inherits="medesignsoft.meenterprise_management.gm_employees_setup" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-      <section class="content-header">
+    <section class="content-header">
         <script src="https://smtpjs.com/v3/smtp.js"></script>
         <%--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>--%>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
@@ -88,7 +89,7 @@
 
                 var btnaddnew = $('#btnaddnew');
                 btnaddnew.click(function () {
-                     window.location.href = "gm-employees-edit.aspx?opt=optgen&mod=new";
+                    window.location.href = "gm-employees-edit.aspx?opt=optgen&mod=new";
                 });
 
                 var btnreload = $('#btnreload');
@@ -142,7 +143,7 @@
                                 if (rIndex != 0 & cIndex == 42) {
                                     var gid = $("#tblemployeeslist").find('tr:eq(' + rIndex + ')').find('td:eq(0)');
                                     console.log(gid.text());
-                                    window.location.href = "gm-employees-edit.aspx?opt=optgen&mod=edit&gid="+gid.text();                                   
+                                    window.location.href = "gm-employees-edit.aspx?opt=optgen&mod=edit&gid=" + gid.text();
                                 }
 
                                 if (rIndex != 0 & cIndex == 43) {
@@ -185,18 +186,18 @@
                         <div class="box-header with-border">
                             <i class="fa fa-gears text-orange"></i>
 
-                           
+
                             <span class="btn-group pull-right">
                                 <button type="button" id="btnaddnew" class="btn btn-default btn-sm" data-toggle="tooltip" title="new"><i class="fa fa-plus text-green"></i></button>
                                 <button type="button" id="btnreload" class="btn btn-default btn-sm" data-toggle="tooltip" title="reload"><i class="fa fa-refresh text-blue"></i></button>
                                 <button type="button" id="btnPdf1011" class="btn btn-default btn-sm" data-toggle="tooltip" title="pdf"><i class="fa fa-file-pdf-o text-orange"></i></button>
-                                <button type="button" id="btnExportExcel"  class="btn btn-default btn-sm" data-toggle="tooltip" title="excel"><i class="fa fa-table text-green"></i></button>
+                                <button type="button" id="btnExportExcel" class="btn btn-default btn-sm" data-toggle="tooltip" title="excel"><i class="fa fa-table text-green"></i></button>
                             </span>
 
                             <label class="txtLabel">Employees List</label>
                         </div>
 
-                        <div class="box-body" >
+                        <div class="box-body">
                             <div class="cv-spinner" id="loaderemployees">
                                 <span class="spinner"></span>
                             </div>

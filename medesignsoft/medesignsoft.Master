@@ -1878,6 +1878,21 @@
                     }]
                 })
 
+                $('#tbldocumentno').DataTable({
+                    'iDisplayLength': 25,
+                    'paging': true,
+                    'scrollX': true,
+                    'lengthChange': true,
+                    'searching': true,
+                    'ordering': false,
+                    'info': true,
+                    'autoWidth': true,
+                     'columnDefs': [{
+                        targets: [0,3], className: "hide_column"
+                    }]
+                })
+                
+
             })
         </script>
 

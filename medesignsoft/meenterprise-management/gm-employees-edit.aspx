@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/medesignsoft.Master" AutoEventWireup="true" CodeBehind="gm-employees-edit.aspx.cs" Inherits="medesignsoft.meenterprise_management.gm_employees_edit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-      <section class="content-header">
+    <section class="content-header">
         <script src="https://smtpjs.com/v3/smtp.js"></script>
         <%--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>--%>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
@@ -67,6 +67,7 @@
 
         <script>
             $(document).ready(function () {
+                $('#overlay').show();
                 $('body').on('keydown', 'input, select, textarea', function (e) {
                     var self = $(this)
                         , form = self.parents('form:eq(0)')
@@ -111,9 +112,9 @@
                 getCountry();
                 getMarry();
                 getLivingStatus();
-                getReligion();                
+                getReligion();
                 getSex();
-                
+
                 getActive();
 
                 var param = getQueryStrings();
@@ -131,7 +132,7 @@
                     $('#btndelete').addClass('hidden');
                 } else if (mod == 'edit') {
 
-                   // $('#selectcompany').prop('disabled', true);
+                    // $('#selectcompany').prop('disabled', true);
 
                     $('#btncancel').removeClass('hidden');
                     $('#btnsavenew').addClass('hidden');
@@ -151,6 +152,7 @@
 
 
                 if (mod == 'edit' || mod == 'del') {
+
                     getemployeesbyid(gid);
                 }
 
@@ -172,7 +174,7 @@
 
                 var selectbranch = $('#selectbranch');
                 function getBranch() {
-                     $.ajax({
+                    $.ajax({
                         url: 'general-services.asmx/getBranch',
                         method: 'post',
                         datatype: 'json',
@@ -191,7 +193,7 @@
 
                 var selecttitlename = $('#selecttitlename');
                 function getTitleName() {
-                     $.ajax({
+                    $.ajax({
                         url: 'general-services.asmx/getTitlename',
                         method: 'post',
                         datatype: 'json',
@@ -312,7 +314,7 @@
                         method: 'post',
                         datatype: 'json',
                         beforeSend: function () {
-                                                
+
                         },
                         success: function (data) {
                             selectcountry.empty();
@@ -331,7 +333,7 @@
                         method: 'post',
                         datatype: 'json',
                         beforeSend: function () {
-                                                
+
                         },
                         success: function (data) {
                             selectmarry.empty();
@@ -350,7 +352,7 @@
                         method: 'post',
                         datatype: 'json',
                         beforeSend: function () {
-                                                
+
                         },
                         success: function (data) {
                             selectliving.empty();
@@ -362,14 +364,14 @@
                     });
                 }
 
-                var selectreligion = $('#selectreligion');                
+                var selectreligion = $('#selectreligion');
                 function getReligion() {
                     $.ajax({
                         url: 'general-services.asmx/getReligion',
                         method: 'post',
                         datatype: 'json',
                         beforeSend: function () {
-                                                
+
                         },
                         success: function (data) {
                             selectreligion.empty();
@@ -388,7 +390,7 @@
                         method: 'post',
                         datatype: 'json',
                         beforeSend: function () {
-                                                
+
                         },
                         success: function (data) {
                             selectsex.empty();
@@ -417,7 +419,7 @@
                         }
                     });
                 }
-                              
+
                 function getemployeesbyid(gid) {
                     $.ajax({
                         url: 'general-services.asmx/getEmployeesById',
@@ -427,13 +429,14 @@
                         },
                         datatype: 'json',
                         beforeSend: function () {
+
                         },
                         success: function (data) {
                             var obj = jQuery.parseJSON(JSON.stringify(data));
                             if (obj != '') {
                                 $.each(obj, function (i, data) {
                                     $('#hiddengid').val(data["imEmployeeGid"]);
-                                                                      
+
                                     $('#selectbranch').val(data["imBranchID"]).change();
                                     $('#txtemployeeid').val(data["imEmployeeID"]);
                                     $('#selecttitlename').val(data["imTitleID"]).change();
@@ -461,13 +464,15 @@
                                     $('#txtemail').val(data["EMail"]);
                                     $('#txtremark').val(data["Remark"]);
 
-                                    $('#selectactive').val(data["Active"]).change();                                   
+                                    $('#selectactive').val(data["Active"]).change();
                                     $('#datestart').val(data["EffecDate"]);
                                     $('#datestop').val(data["ExpireDate"]);
                                 })
                             }
+                            $('#overlay').hide();
                         }
                     });
+
                 }
 
                 function getQueryStrings() {
@@ -503,8 +508,8 @@
                 var chkvalidate = 'true';
 
                 var btncancel = $('#btncancel');
-                btncancel.click(function(){
-                     window.location.href = "gm-employees-setup.aspx?opt=optgen";
+                btncancel.click(function () {
+                    window.location.href = "gm-employees-setup.aspx?opt=optgen";
                 });
 
                 var btnsavenew = $('#btnsavenew');
@@ -525,43 +530,43 @@
                         }).then((result) => {
                             if (result.isConfirmed) {
 
-                                  $.ajax({
+                                $.ajax({
                                     url: 'general-services.asmx/getEmployeesUpdateEntry',
                                     method: 'post',
-                                      data: {
-                                          acttrans: 'new',
-                                          Gid: $('#hiddengid').val(),
-                                          imBranchID: $('#selectbranch').val(),
-                                          imEmployeeID: $('#txtemployeeid').val(),
-                                          imTitleID: $('#selecttitlename').val(),
-                                          FirstName: $('#txtemployeename').val(),
-                                          LastName: $('#txtlastname').val(),
-                                          NickName: $('#txtnickname').val(),
-                                          imPositionID: $('#selectposition').val(),
-                                          imDepartmentID: $('#selectdepartment').val(),
-                                          imSectionID: $('#selectsection').val(),
-                                          imDivisionID: $('#selectdivision').val(),
-                                          Add1: $('#txtadd1').val(),
-                                          Add2: $('#txtadd2').val(),
-                                          Add3: $('#txtadd3').val(),
-                                          adProvinceID: $('#selectprovince').val(),
-                                          PostalCode: $('#txtpostcode').val(),
-                                          adCountryID: $('#selectcountry').val(),
-                                          IDCardNO: $('#txttaxid').val(),
-                                          imMaritalStatusID: $('#selectmarry').val(),
-                                          imLivingStatusID: $('#selectliving').val(),
-                                          imReligionID: $('#selectreligion').val(),
-                                          imSexID: $('#selectsex').val(),
-                                          Birthday: $('#datebirthday').val(),
-                                          Tel: $('#txtphone').val(),
-                                          Mobile: $('#txtmobile').val(),
-                                          EMail: $('#txtemail').val(),
-                                          Remark: $('#txtremark').val(),
+                                    data: {
+                                        acttrans: 'new',
+                                        Gid: $('#hiddengid').val(),
+                                        imBranchID: $('#selectbranch').val(),
+                                        imEmployeeID: $('#txtemployeeid').val(),
+                                        imTitleID: $('#selecttitlename').val(),
+                                        FirstName: $('#txtemployeename').val(),
+                                        LastName: $('#txtlastname').val(),
+                                        NickName: $('#txtnickname').val(),
+                                        imPositionID: $('#selectposition').val(),
+                                        imDepartmentID: $('#selectdepartment').val(),
+                                        imSectionID: $('#selectsection').val(),
+                                        imDivisionID: $('#selectdivision').val(),
+                                        Add1: $('#txtadd1').val(),
+                                        Add2: $('#txtadd2').val(),
+                                        Add3: $('#txtadd3').val(),
+                                        adProvinceID: $('#selectprovince').val(),
+                                        PostalCode: $('#txtpostcode').val(),
+                                        adCountryID: $('#selectcountry').val(),
+                                        IDCardNO: $('#txttaxid').val(),
+                                        imMaritalStatusID: $('#selectmarry').val(),
+                                        imLivingStatusID: $('#selectliving').val(),
+                                        imReligionID: $('#selectreligion').val(),
+                                        imSexID: $('#selectsex').val(),
+                                        Birthday: $('#datebirthday').val(),
+                                        Tel: $('#txtphone').val(),
+                                        Mobile: $('#txtmobile').val(),
+                                        EMail: $('#txtemail').val(),
+                                        Remark: $('#txtremark').val(),
 
-                                          Active: $('#selectactive').val(),
-                                          EffecDate: $('#datestart').val(),
-                                          ExpireDate: $('#datestop').val()
-                                      },
+                                        Active: $('#selectactive').val(),
+                                        EffecDate: $('#datestart').val(),
+                                        ExpireDate: $('#datestop').val()
+                                    },
                                     datatype: 'json',
                                     beforSend: function () {
 
@@ -607,46 +612,46 @@
                             cancelButtonText: '<span class="txtLabel">ยกเลิกรายการ</span>'
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                                                
-                                  $.ajax({
+
+                                $.ajax({
                                     url: 'general-services.asmx/getEmployeesUpdateEntry',
                                     method: 'post',
-                                      data: {
-                                          acttrans: 'edit',
-                                          //Gid: $('#hiddengid').val(),
-                                          Gid: $('#hiddengid').val(),
+                                    data: {
+                                        acttrans: 'edit',
+                                        //Gid: $('#hiddengid').val(),
+                                        Gid: $('#hiddengid').val(),
 
-                                          imBranchID: $('#selectbranch').val(),
-                                          imEmployeeID: $('#txtemployeeid').val(),
-                                          imTitleID: $('#selecttitlename').val(),
-                                          FirstName: $('#txtemployeename').val(),
-                                          LastName: $('#txtlastname').val(),
-                                          NickName: $('#txtnickname').val(),
-                                          imPositionID: $('#selectposition').val(),
-                                          imDepartmentID: $('#selectdepartment').val(),
-                                          imSectionID: $('#selectsection').val(),
-                                          imDivisionID: $('#selectdivision').val(),
-                                          Add1: $('#txtadd1').val(),
-                                          Add2: $('#txtadd2').val(),
-                                          Add3: $('#txtadd3').val(),
-                                          adProvinceID: $('#selectprovince').val(),
-                                          PostalCode: $('#txtpostcode').val(),
-                                          adCountryID: $('#selectcountry').val(),
-                                          IDCardNO: $('#txttaxid').val(),
-                                          imMaritalStatusID: $('#selectmarry').val(),
-                                          imLivingStatusID: $('#selectliving').val(),
-                                          imReligionID: $('#selectreligion').val(),
-                                          imSexID: $('#selectsex').val(),
-                                          Birthday: $('#datebirthday').val(),
-                                          Tel: $('#txtphone').val(),
-                                          Mobile: $('#txtmobile').val(),
-                                          EMail: $('#txtemail').val(),
-                                          Remark: $('#txtremark').val(),
+                                        imBranchID: $('#selectbranch').val(),
+                                        imEmployeeID: $('#txtemployeeid').val(),
+                                        imTitleID: $('#selecttitlename').val(),
+                                        FirstName: $('#txtemployeename').val(),
+                                        LastName: $('#txtlastname').val(),
+                                        NickName: $('#txtnickname').val(),
+                                        imPositionID: $('#selectposition').val(),
+                                        imDepartmentID: $('#selectdepartment').val(),
+                                        imSectionID: $('#selectsection').val(),
+                                        imDivisionID: $('#selectdivision').val(),
+                                        Add1: $('#txtadd1').val(),
+                                        Add2: $('#txtadd2').val(),
+                                        Add3: $('#txtadd3').val(),
+                                        adProvinceID: $('#selectprovince').val(),
+                                        PostalCode: $('#txtpostcode').val(),
+                                        adCountryID: $('#selectcountry').val(),
+                                        IDCardNO: $('#txttaxid').val(),
+                                        imMaritalStatusID: $('#selectmarry').val(),
+                                        imLivingStatusID: $('#selectliving').val(),
+                                        imReligionID: $('#selectreligion').val(),
+                                        imSexID: $('#selectsex').val(),
+                                        Birthday: $('#datebirthday').val(),
+                                        Tel: $('#txtphone').val(),
+                                        Mobile: $('#txtmobile').val(),
+                                        EMail: $('#txtemail').val(),
+                                        Remark: $('#txtremark').val(),
 
-                                          Active: $('#selectactive').val(),
-                                          EffecDate: $('#datestart').val(),
-                                          ExpireDate: $('#datestop').val()
-                                      },
+                                        Active: $('#selectactive').val(),
+                                        EffecDate: $('#datestart').val(),
+                                        ExpireDate: $('#datestop').val()
+                                    },
                                     datatype: 'json',
                                     beforSend: function () {
 
@@ -697,43 +702,43 @@
                         }).then((result) => {
                             if (result.isConfirmed) {
 
-                                 
-                                  $.ajax({
+
+                                $.ajax({
                                     url: 'general-services.asmx/getEmployeesUpdateEntry',
                                     method: 'post',
-                                      data: {
-                                          acttrans: 'del',                                       
-                                          Gid: $('#hiddengid').val(),
-                                          imBranchID: $('#selectbranch').val(),
-                                          imEmployeeID: $('#txtemployeeid').val(),
-                                          imTitleID: $('#selecttitlename').val(),
-                                          FirstName: $('#txtemployeename').val(),
-                                          LastName: $('#txtlastname').val(),
-                                          NickName: $('#txtnickname').val(),
-                                          imPositionID: $('#selectposition').val(),
-                                          imDepartmentID: $('#selectdepartment').val(),
-                                          imSectionID: $('#selectsection').val(),
-                                          imDivisionID: $('#selectdivision').val(),
-                                          Add1: $('#txtadd1').val(),
-                                          Add2: $('#txtadd2').val(),
-                                          Add3: $('#txtadd3').val(),
-                                          adProvinceID: $('#selectprovince').val(),
-                                          PostalCode: $('#txtpostcode').val(),
-                                          adCountryID: $('#selectcountry').val(),
-                                          IDCardNO: $('#txttaxid').val(),
-                                          imMaritalStatusID: $('#selectmarry').val(),
-                                          imLivingStatusID: $('#selectliving').val(),
-                                          imReligionID: $('#selectreligion').val(),
-                                          imSexID: $('#selectsex').val(),
-                                          Birthday: $('#datebirthday').val(),
-                                          Tel: $('#txtphone').val(),
-                                          Mobile: $('#txtmobile').val(),
-                                          EMail: $('#txtemail').val(),
-                                          Remark: $('#txtremark').val(),
-                                          Active: $('#selectactive').val(),
-                                          EffecDate: $('#datestart').val(),
-                                          ExpireDate: $('#datestop').val()
-                                      },
+                                    data: {
+                                        acttrans: 'del',
+                                        Gid: $('#hiddengid').val(),
+                                        imBranchID: $('#selectbranch').val(),
+                                        imEmployeeID: $('#txtemployeeid').val(),
+                                        imTitleID: $('#selecttitlename').val(),
+                                        FirstName: $('#txtemployeename').val(),
+                                        LastName: $('#txtlastname').val(),
+                                        NickName: $('#txtnickname').val(),
+                                        imPositionID: $('#selectposition').val(),
+                                        imDepartmentID: $('#selectdepartment').val(),
+                                        imSectionID: $('#selectsection').val(),
+                                        imDivisionID: $('#selectdivision').val(),
+                                        Add1: $('#txtadd1').val(),
+                                        Add2: $('#txtadd2').val(),
+                                        Add3: $('#txtadd3').val(),
+                                        adProvinceID: $('#selectprovince').val(),
+                                        PostalCode: $('#txtpostcode').val(),
+                                        adCountryID: $('#selectcountry').val(),
+                                        IDCardNO: $('#txttaxid').val(),
+                                        imMaritalStatusID: $('#selectmarry').val(),
+                                        imLivingStatusID: $('#selectliving').val(),
+                                        imReligionID: $('#selectreligion').val(),
+                                        imSexID: $('#selectsex').val(),
+                                        Birthday: $('#datebirthday').val(),
+                                        Tel: $('#txtphone').val(),
+                                        Mobile: $('#txtmobile').val(),
+                                        EMail: $('#txtemail').val(),
+                                        Remark: $('#txtremark').val(),
+                                        Active: $('#selectactive').val(),
+                                        EffecDate: $('#datestart').val(),
+                                        ExpireDate: $('#datestop').val()
+                                    },
                                     success: function (data) {
                                         Swal.fire(
                                             '<span class="txtLabel">บันทึกข้อมูลสำเร็จ..!</span>',
@@ -759,7 +764,7 @@
 
                 function getvalidatefield() {
                     var gid = $('#hiddengid').val();
-                    
+
 
                     if (mod == 'edit' && gid == '') {
                         Swal.fire({
@@ -783,8 +788,10 @@
                         })
                         chkvalidate = 'false';
                         return;
-                    }                   
+                    }
                 }
+
+
             });
 
 
@@ -825,7 +832,7 @@
                         <div class="box-body">
                             <div class="col-md-6">
                                 <input type="hidden" id="hiddengid" class="form-control ">
-                              
+
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label txtLabel">ชื่อสาขา</label>
                                     <div class="col-sm-8">
@@ -842,7 +849,7 @@
                                         <input type="text" id="txtemployeeid" class="form-control ">
                                     </div>
 
-                                </div>                                 
+                                </div>
 
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label txtLabel">คำนำหน้าชื่อ</label>
@@ -853,27 +860,27 @@
                                         </span>
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label txtLabel">ชื่อพนักงาน<span id="erremployeename" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
                                         <input type="text" id="txtemployeename" class="form-control ">
                                     </div>
-                                </div>  
-                              
+                                </div>
+
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label txtLabel">นามสกุล<span id="errlastname" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
                                         <input type="text" id="txtlastname" class="form-control ">
                                     </div>
-                                </div>    
+                                </div>
 
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label txtLabel">ชื่อเล่น<span id="errnickname" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
                                         <input type="text" id="txtnickname" class="form-control ">
                                     </div>
-                                </div>  
+                                </div>
 
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label txtLabel">ตำแหน่ง</label>
@@ -920,14 +927,14 @@
                                     <div class="col-sm-8">
                                         <input type="text" id="txtadd1" class="form-control ">
                                     </div>
-                                </div>  
-                                 <div class="form-group row">
+                                </div>
+                                <div class="form-group row">
                                     <label class="col-sm-4 col-form-label txtLabel">ที่อยู่พนักงาน<span id="erraddress2" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
                                         <input type="text" id="txtadd2" class="form-control ">
                                     </div>
                                 </div>
-                                 <div class="form-group row">
+                                <div class="form-group row">
                                     <label class="col-sm-4 col-form-label txtLabel">ที่อยู่พนักงาน<span id="erraddress3" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
                                         <input type="text" id="txtadd3" class="form-control ">
@@ -950,7 +957,7 @@
                                         <input type="text" id="txtpostcode" class="form-control ">
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label txtLabel">ประเทศ</label>
                                     <div class="col-sm-8">

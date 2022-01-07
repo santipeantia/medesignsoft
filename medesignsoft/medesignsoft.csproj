@@ -13489,6 +13489,8 @@
     <Content Include="meenterprise-management\gm-company-setup.aspx" />
     <Content Include="meenterprise-management\gm-department-edit.aspx" />
     <Content Include="meenterprise-management\gm-department-setup.aspx" />
+    <Content Include="meenterprise-management\gm-document-edit.aspx" />
+    <Content Include="meenterprise-management\gm-document-setup.aspx" />
     <Content Include="meenterprise-management\gm-employees-edit.aspx" />
     <Content Include="meenterprise-management\gm-employees-setup.aspx" />
     <Content Include="meenterprise-management\gm-section-edit.aspx" />
@@ -13687,6 +13689,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="meenterprise-management\cAutorunList.cs" />
     <Compile Include="meenterprise-management\cSex.cs" />
     <Compile Include="meenterprise-management\cReligion.cs" />
     <Compile Include="meenterprise-management\cLivingStatus.cs" />
@@ -13784,6 +13787,20 @@
     </Compile>
     <Compile Include="meenterprise-management\gm-department-setup.aspx.designer.cs">
       <DependentUpon>gm-department-setup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="meenterprise-management\gm-document-edit.aspx.cs">
+      <DependentUpon>gm-document-edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="meenterprise-management\gm-document-edit.aspx.designer.cs">
+      <DependentUpon>gm-document-edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="meenterprise-management\gm-document-setup.aspx.cs">
+      <DependentUpon>gm-document-setup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="meenterprise-management\gm-document-setup.aspx.designer.cs">
+      <DependentUpon>gm-document-setup.aspx</DependentUpon>
     </Compile>
     <Compile Include="meenterprise-management\gm-employees-edit.aspx.cs">
       <DependentUpon>gm-employees-edit.aspx</DependentUpon>
