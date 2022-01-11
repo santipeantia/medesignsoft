@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="signin.aspx.cs" Inherits="totalsale_report.signin" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="signin.aspx.cs" Inherits="medesignsoft.signin" %>
 
 <!DOCTYPE html>
 <html>
@@ -43,13 +43,14 @@
 
         .txtHeader {
             font-family: 'Athiti', sans-serif;
-            font-size: 25px;
+            font-size: 18px;
             font-weight: bold;
         }
 
         .table-condensed {
             font-size: 12px;
         }
+
     </style>
 
     <style>
@@ -58,26 +59,25 @@
         }
     </style>
 </head>
-<body class="hold-transition login-page" onload="screenZoom()">
-    <div class="login-box">
+<body class="hold-transition login-page"  >
+    <div class="login-box" >
         <div class="login-logo">
         </div>
 
 
-        <p class="login-box-msg" style="padding-top: 20px;">
-            <span class="txtHeader">TOTAL SALES REPORT</span>
-        </p>
+        
 
 
         <!-- /.login-logo -->
         <div class="login-box-body">
-
-            <%= strErorConn %>
-
+           
             <p class="login-box-msg">
-                <img src="../../image/Logo-ampel-Big.png" width="200" />
+                <img src="../../image/Logo_wdd.png" width="150" />
             </p>
 
+             <p class="login-box-msg" style="padding-top: 0px;">
+            <span class="txtHeader">บริษัท ทีพีเอส การ์เด้นเฟอร์นิเจอร์ จำกัด</span>
+        </p>
 
             <%--<p class="login-box-msg">Sign in to start your session</p>--%>
 

@@ -113,9 +113,99 @@ namespace medesignsoft
         public string optwhma = "";
         public string optwhml = "";
 
+        public string strUserID = "";
+        public string strimEmployeeGid = "";
+        public string strFirstName = "";
+        public string strLastName = "";
+        public string strUserName = "";
+        public string strUserPassword = "";
+        public string strUserTypeID = "";
+        public string strUserTypeDesc = "";
+        public string strActiveID = "";
+        public string stractivename = "";
+        public string strCreatedBy = "";
+        public string strCreatedDate = "";
+        public string strUpdatedBy = "";
+        public string strUpdateDate = "";
+        public string strimPositionID = "";
+        public string strPositionName = "";
+        public string strimDepartmentID = "";
+        public string strDepartmentDesc = "";
+        public string strimSectionID = "";
+        public string strSectionDesc = "";
+        public string strEMail = "";
+        public string strimBranchGID = "";
+        public string strBranchName = "";
+        public string stradCompanyID = "";
+        public string strCompanyNameTh = "";
+
+
         protected void Page_Load(object sender, EventArgs e)
-        {
-            getPointer();
+        {          
+
+            try
+            {               
+                if (!IsPostBack) { 
+                    //strUserID = "";
+                    //strimEmployeeGid = "";
+                    //strFirstName = "";
+                    //strLastName = "";
+                    //strUserName = "";
+                    //strUserPassword = "";
+                    //strUserTypeID = "";
+                    //strUserTypeDesc = "";
+                    //strActiveID = "";
+                    //stractivename = "";
+                    //strCreatedBy = "";
+                    //strCreatedDate = "";
+                    //strUpdatedBy = "";
+                    //strUpdateDate = "";
+                    //strimPositionID = "";
+                    //strPositionName = "";
+                    //strimDepartmentID = "";
+                    //strDepartmentDesc = "";
+                    //strimSectionID = "";
+                    //strSectionDesc = "";
+                    //strEMail = "";
+                    //strimBranchGID = "";
+                    //strBranchName = "";
+                    //stradCompanyID = "";
+                    //strCompanyNameTh = "";
+
+                    strUserID = Session["UserID"].ToString();
+                    strimEmployeeGid = Session["imEmployeeGid"].ToString();
+                    strFirstName = Session["FirstName"].ToString();
+                    strLastName = Session["LastName"].ToString();
+                    strUserName = Session["UserName"].ToString();
+                    strUserPassword = Session["UserPassword"].ToString();
+                    strUserTypeID = Session["UserTypeID"].ToString();
+                    strUserTypeDesc = Session["UserTypeDesc"].ToString();
+                    strActiveID = Session["ActiveID"].ToString();
+                    stractivename = Session["activename"].ToString();
+                    strCreatedBy = Session["CreatedBy"].ToString();
+                    strCreatedDate = Session["CreatedDate"].ToString();
+                    strUpdatedBy = Session["UpdatedBy"].ToString();
+                    strUpdateDate = Session["UpdateDate"].ToString();
+                    strimPositionID = Session["imPositionID"].ToString();
+                    strPositionName = Session["PositionName"].ToString();
+                    strimDepartmentID = Session["imDepartmentID"].ToString();
+                    strDepartmentDesc = Session["DepartmentDesc"].ToString();
+                    strimSectionID = Session["imSectionID"].ToString();
+                    strSectionDesc = Session["SectionDesc"].ToString();
+                    strEMail = Session["EMail"].ToString();
+                    strimBranchGID = Session["imBranchGID"].ToString();
+                    strBranchName = Session["BranchName"].ToString();
+                    stradCompanyID = Session["adCompanyID"].ToString();
+                    strCompanyNameTh = Session["CompanyNameTh"].ToString();
+
+                    getPointer();
+                }
+            }
+            catch {
+                Response.Redirect("~/signin.aspx");
+            }
+
+            
         }
 
         protected void getPointer()

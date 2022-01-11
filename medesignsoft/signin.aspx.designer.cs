@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace totalsale_report {
+namespace medesignsoft {
     
     
     public partial class signin {

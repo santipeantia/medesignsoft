@@ -122,6 +122,7 @@
                 var mod = param["mod"];
 
                 if (mod == 'new') {
+                     $('#overlay').hide();
                     //alert('mode edit');
 
                     //$('#selectcompany').prop('disabled', false);
@@ -437,7 +438,7 @@
                                 $.each(obj, function (i, data) {
                                     $('#hiddengid').val(data["imEmployeeGid"]);
 
-                                    $('#selectbranch').val(data["imBranchID"]).change();
+                                    $('#selectbranch').val(data["imBranchGID"]).change();
                                     $('#txtemployeeid').val(data["imEmployeeID"]);
                                     $('#selecttitlename').val(data["imTitleID"]).change();
                                     $('#txtemployeename').val(data["FirstName"]);

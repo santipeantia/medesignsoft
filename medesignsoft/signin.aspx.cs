@@ -29,11 +29,42 @@ namespace medesignsoft
         public string strMsgAlert = "";
         public string strTblDetail = "";
         public string strTblActive = "";
+        public string strErrorConn = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Session.Remove("UserID");
+            //Session.Remove("imEmployeeGid");
+            //Session.Remove("FirstName");
+            //Session.Remove("LastName");
+            //Session.Remove("UserName");
+            //Session.Remove("UserPassword");
+            //Session.Remove("UserTypeID");
+            //Session.Remove("UserTypeDesc");
+            //Session.Remove("ActiveID");
+            //Session.Remove("activename");
+            //Session.Remove("CreatedBy");
+            //Session.Remove("CreatedDate");
+            //Session.Remove("UpdatedBy");
+            //Session.Remove("UpdateDate");
+            //Session.Remove("imPositionID");
+            //Session.Remove("PositionName");
+            //Session.Remove("imDepartmentID");
+            //Session.Remove("DepartmentDesc");
+            //Session.Remove("imSectionID");
+            //Session.Remove("SectionDesc");
+            //Session.Remove("EMail");
+            //Session.Remove("imBranchGID");
+            //Session.Remove("BranchName");
+            //Session.Remove("adCompanyID");
+            //Session.Remove("CompanyNameTh");
+
+            
+
             if (!IsPostBack) {
-                strErorConn = "";
+                strErrorConn = "";
+
+                Session.Abandon();
             }
         }
 
@@ -51,12 +82,34 @@ namespace medesignsoft
 
                 if (dt.Rows.Count != 0)
                 {
-                    Session["usr_id"] = dt.Rows[0]["usr_id"].ToString();
-                    Session["emp_id"] = dt.Rows[0]["emp_id"].ToString();
-                    Session["usr_name"] = dt.Rows[0]["usr_name"].ToString();
-                    Session["usr_password"] = dt.Rows[0]["usr_password"].ToString();
 
-                    Response.Redirect("default.aspx");                  
+                    Session["UserID"] = dt.Rows[0]["UserID"].ToString();
+                    Session["imEmployeeGid"] = dt.Rows[0]["imEmployeeGid"].ToString();
+                    Session["FirstName"] = dt.Rows[0]["FirstName"].ToString();
+                    Session["LastName"] = dt.Rows[0]["LastName"].ToString();
+                    Session["UserName"] = dt.Rows[0]["UserName"].ToString();
+                    Session["UserPassword"] = dt.Rows[0]["UserPassword"].ToString();
+                    Session["UserTypeID"] = dt.Rows[0]["UserTypeID"].ToString();
+                    Session["UserTypeDesc"] = dt.Rows[0]["UserTypeDesc"].ToString();
+                    Session["ActiveID"] = dt.Rows[0]["ActiveID"].ToString();
+                    Session["activename"] = dt.Rows[0]["activename"].ToString();
+                    Session["CreatedBy"] = dt.Rows[0]["CreatedBy"].ToString();
+                    Session["CreatedDate"] = dt.Rows[0]["CreatedDate"].ToString();
+                    Session["UpdatedBy"] = dt.Rows[0]["UpdatedBy"].ToString();
+                    Session["UpdateDate"] = dt.Rows[0]["UpdateDate"].ToString();
+                    Session["imPositionID"] = dt.Rows[0]["imPositionID"].ToString();
+                    Session["PositionName"] = dt.Rows[0]["PositionName"].ToString();
+                    Session["imDepartmentID"] = dt.Rows[0]["imDepartmentID"].ToString();
+                    Session["DepartmentDesc"] = dt.Rows[0]["DepartmentDesc"].ToString();
+                    Session["imSectionID"] = dt.Rows[0]["imSectionID"].ToString();
+                    Session["SectionDesc"] = dt.Rows[0]["SectionDesc"].ToString();
+                    Session["EMail"] = dt.Rows[0]["EMail"].ToString();
+                    Session["imBranchGID"] = dt.Rows[0]["imBranchGID"].ToString();
+                    Session["BranchName"] = dt.Rows[0]["BranchName"].ToString();
+                    Session["adCompanyID"] = dt.Rows[0]["adCompanyID"].ToString();
+                    Session["CompanyNameTh"] = dt.Rows[0]["CompanyNameTh"].ToString();
+
+                    Response.Redirect("~/index.aspx");                  
                 }
                 else
                 {

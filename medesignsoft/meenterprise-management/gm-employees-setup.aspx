@@ -20,6 +20,15 @@
                 cursor: pointer;
             }
 
+            #tblemployeeslist tbody tr:hover {
+                color: red;
+                background-color: rgba(252, 241, 154, 0.63);
+            }
+
+            .column_hover {
+                cursor: pointer;             
+            }
+
             #overlay {
                 position: fixed;
                 top: 0;
@@ -120,36 +129,42 @@
 
                             if (data != '') {
                                 $.each(data, function (i, item) {
-                                    table.row.add([data[i].imEmployeeGid, data[i].imBranchGID, data[i].imEmployeeID, data[i].imTitleID, data[i].TitleName, data[i].FirstName
+                                    table.row.add([data[i].imEmployeeGid, data[i].BranchName, data[i].imEmployeeID, data[i].imTitleID, data[i].TitleName, data[i].FirstName
                                         , data[i].MiddleName, data[i].LastName, data[i].NickName, data[i].imPositionID, data[i].PositionName, data[i].imDepartmentID
                                         , data[i].DepartmentDesc, data[i].imSectionID, data[i].SectionDesc, data[i].imDivisionID, data[i].DivisionDesc, data[i].Add1
                                         , data[i].Add2, data[i].Add3, data[i].adProvinceID, data[i].ProvinceName, data[i].PostalCode, data[i].adCountryID, data[i].IDCardNO
                                         , data[i].imMaritalStatusID, data[i].MaritalStatusDesc, data[i].imLivingStatusID, data[i].LivingStatusDesc, data[i].imReligionID
                                         , data[i].ReligionDesc, data[i].imSexID, data[i].Birthday, data[i].Tel, data[i].Mobile, data[i].Picture, data[i].EMail, data[i].Remark
-                                        , data[i].Active, data[i].activename, data[i].EffecDate, data[i].ExpireDate, data[i].edit, data[i].trash]);
+                                        , data[i].Active, data[i].activename, data[i].EffecDate, data[i].ExpireDate, data[i].edit, data[i].trash, data[i].changpass]);
                                 });
                             }
                             table.draw();
                             $('#loaderemployees').hide();
 
-                            //$('#tblCompanyList td:nth-of-type(2)').addClass('column_fixed');
-                            //$('#tblCompanyList td:nth-of-type(3)').addClass('column_fixed');
+                            $('#tblemployeeslist td:nth-of-type(6)').addClass('column_hover');
+                            $('#tblemployeeslist td:nth-of-type(8)').addClass('column_hover');
 
                             $('#tblemployeeslist td').click(function () {
                                 rIndex = this.parentElement.rowIndex;
                                 cIndex = this.cellIndex;
                                 console.log('row : ' + rIndex + ' cell: ' + cIndex)
 
-                                if (rIndex != 0 & cIndex == 42) {
+                                if (rIndex != 0 & cIndex == 5 || cIndex == 7 || cIndex == 42) {
                                     var gid = $("#tblemployeeslist").find('tr:eq(' + rIndex + ')').find('td:eq(0)');
                                     console.log(gid.text());
                                     window.location.href = "gm-employees-edit.aspx?opt=optgen&mod=edit&gid=" + gid.text();
                                 }
 
-                                if (rIndex != 0 & cIndex == 43) {
+                                if (rIndex != 0 & cIndex == 5 || cIndex == 7 || cIndex == 43) {
                                     var gid = $("#tblemployeeslist").find('tr:eq(' + rIndex + ')').find('td:eq(0)');
                                     console.log(gid.text());
                                     window.location.href = "gm-employees-edit.aspx?opt=optgen&mod=del&gid=" + gid.text();
+                                }
+
+                                if (rIndex != 0 & cIndex == 44) {
+                                    var gid = $("#tblemployeeslist").find('tr:eq(' + rIndex + ')').find('td:eq(0)');
+                                    console.log(gid.text());
+                                    window.location.href = "gm-changepassword-edit.aspx?opt=optgen&mod=edit&gid=" + gid.text();
                                 }
 
                             })
@@ -292,6 +307,8 @@
                                         <%--edit	42--%>
                                         <th style="width: 30px; text-align: right;">#</th>
                                         <%--trash	43--%>
+                                        <th style="width: 30px; text-align: right;">#</th>
+                                        <%--trash	44--%>
                                     </tr>
                                 </thead>
                                 <tbody>

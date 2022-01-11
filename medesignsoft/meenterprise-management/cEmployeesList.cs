@@ -10,6 +10,7 @@ namespace medesignsoft
         public string imEmployeeGid { get; set; }
         public string imBranchID { get; set; }
         public string imBranchGID { get; set; }
+        public string BranchName { get; set; }
         public string imEmployeeID { get; set; }
         public string imTitleID { get; set; }
         public string TitleName { get; set; }
@@ -52,6 +53,9 @@ namespace medesignsoft
         public string ExpireDate { get; set; }
         public string edit { get; set; }
         public string trash { get; set; }
+        public string changpass { get; set; }
+        public string UserName { get; set; }
+        public string UserTypeID { get; set; }
 
     }
 }

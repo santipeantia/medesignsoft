@@ -253,6 +253,7 @@ namespace medesignsoft.meenterprise_management
                 data.imEmployeeGid = rdr["imEmployeeGid"].ToString();
 
                 data.imBranchGID = rdr["imBranchGID"].ToString();
+                data.BranchName = rdr["BranchName"].ToString();
                 data.imEmployeeID = rdr["imEmployeeID"].ToString();
                 data.imTitleID = rdr["imTitleID"].ToString();
                 data.TitleName = rdr["TitleName"].ToString();
@@ -295,6 +296,7 @@ namespace medesignsoft.meenterprise_management
                 data.ExpireDate = rdr["ExpireDate"].ToString();
                 data.edit = rdr["edit"].ToString();
                 data.trash = rdr["trash"].ToString();
+                data.changpass = rdr["changpass"].ToString();
                 datas.Add(data);
             }
             JavaScriptSerializer js = new JavaScriptSerializer();
@@ -360,6 +362,8 @@ namespace medesignsoft.meenterprise_management
                 data.activename = rdr["activename"].ToString();
                 data.EffecDate = rdr["EffecDate"].ToString();
                 data.ExpireDate = rdr["ExpireDate"].ToString();
+                data.UserName = rdr["UserName"].ToString();
+                data.UserTypeID = rdr["UserTypeID"].ToString();
                 datas.Add(data);
             }
             JavaScriptSerializer js = new JavaScriptSerializer();
@@ -414,10 +418,6 @@ namespace medesignsoft.meenterprise_management
         }
 
         
-
-
-
-
         [WebMethod]
         public void getprovince() {
             List<cProvince> datas = new List<cProvince>();
@@ -948,6 +948,52 @@ namespace medesignsoft.meenterprise_management
             comm.Parameters.AddWithValue("@adUserID", adUserID);
             comm.Parameters.AddWithValue("@Lastdate", Lastdate);
             comm.Parameters.AddWithValue("@LastTime", LastTime);
+            comm.ExecuteNonQuery();
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getUsertype() {
+            List<cUserType> datas = new List<cUserType>();
+            SqlCommand comm = new SqlCommand("spGetUserType", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cUserType data = new cUserType();
+                data.UserTypeID = rdr["UserTypeID"].ToString();
+                data.UserTypeDesc = rdr["UserTypeDesc"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getUserLoginUpdateEntry(string acttrans, string Gid, string UserID, string imEmployeeGid, string FirstName, string LastName, string UserName, string UserPassword, 
+                                            string UserTypeID, string ActiveID, string CreatedBy, string CreatedDate, string UpdatedBy, string UpdateDate) {
+            SqlCommand comm = new SqlCommand("spGetUserLoginUpdateEntry", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            comm.Parameters.AddWithValue("@acttrans", acttrans);
+            comm.Parameters.AddWithValue("@Gid", Gid);
+            comm.Parameters.AddWithValue("@UserID", UserID);
+            comm.Parameters.AddWithValue("@imEmployeeGid", imEmployeeGid);
+            comm.Parameters.AddWithValue("@FirstName", FirstName);
+            comm.Parameters.AddWithValue("@LastName", LastName);
+            comm.Parameters.AddWithValue("@UserName", UserName);
+            comm.Parameters.AddWithValue("@UserPassword", UserPassword);
+            comm.Parameters.AddWithValue("@UserTypeID", UserTypeID);
+            comm.Parameters.AddWithValue("@ActiveID", ActiveID);
+            comm.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+            comm.Parameters.AddWithValue("@CreatedDate", CreatedDate);
+            comm.Parameters.AddWithValue("@UpdatedBy", UpdatedBy);
+            comm.Parameters.AddWithValue("@UpdateDate", UpdateDate);
+
             comm.ExecuteNonQuery();
             conn.CloseConn();
         }

@@ -13478,6 +13478,9 @@
     <Content Include="image\i0929.png" />
     <Content Include="image\loading_bar.gif" />
     <Content Include="image\Logo-ampel-Big.png" />
+    <Content Include="image\Logo-woodden.png" />
+    <Content Include="image\Logo_wdd.png" />
+    <Content Include="image\Logo_wdd_word.png" />
     <Content Include="image\t0929.png" />
     <Content Include="image\warning.png" />
     <Content Include="index.aspx" />
@@ -13485,6 +13488,7 @@
     <Content Include="meenterprise-management\general-setup.aspx" />
     <Content Include="meenterprise-management\gm-branch-edit.aspx" />
     <Content Include="meenterprise-management\gm-branch-setup.aspx" />
+    <Content Include="meenterprise-management\gm-changepassword-edit.aspx" />
     <Content Include="meenterprise-management\gm-company-edit.aspx" />
     <Content Include="meenterprise-management\gm-company-setup.aspx" />
     <Content Include="meenterprise-management\gm-department-edit.aspx" />
@@ -13689,6 +13693,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="meenterprise-management\cUserType.cs" />
     <Compile Include="meenterprise-management\cAutorunList.cs" />
     <Compile Include="meenterprise-management\cSex.cs" />
     <Compile Include="meenterprise-management\cReligion.cs" />
@@ -13759,6 +13764,13 @@
     </Compile>
     <Compile Include="meenterprise-management\gm-branch-setup.aspx.designer.cs">
       <DependentUpon>gm-branch-setup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="meenterprise-management\gm-changepassword-edit.aspx.cs">
+      <DependentUpon>gm-changepassword-edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="meenterprise-management\gm-changepassword-edit.aspx.designer.cs">
+      <DependentUpon>gm-changepassword-edit.aspx</DependentUpon>
     </Compile>
     <Compile Include="meenterprise-management\gm-company-edit.aspx.cs">
       <DependentUpon>gm-company-edit.aspx</DependentUpon>
