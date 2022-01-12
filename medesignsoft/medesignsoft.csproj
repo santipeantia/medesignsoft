@@ -13851,6 +13851,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs" />
+    <Compile Include="Class\public_variable.cs" />
     <Compile Include="signin.aspx.cs">
       <DependentUpon>signin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -15132,7 +15133,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="aspnet_client\system_web\4_0_30319\" />
-    <Folder Include="Class\" />
     <Folder Include="Reports\" />
   </ItemGroup>
   <PropertyGroup>

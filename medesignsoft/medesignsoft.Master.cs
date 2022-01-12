@@ -139,39 +139,16 @@ namespace medesignsoft
         public string stradCompanyID = "";
         public string strCompanyNameTh = "";
 
+        public_variable pv = new public_variable();
 
         protected void Page_Load(object sender, EventArgs e)
         {          
 
             try
-            {               
-                if (!IsPostBack) { 
-                    //strUserID = "";
-                    //strimEmployeeGid = "";
-                    //strFirstName = "";
-                    //strLastName = "";
-                    //strUserName = "";
-                    //strUserPassword = "";
-                    //strUserTypeID = "";
-                    //strUserTypeDesc = "";
-                    //strActiveID = "";
-                    //stractivename = "";
-                    //strCreatedBy = "";
-                    //strCreatedDate = "";
-                    //strUpdatedBy = "";
-                    //strUpdateDate = "";
-                    //strimPositionID = "";
-                    //strPositionName = "";
-                    //strimDepartmentID = "";
-                    //strDepartmentDesc = "";
-                    //strimSectionID = "";
-                    //strSectionDesc = "";
-                    //strEMail = "";
-                    //strimBranchGID = "";
-                    //strBranchName = "";
-                    //stradCompanyID = "";
-                    //strCompanyNameTh = "";
+            {
+                
 
+                if (!this.IsPostBack) {
                     strUserID = Session["UserID"].ToString();
                     strimEmployeeGid = Session["imEmployeeGid"].ToString();
                     strFirstName = Session["FirstName"].ToString();
@@ -197,6 +174,12 @@ namespace medesignsoft
                     strBranchName = Session["BranchName"].ToString();
                     stradCompanyID = Session["adCompanyID"].ToString();
                     strCompanyNameTh = Session["CompanyNameTh"].ToString();
+
+                    //strUserID = Request.Cookies["UserID"].Value;
+                    //strimEmployeeGid = Request.Cookies["imEmployeeGid"].Value;
+                    //strFirstName = Request.Cookies["FirstName"].Value;
+                    //strLastName = Request.Cookies["LastName"].Value;
+
 
                     getPointer();
                 }

@@ -216,7 +216,7 @@
                                     <img src="../../dist/img/user1-128x128.jpg" class="user-image" alt="User Image" width="160" />
                                     <span class="hidden-xs txtLabel">
                                         <label id="label2"></label>
-                                        <%= strFirstName %>&nbsp;&nbsp;<%= strLastName %></span>
+                                        <%= strFirstName %>&nbsp;&nbsp;<%= strLastName %> </span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li class="user-header txtLabel">

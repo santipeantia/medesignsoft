@@ -26,6 +26,8 @@ namespace medesignsoft
         SqlDataAdapter da = new SqlDataAdapter();
         SqlTransaction transac;
 
+        public_variable pv = new public_variable();
+
         public string strMsgAlert = "";
         public string strTblDetail = "";
         public string strTblActive = "";
@@ -33,37 +35,10 @@ namespace medesignsoft
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Session.Remove("UserID");
-            //Session.Remove("imEmployeeGid");
-            //Session.Remove("FirstName");
-            //Session.Remove("LastName");
-            //Session.Remove("UserName");
-            //Session.Remove("UserPassword");
-            //Session.Remove("UserTypeID");
-            //Session.Remove("UserTypeDesc");
-            //Session.Remove("ActiveID");
-            //Session.Remove("activename");
-            //Session.Remove("CreatedBy");
-            //Session.Remove("CreatedDate");
-            //Session.Remove("UpdatedBy");
-            //Session.Remove("UpdateDate");
-            //Session.Remove("imPositionID");
-            //Session.Remove("PositionName");
-            //Session.Remove("imDepartmentID");
-            //Session.Remove("DepartmentDesc");
-            //Session.Remove("imSectionID");
-            //Session.Remove("SectionDesc");
-            //Session.Remove("EMail");
-            //Session.Remove("imBranchGID");
-            //Session.Remove("BranchName");
-            //Session.Remove("adCompanyID");
-            //Session.Remove("CompanyNameTh");
-
-            
+                       
 
             if (!IsPostBack) {
                 strErrorConn = "";
-
                 Session.Abandon();
             }
         }
@@ -80,8 +55,36 @@ namespace medesignsoft
                 dt = new DataTable();
                 dt = dbConn.GetDataTable(ssql);
 
+            
                 if (dt.Rows.Count != 0)
                 {
+                    Session["UserID"] = null;
+                    Session["imEmployeeGid"] = null;
+                    Session["FirstName"] = null;
+                    Session["LastName"] = null;
+                    Session["UserName"] = null;
+                    Session["UserPassword"] = null;
+                    Session["UserTypeID"] = null;
+                    Session["UserTypeDesc"] = null;
+                    Session["ActiveID"] = null;
+                    Session["activename"] = null;
+                    Session["CreatedBy"] = null;
+                    Session["CreatedDate"] = null;
+                    Session["UpdatedBy"] = null;
+                    Session["UpdateDate"] = null;
+                    Session["imPositionID"] = null;
+                    Session["PositionName"] = null;
+                    Session["imDepartmentID"] = null;
+                    Session["DepartmentDesc"] = null;
+                    Session["imSectionID"] = null;
+                    Session["SectionDesc"] = null;
+                    Session["EMail"] = null;
+                    Session["imBranchGID"] = null;
+                    Session["BranchName"] = null;
+                    Session["adCompanyID"] = null;
+                    Session["CompanyNameTh"] = null;
+
+
 
                     Session["UserID"] = dt.Rows[0]["UserID"].ToString();
                     Session["imEmployeeGid"] = dt.Rows[0]["imEmployeeGid"].ToString();
@@ -109,6 +112,11 @@ namespace medesignsoft
                     Session["adCompanyID"] = dt.Rows[0]["adCompanyID"].ToString();
                     Session["CompanyNameTh"] = dt.Rows[0]["CompanyNameTh"].ToString();
 
+                    //Response.Cookies["UserID"].Value = dt.Rows[0]["UserID"].ToString();
+                    //Response.Cookies["imEmployeeGid"].Value = dt.Rows[0]["imEmployeeGid"].ToString();
+                    //Response.Cookies["FirstName"].Value = dt.Rows[0]["FirstName"].ToString();
+                    //Response.Cookies["LastName"].Value = dt.Rows[0]["LastName"].ToString();
+                    
                     Response.Redirect("~/index.aspx");                  
                 }
                 else
