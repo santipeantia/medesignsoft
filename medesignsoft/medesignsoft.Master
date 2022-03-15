@@ -176,6 +176,10 @@
             width: 100%;
             margin: 0 auto;
         }
+
+         a:hover {
+            background-color: rgba(252, 241, 154, 0.63);
+        }
     </style>
 
 </head>
@@ -284,60 +288,60 @@
                                 <li class="<%= optap %>">
                                     <a href="../../woodden/meenterprise-management/ap-setup.aspx?opt=optap">
                                         <i class="fa fa-caret-right"></i>
-                                        <span class="txtLabel">AP Setup</span>
+                                        <span class="txtLabel <%= optap %>">AP Setup</span>
                                     </a>
                                 </li>
                                 <li class="<%= optar %>">
                                     <a href="../../woodden/meenterprise-management/ar-setup.aspx?opt=optar">
-                                        <i class="fa fa-caret-right"></i>
-                                        <span class="txtLabel">AR Setup</span>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
+                                        <span class="txtLabel <%= optar %>">AR Setup</span>
                                     </a>
                                 </li>
                                 <li class="<%= optcq %>">
                                     <a href="../../woodden/meenterprise-management/cq-setup.aspx?opt=optcq">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">CQ Setup</span>
                                     </a>
                                 </li>
                                 <li class="<%= optgl %>">
                                     <a href="../../woodden/meenterprise-management/gl-setup.aspx?opt=optgl">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">GL Setup</span>
                                     </a>
                                 </li>
                                 <li class="<%= optic %>">
                                     <a href="../../woodden/meenterprise-management/ic-setup.aspx?opt=optic">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">IC Setup</span>
                                     </a>
                                 </li>
                                 <li class="<%= optmc %>">
                                     <a href="../../woodden/meenterprise-management/mc-setup.aspx?opt=optmc">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">MC Setup</span>
                                     </a>
                                 </li>
                                 <li class="<%= optcrm %>">
                                     <a href="../../woodden/meenterprise-management/crm-setup.aspx?opt=optcrm">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">CRM Setup</span>
                                     </a>
                                 </li>
                                 <li class="<%= optso %>">
                                     <a href="../../woodden/meenterprise-management/so-setup.aspx?opt=optso">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">SO Setup</span>
                                     </a>
                                 </li>
                                 <li class="<%= opttax %>">
                                     <a href="../../woodden/meenterprise-management/tax-setup.aspx?opt=opttax">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">Tax Setup</span>
                                     </a>
                                 </li>
                                 <li class="<%= optwh %>">
                                     <a href="../../woodden/meenterprise-management/wh-setup.aspx?opt=optwh">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">WH Setup</span>
                                     </a>
                                 </li>
@@ -348,7 +352,7 @@
                         <%--Accounts Payable--%>
                         <li class="treeview <%= optaccoutspayment %>" style="border-top: 1px solid #dddddd;">
                             <a href="javascript:void(0)" class="waves-effect waves-dark">
-                                <i class="fa fa-gear"></i>
+                                <i class="fa fa-lock text-red"></i><i class="fa fa-gear"></i>
                                 <span class="txtLabel">Accounts Payable</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
@@ -357,31 +361,31 @@
                             <ul class="treeview-menu">
                                 <li class="<%= optape %>">
                                     <a href="../../woodden/meaccounts-payable/ap-entry.aspx?opt=optape" class="waves-effect waves-dark">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">AP Data Entry</span>
                                     </a>
                                 </li>
                                 <li class="<%= optapc %>">
                                     <a href="../../woodden/meaccounts-payable/ap-calendar.aspx?opt=optapc" class="waves-effect waves-dark">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">AP Calendar</span>
                                     </a>
                                 </li>
                                 <li class="<%= optapr %>">
                                     <a href="../../woodden/meaccounts-payable/ap-report.aspx?opt=optapr" class="waves-effect waves-dark">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">AP Reports</span>
                                     </a>
                                 </li>
                                 <li class="<%= optapa %>">
                                     <a href="../../woodden/meaccounts-payable/ap-analysis.aspx?opt=optapa" class="waves-effect waves-dark">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">AP Analysis Report</span>
                                     </a>
                                 </li>
                                 <li class="<%= optaph %>">
                                     <a href="../../woodden/meaccounts-payable/ap-history.aspx?opt=optaph" class="waves-effect waves-dark">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">AP History</span>
                                     </a>
                                 </li>
@@ -392,7 +396,7 @@
                         <%--Accounts Receivable--%>
                         <li class="treeview <%= optaccoutsreceivable %>" style="border-top: 1px solid #dddddd;">
                             <a href="javascript:void(0)">
-                                <i class="fa fa-gear"></i>
+                                <i class="fa fa-lock text-red"></i><i class="fa fa-gear"></i>
                                 <span class="txtLabel">Accounts Receivable</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
@@ -401,31 +405,31 @@
                             <ul class="treeview-menu">
                                 <li class="<%= optare %>">
                                     <a href="../../woodden/meaccounts-receivable/ar-entry.aspx?opt=optare">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">AR Data Entry</span>
                                     </a>
                                 </li>
                                 <li class="<%= optarc %>">
                                     <a href="../../woodden/meaccounts-receivable/ar-calendar.aspx?opt=optarc">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">AR Calendar</span>
                                     </a>
                                 </li>
                                 <li class="<%= optarr %>">
                                     <a href="../../woodden/meaccounts-receivable/ar-report.aspx?opt=optarr">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">AR Report</span>
                                     </a>
                                 </li>
                                 <li class="<%= optara %>">
                                     <a href="../../woodden/meaccounts-receivable/ar-analysis.aspx?opt=optara">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">AR Analysis Report</span>
                                     </a>
                                 </li>
                                 <li class="<%= optarh %>">
                                     <a href="../../woodden/meaccounts-receivable/ar-history.aspx?opt=optarh">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">AR History</span>
                                     </a>
                                 </li>
@@ -436,7 +440,7 @@
                         <%--Budget Controls--%>
                         <li class="treeview <%= optbudgetcontrol %>" style="border-top: 1px solid #dddddd;">
                             <a href="#">
-                                <i class="fa fa-gear"></i>
+                                <i class="fa fa-lock text-red"></i><i class="fa fa-gear"></i>
                                 <span class="txtLabel">Budget Controls</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
@@ -445,13 +449,13 @@
                             <ul class="treeview-menu">
                                 <li class="<%= optbge %>">
                                     <a href="../../woodden/mebudget-control/bg-entry.aspx?opt=optbge">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">BG Data Entry</span>
                                     </a>
                                 </li>
                                 <li class="<%= optbgr %>">
                                     <a href="../../woodden/mebudget-control/bg-report.aspx?opt=optbgr">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">BG Report</span>
                                     </a>
                                 </li>
@@ -462,7 +466,7 @@
                         <%--Cheque and Bank--%>
                         <li class="treeview <%= optchequerec %>" style="border-top: 1px solid #dddddd;">
                             <a href="javascript:void(0)">
-                                <i class="fa fa-gear"></i>
+                                <i class="fa fa-lock text-red"></i><i class="fa fa-gear"></i>
                                 <span class="txtLabel">Cheque and Bank</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
@@ -471,43 +475,43 @@
                             <ul class="treeview-menu">
                                 <li class="<%= optcqr %>">
                                     <a href="../../woodden/mecheque-bank/cq-received.aspx?opt=optcqr">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">CQ Received Adjustments</span>
                                     </a>
                                 </li>
                                 <li class="<%= optcqp %>">
                                     <a href="../../woodden/mecheque-bank/cq-payment.aspx?opt=optcqp">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">CQ Payment Adjustments</span>
                                     </a>
                                 </li>
                                 <li class="<%= optcqb %>">
                                     <a href="../../woodden/mecheque-bank/cq-bank.aspx?opt=optcqb">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">CQ Bank Adjustments</span>
                                     </a>
                                 </li>
                                 <li class="<%= optcqc %>">
                                     <a href="../../woodden/mecheque-bank/cq-calendar.aspx?opt=optcqc">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">CQ Calendar</span>
                                     </a>
                                 </li>
                                 <li class="<%= optcqre %>">
                                     <a href="../../woodden/mecheque-bank/cq-report.aspx?opt=optcqre">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">CQ Report</span>
                                     </a>
                                 </li>
                                 <li class="<%= optcqa %>">
                                     <a href="../../woodden/mecheque-bank/cq-analysys.aspx?opt=optcqa">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">CQ Analysis Report</span>
                                     </a>
                                 </li>
                                 <li class="<%= optcqh %>">
                                     <a href="../../woodden/mecheque-bank/cq-history.aspx?opt=optcqh">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">CQ History</span>
                                     </a>
                                 </li>
@@ -517,7 +521,7 @@
                         <%--Financial Management--%>
                         <li class="treeview <%= optfinancial %>" style="border-top: 1px solid #dddddd;">
                             <a href="javascript:void(0)">
-                                <i class="fa fa-gear"></i>
+                                <i class="fa fa-lock text-red"></i><i class="fa fa-gear"></i>
                                 <span class="txtLabel">Financial Management</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
@@ -526,13 +530,13 @@
                             <ul class="treeview-menu">
                                 <li class="<%= optfma %>">
                                     <a href="../../woodden/mefinancial-management/fm-analysis.aspx?opt=optfma">
-                                        <i class="fa fa-caret-right"></i>
-                                        <span class="pcoded-mtext">FM Analysis Report</span>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
+                                        <span class="txtLabel">FM Analysis Report</span>
                                     </a>
                                 </li>
                                 <li class="<%= optfmr %>">
                                     <a href="../../woodden/mefinancial-management/fm-report.aspx?opt=optfmr">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">FM Financial Report</span>
                                     </a>
                                 </li>
@@ -543,7 +547,7 @@
                         <%--General Ledger--%>
                         <li class="treeview <%= optgeneralledger %>" style="border-top: 1px solid #dddddd;">
                             <a href="javascript:void(0)">
-                                <i class="fa fa-gear"></i>
+                                <i class="fa fa-lock text-red"></i><i class="fa fa-gear"></i>
                                 <span class="txtLabel">General Ledger</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
@@ -552,26 +556,26 @@
                             <ul class="treeview-menu">
                                 <li class="<%= optgle %>">
                                     <a href="../../woodden/megeneral-ledger/gl-entry.aspx?opt=optgle">
-                                        <i class="fa fa-caret-right"></i>
-                                        <span class="pcoded-mtext">GL Data Entry</span>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
+                                        <span class="txtLabel">GL Data Entry</span>
                                     </a>
                                 </li>
                                 <li class="<%= optglr %>">
                                     <a href="../../woodden/megeneral-ledger/gl-report.aspx?opt=optglr">
-                                        <i class="fa fa-caret-right"></i>
-                                        <span class="pcoded-mtext">GL Report</span>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
+                                        <span class="txtLabel">GL Report</span>
                                     </a>
                                 </li>
                                 <li class="<%= optglf %>">
                                     <a href="../../woodden/megeneral-ledger/gl-finance.aspx?opt=optglf">
-                                        <i class="fa fa-caret-right"></i>
-                                        <span class="pcoded-mtext">GL Finance Statement</span>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
+                                        <span class="txtLabel">GL Finance Statement</span>
                                     </a>
                                 </li>
                                 <li class="<%= optglh %>">
                                     <a href="../../woodden/megeneral-ledger/gl-history.aspx?opt=optglh">
-                                        <i class="fa fa-caret-right"></i>
-                                        <span class="pcoded-mtext">GL History</span>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
+                                        <span class="txtLabel">GL History</span>
                                     </a>
                                 </li>
                             </ul>
@@ -580,7 +584,7 @@
                         <%--Inventory Controls--%>
                         <li class="treeview <%= optinventory %>" style="border-top: 1px solid #dddddd;">
                             <a href="#" class="waves-effect waves-dark">
-                                <i class="fa fa-gear"></i>
+                                <i class="fa fa-lock text-red"></i><i class="fa fa-gear"></i>
                                 <span class="txtLabel">Inventory Controls</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
@@ -589,30 +593,31 @@
                             <ul class="treeview-menu">
                                 <li class="<%= optice %>">
                                     <a href="../../woodden/meinventory-control/ic-entry.aspx?opt=optice">
-                                        <i class="fa fa-caret-right"></i>
-                                        <span class="pcoded-mtext">IC Data Entry</span>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
+                                        <span class="txtLabel">IC Data Entry</span>
                                     </a>
                                 </li>
                                 <li class="<%= opticr %>">
                                     <a href="../../woodden/meinventory-control/ic-report.aspx?opt=opticr">
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">IC Report</span>
                                     </a>
                                 </li>
                                 <li class="<%= optica %>">
                                     <a href="../../woodden/meinventory-control/ic-analysis.aspx?opt=optica">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">IC Analysis Report</span>
                                     </a>
                                 </li>
                                 <li class="<%= opticc %>">
                                     <a href="../../woodden/meinventory-control/ic-costing.aspx?opt=opticc">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">IC Costing Report</span>
                                     </a>
                                 </li>
                                 <li class="<%= optics %>">
                                     <a href="../../woodden/meinventory-control/ic-lotserial.aspx?opt=optics">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">IC Lot Serial</span>
                                     </a>
                                 </li>
@@ -623,7 +628,7 @@
                         <%--Letter Of Credit--%>
                         <li class="treeview <%= optlettercredit %>" style="border-top: 1px solid #dddddd;">
                             <a href="javascript:void(0)">
-                                <i class="fa fa-gear"></i>
+                                <i class="fa fa-lock text-red"></i><i class="fa fa-gear"></i>
                                 <span class="txtLabel">Letter Of Credit</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
@@ -632,13 +637,13 @@
                             <ul class="treeview-menu">
                                 <li class="<%= optlce %>">
                                     <a href="../../woodden/meletterof-credit/lc-entry.aspx?opt=optlce">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">LC Data Entry</span>
                                     </a>
                                 </li>
                                 <li class="<%= optlcr %>">
                                     <a href="../../woodden/meletterof-credit/lc-report.aspx?opt=optlcr">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">LC Report</span>
                                     </a>
                                 </li>
@@ -648,7 +653,7 @@
                         <%--Petty Cash--%>
                         <li class="treeview <%= optpettycash %>" style="border-top: 1px solid #dddddd;">
                             <a href="javascript:void(0)">
-                                <i class="fa fa-gear"></i>
+                                <i class="fa fa-lock text-red"></i><i class="fa fa-gear"></i>
                                 <span class="txtLabel">Petty Cash</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
@@ -657,13 +662,13 @@
                             <ul class="treeview-menu">
                                 <li class="<%= optpce %>">
                                     <a href="../../woodden/mepetty-cash/pc-entry.aspx?opt=optpce">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">PC Data Entry</span>
                                     </a>
                                 </li>
                                 <li class="<%= optpcr %>">
                                     <a href="../../woodden/mepetty-cash/pc-report.aspx?opt=optpcr">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">PC Report</span>
                                     </a>
                                 </li>
@@ -674,7 +679,7 @@
                         <%--Purchase Order--%>
                         <li class="treeview <%= optpurchaseorder %>" style="border-top: 1px solid #dddddd;">
                             <a href="javascript:void(0)" class="waves-effect waves-dark">
-                                <i class="fa fa-gear"></i>
+                                <i class="fa fa-lock text-red"></i><i class="fa fa-gear"></i>
                                 <span class="txtLabel">Purchase Order</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
@@ -960,7 +965,7 @@
 
                         <%--Sign Out--%>
                         <li style="border-top: 1px solid #dddddd;">
-                            <a href="../../signin.aspx">
+                            <a href="../../signout.aspx">
                                 <i class="fa fa-power-off" style="color: red;"></i>
                                 <span class="txtLabel">Sign Out</span>
                             </a>
@@ -1142,687 +1147,6 @@
                     'autoWidth': false
                 })
 
-                $('#tableActive').DataTable({
-                    'iDisplayLength': 10,
-                    'paging': true,
-                    'lengthChange': true,
-                    'searching': true,
-                    'ordering': true,
-                    'info': true,
-                    'autoWidth': false
-                })
-
-                $('#tblzone').DataTable({
-                    'iDisplayLength': 10,
-                    'paging': true,
-                    'lengthChange': true,
-                    'searching': true,
-                    'ordering': true,
-                    'info': true,
-                    'autoWidth': false
-                    //'columnDefs': [
-                    //    {
-                    //        targets: [0],
-                    //        className: "hide_column"
-                    //    }
-                    //]
-                })
-
-                $('#tblsalesconsignee').DataTable({
-                    'iDisplayLength': 10,
-                    'paging': true,
-                    'lengthChange': true,
-                    'searching': true,
-                    'ordering': true,
-                    'info': true,
-                    'autoWidth': false,
-                    'columnDefs': [
-                        {
-                            targets: [0],
-                            className: "hide_column"
-                        }
-                    ]
-                })
-
-
-                $('#tbltranswithoutsalesconsignee').DataTable({
-                    'iDisplayLength': 10,
-                    'paging': true,
-                    'lengthChange': true,
-                    'searching': true,
-                    'ordering': true,
-                    'info': true,
-                    'autoWidth': false,
-                    'columnDefs': [
-                        {
-                            targets: [2],
-                            className: "hide_column"
-                        }
-                    ]
-                })
-
-                $('#tblinvoicedetails').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false
-                })
-
-                $('#tblzone-member').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false
-                })
-
-                $('#tblproduct').DataTable({
-                    'iDisplayLength': 10,
-                    'paging': true,
-                    'lengthChange': true,
-                    'searching': true,
-                    'ordering': true,
-                    'info': true,
-                    'autoWidth': false
-                })
-
-                $('#tblprojectlists').DataTable({
-                    'iDisplayLength': 10,
-                    'paging': true,
-                    'lengthChange': true,
-                    'searching': true,
-                    'ordering': true,
-                    'info': true,
-                    'autoWidth': false
-                })
-
-
-
-                $('#tblReprot1031').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false
-                })
-
-                $('#tblReprot1032').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false
-                })
-
-                $('#tblReprot1033').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false,
-                    'scrollX': true
-                })
-
-                $('#tblReprot1034').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false
-                })
-
-                $('#tblReprot1035').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false
-                })
-
-                $('#tblReprot1036').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false
-                })
-
-                $('#tblReprot1014').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false,
-                    'columnDefs': [
-                        {
-                            targets: [0],
-                            className: "hide_column"
-                        }
-                    ]
-                })
-
-                $('#tblReprot1044').DataTable({
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'scrollX': true,
-                    'autoWidth': false,
-                    'columnDefs': [
-                        {
-                            targets: [0, 2, 3, 5, 11],
-                            className: "hide_column"
-                        }
-                    ]
-                })
-
-
-                $('#tblReprot1011').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false,
-                    'columnDefs': [
-                        {
-                            targets: [1],
-                            className: "hide_column"
-                        }
-                    ]
-                })
-
-                $('#tblReprot1012').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false,
-                    'columnDefs': [
-                        {
-                            targets: [1],
-                            className: "hide_column"
-                        }
-                    ]
-                })
-
-                $('#tblReprot1013').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false,
-                    'columnDefs': [
-                        {
-                            targets: [1],
-                            className: "hide_column"
-                        }
-                    ]
-                })
-
-                $('#tblReprot1015').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false,
-                    'columnDefs': [
-                        {
-                            targets: [0, 2],
-                            className: "hide_column"
-                        }
-                    ]
-                })
-
-                $('#tblReprot1038').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false,
-                    'columnDefs': [
-                        {
-                            targets: [0, 2],
-                            className: "hide_column"
-                        }
-                    ]
-                })
-
-                $('#tblReprot1016').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false,
-                    'columnDefs': [
-                        {
-                            targets: [0, 2],
-                            className: "hide_column"
-                        }
-                    ]
-                })
-
-                $('#tblReprot1039').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false,
-                    'columnDefs': [
-                        {
-                            targets: [0, 2],
-                            className: "hide_column"
-                        }
-                    ]
-                })
-
-                $('#tblReprot1017').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false,
-                    'columnDefs': [
-                        {
-                            targets: [0, 3, 4],
-                            className: "hide_column"
-                        }
-                    ]
-                })
-
-                $('#tblReprot1040').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false,
-                    'columnDefs': [
-                        {
-                            targets: [0, 2, 4, 5],
-                            className: "hide_column"
-                        }
-                    ]
-                })
-
-                $('#tblReprot1041').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false,
-                    'columnDefs': [
-                        {
-                            targets: [0, 2, 4, 5],
-                            className: "hide_column"
-                        }
-                    ]
-                })
-
-                $('#tblReprot1018').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false,
-                    'columnDefs': [
-                        {
-                            targets: [1],
-                            className: "hide_column"
-                        }
-                    ]
-                })
-
-                $('#tblReprot1019').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false,
-                    'columnDefs': [
-                        {
-                            targets: [1],
-                            className: "hide_column"
-                        }
-                    ]
-                })
-
-                $('#tblReprot1020').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false,
-                    'columnDefs': [
-                        {
-                            targets: [1],
-                            className: "hide_column"
-                        }
-                    ]
-                })
-
-                $('#tblReprot1021').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false,
-                    'columnDefs': [
-                        {
-                            targets: [1],
-                            className: "hide_column"
-                        }
-                    ]
-                })
-
-                $('#tblReprot1042').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false,
-                    'columnDefs': [
-                        {
-                            targets: [1],
-                            className: "hide_column"
-                        }
-                    ]
-                })
-
-                $('#tblReprot1022').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false,
-                    'columnDefs': [
-                        {
-                            targets: [1],
-                            className: "hide_column"
-                        }
-                    ]
-                })
-
-                $('#tblReprot1023').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false,
-                    'columnDefs': [
-                        {
-                            targets: [1],
-                            className: "hide_column"
-                        }
-                    ]
-                })
-
-                $('#tblReprot1024').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false,
-                    'columnDefs': [
-                        {
-                            targets: [1],
-                            className: "hide_column"
-                        }
-                    ]
-                })
-
-                $('#tblReprot1025').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false,
-                    'columnDefs': [
-                        {
-                            targets: [1],
-                            className: "hide_column"
-                        }
-                    ]
-                })
-
-                $('#tblReprot1029').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false,
-                    'columnDefs': [
-                        {
-                            targets: [1],
-                            className: "hide_column"
-                        }
-                    ]
-                })
-
-                $('#tblReprot1030').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false,
-                    'columnDefs': [
-                        {
-                            targets: [1],
-                            className: "hide_column"
-                        }
-                    ]
-                })
-
-                $('#tblReprot1026').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false,
-                    'columnDefs': [
-                        {
-                            targets: [0],
-                            className: "hide_column"
-                        }
-                    ]
-                })
-
-                $('#tblReprot1027').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false,
-                    'columnDefs': [
-                        {
-                            targets: [0],
-                            className: "hide_column"
-                        }
-                    ]
-                })
-
-
-                $('#tblReprot1028').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false,
-                    'columnDefs': [
-                        {
-                            targets: [0],
-                            className: "hide_column"
-                        }
-                    ]
-                })
-
-                $('#tblReportStrategic').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false
-                })
-
-                $('#tblReprot1043').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': false,
-                    'columnDefs': [
-                        {
-                            targets: [0, 2],
-                            className: "hide_column"
-                        }
-                    ]
-                })
-
-                $('#tblResultReport').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'scrollX': true,
-                    'lengthChange': true,
-                    'searching': true,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': true,
-                    'columnDefs': [{
-                        render: function (data, type, full, meta) {
-                            return "<div id='dvNotes' style='white-space: normal;width: 300px;'>" + data + "</div>";
-                        },
-                        targets: 1
-                    }]
-
-                })
-
-                $('#tblResultReportTopRange').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'scrollX': true,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': true,
-                    'columnDefs': [{
-                        render: function (data, type, full, meta) {
-                            return "<div id='dvNotes' style='white-space: normal;width: 300px;'>" + data + "</div>";
-                        },
-                        targets: 1
-                    }]
-                })
-
-                $('#tblResultReportTopRangeSum').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'scrollX': true,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': true,
-                    'columnDefs': [{
-                        render: function (data, type, full, meta) {
-                            return "<div id='dvNotes' style='white-space: normal;width: 300px;'>" + data + "</div>";
-                        },
-                        targets: 0
-                    }]
-                })
-
-
-                $('#tblResultReportByProduct').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'scrollX': true,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': true
-                })
-
-                $('#tblResultReportBySales').DataTable({
-                    //'iDisplayLength': 10,
-                    'paging': false,
-                    'scrollX': true,
-                    'lengthChange': true,
-                    'searching': false,
-                    'ordering': false,
-                    'info': true,
-                    'autoWidth': true
-                })
-
                 $('#tblcompanylist').DataTable({
                     'iDisplayLength': 10,
                     'paging': false,
@@ -1906,7 +1230,62 @@
                         targets: [0, 3], className: "hide_column"
                     }]
                 })
-
+                                
+                $('#tbltermslist').DataTable({
+                    'iDisplayLength': 25,
+                    'paging': true,
+                    'scrollX': true,
+                    'lengthChange': true,
+                    'searching': true,
+                    'ordering': false,
+                    'info': true,
+                    'autoWidth': true,
+                    'columnDefs': [{
+                        targets: [0,3,5,6], className: "hide_column"
+                    }]
+                })
+                
+                $('#tblondeliverylist').DataTable({
+                    'iDisplayLength': 25,
+                    'paging': true,
+                    'scrollX': true,
+                    'lengthChange': true,
+                    'searching': true,
+                    'ordering': false,
+                    'info': true,
+                    'autoWidth': true,
+                    'columnDefs': [{
+                        targets: [0,3,5,6], className: "hide_column"
+                    }]
+                })
+                
+                $('#tblvendorlist').DataTable({
+                    'iDisplayLength': 25,
+                    'paging': true,
+                    'scrollX': true,
+                    'lengthChange': true,
+                    'searching': true,
+                    'ordering': false,
+                    'info': true,
+                    'autoWidth': true,
+                    'columnDefs': [{
+                        targets: [0], className: "hide_column"
+                    }]
+                })
+                                
+                $('#tblvendortypelist').DataTable({
+                    'iDisplayLength': 25,
+                    'paging': true,
+                    'scrollX': true,
+                    'lengthChange': true,
+                    'searching': true,
+                    'ordering': false,
+                    'info': true,
+                    'autoWidth': true,
+                    'columnDefs': [{
+                        targets: [0], className: "hide_column"
+                    }]
+                })
 
             })
         </script>
@@ -2025,53 +1404,12 @@
                 todayHighlight: true,
                 format: 'yyyy-mm-dd'
             });
-            $('#datepickerend').datepicker({
-                autoclose: true,
-                todayHighlight: true,
-                format: 'yyyy-mm-dd'
-            });
-            $('#datevisit').datepicker({
-                autoclose: true,
-                todayHighlight: true,
-                format: 'yyyy-mm-dd'
-            });
+
             $('#datebirthday').datepicker({
                 autoclose: true,
                 todayHighlight: true,
                 format: 'yyyy-mm-dd'
             });
-            $('#datebirthdayedit').datepicker({
-                autoclose: true,
-                todayHighlight: true,
-                format: 'yyyy-mm-dd'
-            });
-
-            $('#updatepickerdelivery').datepicker({
-                autoclose: true,
-                todayHighlight: true,
-                format: 'yyyy-mm-dd'
-            });
-            $('#updatevisit').datepicker({
-                autoclose: true,
-                todayHighlight: true,
-                format: 'yyyy-mm-dd'
-            });
-            $('#datedelivery').datepicker({
-                autoclose: true,
-                todayHighlight: true,
-                format: 'yyyy-mm-dd'
-            });
-            $('#datefollowing').datepicker({
-                autoclose: true,
-                todayHighlight: true,
-                format: 'yyyy-mm-dd'
-            });
-            $('#projectdate').datepicker({
-                autoclose: true,
-                todayHighlight: true,
-                format: 'yyyy-mm-dd'
-            });
-
 
             $('#datestart').datepicker({
                 autoclose: true,
@@ -2079,6 +1417,12 @@
                 format: 'yyyy-mm-dd'
             });
             $('#datestop').datepicker({
+                autoclose: true,
+                todayHighlight: true,
+                format: 'yyyy-mm-dd'
+            });
+
+            $('#datevendorstart').datepicker({
                 autoclose: true,
                 todayHighlight: true,
                 format: 'yyyy-mm-dd'
@@ -2108,6 +1452,9 @@
 
         </script>
     </div>
+
+
+    
 
 </body>
 </html>

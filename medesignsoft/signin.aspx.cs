@@ -35,11 +35,12 @@ namespace medesignsoft
 
         protected void Page_Load(object sender, EventArgs e)
         {
-                       
+            
 
-            if (!IsPostBack) {
+            if (!IsPostBack)
+            {
                 strErrorConn = "";
-                Session.Abandon();
+                
             }
         }
 
@@ -49,13 +50,15 @@ namespace medesignsoft
                 string strUserName = Request.Form["inpUserName"];
                 string strPassWord = Request.Form["inpPassWord"];
 
+                //Server.Transfer(strUserName);
+                //Server.Transfer("~/index.aspx?pwd="+strPassWord+"&usr="+strUserName);
+                //Response.Redirect("~/index.aspx");
                 //string encassword = encryptpass(strPassWord);
 
-                ssql = "exec spGetUserLogin '"+ strUserName + "', '"+ strPassWord + "' ";
+                ssql = "exec spGetUserLogin '" + strUserName + "', '" + strPassWord + "' ";
                 dt = new DataTable();
                 dt = dbConn.GetDataTable(ssql);
 
-            
                 if (dt.Rows.Count != 0)
                 {
                     Session["UserID"] = null;
@@ -84,8 +87,6 @@ namespace medesignsoft
                     Session["adCompanyID"] = null;
                     Session["CompanyNameTh"] = null;
 
-
-
                     Session["UserID"] = dt.Rows[0]["UserID"].ToString();
                     Session["imEmployeeGid"] = dt.Rows[0]["imEmployeeGid"].ToString();
                     Session["FirstName"] = dt.Rows[0]["FirstName"].ToString();
@@ -112,34 +113,13 @@ namespace medesignsoft
                     Session["adCompanyID"] = dt.Rows[0]["adCompanyID"].ToString();
                     Session["CompanyNameTh"] = dt.Rows[0]["CompanyNameTh"].ToString();
 
-                    //Response.Cookies["UserID"].Value = dt.Rows[0]["UserID"].ToString();
-                    //Response.Cookies["imEmployeeGid"].Value = dt.Rows[0]["imEmployeeGid"].ToString();
-                    //Response.Cookies["FirstName"].Value = dt.Rows[0]["FirstName"].ToString();
-                    //Response.Cookies["LastName"].Value = dt.Rows[0]["LastName"].ToString();
-                    
-                    Response.Redirect("~/index.aspx");                  
+                    Response.Redirect("~/index.aspx?usr=");
+                    //Server.Transfer("~/index.aspx?pwd=" + strPassWord + "&usr=" + strUserName);
                 }
                 else
                 {
-
-                    //Session["isLogin"] = Convert.ToInt32(Session["isLogin"].ToString()) + 1;
-
-                    //if (Convert.ToInt32(Session["isLogin"]) == 3)
-                    //{
-                    //    strErorConn = " <div class=\"fad fad-in alert alert-danger input-sm\"> " +
-                    //            "   <strong>Warning!</strong><br />Password is wrong 3 times, this account is locked please contact administrator..!</div>";
-                    //}
-                    //else
-                    //{
-                    //    strErorConn = " <div class=\"fad fad-in alert alert-danger input-sm\"> " +
-                    //            "   <strong>Warning!</strong><br />Incorrect username or password..!</div>";
-                    //}
-
                     strErorConn = " <div class=\"fad fad-in alert alert-danger input-sm\"> " +
                                 "   <strong>Warning!</strong><br />Find not found username or password please check..!</div> ";
-
-                    //Response.Redirect("signin.aspx");
-
                     return;
                 }
             }

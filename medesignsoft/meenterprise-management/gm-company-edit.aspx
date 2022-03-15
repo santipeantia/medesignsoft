@@ -30,10 +30,16 @@
             }
 
             .cv-spinner {
-                height: 100%;
-                display: flex;
+                /*height: 100%;
+                
                 justify-content: center;
-                align-items: center;
+                align-items: center;*/
+
+                position: absolute;
+                display: flex;
+                top: 45%;
+                left: 40%;
+                transform: translate(-50%, -50%);
             }
 
             .spinner {
@@ -219,6 +225,7 @@
                         },
                         datatype: 'json',
                         beforeSend: function () {
+                            $('#overlay').show();
                         },
                         success: function (data) {
                             var obj = jQuery.parseJSON(JSON.stringify(data));
@@ -258,6 +265,10 @@
                                     $('#datestop').val(data["ExpireDate"]);                                
                                 })
                             }
+
+                            setTimeout(function () {
+                                $('#overlay').hide();
+                            }, 600);
                         }
                     });
                 }

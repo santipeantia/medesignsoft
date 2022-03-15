@@ -1,7 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/medesignsoft.Master" AutoEventWireup="true" CodeBehind="gm-changepassword-edit.aspx.cs" Inherits="medesignsoft.meenterprise_management.gm_changepassword_edit" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/medesignsoft.Master" AutoEventWireup="true" CodeBehind="ap-category-edit.aspx.cs" Inherits="medesignsoft.meenterprise_management.ap_category_edit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <section class="content-header">
+     <section class="content-header">
         <script src="https://smtpjs.com/v3/smtp.js"></script>
         <%--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>--%>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
@@ -31,10 +30,16 @@
             }
 
             .cv-spinner {
-                height: 100%;
-                display: flex;
+                /*height: 100%;
+                
                 justify-content: center;
-                align-items: center;
+                align-items: center;*/
+
+                position: absolute;
+                display: flex;
+                top: 45%;
+                left: 40%;
+                transform: translate(-50%, -50%);
             }
 
             .spinner {
@@ -68,7 +73,6 @@
 
         <script>
             $(document).ready(function () {
-                $('#overlay').show();
                 $('body').on('keydown', 'input, select, textarea', function (e) {
                     var self = $(this)
                         , form = self.parents('form:eq(0)')
@@ -102,28 +106,13 @@
                         }
                 });
 
-                getBranch();
-                getUsertype();
-
-                var today = new Date();
-                var dd = String(today.getDate()).padStart(2, '0');
-                var ddd = String(today.getDate() - 1).padStart(2, '0');
-                var mm = String(today.getMonth() + 1).padStart(2, '0');
-                var yyyy = today.getFullYear();
-                var tt = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-                var firstdate = yyyy + '-' + mm + '-' + '01';
-                var nowdate = yyyy + '-' + mm + '-' + ddd;
-
-                var ssdate = firstdate;
-                var eedate = nowdate;
-
+              
 
                 var param = getQueryStrings();
                 var gid = param["gid"];
                 var mod = param["mod"];
 
                 if (mod == 'new') {
-                    $('#overlay').hide();
                     //alert('mode edit');
 
                     //$('#selectcompany').prop('disabled', false);
@@ -134,7 +123,7 @@
                     $('#btndelete').addClass('hidden');
                 } else if (mod == 'edit') {
 
-                    // $('#selectcompany').prop('disabled', true);
+                   // $('#selectcompany').prop('disabled', true);
 
                     $('#btncancel').removeClass('hidden');
                     $('#btnsavenew').addClass('hidden');
@@ -154,8 +143,7 @@
 
 
                 if (mod == 'edit' || mod == 'del') {
-
-                    getemployeesbyid(gid);
+                    getVendorTypebyid(gid);
                 }
 
 
@@ -174,73 +162,50 @@
                 $('#datestart').val(ssdate);
                 $('#datestop').val(eedate);
 
-                var selectbranch = $('#selectbranch');
-                function getBranch() {
+                var selectactive = $('#selectactive');
+                function getActive() {
                     $.ajax({
-                        url: 'general-services.asmx/getBranch',
+                        url: 'general-services.asmx/getactive',
                         method: 'post',
                         datatype: 'json',
                         beforeSend: function () {
 
                         },
                         success: function (data) {
-                            selectbranch.empty();
-                            selectbranch.append($('<option/>', { value: -1, text: 'please select branch..' }));
+                            selectactive.empty();
                             $(data).each(function (index, item) {
-                                selectbranch.append($('<option/>', { value: item.imBranchGid, text: item.BranchName }));
+                                selectactive.append($('<option/>', { value: item.activeid, text: item.activename }));
                             });
                         }
                     });
-                };
+                }
 
-                var selectusertype = $('#selectusertype');
-                function getUsertype() {
+                function getVendorTypebyid(gid) {
                     $.ajax({
-                        url: 'general-services.asmx/getUsertype',
-                        method: 'post',
-                        datatype: 'json',
-                        beforeSend: function () {
-
-                        },
-                        success: function (data) {
-                            selectusertype.empty();
-                            selectusertype.append($('<option/>', { value: -1, text: 'please select type..' }));
-                            $(data).each(function (index, item) {
-                                selectusertype.append($('<option/>', { value: item.UserTypeID, text: item.UserTypeDesc }));
-                            });
-                        }
-                    });
-                };
-
-                function getemployeesbyid(gid) {
-                    $.ajax({
-                        url: 'general-services.asmx/getEmployeesById',
+                        url: 'general-services.asmx/getVendorTypeById',
                         method: 'post',
                         data: {
                             gid: gid,
                         },
                         datatype: 'json',
                         beforeSend: function () {
-
+                            $('#overlay').show();
                         },
                         success: function (data) {
                             var obj = jQuery.parseJSON(JSON.stringify(data));
                             if (obj != '') {
                                 $.each(obj, function (i, data) {
-                                    $('#hiddengid').val(data["imEmployeeGid"]);
+                                    $('#hiddengid').val(data["VendorTypeID"]);
+                                    $('#txtVendorTypeCode').val(data["VendorTypeCode"]);
+                                    $('#txtVendorTypeName').val(data["VendorTypeName"]);
+                                    $('#txtVendorTypeNameEng').val(data["VendorTypeNameEng"]);
+                                    $('#txtRemark').val(data["Remark"]);
 
-                                    $('#selectbranch').val(data["imBranchGID"]).change();
-                                    $('#txtemployeegid').val(data["imEmployeeGid"]);
-                                    $('#txtemployeeid').val(data["imEmployeeID"]);
-                                    $('#selecttitlename').val(data["imTitleID"]).change();
-                                    $('#txtemployeename').val(data["FirstName"]);
-                                    $('#txtlastname').val(data["LastName"]);
-                                    $('#txtnickname').val(data["NickName"]);
-                                    $('#txtusername').val(data["UserName"]);
-                                    $('#selectusertype').val(data["UserTypeID"]).change();
                                 })
                             }
-                            $('#overlay').hide();
+                            setTimeout(function () {
+                                $('#overlay').hide();
+                            }, 600);
                         }
                     });
                 }
@@ -263,7 +228,7 @@
 
                 var btnundo = $('#btnundo');
                 btnundo.click(function () {
-                    window.location.href = "gm-employees-setup.aspx?opt=optgen";
+                    window.location.href = "ap-category-setup.aspx?opt=optap";
 
                 });
 
@@ -278,8 +243,8 @@
                 var chkvalidate = 'true';
 
                 var btncancel = $('#btncancel');
-                btncancel.click(function () {
-                    window.location.href = "gm-employees-setup.aspx?opt=optgen";
+                btncancel.click(function(){
+                     window.location.href = "ap-category-setup.aspx?opt=optap";
                 });
 
                 var btnsavenew = $('#btnsavenew');
@@ -301,17 +266,16 @@
                             if (result.isConfirmed) {
 
                                 $.ajax({
-                                    url: 'general-services.asmx/getUserLoginUpdateEntry',
+                                    url: 'general-services.asmx/getVendorTypeUpdateEntry',
                                     method: 'post',
                                     data: {
                                         acttrans: 'new',
-                                        Gid: $('#hiddengid').val(),
-                                        imBranchID: $('#selectbranch').val(),
-                                        imEmployeeID: $('#txtemployeeid').val(),
-                                        imTitleID: $('#selecttitlename').val(),
-                                        FirstName: $('#txtemployeename').val(),
-                                        LastName: $('#txtlastname').val()
-
+                                        gid: $('#hiddengid').val(),
+                                        VendorTypeID: $('#hiddengid').val(),
+                                        VendorTypeCode: $('#txtVendorTypeCode').val(),
+                                        VendorTypeName: $('#txtVendorTypeName').val(),
+                                        VendorTypeNameEng: $('#txtVendorTypeNameEng').val(),
+                                        Remark: $('#txtRemark').val()
                                     },
                                     datatype: 'json',
                                     beforSend: function () {
@@ -324,7 +288,7 @@
                                             'success'
                                         )
                                         setTimeout(function () {
-                                            window.location.href = "gm-employees-setup.aspx?opt=optgen";
+                                            window.location.href = "ap-category-setup.aspx?opt=optap";
                                         }, 2000);
                                     },
                                     error: function (xhr, ajaxOptions, thrownError) {
@@ -345,95 +309,57 @@
                     getvalidatefield();
 
                     if (chkvalidate == 'true') {
+                        // alert('true');
+                        Swal.fire({
 
-                        var userpass1 = $('#txtuserpassword').val();
-                        var userpass2 = $('#txtuserpassword2').val();
+                            title: '<span class="txtLabel">ต้องการบันทึกข้อมูล ใช่หรือไม่..?</span>',
+                            //text: "You won't be able to revert this!",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            cancelButtonColor: '#d33',
+                            confirmButtonColor: '#449d44',
+                            confirmButtonText: '<span class="txtLabel">ยืนยัน,บันทึกข้อมูล!</span>',
+                            cancelButtonText: '<span class="txtLabel">ยกเลิกรายการ</span>'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                                                
+                                $.ajax({
+                                    url: 'general-services.asmx/getVendorTypeUpdateEntry',
+                                    method: 'post',
+                                    data: {
+                                        acttrans: 'edit',
+                                        gid: $('#hiddengid').val(),
+                                        VendorTypeID: $('#hiddengid').val(),
+                                        VendorTypeCode: $('#txtVendorTypeCode').val(),
+                                        VendorTypeName: $('#txtVendorTypeName').val(),
+                                        VendorTypeNameEng: $('#txtVendorTypeNameEng').val(),
+                                        Remark: $('#txtRemark').val()
+                                    },
+                                    datatype: 'json',
+                                    beforSend: function () {
 
-
-                        if (userpass1 == '') {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'รหัสผ่านไม่สามารถเป็นค่าว่างได้...'
-                            })
-                            return;
-                        }
-                        else if (userpass2 == '') {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'ยืนยันรหัสผ่านไม่สามารถเป็นค่าว่างได้...'
-                            })
-                            return;
-                        }
-                        else if (userpass1 != userpass2) {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'ยืนยันรหัสผ่านไม่ถูกต้อง...'
-                            })
-                            return;
-                        }
-                        else {
-
-                            // alert('true');
-                            Swal.fire({
-
-                                title: '<span class="txtLabel">ต้องการบันทึกข้อมูล ใช่หรือไม่..?</span>',
-                                //text: "You won't be able to revert this!",
-                                icon: 'warning',
-                                showCancelButton: true,
-                                cancelButtonColor: '#d33',
-                                confirmButtonColor: '#449d44',
-                                confirmButtonText: '<span class="txtLabel">ยืนยัน,บันทึกข้อมูล!</span>',
-                                cancelButtonText: '<span class="txtLabel">ยกเลิกรายการ</span>'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-
-                                    $.ajax({
-                                        url: 'general-services.asmx/getUserLoginUpdateEntry',
-                                        method: 'post',
-                                        data: {
-                                            acttrans: 'edit',
-                                            //Gid: $('#hiddengid').val(),
-                                            Gid: $('#hiddengid').val(),
-
-                                            UserID: $('#hiddengid').val(),
-                                            imEmployeeGid: $('#txtemployeegid').val(),
-                                            FirstName: $('#txtemployeename').val(),
-                                            LastName: $('#txtlastname').val(),
-                                            UserName: $('#txtusername').val(),
-                                            UserPassword: $('#txtuserpassword').val(),
-                                            UserTypeID: $('#selectusertype').val(),
-                                            ActiveID: '1',
-                                            CreatedBy:  '<%= Session["UserName"] %>',
-                                            CreatedDate: yyyy + '-' + mm + '-' + dd,
-                                            UpdatedBy:  '<%= Session["UserName"] %>',
-                                            UpdateDate: yyyy + '-' + mm + '-' + dd
-                                        },
-                                        datatype: 'json',
-                                        beforSend: function () {
-
-                                        },
-                                        success: function (data) {
-                                            Swal.fire(
-                                                '<span class="txtLabel">บันทึกข้อมูลสำเร็จ..!</span>',
-                                                '',
-                                                'success'
-                                            )
-                                            setTimeout(function () {
-                                                window.location.href = "gm-employees-setup.aspx?opt=optgen";
-                                            }, 2000);
-                                        },
-                                        error: function (xhr, ajaxOptions, thrownError) {
-                                            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-                                            //Swal.fire(
-                                            //    '<span class="txtLabel">บันทึกข้อมูลสำเร็จ..!</span>',
-                                            //    '',
-                                            //    'error'
-                                            //)
-                                        }
-                                    });
+                                    },
+                                    success: function (data) {
+                                        Swal.fire(
+                                            '<span class="txtLabel">บันทึกข้อมูลสำเร็จ..!</span>',
+                                            '',
+                                            'success'
+                                        )
+                                        setTimeout(function () {
+                                            window.location.href = "ap-category-setup.aspx?opt=optap";
+                                        }, 2000);
+                                    },
+                                    error: function (xhr, ajaxOptions, thrownError) {
+                                        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                                        //Swal.fire(
+                                        //    '<span class="txtLabel">บันทึกข้อมูลสำเร็จ..!</span>',
+                                        //    '',
+                                        //    'error'
+                                        //)
                                     }
-                                })
-                        }
+                                });
+                            }
+                        })
 
                     } else {
                         //  alert('false');
@@ -459,18 +385,21 @@
                         }).then((result) => {
                             if (result.isConfirmed) {
 
-
-                                $.ajax({
-                                    url: 'general-services.asmx/getUserLoginUpdateEntry',
+                                 
+                                  $.ajax({
+                                    url: 'general-services.asmx/getVendorTypeUpdateEntry',
                                     method: 'post',
                                     data: {
                                         acttrans: 'del',
-                                        Gid: $('#hiddengid').val(),
-                                        imBranchID: $('#selectbranch').val(),
-                                        imEmployeeID: $('#txtemployeeid').val(),
-                                        imTitleID: $('#selecttitlename').val(),
-                                        FirstName: $('#txtemployeename').val(),
-                                        LastName: $('#txtlastname').val()
+                                        gid: $('#hiddengid').val(),
+                                        VendorTypeID: $('#hiddengid').val(),
+                                        VendorTypeCode: $('#txtVendorTypeCode').val(),
+                                        VendorTypeName: $('#txtVendorTypeName').val(),
+                                        VendorTypeNameEng: $('#txtVendorTypeNameEng').val(),
+                                        Remark: $('#txtRemark').val()
+                                    },
+                                    datatype: 'json',
+                                    beforSend: function () {
 
                                     },
                                     success: function (data) {
@@ -480,7 +409,7 @@
                                             'success'
                                         )
                                         setTimeout(function () {
-                                            window.location.href = "gm-employees-setup.aspx?opt=optgen";
+                                            window.location.href = "ap-category-setup.aspx?opt=optap";
                                         }, 2000);
 
                                     },
@@ -498,7 +427,7 @@
 
                 function getvalidatefield() {
                     var gid = $('#hiddengid').val();
-
+                    
 
                     if (mod == 'edit' && gid == '') {
                         Swal.fire({
@@ -522,10 +451,8 @@
                         })
                         chkvalidate = 'false';
                         return;
-                    }
+                    }                   
                 }
-
-
             });
 
 
@@ -534,7 +461,7 @@
 
         </script>
 
-        <h1>General Setup <%--step 1 check pages content name--%>
+        <h1>Vendor Catagery Edit <%--step 1 check pages content name--%>
             <small>Control panel</small>
         </h1>
     </section>
@@ -543,7 +470,6 @@
         <div id="overlay">
             <div class="cv-spinner">
                 <span class="spinner"></span>
-
             </div>
         </div>
 
@@ -560,84 +486,45 @@
                                 <button type="button" id="btnExcel1011" class="btn btn-default btn-sm" data-toggle="tooltip" title="excek"><i class="fa fa-table text-green"></i></button>
                             </span>
 
-                            <label class="txtLabel">Change Password</label>
+                            <label class="txtLabel">Category Edit</label>
                         </div>
 
                         <div class="box-body">
                             <div class="col-md-6">
                                 <input type="hidden" id="hiddengid" class="form-control ">
+                              
 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">ชื่อสาขา</label>
+                                    <label class="col-sm-4 col-form-label txtLabel">รหัสรายการ <span id="errbranchcode" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
-                                        <span class="txtLabel " style="width: 100%">
-                                            <select id="selectbranch" class="form-control input-sm " disabled>
-                                            </select>
-                                        </span>
-                                    </div>
-                                </div>
-
-                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">รหัสพนักงาน gid <span id="erremployeesgid" class="text-red txtLabel hidden">***</span></label>
-                                    <div class="col-sm-8">
-                                        <input type="text" id="txtemployeegid" class="form-control ">
+                                        <input type="text" id="txtVendorTypeCode" class="form-control ">
                                     </div>
 
                                 </div>
-
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">รหัสพนักงาน <span id="erremployeescode" class="text-red txtLabel hidden">***</span></label>
+                                    <label class="col-sm-4 col-form-label txtLabel">ชื่อรายการ [ไทย]<span id="errbranchname" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
-                                        <input type="text" id="txtemployeeid" class="form-control ">
+                                        <input type="text" id="txtVendorTypeName" class="form-control ">
                                     </div>
-
-                                </div>                               
-
+                                </div>     
+                                
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">ชื่อพนักงาน<span id="erremployeename" class="text-red txtLabel hidden">***</span></label>
+                                    <label class="col-sm-4 col-form-label txtLabel">ชื่อรายการ [En]<span id="errbranchname2" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
-                                        <input type="text" id="txtemployeename" class="form-control ">
+                                        <input type="text" id="txtVendorTypeNameEng" class="form-control ">
                                     </div>
-                                </div>
+                                </div>  
 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">นามสกุล<span id="errlastname" class="text-red txtLabel hidden">***</span></label>
+                                    <label class="col-sm-4 col-form-label txtLabel">หมายเหตุ<span id="errremark" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
-                                        <input type="text" id="txtlastname" class="form-control ">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">ชื่อผู้เข้าใช้งาน<span id="errorusername" class="text-red txtLabel hidden">***</span></label>
-                                    <div class="col-sm-8">
-                                        <input type="text" id="txtusername" class="form-control ">
+                                        
+                                        <textarea id="txtRemark" rows="3" class="form-control txtLabel"></textarea>
                                     </div>
                                 </div>
+                              
 
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">รหัสผ่าน<span id="erruserpassword" class="text-red txtLabel hidden">***</span></label>
-                                    <div class="col-sm-8">
-                                        <input type="password" id="txtuserpassword" maxlength="6" class="form-control ">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">ยืนยันรหัสผ่าน<span id="erruserpassword2" class="text-red txtLabel hidden">***</span></label>
-                                    <div class="col-sm-8">
-                                        <input type="password" id="txtuserpassword2" maxlength="6" class="form-control ">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">ประเภทผู้ใช้งาน</label>
-                                    <div class="col-sm-8">
-                                        <span class="txtLabel " style="width: 100%">
-                                            <select id="selectusertype" class="form-control input-sm ">
-                                            </select>
-                                        </span>
-                                    </div>
-                                </div>
-
+                               
 
                                 <div class="form-group row">
                                     <div class="col-sm-4"></div>

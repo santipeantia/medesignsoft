@@ -1,7 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/medesignsoft.Master" AutoEventWireup="true" CodeBehind="gm-changepassword-edit.aspx.cs" Inherits="medesignsoft.meenterprise_management.gm_changepassword_edit" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/medesignsoft.Master" AutoEventWireup="true" CodeBehind="gm-ondelivery-edit.aspx.cs" Inherits="medesignsoft.meenterprise_management.gm_ondelivery_edit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <section class="content-header">
+      <section class="content-header">
         <script src="https://smtpjs.com/v3/smtp.js"></script>
         <%--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>--%>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
@@ -12,14 +11,7 @@
                 display: none;
             }
 
-            #tblprojectlists i:hover {
-                cursor: pointer;
-            }
-
-            #tbltranswithoutsalesconsignee i:hover {
-                cursor: pointer;
-            }
-
+           
             #overlay {
                 position: fixed;
                 top: 0;
@@ -31,10 +23,16 @@
             }
 
             .cv-spinner {
-                height: 100%;
-                display: flex;
+                /*height: 100%;
+                
                 justify-content: center;
-                align-items: center;
+                align-items: center;*/
+
+                position: absolute;
+                display: flex;
+                top: 45%;
+                left: 40%;
+                transform: translate(-50%, -50%);
             }
 
             .spinner {
@@ -68,7 +66,7 @@
 
         <script>
             $(document).ready(function () {
-                $('#overlay').show();
+                //$('#overlay').show();
                 $('body').on('keydown', 'input, select, textarea', function (e) {
                     var self = $(this)
                         , form = self.parents('form:eq(0)')
@@ -102,8 +100,7 @@
                         }
                 });
 
-                getBranch();
-                getUsertype();
+                getActive();
 
                 var today = new Date();
                 var dd = String(today.getDate()).padStart(2, '0');
@@ -155,7 +152,7 @@
 
                 if (mod == 'edit' || mod == 'del') {
 
-                    getemployeesbyid(gid);
+                    getdeliverybyid(gid);
                 }
 
 
@@ -174,73 +171,53 @@
                 $('#datestart').val(ssdate);
                 $('#datestop').val(eedate);
 
-                var selectbranch = $('#selectbranch');
-                function getBranch() {
+                var selectactive = $('#selectactive');
+                function getActive() {
                     $.ajax({
-                        url: 'general-services.asmx/getBranch',
+                        url: 'general-services.asmx/getactive',
                         method: 'post',
                         datatype: 'json',
                         beforeSend: function () {
 
                         },
                         success: function (data) {
-                            selectbranch.empty();
-                            selectbranch.append($('<option/>', { value: -1, text: 'please select branch..' }));
+                            selectactive.empty();
                             $(data).each(function (index, item) {
-                                selectbranch.append($('<option/>', { value: item.imBranchGid, text: item.BranchName }));
+                                selectactive.append($('<option/>', { value: item.activeid, text: item.activename }));
                             });
                         }
                     });
-                };
+                }              
 
-                var selectusertype = $('#selectusertype');
-                function getUsertype() {
+                function getdeliverybyid(gid) {
                     $.ajax({
-                        url: 'general-services.asmx/getUsertype',
-                        method: 'post',
-                        datatype: 'json',
-                        beforeSend: function () {
-
-                        },
-                        success: function (data) {
-                            selectusertype.empty();
-                            selectusertype.append($('<option/>', { value: -1, text: 'please select type..' }));
-                            $(data).each(function (index, item) {
-                                selectusertype.append($('<option/>', { value: item.UserTypeID, text: item.UserTypeDesc }));
-                            });
-                        }
-                    });
-                };
-
-                function getemployeesbyid(gid) {
-                    $.ajax({
-                        url: 'general-services.asmx/getEmployeesById',
+                        url: 'general-services.asmx/getDeliveryById',
                         method: 'post',
                         data: {
                             gid: gid,
                         },
                         datatype: 'json',
                         beforeSend: function () {
-
+                             $('#overlay').show();
                         },
                         success: function (data) {
                             var obj = jQuery.parseJSON(JSON.stringify(data));
                             if (obj != '') {
                                 $.each(obj, function (i, data) {
-                                    $('#hiddengid').val(data["imEmployeeGid"]);
+                                    $('#hiddengid').val(data["imDeliveryID"]);
 
-                                    $('#selectbranch').val(data["imBranchGID"]).change();
-                                    $('#txtemployeegid').val(data["imEmployeeGid"]);
-                                    $('#txtemployeeid').val(data["imEmployeeID"]);
-                                    $('#selecttitlename').val(data["imTitleID"]).change();
-                                    $('#txtemployeename').val(data["FirstName"]);
-                                    $('#txtlastname').val(data["LastName"]);
-                                    $('#txtnickname').val(data["NickName"]);
-                                    $('#txtusername').val(data["UserName"]);
-                                    $('#selectusertype').val(data["UserTypeID"]).change();
+                                    $('#txtdeliverydesc').val(data["DeliveryName"]);
+                                    $('#txtdeliverydesc2').val(data["DeliveryName2"]);
+                                    $('#selectactive').val(data["Active"]).change();
+                                    $('#datestart').val(data["EffectDate"]);
+                                    $('#datestop').val(data["ExpireDate"]);               
                                 })
                             }
-                            $('#overlay').hide();
+
+                            setTimeout(function () {
+                                $('#overlay').hide();
+                            }, 600);
+                           
                         }
                     });
                 }
@@ -263,13 +240,13 @@
 
                 var btnundo = $('#btnundo');
                 btnundo.click(function () {
-                    window.location.href = "gm-employees-setup.aspx?opt=optgen";
+                    window.location.href = "gm-ondelivery-setup.aspx?opt=optgen";
 
                 });
 
                 var btnreload = $('#btnreload');
                 btnreload.click(function () {
-                    getbranchbyid(gid);
+                    getdeliverybyid(gid);                    
                 });
 
                 //btnsavenew
@@ -279,7 +256,7 @@
 
                 var btncancel = $('#btncancel');
                 btncancel.click(function () {
-                    window.location.href = "gm-employees-setup.aspx?opt=optgen";
+                    window.location.href = "gm-ondelivery-setup.aspx?opt=optgen";
                 });
 
                 var btnsavenew = $('#btnsavenew');
@@ -301,18 +278,18 @@
                             if (result.isConfirmed) {
 
                                 $.ajax({
-                                    url: 'general-services.asmx/getUserLoginUpdateEntry',
+                                    url: 'general-services.asmx/getDeliveryUpdateEntry',
                                     method: 'post',
                                     data: {
                                         acttrans: 'new',
                                         Gid: $('#hiddengid').val(),
-                                        imBranchID: $('#selectbranch').val(),
-                                        imEmployeeID: $('#txtemployeeid').val(),
-                                        imTitleID: $('#selecttitlename').val(),
-                                        FirstName: $('#txtemployeename').val(),
-                                        LastName: $('#txtlastname').val()
-
-                                    },
+                                        imDeliveryID: $('#hiddengid').val(),
+                                        DeliveryName: $('#txtdeliverydesc').val(),
+                                        DeliveryName2: $('#txtdeliverydesc2').val(),
+                                        Active: $('#selectactive').val(),
+                                        EffectDate: $('#datestart').val(),
+                                        ExpireDate: $('#datestop').val()
+                                        },
                                     datatype: 'json',
                                     beforSend: function () {
 
@@ -324,7 +301,7 @@
                                             'success'
                                         )
                                         setTimeout(function () {
-                                            window.location.href = "gm-employees-setup.aspx?opt=optgen";
+                                            window.location.href = "gm-ondelivery-setup.aspx?opt=optgen";
                                         }, 2000);
                                     },
                                     error: function (xhr, ajaxOptions, thrownError) {
@@ -345,68 +322,33 @@
                     getvalidatefield();
 
                     if (chkvalidate == 'true') {
+                        // alert('true');
+                        Swal.fire({
 
-                        var userpass1 = $('#txtuserpassword').val();
-                        var userpass2 = $('#txtuserpassword2').val();
+                            title: '<span class="txtLabel">ต้องการบันทึกข้อมูล ใช่หรือไม่..?</span>',
+                            //text: "You won't be able to revert this!",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            cancelButtonColor: '#d33',
+                            confirmButtonColor: '#449d44',
+                            confirmButtonText: '<span class="txtLabel">ยืนยัน,บันทึกข้อมูล!</span>',
+                            cancelButtonText: '<span class="txtLabel">ยกเลิกรายการ</span>'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
 
-
-                        if (userpass1 == '') {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'รหัสผ่านไม่สามารถเป็นค่าว่างได้...'
-                            })
-                            return;
-                        }
-                        else if (userpass2 == '') {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'ยืนยันรหัสผ่านไม่สามารถเป็นค่าว่างได้...'
-                            })
-                            return;
-                        }
-                        else if (userpass1 != userpass2) {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'ยืนยันรหัสผ่านไม่ถูกต้อง...'
-                            })
-                            return;
-                        }
-                        else {
-
-                            // alert('true');
-                            Swal.fire({
-
-                                title: '<span class="txtLabel">ต้องการบันทึกข้อมูล ใช่หรือไม่..?</span>',
-                                //text: "You won't be able to revert this!",
-                                icon: 'warning',
-                                showCancelButton: true,
-                                cancelButtonColor: '#d33',
-                                confirmButtonColor: '#449d44',
-                                confirmButtonText: '<span class="txtLabel">ยืนยัน,บันทึกข้อมูล!</span>',
-                                cancelButtonText: '<span class="txtLabel">ยกเลิกรายการ</span>'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-
-                                    $.ajax({
-                                        url: 'general-services.asmx/getUserLoginUpdateEntry',
-                                        method: 'post',
-                                        data: {
-                                            acttrans: 'edit',
-                                            //Gid: $('#hiddengid').val(),
-                                            Gid: $('#hiddengid').val(),
-
-                                            UserID: $('#hiddengid').val(),
-                                            imEmployeeGid: $('#txtemployeegid').val(),
-                                            FirstName: $('#txtemployeename').val(),
-                                            LastName: $('#txtlastname').val(),
-                                            UserName: $('#txtusername').val(),
-                                            UserPassword: $('#txtuserpassword').val(),
-                                            UserTypeID: $('#selectusertype').val(),
-                                            ActiveID: '1',
-                                            CreatedBy:  '<%= Session["UserName"] %>',
-                                            CreatedDate: yyyy + '-' + mm + '-' + dd,
-                                            UpdatedBy:  '<%= Session["UserName"] %>',
-                                            UpdateDate: yyyy + '-' + mm + '-' + dd
+                                $.ajax({
+                                    url: 'general-services.asmx/getDeliveryUpdateEntry',
+                                    method: 'post',
+                                    data: {
+                                        acttrans: 'edit',
+                                        //Gid: $('#hiddengid').val(),
+                                        Gid: $('#hiddengid').val(),
+                                        imDeliveryID: $('#hiddengid').val(),
+                                        DeliveryName: $('#txtdeliverydesc').val(),
+                                        DeliveryName2: $('#txtdeliverydesc2').val(),
+                                        Active: $('#selectactive').val(),
+                                        EffectDate: $('#datestart').val(),
+                                        ExpireDate: $('#datestop').val()
                                         },
                                         datatype: 'json',
                                         beforSend: function () {
@@ -419,7 +361,7 @@
                                                 'success'
                                             )
                                             setTimeout(function () {
-                                                window.location.href = "gm-employees-setup.aspx?opt=optgen";
+                                                window.location.href = "gm-ondelivery-setup.aspx?opt=optgen";
                                             }, 2000);
                                         },
                                         error: function (xhr, ajaxOptions, thrownError) {
@@ -431,11 +373,10 @@
                                             //)
                                         }
                                     });
-                                    }
-                                })
-                        }
-
-                    } else {
+                                }
+                            })
+                    }
+                    else {
                         //  alert('false');
                     }
                 });
@@ -461,17 +402,18 @@
 
 
                                 $.ajax({
-                                    url: 'general-services.asmx/getUserLoginUpdateEntry',
+                                    url: 'general-services.asmx/getDeliveryUpdateEntry',
                                     method: 'post',
                                     data: {
                                         acttrans: 'del',
                                         Gid: $('#hiddengid').val(),
-                                        imBranchID: $('#selectbranch').val(),
-                                        imEmployeeID: $('#txtemployeeid').val(),
-                                        imTitleID: $('#selecttitlename').val(),
-                                        FirstName: $('#txtemployeename').val(),
-                                        LastName: $('#txtlastname').val()
-
+                                        imDeliveryID: $('#hiddengid').val(),
+                                        DeliveryName: $('#txtdeliverydesc').val(),
+                                        DeliveryName2: $('#txtdeliverydesc2').val(),
+                                        Active: $('#selectactive').val(),
+                                        EffectDate: $('#datestart').val(),
+                                        ExpireDate: $('#datestop').val()
+                                        
                                     },
                                     success: function (data) {
                                         Swal.fire(
@@ -480,7 +422,7 @@
                                             'success'
                                         )
                                         setTimeout(function () {
-                                            window.location.href = "gm-employees-setup.aspx?opt=optgen";
+                                            window.location.href = "gm-ondelivery-setup.aspx?opt=optgen";
                                         }, 2000);
 
                                     },
@@ -566,75 +508,55 @@
                         <div class="box-body">
                             <div class="col-md-6">
                                 <input type="hidden" id="hiddengid" class="form-control ">
+                               
+
 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">ชื่อสาขา</label>
+                                    <label class="col-sm-4 col-form-label txtLabel">ชื่อประเภทขนส่ง (TH) <span id="errpaymentth" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
-                                        <span class="txtLabel " style="width: 100%">
-                                            <select id="selectbranch" class="form-control input-sm " disabled>
-                                            </select>
-                                        </span>
-                                    </div>
-                                </div>
-
-                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">รหัสพนักงาน gid <span id="erremployeesgid" class="text-red txtLabel hidden">***</span></label>
-                                    <div class="col-sm-8">
-                                        <input type="text" id="txtemployeegid" class="form-control ">
-                                    </div>
-
-                                </div>
-
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">รหัสพนักงาน <span id="erremployeescode" class="text-red txtLabel hidden">***</span></label>
-                                    <div class="col-sm-8">
-                                        <input type="text" id="txtemployeeid" class="form-control ">
+                                        <input type="text" id="txtdeliverydesc" class="form-control ">
                                     </div>
 
                                 </div>                               
 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">ชื่อพนักงาน<span id="erremployeename" class="text-red txtLabel hidden">***</span></label>
+                                    <label class="col-sm-4 col-form-label txtLabel">ชื่อประเภทขนส่ง (EN)<span id="errpaymenten" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
-                                        <input type="text" id="txtemployeename" class="form-control ">
+                                        <input type="text" id="txtdeliverydesc2" class="form-control ">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">นามสกุล<span id="errlastname" class="text-red txtLabel hidden">***</span></label>
-                                    <div class="col-sm-8">
-                                        <input type="text" id="txtlastname" class="form-control ">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">ชื่อผู้เข้าใช้งาน<span id="errorusername" class="text-red txtLabel hidden">***</span></label>
-                                    <div class="col-sm-8">
-                                        <input type="text" id="txtusername" class="form-control ">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">รหัสผ่าน<span id="erruserpassword" class="text-red txtLabel hidden">***</span></label>
-                                    <div class="col-sm-8">
-                                        <input type="password" id="txtuserpassword" maxlength="6" class="form-control ">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">ยืนยันรหัสผ่าน<span id="erruserpassword2" class="text-red txtLabel hidden">***</span></label>
-                                    <div class="col-sm-8">
-                                        <input type="password" id="txtuserpassword2" maxlength="6" class="form-control ">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">ประเภทผู้ใช้งาน</label>
+                                    <label class="col-sm-4 col-form-label txtLabel">มีผลใช้งาน</label>
                                     <div class="col-sm-8">
                                         <span class="txtLabel " style="width: 100%">
-                                            <select id="selectusertype" class="form-control input-sm ">
+                                            <select id="selectactive" class="form-control input-sm ">
                                             </select>
                                         </span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label txtLabel">วันที่เริ่มใช้งาน</label>
+                                    <div class="col-sm-8 ">
+                                        <div class="input-group date">
+                                            <input type="text" class="form-control input-sm pull-left txtLabel" id="datestart" autocomplete="off">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label txtLabel">วันที่สิ้นสุด</label>
+                                    <div class="col-sm-8 ">
+                                        <div class="input-group date">
+                                            <input type="text" class="form-control pull-right" id="datestop" autocomplete="off">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 

@@ -149,10 +149,10 @@ namespace medesignsoft.meenterprise_management
                 data.CountryName = rdr["CountryName"].ToString();
                 data.Phone = rdr["Phone"].ToString();
                 data.Fax = rdr["Fax"].ToString();
-                data.WebSite = rdr["WebSite"].ToString();                
+                data.WebSite = rdr["WebSite"].ToString();
                 data.ContactID = rdr["ContactID"].ToString();
                 data.ContactTel = rdr["ContactTel"].ToString();
-                data.ContactEMail = rdr["ContactEMail"].ToString();               
+                data.ContactEMail = rdr["ContactEMail"].ToString();
                 data.Logo = rdr["Logo"].ToString();
                 data.Active = rdr["Active"].ToString();
                 data.EffectDate = rdr["EffectDate"].ToString();
@@ -167,7 +167,7 @@ namespace medesignsoft.meenterprise_management
             Context.Response.ContentType = "application/json";
             conn.CloseConn();
 
-            
+
 
         }
 
@@ -182,7 +182,7 @@ namespace medesignsoft.meenterprise_management
             SqlDataReader rdr = comm.ExecuteReader();
             while (rdr.Read())
             {
-                cBranch data = new cBranch();                
+                cBranch data = new cBranch();
                 data.imBranchGid = rdr["imBranchGid"].ToString();
                 data.imBranchID = rdr["imBranchID"].ToString();
                 data.BranchName = rdr["BranchName"].ToString();
@@ -207,7 +207,7 @@ namespace medesignsoft.meenterprise_management
                 data.Logo = rdr["Logo"].ToString();
                 data.Active = rdr["Active"].ToString();
                 data.EffectDate = rdr["EffectDate"].ToString();
-                data.ExpireDate = rdr["ExpireDate"].ToString();               
+                data.ExpireDate = rdr["ExpireDate"].ToString();
                 datas.Add(data);
             }
             JavaScriptSerializer js = new JavaScriptSerializer();
@@ -229,7 +229,7 @@ namespace medesignsoft.meenterprise_management
             {
                 cEmployees data = new cEmployees();
                 data.imEmployeeGid = rdr["imEmployeeGid"].ToString();
-                data.EmployeeName = rdr["EmployeeName"].ToString();              
+                data.EmployeeName = rdr["EmployeeName"].ToString();
                 datas.Add(data);
             }
             JavaScriptSerializer js = new JavaScriptSerializer();
@@ -417,7 +417,7 @@ namespace medesignsoft.meenterprise_management
             conn.CloseConn();
         }
 
-        
+
         [WebMethod]
         public void getprovince() {
             List<cProvince> datas = new List<cProvince>();
@@ -567,7 +567,7 @@ namespace medesignsoft.meenterprise_management
             Context.Response.ContentType = "application/json";
             conn.CloseConn();
         }
-        
+
         [WebMethod]
         public void getReligion()
         {
@@ -612,8 +612,6 @@ namespace medesignsoft.meenterprise_management
             conn.CloseConn();
         }
 
-
-
         [WebMethod]
         public void getactive()
         {
@@ -645,7 +643,7 @@ namespace medesignsoft.meenterprise_management
             SqlDataReader rdr = comm.ExecuteReader();
             while (rdr.Read())
             {
-                cSectionList data = new cSectionList();               
+                cSectionList data = new cSectionList();
                 data.Gid = rdr["Gid"].ToString();
                 data.imSectionID = rdr["imSectionID"].ToString();
                 data.SectionDesc = rdr["SectionDesc"].ToString();
@@ -699,7 +697,7 @@ namespace medesignsoft.meenterprise_management
             comm.CommandType = CommandType.StoredProcedure;
 
             comm.Parameters.AddWithValue("@acttrans", acttrans);
-            comm.Parameters.AddWithValue("@Gid", Gid); 
+            comm.Parameters.AddWithValue("@Gid", Gid);
             comm.Parameters.AddWithValue("@imSectionID", imSectionID);
             comm.Parameters.AddWithValue("@SectionDesc", SectionDesc);
             comm.Parameters.AddWithValue("@SectionDesc2", SectionDesc2);
@@ -784,7 +782,7 @@ namespace medesignsoft.meenterprise_management
             comm.ExecuteNonQuery();
             conn.CloseConn();
         }
-        
+
         [WebMethod]
         public void getCompanyUpdateEntry(string acttrans, string Gid, string adCompanyID, string CompanyNameTh, string CompanyNameEn, string CompanyShortNameTh
                                         , string CompanyShortNameEn, string AddTh1, string AddTh2, string AddTh3, string AddEn1, string AddEn2, string AddEn3
@@ -792,7 +790,7 @@ namespace medesignsoft.meenterprise_management
                                         , string OwnerName, string TaxID, string BFAccountBalanceDate, string Logo, string Active, string EffectDate
                                         , string ExpireDate, string IsHaveBranch)
         {
-            
+
             SqlCommand comm = new SqlCommand("spGetCompanyUpdateEntry", conn.OpenConn());
             comm.CommandType = CommandType.StoredProcedure;
             comm.Parameters.AddWithValue("@acttrans", acttrans);
@@ -831,7 +829,7 @@ namespace medesignsoft.meenterprise_management
                                         , string Add2, string Add3, string adProvinceID, string PostalCode, string adCountryID, string Phone, string Fax, string WebSite
                                         , string ContactID, string ContactTel, string ContactEMail, string Logo, string Active, string EffectDate, string ExpireDate) {
             SqlCommand comm = new SqlCommand("spGetBranchUpdateEntry", conn.OpenConn());
-            comm.CommandType = CommandType.StoredProcedure;          
+            comm.CommandType = CommandType.StoredProcedure;
 
             comm.Parameters.AddWithValue("@acttrans", acttrans);
             comm.Parameters.AddWithValue("@Gid", Gid);
@@ -974,7 +972,7 @@ namespace medesignsoft.meenterprise_management
         }
 
         [WebMethod]
-        public void getUserLoginUpdateEntry(string acttrans, string Gid, string UserID, string imEmployeeGid, string FirstName, string LastName, string UserName, string UserPassword, 
+        public void getUserLoginUpdateEntry(string acttrans, string Gid, string UserID, string imEmployeeGid, string FirstName, string LastName, string UserName, string UserPassword,
                                             string UserTypeID, string ActiveID, string CreatedBy, string CreatedDate, string UpdatedBy, string UpdateDate) {
             SqlCommand comm = new SqlCommand("spGetUserLoginUpdateEntry", conn.OpenConn());
             comm.CommandType = CommandType.StoredProcedure;
@@ -996,6 +994,501 @@ namespace medesignsoft.meenterprise_management
 
             comm.ExecuteNonQuery();
             conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getTermsList()
+        {
+            List<cTermsList> datas = new List<cTermsList>();
+            SqlCommand comm = new SqlCommand("spGetTermsList", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cTermsList data = new cTermsList();
+                data.adPaymentTypeID = rdr["adPaymentTypeID"].ToString();
+                data.PaymentTypeDesc = rdr["PaymentTypeDesc"].ToString();
+                data.PaymentTypeDesc2 = rdr["PaymentTypeDesc2"].ToString();
+                data.Active = rdr["Active"].ToString();
+                data.activename = rdr["activename"].ToString();
+                data.EffectDate = rdr["EffectDate"].ToString();
+                data.ExpireDate = rdr["ExpireDate"].ToString();
+                data.edit = rdr["edit"].ToString();
+                data.trash = rdr["trash"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getTermsById(string gid) {
+            List<cTermsList> datas = new List<cTermsList>();
+            SqlCommand comm = new SqlCommand("spGetTermsById", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+            comm.Parameters.AddWithValue("@gid", gid);
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cTermsList data = new cTermsList();
+                data.adPaymentTypeID = rdr["adPaymentTypeID"].ToString();
+                data.PaymentTypeDesc = rdr["PaymentTypeDesc"].ToString();
+                data.PaymentTypeDesc2 = rdr["PaymentTypeDesc2"].ToString();
+                data.Active = rdr["Active"].ToString();
+                data.activename = rdr["activename"].ToString();
+                data.EffectDate = rdr["EffectDate"].ToString();
+                data.ExpireDate = rdr["ExpireDate"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getTermsUpdateEntry(string acttrans, string Gid, string adPaymentTypeID, string PaymentTypeDesc, string PaymentTypeDesc2,
+                                        string Active, string EffectDate, string ExpireDate) {
+
+            SqlCommand comm = new SqlCommand("spGetTermsUpdateEntry", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            comm.Parameters.AddWithValue("@acttrans", acttrans);
+            comm.Parameters.AddWithValue("@Gid", Gid);
+            comm.Parameters.AddWithValue("@adPaymentTypeID", adPaymentTypeID);
+            comm.Parameters.AddWithValue("@PaymentTypeDesc", PaymentTypeDesc);
+            comm.Parameters.AddWithValue("@PaymentTypeDesc2", PaymentTypeDesc2);
+            comm.Parameters.AddWithValue("@Active", Active);
+            comm.Parameters.AddWithValue("@EffectDate", EffectDate);
+            comm.Parameters.AddWithValue("@ExpireDate", ExpireDate);
+            comm.ExecuteNonQuery();
+            conn.CloseConn();
+
+        }
+
+        [WebMethod]
+        public void getOndeliveryList() {
+            List<cDeliveryList> datas = new List<cDeliveryList>();
+            SqlCommand comm = new SqlCommand("spGetDeliveryList", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cDeliveryList data = new cDeliveryList();
+                data.imDeliveryID = rdr["imDeliveryID"].ToString();
+                data.DeliveryName = rdr["DeliveryName"].ToString();
+                data.DeliveryName2 = rdr["DeliveryName2"].ToString();
+                data.Active = rdr["Active"].ToString();
+                data.activename = rdr["activename"].ToString();
+                data.EffectDate = rdr["EffectDate"].ToString();
+                data.ExpireDate = rdr["ExpireDate"].ToString();
+                data.edit = rdr["edit"].ToString();
+                data.trash = rdr["trash"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getDeliveryById(string gid) {
+            List<cDeliveryList> datas = new List<cDeliveryList>();
+            SqlCommand comm = new SqlCommand("spGetDeliveryById", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+            comm.Parameters.AddWithValue("@gid", gid);
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cDeliveryList data = new cDeliveryList();
+                data.imDeliveryID = rdr["imDeliveryID"].ToString();
+                data.DeliveryName = rdr["DeliveryName"].ToString();
+                data.DeliveryName2 = rdr["DeliveryName2"].ToString();
+                data.Active = rdr["Active"].ToString();
+                data.activename = rdr["activename"].ToString();
+                data.EffectDate = rdr["EffectDate"].ToString();
+                data.ExpireDate = rdr["ExpireDate"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getDeliveryUpdateEntry(string acttrans, string Gid, string imDeliveryID, string DeliveryName, string DeliveryName2,
+                                        string Active, string EffectDate, string ExpireDate)
+        {
+            SqlCommand comm = new SqlCommand("spGetDeliveryUpdateEntry", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            comm.Parameters.AddWithValue("@acttrans", acttrans);
+            comm.Parameters.AddWithValue("@Gid", Gid);
+            comm.Parameters.AddWithValue("@imDeliveryID", imDeliveryID);
+            comm.Parameters.AddWithValue("@DeliveryName", DeliveryName);
+            comm.Parameters.AddWithValue("@DeliveryName2", DeliveryName2);
+            comm.Parameters.AddWithValue("@Active", Active);
+            comm.Parameters.AddWithValue("@EffectDate", EffectDate);
+            comm.Parameters.AddWithValue("@ExpireDate", ExpireDate);
+            comm.ExecuteNonQuery();
+            conn.CloseConn();
+
+        }
+
+        [WebMethod]
+        public void getVendorGroupList() {
+            List<cVendorGroupList> datas = new List<cVendorGroupList>();
+            SqlCommand comm = new SqlCommand("spGetVendorGroupList", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cVendorGroupList data = new cVendorGroupList();
+                data.VendorGroupID = rdr["VendorGroupID"].ToString();
+                data.VendorGroupCode = rdr["VendorGroupCode"].ToString();
+                data.VendorGroupName = rdr["VendorGroupName"].ToString();
+                data.VendorGroupNameEng = rdr["VendorGroupNameEng"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getVendorList() {
+            List<cVendorList> datas = new List<cVendorList>();
+            SqlCommand comm = new SqlCommand("spGetVendorList", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cVendorList data = new cVendorList();
+                data.VendorID = rdr["VendorID"].ToString();
+                data.VendorCode = rdr["VendorCode"].ToString();
+                data.VendorName = rdr["VendorName"].ToString();
+                data.VendorNameEng = rdr["VendorNameEng"].ToString();
+                data.ShortName = rdr["ShortName"].ToString();
+                data.VendorStartDate = rdr["VendorStartDate"].ToString();
+                data.VendorGroupID = rdr["VendorGroupID"].ToString();
+                data.VendorGroupName = rdr["VendorGroupName"].ToString();
+                data.Active = rdr["Active"].ToString();
+                data.activename = rdr["activename"].ToString();
+                data.InactiveDate = rdr["InactiveDate"].ToString();
+                data.adPaymentTypeID = rdr["adPaymentTypeID"].ToString();
+                data.PaymentTypeDesc = rdr["PaymentTypeDesc"].ToString();
+                data.VendorTypeID = rdr["VendorTypeID"].ToString();
+                data.VendorTypeName = rdr["VendorTypeName"].ToString();
+                data.TaxId = rdr["TaxId"].ToString();
+                data.VendorAddr1 = rdr["VendorAddr1"].ToString();
+                data.VendorAddr2 = rdr["VendorAddr2"].ToString();
+                data.District = rdr["District"].ToString();
+                data.Amphur = rdr["Amphur"].ToString();
+                data.adProvinceID = rdr["adProvinceID"].ToString();
+                data.ProvinceName = rdr["ProvinceName"].ToString();
+                data.PostCode = rdr["PostCode"].ToString();
+                data.ContAddr1 = rdr["ContAddr1"].ToString();
+                data.ContAddr2 = rdr["ContAddr2"].ToString();
+                data.ContDistrict = rdr["ContDistrict"].ToString();
+                data.ContAmphur = rdr["ContAmphur"].ToString();
+                data.ContProvince = rdr["ContProvince"].ToString();
+                data.ContPostCode = rdr["ContPostCode"].ToString();
+                data.ContHomePage = rdr["ContHomePage"].ToString();
+                data.ContTel = rdr["ContTel"].ToString();
+                data.ContFax = rdr["ContFax"].ToString();
+                data.CardNo = rdr["CardNo"].ToString();
+                data.VATGroupID = rdr["VATGroupID"].ToString();
+                data.VATGroupDesc = rdr["VATGroupDesc"].ToString();
+                data.Birthdate = rdr["Birthdate"].ToString();
+                data.ContTelExtend1 = rdr["ContTelExtend1"].ToString();
+                data.ContTelExtend2 = rdr["ContTelExtend2"].ToString();
+                data.imBranchID = rdr["imBranchID"].ToString();
+                data.BranchCode = rdr["BranchCode"].ToString();
+                data.BranchName = rdr["BranchName"].ToString();
+                data.CreditDays = rdr["CreditDays"].ToString();
+                data.CreditAmnt = rdr["CreditAmnt"].ToString();
+                data.CreatedBy = rdr["CreatedBy"].ToString();
+                data.CreatedDate = rdr["CreatedDate"].ToString();
+                data.UpdatedBy = rdr["UpdatedBy"].ToString();
+                data.UpdateDate = rdr["UpdateDate"].ToString();
+                data.edit = rdr["edit"].ToString();
+                data.trash = rdr["trash"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getVendorType()
+        {
+            List<cVendorType> datas = new List<cVendorType>();
+            SqlCommand comm = new SqlCommand("spGetVendorType", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cVendorType data = new cVendorType();
+                data.VendorTypeID = rdr["VendorTypeID"].ToString();
+                data.VendorTypeCode = rdr["VendorTypeCode"].ToString();
+                data.VendorTypeName = rdr["VendorTypeName"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getVendorTypeList()
+        {
+            List<cVendorType> datas = new List<cVendorType>();
+            SqlCommand comm = new SqlCommand("spGetVendorTypeList", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cVendorType data = new cVendorType();
+                data.VendorTypeID = rdr["VendorTypeID"].ToString();
+                data.VendorTypeCode = rdr["VendorTypeCode"].ToString();
+                data.VendorTypeName = rdr["VendorTypeName"].ToString();
+                data.VendorTypeNameEng = rdr["VendorTypeNameEng"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                data.edit = rdr["edit"].ToString();
+                data.trash = rdr["trash"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getVendorTypeById(string gid) {
+            List<cVendorType> datas = new List<cVendorType>();
+            SqlCommand comm = new SqlCommand("spGetVendorTypeById", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+            comm.Parameters.AddWithValue("@gid", gid);
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cVendorType data = new cVendorType();
+                data.VendorTypeID = rdr["VendorTypeID"].ToString();
+                data.VendorTypeCode = rdr["VendorTypeCode"].ToString();
+                data.VendorTypeName = rdr["VendorTypeName"].ToString();
+                data.VendorTypeNameEng = rdr["VendorTypeNameEng"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getVendorTypeUpdateEntry(string acttrans, string gid, string VendorTypeID, string VendorTypeCode, string VendorTypeName, string VendorTypeNameEng, string Remark) {
+            SqlCommand comm = new SqlCommand("spGetVendorTypeUpdateEntry", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            comm.Parameters.AddWithValue("@acttrans", acttrans);
+            comm.Parameters.AddWithValue("@gid", gid);
+            comm.Parameters.AddWithValue("@VendorTypeID", VendorTypeID);
+            comm.Parameters.AddWithValue("@VendorTypeCode", VendorTypeCode);
+            comm.Parameters.AddWithValue("@VendorTypeName", VendorTypeName);
+            comm.Parameters.AddWithValue("@VendorTypeNameEng", VendorTypeNameEng);
+            comm.Parameters.AddWithValue("@Remark", Remark);
+            comm.ExecuteNonQuery();
+            conn.CloseConn();
+        }
+
+
+
+        [WebMethod]
+        public void getVendorById(string gid)
+        {
+            List<cVendorsById> datas = new List<cVendorsById>();
+            SqlCommand comm = new SqlCommand("spGetVendorById2", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+            comm.Parameters.AddWithValue("@gid", gid);
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cVendorsById data = new cVendorsById();
+
+                data.VendorID = rdr["VendorID"].ToString();
+                data.VendorGroupID = rdr["VendorGroupID"].ToString();
+                data.VendorGroupName = rdr["VendorGroupName"].ToString();
+                data.VendorCode = rdr["VendorCode"].ToString();
+                data.VendorName = rdr["VendorName"].ToString();
+                data.VendorNameEng = rdr["VendorNameEng"].ToString();
+                data.ShortName = rdr["ShortName"].ToString();
+                data.VendorStartDate = rdr["VendorStartDate"].ToString();
+                data.Active = rdr["Active"].ToString();
+                data.activename = rdr["activename"].ToString();
+                data.InactiveDate = rdr["InactiveDate"].ToString();
+                data.adPaymentTypeID = rdr["adPaymentTypeID"].ToString();
+                data.PaymentTypeDesc = rdr["PaymentTypeDesc"].ToString();
+                data.VendorTypeID = rdr["VendorTypeID"].ToString();
+                data.VendorTypeName = rdr["VendorTypeName"].ToString();
+                data.TaxId = rdr["TaxId"].ToString();
+                data.VendorAddr1 = rdr["VendorAddr1"].ToString();
+                data.VendorAddr2 = rdr["VendorAddr2"].ToString();
+                data.District = rdr["District"].ToString();
+                data.Amphur = rdr["Amphur"].ToString();
+                data.adProvinceID = rdr["adProvinceID"].ToString();
+                data.ProvinceName = rdr["ProvinceName"].ToString();
+                data.PostCode = rdr["PostCode"].ToString();
+                data.ContAddr1 = rdr["ContAddr1"].ToString();
+                data.ContAddr2 = rdr["ContAddr2"].ToString();
+                data.ContDistrict = rdr["ContDistrict"].ToString();
+                data.ContAmphur = rdr["ContAmphur"].ToString();
+                data.ContProvince = rdr["ContProvince"].ToString();
+                data.ConProvinceName = rdr["ConProvinceName"].ToString();
+                data.ContPostCode = rdr["ContPostCode"].ToString();
+                data.ContHomePage = rdr["ContHomePage"].ToString();
+                data.ContTel = rdr["ContTel"].ToString();
+                data.ContFax = rdr["ContFax"].ToString();
+                data.CardNo = rdr["CardNo"].ToString();
+                data.VATGroupID = rdr["VATGroupID"].ToString();
+                data.VATGroupDesc = rdr["VATGroupDesc"].ToString();
+                data.imBranchID = rdr["imBranchID"].ToString();
+                data.Birthdate = rdr["Birthdate"].ToString();
+                data.ContTelExtend1 = rdr["ContTelExtend1"].ToString();
+                data.ContTelExtend2 = rdr["ContTelExtend2"].ToString();
+                data.BranchCode = rdr["BranchCode"].ToString();
+                data.BranchName = rdr["BranchName"].ToString();
+                data.CreditDays = rdr["CreditDays"].ToString();
+                data.CreditAmnt = rdr["CreditAmnt"].ToString();
+                data.CreatedBy = rdr["CreatedBy"].ToString();
+                data.CreatedDate = rdr["CreatedDate"].ToString();
+                data.UpdatedBy = rdr["UpdatedBy"].ToString();
+                data.UpdateDate = rdr["UpdateDate"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getVatGroup()
+        {
+            List<cVatGroup> datas = new List<cVatGroup>();
+            SqlCommand comm = new SqlCommand("spGetVatGroup", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cVatGroup data = new cVatGroup();
+                data.VATGroupID = rdr["VATGroupID"].ToString();
+                data.VATGroupDesc = rdr["VATGroupDesc"].ToString();
+                data.VatRate = rdr["VatRate"].ToString();
+                data.VatType = rdr["VatType"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+
+        [WebMethod]
+        public void getVendorUpdateEntry(string acttrans, string gid, string VendorID, string VendorGroupID, string VendorCode, string VendorName, string VendorNameEng, string ShortName, string VendorStartDate
+                    , string Active, string InactiveDate, string adPaymentTypeID, string VendorTypeID, string TaxId, string VendorAddr1, string VendorAddr2, string District, string Amphur, string adProvinceID
+                    , string PostCode, string ContAddr1, string ContAddr2, string ContDistrict, string ContAmphur, string ContProvince, string ContPostCode, string ContHomePage, string ContTel, string ContFax
+                    , string CardNo, string VATGroupID, string imBranchID, string Birthdate, string ContTelExtend1, string ContTelExtend2, string BranchCode, string BranchName, string CreditDays, string CreditAmnt
+                    , string CreatedBy, string CreatedDate, string UpdatedBy, string UpdateDate )
+        {
+            SqlCommand comm = new SqlCommand("spGetVendorUpdateEntry", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            //comm.Parameters.AddWithValue("@acttrans", acttrans);
+            //comm.Parameters.AddWithValue("@Gid", gid);
+
+            comm.Parameters.AddWithValue("@acttrans", acttrans);
+            comm.Parameters.AddWithValue("@gid", gid);
+            comm.Parameters.AddWithValue("@VendorID", VendorID);
+            comm.Parameters.AddWithValue("@VendorGroupID", VendorGroupID);
+            comm.Parameters.AddWithValue("@VendorCode", VendorCode);
+            comm.Parameters.AddWithValue("@VendorName", VendorName);
+            comm.Parameters.AddWithValue("@VendorNameEng", VendorNameEng);
+            comm.Parameters.AddWithValue("@ShortName", ShortName);
+            comm.Parameters.AddWithValue("@VendorStartDate", VendorStartDate);
+            comm.Parameters.AddWithValue("@Active", Active);
+            comm.Parameters.AddWithValue("@InactiveDate", InactiveDate);
+            comm.Parameters.AddWithValue("@adPaymentTypeID", adPaymentTypeID);
+            comm.Parameters.AddWithValue("@VendorTypeID", VendorTypeID);
+            comm.Parameters.AddWithValue("@TaxId", TaxId);
+            comm.Parameters.AddWithValue("@VendorAddr1", VendorAddr1);
+            comm.Parameters.AddWithValue("@VendorAddr2", VendorAddr2);
+            comm.Parameters.AddWithValue("@District", District);
+            comm.Parameters.AddWithValue("@Amphur", Amphur);
+            comm.Parameters.AddWithValue("@adProvinceID", adProvinceID);
+            comm.Parameters.AddWithValue("@PostCode", PostCode);
+            comm.Parameters.AddWithValue("@ContAddr1", ContAddr1);
+            comm.Parameters.AddWithValue("@ContAddr2", ContAddr2);
+            comm.Parameters.AddWithValue("@ContDistrict", ContDistrict);
+            comm.Parameters.AddWithValue("@ContAmphur", ContAmphur);
+            comm.Parameters.AddWithValue("@ContProvince", ContProvince);
+            comm.Parameters.AddWithValue("@ContPostCode", ContPostCode);
+            comm.Parameters.AddWithValue("@ContHomePage", ContHomePage);
+            comm.Parameters.AddWithValue("@ContTel", ContTel);
+            comm.Parameters.AddWithValue("@ContFax", ContFax);
+            comm.Parameters.AddWithValue("@CardNo", CardNo);
+            comm.Parameters.AddWithValue("@VATGroupID", VATGroupID);
+            comm.Parameters.AddWithValue("@imBranchID", imBranchID);
+            comm.Parameters.AddWithValue("@Birthdate", Birthdate);
+            comm.Parameters.AddWithValue("@ContTelExtend1", ContTelExtend1);
+            comm.Parameters.AddWithValue("@ContTelExtend2", ContTelExtend2);
+            comm.Parameters.AddWithValue("@BranchCode", BranchCode);
+            comm.Parameters.AddWithValue("@BranchName", BranchName);
+            comm.Parameters.AddWithValue("@CreditDays", CreditDays);
+            comm.Parameters.AddWithValue("@CreditAmnt", CreditAmnt);
+            comm.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+            comm.Parameters.AddWithValue("@CreatedDate", CreatedDate);
+            comm.Parameters.AddWithValue("@UpdatedBy", UpdatedBy);
+            comm.Parameters.AddWithValue("@UpdateDate", UpdateDate);
+
+
+            comm.ExecuteNonQuery();
+            conn.CloseConn();
+
         }
     }
 }

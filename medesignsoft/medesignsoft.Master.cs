@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace medesignsoft
 {
@@ -139,16 +141,31 @@ namespace medesignsoft
         public string stradCompanyID = "";
         public string strCompanyNameTh = "";
 
+        public string strusr = "";
+        public string strpwd = "";
+
+        public string struserid = "";
+        public string strpwdid = "";
+
         public_variable pv = new public_variable();
 
-        protected void Page_Load(object sender, EventArgs e)
-        {          
+        dbConnection dbConn = new dbConnection();
 
+        string ssql;
+        DataTable dt = new DataTable();
+
+        public static string strErorConn = "";
+
+        SqlConnection Conn = new SqlConnection();
+        SqlCommand Comm = new SqlCommand();
+        SqlDataAdapter da = new SqlDataAdapter();
+
+        protected void Page_Load(object sender, EventArgs e)
+        {         
             try
             {
-                
-
-                if (!this.IsPostBack) {
+                if (!this.IsPostBack)
+                {
                     strUserID = Session["UserID"].ToString();
                     strimEmployeeGid = Session["imEmployeeGid"].ToString();
                     strFirstName = Session["FirstName"].ToString();
@@ -175,11 +192,36 @@ namespace medesignsoft
                     stradCompanyID = Session["adCompanyID"].ToString();
                     strCompanyNameTh = Session["CompanyNameTh"].ToString();
 
+                    //strUserID = dt.Rows[0]["UserID"].ToString();
+                    //strimEmployeeGid = dt.Rows[0]["imEmployeeGid"].ToString();
+                    //strFirstName = dt.Rows[0]["FirstName"].ToString();
+                    //strLastName = dt.Rows[0]["LastName"].ToString();
+                    //strUserName = dt.Rows[0]["UserName"].ToString();
+                    //strUserPassword = dt.Rows[0]["UserPassword"].ToString();
+                    //strUserTypeID = dt.Rows[0]["UserTypeID"].ToString();
+                    //strUserTypeDesc = dt.Rows[0]["UserTypeDesc"].ToString();
+                    //strActiveID = dt.Rows[0]["ActiveID"].ToString();
+                    //stractivename = dt.Rows[0]["activename"].ToString();
+                    //strCreatedBy = dt.Rows[0]["CreatedBy"].ToString();
+                    //strCreatedDate = dt.Rows[0]["CreatedDate"].ToString();
+                    //strUpdatedBy = dt.Rows[0]["UpdatedBy"].ToString();
+                    //strUpdateDate = dt.Rows[0]["UpdateDate"].ToString();
+                    //strimPositionID = dt.Rows[0]["imPositionID"].ToString();
+                    //strPositionName = dt.Rows[0]["PositionName"].ToString();
+                    //strimDepartmentID = dt.Rows[0]["imDepartmentID"].ToString();
+                    //strDepartmentDesc = dt.Rows[0]["DepartmentDesc"].ToString();
+                    //strimSectionID = dt.Rows[0]["imSectionID"].ToString();
+                    //strSectionDesc = dt.Rows[0]["SectionDesc"].ToString();
+                    //strEMail = dt.Rows[0]["EMail"].ToString();
+                    //strimBranchGID = dt.Rows[0]["imBranchGID"].ToString();
+                    //strBranchName = dt.Rows[0]["BranchName"].ToString();
+                    //stradCompanyID = dt.Rows[0]["adCompanyID"].ToString();
+                    //strCompanyNameTh = dt.Rows[0]["CompanyNameTh"].ToString();               
+
                     //strUserID = Request.Cookies["UserID"].Value;
                     //strimEmployeeGid = Request.Cookies["imEmployeeGid"].Value;
                     //strFirstName = Request.Cookies["FirstName"].Value;
                     //strLastName = Request.Cookies["LastName"].Value;
-
 
                     getPointer();
                 }
