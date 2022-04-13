@@ -1,10 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/medesignsoft.Master" AutoEventWireup="true" CodeBehind="ap-setup.aspx.cs" Inherits="medesignsoft.meenterprise_management.ap_setup" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <section class="content-header">
+    <section class="content-header">
         <script src="https://smtpjs.com/v3/smtp.js"></script>
         <%--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>--%>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-        <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="../../woodden/bower_components/jquery/dist/jquery.min.js"></script>
 
         <style>
             .hide_column {
@@ -143,7 +143,7 @@
                                         <i class="fa fa-truck"></i><span class="txtLabel">กำหนดสถานที่รับสินค้า</span>
                                     </a>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>

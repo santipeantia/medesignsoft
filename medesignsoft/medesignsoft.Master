@@ -9,51 +9,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>MEDESIGN</title>
 
-    <link rel="shortcut icon" href="../../Favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../woodden/Favicon.ico" type="image/x-icon">
 
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
-    <link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-    <link rel="stylesheet" href="../../plugins/iCheck/all.css">
-    <link rel="stylesheet" href="../../bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css">
-    <link rel="stylesheet" href="../../plugins/timepicker/bootstrap-timepicker.min.css">
-    <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="../../woodden/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../woodden/bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../woodden/bower_components/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="../../woodden/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="../../woodden/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="../../woodden/plugins/iCheck/all.css">
+    <link rel="stylesheet" href="../../woodden/bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css">
+    <link rel="stylesheet" href="../../woodden/plugins/timepicker/bootstrap-timepicker.min.css">
+    <link rel="stylesheet" href="../../woodden/bower_components/select2/dist/css/select2.min.css">
 
-    <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
-    <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="../../woodden/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="../../woodden/dist/css/skins/_all-skins.min.css">
 
-    <%--<link rel="stylesheet" href="../../bower_components/morris.js/morris.css">--%>
+    <%--<link rel="stylesheet" href="../../woodden/bower_components/morris.js/morris.css">--%>
 
-    <link rel="stylesheet" href="../../bower_components/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="../../woodden/bower_components/jvectormap/jquery-jvectormap.css">
 
-    <link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="../../woodden/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 
-    <link rel="stylesheet" href="../../bower_components/bootstrap-daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="../../woodden/bower_components/bootstrap-daterangepicker/daterangepicker.css">
 
-    <link rel="stylesheet" href="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <link rel="stylesheet" href="../../woodden/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
-    <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="../../woodden/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedcolumns/3.2.1/css/fixedColumns.dataTables.min.css" />
 
-    <link href="../../alertifyjs/css/alertify.css" rel="stylesheet" />
-    <link href="../../alertifyjs/css/alertify.min.css" rel="stylesheet" />
-    <link href="../../alertifyjs/css/alertify.rtl.css" rel="stylesheet" />
-    <link href="../../alertifyjs/css/alertify.rtl.min.css" rel="stylesheet" />
-    <link href="../../alertifyjs/css/themes/bootstrap.css" rel="stylesheet" />
-    <link href="../../alertifyjs/css/themes/bootstrap.min.css" rel="stylesheet" />
-    <link href="../../alertifyjs/css/themes/bootstrap.rtl.css" rel="stylesheet" />
-    <link href="../../alertifyjs/css/themes/bootstrap.rtl.min.css" rel="stylesheet" />
-    <link href="../../alertifyjs/css/themes/default.css" rel="stylesheet" />
-    <link href="../../alertifyjs/css/themes/default.min.css" rel="stylesheet" />
-    <link href="../../alertifyjs/css/themes/default.rtl.css" rel="stylesheet" />
-    <link href="../../alertifyjs/css/themes/default.rtl.min.css" rel="stylesheet" />
-    <link href="../../alertifyjs/css/themes/semantic.css" rel="stylesheet" />
-    <link href="../../alertifyjs/css/themes/semantic.min.css" rel="stylesheet" />
-    <link href="../../alertifyjs/css/themes/semantic.rtl.css" rel="stylesheet" />
-    <link href="../../alertifyjs/css/themes/semantic.rtl.min.css" rel="stylesheet" />
+    <link href="../../woodden/alertifyjs/css/alertify.css" rel="stylesheet" />
+    <link href="../../woodden/alertifyjs/css/alertify.min.css" rel="stylesheet" />
+    <link href="../../woodden/alertifyjs/css/alertify.rtl.css" rel="stylesheet" />
+    <link href="../../woodden/alertifyjs/css/alertify.rtl.min.css" rel="stylesheet" />
+    <link href="../../woodden/alertifyjs/css/themes/bootstrap.css" rel="stylesheet" />
+    <link href="../../woodden/alertifyjs/css/themes/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../woodden/alertifyjs/css/themes/bootstrap.rtl.css" rel="stylesheet" />
+    <link href="../../woodden/alertifyjs/css/themes/bootstrap.rtl.min.css" rel="stylesheet" />
+    <link href="../../woodden/alertifyjs/css/themes/default.css" rel="stylesheet" />
+    <link href="../../woodden/alertifyjs/css/themes/default.min.css" rel="stylesheet" />
+    <link href="../../woodden/alertifyjs/css/themes/default.rtl.css" rel="stylesheet" />
+    <link href="../../woodden/alertifyjs/css/themes/default.rtl.min.css" rel="stylesheet" />
+    <link href="../../woodden/alertifyjs/css/themes/semantic.css" rel="stylesheet" />
+    <link href="../../woodden/alertifyjs/css/themes/semantic.min.css" rel="stylesheet" />
+    <link href="../../woodden/alertifyjs/css/themes/semantic.rtl.css" rel="stylesheet" />
+    <link href="../../woodden/alertifyjs/css/themes/semantic.rtl.min.css" rel="stylesheet" />
 
 
     <!-- Google Font -->
@@ -185,7 +185,7 @@
 </head>
 <body onselect="return true" class="hold-transition skin-black-light sidebar-mini fixed ">
     <%--<div class="loader">
-        <img src="../../dist/img/loader3.gif" alt="Loading..." />
+        <img src="../../woodden/dist/img/loader3.gif" alt="Loading..." />
     </div>--%>
 
     <div id="dvMain" runat="server">
@@ -193,16 +193,19 @@
             <header class="main-header">
                 <!-- Logo -->
                 <a href="../../woodden/index.aspx" class="logo">
-                    <span class="logo-mini"><b><%=stradCompanyID %></span>
-                    <span class="logo-lg"><b><%=stradCompanyID %></b></span>
+                    <%--<span class="logo-mini"><b><%=stradCompanyID %></span>
+                    <span class="logo-lg"><b><%=stradCompanyID %></b></span>   --%>
+                         <span class="pull-left">   <img src="../../woodden/image/Logo-woodden.png" class="user-image" alt="User Image" width="80" /></span>
+                    
                 </a>
+
                 <nav class="navbar navbar-static-top">
                     <!-- Sidebar toggle button-->
                     <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                         <span class="sr-only">Toggle navigation</span>
                     </a>
                     <ul class="nav navbar-nav">
-                        <li class="dropdown user user-menu">
+                        <li class="dropdown user user-menu">                            
                             <a href="#">
                                 <span class="hidden-xs txtLabel">
                                     <label> <%= strCompanyNameTh %> :  <%= strBranchName %>  </label>
@@ -211,20 +214,18 @@
                         </li>
                     </ul>
 
-
-
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="../../dist/img/user1-128x128.jpg" class="user-image" alt="User Image" width="160" />
+                                    <img src="../../woodden/dist/img/user1-128x128.jpg" class="user-image" alt="User Image" width="160" />
                                     <span class="hidden-xs txtLabel">
                                         <label id="label2"></label>
                                         <%= strFirstName %>&nbsp;&nbsp;<%= strLastName %> </span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li class="user-header txtLabel">
-                                        <img src="../../dist/img/user1-128x128.jpg" class="img-circle" alt="User Image" width="160" />
+                                        <img src="../../woodden/dist/img/user1-128x128.jpg" class="img-circle" alt="User Image" width="160" />
                                         <p>
                                             <%= strFirstName %>&nbsp;&nbsp;<%= strLastName %>
                                             <small><%=strBranchName %></small>
@@ -235,10 +236,10 @@
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="../../pages/users/changepassword" class="btn btn-default btn-flat">Change Password</a>
+                                            <a href="../../woodden/pages/users/changepassword" class="btn btn-default btn-flat">Change Password</a>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="../../pages/users/login" class="btn btn-default btn-flat">Sign out</a>
+                                            <a href="../../woodden/pages/users/login" class="btn btn-default btn-flat">Sign out</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -256,14 +257,13 @@
 
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu" data-widget="tree">
-                        <li class="header" style="text-align: center">
-                            <img src="../../image/Logo-ampel-Big.png" class="user-image" alt="User Image" width="120" />
+                        <%--<li class="header" style="text-align: center">
+                            <img src="../../woodden/image/Logo-woodden.png" class="user-image" alt="User Image" width="80" />
+                        </li>--%>
 
-                        </li>
-
-                        <li id="mnuDashboard" runat="server" class="<%= strActiveDashboard.ToString() %>" style="border-top: 1px solid #dddddd;">
-                            <%--<a href="../../pages/dashboard?opt=dashboard">--%>
-                            <a href="../../woodden/index.aspx">
+                        <li id="mnuDashboard" runat="server" class="<%= strActiveDashboard.ToString() %>" >
+                            <%--<a href="../../woodden/pages/dashboard?opt=dashboard">--%>
+                            <a href="../../woodden/woodden/index.aspx">
                                 <i class="fa fa-dashboard"></i>
                                 <span class="txtLabel ">Dashboard</span>
                             </a>
@@ -291,19 +291,19 @@
                                         <span class="txtLabel <%= optap %>">AP Setup</span>
                                     </a>
                                 </li>
-                                <li class="<%= optar %>">
+                                <li class="<%= optar %> hidden">
                                     <a href="../../woodden/meenterprise-management/ar-setup.aspx?opt=optar">
                                         <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel <%= optar %>">AR Setup</span>
                                     </a>
                                 </li>
-                                <li class="<%= optcq %>">
+                                <li class="<%= optcq %> hidden">
                                     <a href="../../woodden/meenterprise-management/cq-setup.aspx?opt=optcq">
                                         <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">CQ Setup</span>
                                     </a>
                                 </li>
-                                <li class="<%= optgl %>">
+                                <li class="<%= optgl %> hidden">
                                     <a href="../../woodden/meenterprise-management/gl-setup.aspx?opt=optgl">
                                         <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">GL Setup</span>
@@ -311,17 +311,17 @@
                                 </li>
                                 <li class="<%= optic %>">
                                     <a href="../../woodden/meenterprise-management/ic-setup.aspx?opt=optic">
-                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
-                                        <span class="txtLabel">IC Setup</span>
+                                        <i class="fa fa-caret-right"></i>
+                                        <span class="txtLabel <%= optic %> ">IC Setup</span>
                                     </a>
                                 </li>
-                                <li class="<%= optmc %>">
+                                <li class="<%= optmc %> hidden">
                                     <a href="../../woodden/meenterprise-management/mc-setup.aspx?opt=optmc">
                                         <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">MC Setup</span>
                                     </a>
                                 </li>
-                                <li class="<%= optcrm %>">
+                                <li class="<%= optcrm %> hidden">
                                     <a href="../../woodden/meenterprise-management/crm-setup.aspx?opt=optcrm">
                                         <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">CRM Setup</span>
@@ -688,31 +688,31 @@
                             <ul class="treeview-menu">
                                 <li class="<%= optpoe %>">
                                     <a href="../../woodden/mepurchase-order/po-entry.aspx?opt=optpoe">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">PO Data Entry</span>
                                     </a>
                                 </li>
                                 <li class="<%= optpoc %>">
                                     <a href="../../woodden/mepurchase-order/po-calendar.aspx?opt=optpoc">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">PO Calendar</span>
                                     </a>
                                 </li>
                                 <li class="<%= optpor %>">
                                     <a href="../../woodden/mepurchase-order/po-report.aspx?opt=optpor">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">PO Reports</span>
                                     </a>
                                 </li>
                                 <li class="<%= optpoa %>">
                                     <a href="../../woodden/mepurchase-order/po-analysis.aspx?opt=optpoa">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">PO Analysis Reports</span>
                                     </a>
                                 </li>
                                 <li class="<%= optpoh %>">
                                     <a href="../../woodden/mepurchase-order/po-history.aspx?opt=optpoh">
-                                        <i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">PO History</span>
                                     </a>
                                 </li>
@@ -755,7 +755,7 @@
                                     </a>
                                 </li>
                                 <li class="<%= optsoh %>">
-                                    <a href="../mesales-order/so-history.aspx?opt=optsoh">
+                                    <a href="../../woodden/mesales-order/so-history.aspx?opt=optsoh">
                                         <i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">SO History</span>
                                     </a>
@@ -965,7 +965,7 @@
 
                         <%--Sign Out--%>
                         <li style="border-top: 1px solid #dddddd;">
-                            <a href="../../signout.aspx">
+                            <a href="../../woodden/signout.aspx">
                                 <i class="fa fa-power-off" style="color: red;"></i>
                                 <span class="txtLabel">Sign Out</span>
                             </a>
@@ -1000,49 +1000,49 @@
 
         <!-- ./wrapper -->
         <!-- jQuery 3 -->
-        <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="../../woodden/bower_components/jquery/dist/jquery.min.js"></script>
         <!-- jQuery UI 1.11.4 -->
-        <script src="../../bower_components/jquery-ui/jquery-ui.min.js"></script>
+        <script src="../../woodden/bower_components/jquery-ui/jquery-ui.min.js"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <script>
             $.widget.bridge('uibutton', $.ui.button);
         </script>
 
-        <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
-        <script src="../../bower_components/raphael/raphael.min.js"></script>
-        <%--<script src="../../bower_components/morris.js/morris.min.js"></script>--%>
-        <script src="../../bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
-        <script src="../../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-        <script src="../../plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-        <script src="../../bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
-        <script src="../../bower_components/moment/min/moment.min.js"></script>
-        <script src="../../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-        <script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-        <script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-        <script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-        <script src="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-        <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-        <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
-        <script src="../../dist/js/adminlte.min.js"></script>
-        <%--<script src="../../dist/js/pages/dashboard.js"></script>--%>
-        <script src="../../dist/js/demo.js"></script>
-        <script src="../../plugins/input-mask/jquery.inputmask.js"></script>
-        <script src="../../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-        <script src="../../plugins/input-mask/jquery.inputmask.extensions.js"></script>
-        <script src="../../bower_components/moment/min/moment.min.js"></script>
-        <script src="../../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-        <script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-        <script src="../../bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
-        <script src="../../plugins/timepicker/bootstrap-timepicker.min.js"></script>
-        <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-        <script src="../../plugins/iCheck/icheck.min.js"></script>
+        <script src="../../woodden/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="../../woodden/bower_components/select2/dist/js/select2.full.min.js"></script>
+        <script src="../../woodden/bower_components/raphael/raphael.min.js"></script>
+        <%--<script src="../../woodden/bower_components/morris.js/morris.min.js"></script>--%>
+        <script src="../../woodden/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+        <script src="../../woodden/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+        <script src="../../woodden/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+        <script src="../../woodden/bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
+        <script src="../../woodden/bower_components/moment/min/moment.min.js"></script>
+        <script src="../../woodden/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+        <script src="../../woodden/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="../../woodden/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <script src="../../woodden/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+        <script src="../../woodden/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+        <script src="../../woodden/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="../../woodden/bower_components/fastclick/lib/fastclick.js"></script>
+        <script src="../../woodden/dist/js/adminlte.min.js"></script>
+        <%--<script src="../../woodden/dist/js/pages/dashboard.js"></script>--%>
+        <script src="../../woodden/dist/js/demo.js"></script>
+        <script src="../../woodden/plugins/input-mask/jquery.inputmask.js"></script>
+        <script src="../../woodden/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+        <script src="../../woodden/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+        <script src="../../woodden/bower_components/moment/min/moment.min.js"></script>
+        <script src="../../woodden/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+        <script src="../../woodden/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+        <script src="../../woodden/bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+        <script src="../../woodden/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+        <script src="../../woodden/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="../../woodden/plugins/iCheck/icheck.min.js"></script>
 
-        <script src="../../alertifyjs/alertify.js"></script>
-        <script src="../../alertifyjs/alertify.min.js"></script>
+        <script src="../../woodden/alertifyjs/alertify.js"></script>
+        <script src="../../woodden/alertifyjs/alertify.min.js"></script>
 
-        <%--<script src="../../../../dist/2.7.3/Chart.bundle.js"></script>--%>
-        <script src="../../bower_components/Chart.js/Chart.js"></script>
+        <%--<script src="../../woodden/../../woodden/dist/2.7.3/Chart.bundle.js"></script>--%>
+        <script src="../../woodden/bower_components/Chart.js/Chart.js"></script>
 
         <script type="text/javascript" src="https://cdn.datatables.net/fixedcolumns/3.2.1/js/dataTables.fixedColumns.min.js"></script>
 
@@ -1286,7 +1286,91 @@
                         targets: [0], className: "hide_column"
                     }]
                 })
+                                
+                 $('#tblvendorgrouplist').DataTable({
+                    'iDisplayLength': 25,
+                    'paging': true,
+                    'scrollX': true,
+                    'lengthChange': true,
+                    'searching': true,
+                    'ordering': false,
+                    'info': true,
+                    'autoWidth': true,
+                    'columnDefs': [{
+                        targets: [0], className: "hide_column"
+                    }]
+                })
+                
+                $('#tblshipmentlist').DataTable({
+                    'iDisplayLength': 25,
+                    'paging': true,
+                    'scrollX': true,
+                    'lengthChange': true,
+                    'searching': true,
+                    'ordering': false,
+                    'info': true,
+                    'autoWidth': true,
+                    'columnDefs': [{
+                        targets: [0], className: "hide_column"
+                    }]
+                })
+                
+                $('#tblwarehouselist').DataTable({
+                    'iDisplayLength': 25,
+                    'paging': true,
+                    'scrollX': true,
+                    'lengthChange': true,
+                    'searching': true,
+                    'ordering': false,
+                    'info': true,
+                    'autoWidth': true,
+                    'columnDefs': [{
+                        targets: [0], className: "hide_column"
+                    }]
+                })
 
+                $('#tblwarehousezonelist').DataTable({
+                    'iDisplayLength': 25,
+                    'paging': true,
+                    'scrollX': true,
+                    'lengthChange': true,
+                    'searching': true,
+                    'ordering': false,
+                    'info': true,
+                    'autoWidth': true,
+                    'columnDefs': [{
+                        targets: [0,1], className: "hide_column"
+                    }]
+                })
+                
+                $('#tblgoodgrouplist').DataTable({
+                    'iDisplayLength': 25,
+                    'paging': true,
+                    'scrollX': true,
+                    'lengthChange': true,
+                    'searching': true,
+                    'ordering': false,
+                    'info': true,
+                    'autoWidth': true,
+                    'columnDefs': [{
+                        targets: [0], className: "hide_column"
+                    }]
+                })
+                
+                $('#tblgoodtypelist').DataTable({
+                    'iDisplayLength': 25,
+                    'paging': true,
+                    'scrollX': true,
+                    'lengthChange': true,
+                    'searching': true,
+                    'ordering': false,
+                    'info': true,
+                    'autoWidth': true,
+                    'columnDefs': [{
+                        targets: [0,1], className: "hide_column"
+                    }]
+                })
+                
             })
         </script>
 

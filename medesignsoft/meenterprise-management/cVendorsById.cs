@@ -55,5 +55,6 @@ namespace medesignsoft
         public string CreatedDate { get; set; }
         public string UpdatedBy { get; set; }
         public string UpdateDate { get; set; }
+        public string SalesCode { get; set; }
     }
 }

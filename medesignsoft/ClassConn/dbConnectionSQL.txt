@@ -1,1 +1,1 @@
-﻿server=santi-it;database=DB_WOODDEN;uid=sa;pwd=1qaz@WSX;
+﻿server=147.50.150.243;database=DB_WOODDEN;uid=sa;pwd=AmpelCloud@2020;

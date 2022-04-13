@@ -13487,7 +13487,11 @@
     <Content Include="meenterprise-management\ap-category-edit.aspx" />
     <Content Include="meenterprise-management\ap-category-setup.aspx" />
     <Content Include="meenterprise-management\ap-code-setup.aspx" />
+    <Content Include="meenterprise-management\ap-group-edit.aspx" />
+    <Content Include="meenterprise-management\ap-group-setup.aspx" />
     <Content Include="meenterprise-management\ap-setup.aspx" />
+    <Content Include="meenterprise-management\ap-ship-edit.aspx" />
+    <Content Include="meenterprise-management\ap-ship-setup.aspx" />
     <Content Include="meenterprise-management\ap-vendor-edit.aspx" />
     <Content Include="meenterprise-management\ap-vendor-setup.aspx" />
     <Content Include="meenterprise-management\general-services.asmx" />
@@ -13509,6 +13513,15 @@
     <Content Include="meenterprise-management\gm-section-setup.aspx" />
     <Content Include="meenterprise-management\gm-terms-edit.aspx" />
     <Content Include="meenterprise-management\gm-terms-setup.aspx" />
+    <Content Include="meenterprise-management\ic-goodgroup-edit.aspx" />
+    <Content Include="meenterprise-management\ic-goodgroup-setup.aspx" />
+    <Content Include="meenterprise-management\ic-goodtype-edit.aspx" />
+    <Content Include="meenterprise-management\ic-goodtype-setup.aspx" />
+    <Content Include="meenterprise-management\ic-setup.aspx" />
+    <Content Include="meenterprise-management\ic-warehouse-edit.aspx" />
+    <Content Include="meenterprise-management\ic-warehouse-setup.aspx" />
+    <Content Include="meenterprise-management\ic-warehousezone-edit.aspx" />
+    <Content Include="meenterprise-management\ic-warehousezone-setup.aspx" />
     <Content Include="pages\charts\chartjs.aspx" />
     <Content Include="pages\charts\chartjs.html" />
     <Content Include="pages\charts\flot.html" />
@@ -13704,6 +13717,18 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="meenterprise-management\cGoodTypeList.cs" />
+    <Compile Include="meenterprise-management\cGoodGroupList.cs" />
+    <Compile Include="meenterprise-management\cWarehouseZoneList.cs" />
+    <Compile Include="meenterprise-management\cWarehouseList.cs" />
+    <Compile Include="meenterprise-management\ap-ship-edit.aspx.cs">
+      <DependentUpon>ap-ship-edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="meenterprise-management\ap-ship-edit.aspx.designer.cs">
+      <DependentUpon>ap-ship-edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="meenterprise-management\cShipment.cs" />
     <Compile Include="meenterprise-management\ap-category-edit.aspx.cs">
       <DependentUpon>ap-category-edit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -13717,6 +13742,27 @@
     </Compile>
     <Compile Include="meenterprise-management\ap-category-setup.aspx.designer.cs">
       <DependentUpon>ap-category-setup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="meenterprise-management\ap-group-edit.aspx.cs">
+      <DependentUpon>ap-group-edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="meenterprise-management\ap-group-edit.aspx.designer.cs">
+      <DependentUpon>ap-group-edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="meenterprise-management\ap-group-setup.aspx.cs">
+      <DependentUpon>ap-group-setup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="meenterprise-management\ap-group-setup.aspx.designer.cs">
+      <DependentUpon>ap-group-setup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="meenterprise-management\ap-ship-setup.aspx.cs">
+      <DependentUpon>ap-ship-setup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="meenterprise-management\ap-ship-setup.aspx.designer.cs">
+      <DependentUpon>ap-ship-setup.aspx</DependentUpon>
     </Compile>
     <Compile Include="meenterprise-management\cVatGroup.cs" />
     <Compile Include="meenterprise-management\cVendorsById.cs" />
@@ -13929,6 +13975,69 @@
     </Compile>
     <Compile Include="meenterprise-management\gm-terms-setup.aspx.designer.cs">
       <DependentUpon>gm-terms-setup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="meenterprise-management\ic-goodgroup-edit.aspx.cs">
+      <DependentUpon>ic-goodgroup-edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="meenterprise-management\ic-goodgroup-edit.aspx.designer.cs">
+      <DependentUpon>ic-goodgroup-edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="meenterprise-management\ic-goodgroup-setup.aspx.cs">
+      <DependentUpon>ic-goodgroup-setup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="meenterprise-management\ic-goodgroup-setup.aspx.designer.cs">
+      <DependentUpon>ic-goodgroup-setup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="meenterprise-management\ic-goodtype-edit.aspx.cs">
+      <DependentUpon>ic-goodtype-edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="meenterprise-management\ic-goodtype-edit.aspx.designer.cs">
+      <DependentUpon>ic-goodtype-edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="meenterprise-management\ic-goodtype-setup.aspx.cs">
+      <DependentUpon>ic-goodtype-setup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="meenterprise-management\ic-goodtype-setup.aspx.designer.cs">
+      <DependentUpon>ic-goodtype-setup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="meenterprise-management\ic-setup.aspx.cs">
+      <DependentUpon>ic-setup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="meenterprise-management\ic-setup.aspx.designer.cs">
+      <DependentUpon>ic-setup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="meenterprise-management\ic-warehouse-edit.aspx.cs">
+      <DependentUpon>ic-warehouse-edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="meenterprise-management\ic-warehouse-edit.aspx.designer.cs">
+      <DependentUpon>ic-warehouse-edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="meenterprise-management\ic-warehouse-setup.aspx.cs">
+      <DependentUpon>ic-warehouse-setup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="meenterprise-management\ic-warehouse-setup.aspx.designer.cs">
+      <DependentUpon>ic-warehouse-setup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="meenterprise-management\ic-warehousezone-edit.aspx.cs">
+      <DependentUpon>ic-warehousezone-edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="meenterprise-management\ic-warehousezone-edit.aspx.designer.cs">
+      <DependentUpon>ic-warehousezone-edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="meenterprise-management\ic-warehousezone-setup.aspx.cs">
+      <DependentUpon>ic-warehousezone-setup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="meenterprise-management\ic-warehousezone-setup.aspx.designer.cs">
+      <DependentUpon>ic-warehousezone-setup.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\charts\chartjs.aspx.cs">
       <DependentUpon>chartjs.aspx</DependentUpon>

@@ -4,7 +4,7 @@
         <script src="https://smtpjs.com/v3/smtp.js"></script>
         <%--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>--%>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-        <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="../../woodden/bower_components/jquery/dist/jquery.min.js"></script>
 
         <style>
             .hide_column {
@@ -101,6 +101,7 @@
                 getBranch();
                 getVatGroup();
                 getActive();
+                getSalesCode();
 
                 
                 var today = new Date();
@@ -184,6 +185,7 @@
                         },
                         success: function (data) {
                             selectvendorgroup.empty();
+                            selectvendorgroup.append($('<option/>', { value: -1, text: 'Please choose group..' }));
                             $(data).each(function (index, item) {
                                 selectvendorgroup.append($('<option/>', { value: item.VendorGroupID, text: item.VendorGroupName }));
                             });
@@ -220,6 +222,7 @@
                         },
                         success: function (data) {
                             selectpaymenttype.empty();
+                            selectpaymenttype.append($('<option/>', { value: -1, text: 'Please choose payment type..' }));
                             $(data).each(function (index, item) {
                                 selectpaymenttype.append($('<option/>', { value: item.adPaymentTypeID, text: item.PaymentTypeDesc }));
                             });
@@ -238,6 +241,7 @@
                         },
                         success: function (data) {
                             selectvendortype.empty();
+                            selectvendortype.append($('<option/>', { value: -1, text: 'Please choose vendor type..' }));
                             $(data).each(function (index, item) {
                                 selectvendortype.append($('<option/>', { value: item.VendorTypeID, text: item.VendorTypeName }));
                             })
@@ -258,6 +262,8 @@
                         success: function (data) {
                             selectprovince.empty();
                             selectcontprovince.empty();
+                            selectprovince.append($('<option/>', { value: -1, text: 'Please choose province..' }));
+                            selectcontprovince.append($('<option/>', { value: -1, text: 'Please choose province type..' }));
                             $(data).each(function (index, item) {
                                 selectprovince.append($('<option/>', { value: item.adProvinceID, text: item.ProvinceName }));
                                 selectcontprovince.append($('<option/>', {value: item.adProvinceID, text: item.ProvinceName}))
@@ -277,8 +283,28 @@
                         },
                         success: function (data) {
                             selectVATGroupID.empty();
+                            selectVATGroupID.append($('<option/>', { value: -1, text: 'Please choose vat..' }));
                             $(data).each(function (index, item) {
                                 selectVATGroupID.append($('<option/>', { value: item.VATGroupID, text: item.VATGroupDesc }));
+                            })
+                        }
+                    })
+                }
+
+                var selectsalecode = $('#selectsalecode');
+                function getSalesCode() {
+                     $.ajax({
+                        url: 'general-services.asmx/getEmployeesList',
+                        method: 'post',
+                        datatype: 'json',
+                        beforeSend: function () {
+
+                        },
+                        success: function (data) {
+                            selectsalecode.empty();   
+                            selectsalecode.append($('<option/>', { value: -1, text: 'Please choose sales owner..' }));
+                            $(data).each(function (index, item) {                                
+                                selectsalecode.append($('<option/>', { value: item.imEmployeeID, text: item.FirstName + ' ' + item.LastName }));
                             })
                         }
                     })
@@ -368,6 +394,8 @@
                                     $('#txtContTelExtend2').val(data["ContTelExtend2"]);
                                     $('#selectbranch').val(data["imBranchID"]);
                                     $('#selectbranch').change();
+                                    $('#selectsalecode').val(data["SalesCode"]);
+                                    $('#selectsalecode').change();
 
 
                                 })
@@ -482,7 +510,8 @@
                                         CreatedBy: username,
                                         CreatedDate: null,
                                         UpdatedBy: username,
-                                        UpdateDate: null
+                                        UpdateDate: null,
+                                        SalesCode: $('#selectsalecode').val()
 
                                     },
                                     datatype: 'json',
@@ -580,7 +609,8 @@
                                         CreatedBy: username,
                                         CreatedDate: null,
                                         UpdatedBy: username,
-                                        UpdateDate: null
+                                        UpdateDate: null,
+                                        SalesCode: $('#selectsalecode').val()
 
                                     },
                                     datatype: 'json',
@@ -1088,6 +1118,16 @@
                                     <div class="col-sm-8">
                                         <span class="txtLabel " style="width: 100%">
                                             <select id="selectbranch" class="form-control input-sm " style="width: 100%" >
+                                            </select>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label txtLabel">พนักงานขาย</label>
+                                    <div class="col-sm-8">
+                                        <span class="txtLabel " style="width: 100%">
+                                            <select id="selectsalecode" class="form-control input-sm " style="width: 100%" >
                                             </select>
                                         </span>
                                     </div>

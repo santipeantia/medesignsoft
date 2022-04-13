@@ -113,7 +113,7 @@ namespace medesignsoft
                     Session["adCompanyID"] = dt.Rows[0]["adCompanyID"].ToString();
                     Session["CompanyNameTh"] = dt.Rows[0]["CompanyNameTh"].ToString();
 
-                    Response.Redirect("~/index.aspx?usr=");
+                    Response.Redirect("~/index.aspx?usr=" + Session["UserName"]);
                     //Server.Transfer("~/index.aspx?pwd=" + strPassWord + "&usr=" + strUserName);
                 }
                 else

@@ -4,7 +4,7 @@
         <script src="https://smtpjs.com/v3/smtp.js"></script>
         <%--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>--%>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-        <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="../../woodden/bower_components/jquery/dist/jquery.min.js"></script>
 
         <style>
             .hide_column {

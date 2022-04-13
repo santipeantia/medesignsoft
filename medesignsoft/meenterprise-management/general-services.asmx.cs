@@ -1162,12 +1162,55 @@ namespace medesignsoft.meenterprise_management
                 data.VendorGroupName = rdr["VendorGroupName"].ToString();
                 data.VendorGroupNameEng = rdr["VendorGroupNameEng"].ToString();
                 data.Remark = rdr["Remark"].ToString();
+                data.edit = rdr["edit"].ToString();
+                data.trash = rdr["trash"].ToString();
                 datas.Add(data);
             }
             JavaScriptSerializer js = new JavaScriptSerializer();
             js.MaxJsonLength = Int32.MaxValue;
             Context.Response.Write(js.Serialize(datas));
             Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getVendorGroupById(string gid) {
+            List<cVendorGroupList> datas = new List<cVendorGroupList>();
+            SqlCommand comm = new SqlCommand("spGetVendorGroupById", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+            comm.Parameters.AddWithValue("@gid", gid);
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cVendorGroupList data = new cVendorGroupList();
+                data.VendorGroupID = rdr["VendorGroupID"].ToString();
+                data.VendorGroupCode = rdr["VendorGroupCode"].ToString();
+                data.VendorGroupName = rdr["VendorGroupName"].ToString();
+                data.VendorGroupNameEng = rdr["VendorGroupNameEng"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+       [WebMethod]
+        public void getVendorGroupUpdateEntry(string acttrans, string gid, string VendorGroupID, string VendorGroupCode, string VendorGroupName, string VendorGroupNameEng, string Remark) {
+            SqlCommand comm = new SqlCommand("spGetVendorGroupUpdateEntry", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            comm.Parameters.AddWithValue("@acttrans", acttrans);
+            comm.Parameters.AddWithValue("@gid", gid);
+            comm.Parameters.AddWithValue("@VendorGroupID", VendorGroupID);
+            comm.Parameters.AddWithValue("@VendorGroupCode", VendorGroupCode);
+            comm.Parameters.AddWithValue("@VendorGroupName", VendorGroupName);
+            comm.Parameters.AddWithValue("@VendorGroupNameEng", VendorGroupNameEng);
+            comm.Parameters.AddWithValue("@Remark", Remark);
+            comm.ExecuteNonQuery();
             conn.CloseConn();
         }
 
@@ -1330,8 +1373,6 @@ namespace medesignsoft.meenterprise_management
             conn.CloseConn();
         }
 
-
-
         [WebMethod]
         public void getVendorById(string gid)
         {
@@ -1393,6 +1434,7 @@ namespace medesignsoft.meenterprise_management
                 data.CreatedDate = rdr["CreatedDate"].ToString();
                 data.UpdatedBy = rdr["UpdatedBy"].ToString();
                 data.UpdateDate = rdr["UpdateDate"].ToString();
+                data.SalesCode = rdr["SalesCode"].ToString();
                 datas.Add(data);
             }
             JavaScriptSerializer js = new JavaScriptSerializer();
@@ -1427,13 +1469,12 @@ namespace medesignsoft.meenterprise_management
             conn.CloseConn();
         }
 
-
         [WebMethod]
         public void getVendorUpdateEntry(string acttrans, string gid, string VendorID, string VendorGroupID, string VendorCode, string VendorName, string VendorNameEng, string ShortName, string VendorStartDate
                     , string Active, string InactiveDate, string adPaymentTypeID, string VendorTypeID, string TaxId, string VendorAddr1, string VendorAddr2, string District, string Amphur, string adProvinceID
                     , string PostCode, string ContAddr1, string ContAddr2, string ContDistrict, string ContAmphur, string ContProvince, string ContPostCode, string ContHomePage, string ContTel, string ContFax
                     , string CardNo, string VATGroupID, string imBranchID, string Birthdate, string ContTelExtend1, string ContTelExtend2, string BranchCode, string BranchName, string CreditDays, string CreditAmnt
-                    , string CreatedBy, string CreatedDate, string UpdatedBy, string UpdateDate )
+                    , string CreatedBy, string CreatedDate, string UpdatedBy, string UpdateDate, string SalesCode)
         {
             SqlCommand comm = new SqlCommand("spGetVendorUpdateEntry", conn.OpenConn());
             comm.CommandType = CommandType.StoredProcedure;
@@ -1484,11 +1525,358 @@ namespace medesignsoft.meenterprise_management
             comm.Parameters.AddWithValue("@CreatedDate", CreatedDate);
             comm.Parameters.AddWithValue("@UpdatedBy", UpdatedBy);
             comm.Parameters.AddWithValue("@UpdateDate", UpdateDate);
-
+            comm.Parameters.AddWithValue("@SalesCode", SalesCode);
 
             comm.ExecuteNonQuery();
             conn.CloseConn();
 
         }
+
+        [WebMethod]
+        public void getShipmentList()
+        {
+            List<cShipment> datas = new List<cShipment>();
+            SqlCommand comm = new SqlCommand("spGetShipmentList", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cShipment data = new cShipment();
+                data.ShipmentID = rdr["ShipmentID"].ToString();
+                data.ShipmentCode = rdr["ShipmentCode"].ToString();
+                data.ShipmentName = rdr["ShipmentName"].ToString();
+                data.ShipmentNameEng = rdr["ShipmentNameEng"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                data.edit = rdr["edit"].ToString();
+                data.trash = rdr["trash"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getShipmentById(string gid)
+        {
+            List<cShipment> datas = new List<cShipment>();
+            SqlCommand comm = new SqlCommand("spGetShipmentById", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+            comm.Parameters.AddWithValue("@gid", gid);
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cShipment data = new cShipment();
+                data.ShipmentID = rdr["ShipmentID"].ToString();
+                data.ShipmentCode = rdr["ShipmentCode"].ToString();
+                data.ShipmentName = rdr["ShipmentName"].ToString();
+                data.ShipmentNameEng = rdr["ShipmentNameEng"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getShipmentUpdateEntry(string acttrans, string gid, string ShipmentID, string ShipmentCode, string ShipmentName, string ShipmentNameEng, string Remark)
+        {
+            SqlCommand comm = new SqlCommand("spGetShipmentUpdateEntry", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            comm.Parameters.AddWithValue("@acttrans", acttrans);
+            comm.Parameters.AddWithValue("@gid", gid);
+            comm.Parameters.AddWithValue("@ShipmentID", ShipmentID);
+            comm.Parameters.AddWithValue("@ShipmentCode", ShipmentCode);
+            comm.Parameters.AddWithValue("@ShipmentName", ShipmentName);
+            comm.Parameters.AddWithValue("@ShipmentNameEng", ShipmentNameEng);
+            comm.Parameters.AddWithValue("@Remark", Remark);
+            comm.ExecuteNonQuery();
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getWarehouseList() {
+            List<cWarehouseList> datas = new List<cWarehouseList>();
+            SqlCommand comm = new SqlCommand("spGetWarehouseList", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cWarehouseList data = new cWarehouseList();
+                data.WhID = rdr["WhID"].ToString();
+                data.WhCode = rdr["WhCode"].ToString();
+                data.WhDesc = rdr["WhDesc"].ToString();              
+                data.Remark = rdr["Remark"].ToString();
+                data.edit = rdr["edit"].ToString();
+                data.trash = rdr["trash"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getWarehouseById(string gid) {
+            List<cWarehouseList> datas = new List<cWarehouseList>();
+            SqlCommand comm = new SqlCommand("spGetWarehouseById", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+            comm.Parameters.AddWithValue("@gid", gid);
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cWarehouseList data = new cWarehouseList();
+                data.WhID = rdr["WhID"].ToString();
+                data.WhCode = rdr["WhCode"].ToString();
+                data.WhDesc = rdr["WhDesc"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getWarehouseUpdateEntry(string acttrans, string gid, string WhID, string WhCode, string WhDesc, string Remark)
+        {
+            SqlCommand comm = new SqlCommand("spGetWarehouseUpdateEntry", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            comm.Parameters.AddWithValue("@acttrans", acttrans);
+            comm.Parameters.AddWithValue("@gid", gid);
+            comm.Parameters.AddWithValue("@WhID", WhID);
+            comm.Parameters.AddWithValue("@WhCode", WhCode);
+            comm.Parameters.AddWithValue("@WhDesc", WhDesc);
+            comm.Parameters.AddWithValue("@Remark", Remark);
+            comm.ExecuteNonQuery();
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getWarehouseZoneList()
+        {
+            List<cWarehouseZoneList> datas = new List<cWarehouseZoneList>();
+            SqlCommand comm = new SqlCommand("spGetWarehouseZoneList", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cWarehouseZoneList data = new cWarehouseZoneList();
+                data.WhZoneID = rdr["WhZoneID"].ToString();
+                data.WhID = rdr["WhID"].ToString();
+                data.WhDesc = rdr["WhDesc"].ToString();
+                data.WhZoneCode = rdr["WhZoneCode"].ToString();
+                data.WhZoneDesc = rdr["WhZoneDesc"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                data.edit = rdr["edit"].ToString();
+                data.trash = rdr["trash"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+        
+        [WebMethod]
+        public void getWarehouseZoneById(string gid)
+        {
+            List<cWarehouseZoneList> datas = new List<cWarehouseZoneList>();
+            SqlCommand comm = new SqlCommand("spGetWarehouseZoneById", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+            comm.Parameters.AddWithValue("@gid", gid);
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cWarehouseZoneList data = new cWarehouseZoneList();
+                data.WhZoneID = rdr["WhZoneID"].ToString();
+                data.WhID = rdr["WhID"].ToString();
+                data.WhZoneCode = rdr["WhZoneCode"].ToString();
+                data.WhZoneDesc = rdr["WhZoneDesc"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getWarehouseZoneUpdateEntry(string acttrans, string gid, string WhZoneID, string WhID, string WhZoneCode, string WhZoneDesc, string Remark)
+        {
+            SqlCommand comm = new SqlCommand("spGetWarehouseZoneUpdateEntry", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            comm.Parameters.AddWithValue("@acttrans", acttrans);
+            comm.Parameters.AddWithValue("@gid", gid);
+            comm.Parameters.AddWithValue("@WhZoneID", WhZoneID);
+            comm.Parameters.AddWithValue("@WhID", WhID);
+            comm.Parameters.AddWithValue("@WhZoneCode", WhZoneCode);
+            comm.Parameters.AddWithValue("@WhZoneDesc", WhZoneDesc);
+            comm.Parameters.AddWithValue("@Remark", Remark);
+            comm.ExecuteNonQuery();
+            conn.CloseConn();
+        }
+        
+        [WebMethod]
+        public void getGoodGroupList()
+        {
+            List<cGoodGroupList> datas = new List<cGoodGroupList>();
+            SqlCommand comm = new SqlCommand("spGetGoodGroupList", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cGoodGroupList data = new cGoodGroupList();
+                data.GoodGroupID = rdr["GoodGroupID"].ToString();
+                data.GoodGroupCode = rdr["GoodGroupCode"].ToString();
+                data.GoodGroupDesc = rdr["GoodGroupDesc"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                data.edit = rdr["edit"].ToString();
+                data.trash = rdr["trash"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getGoodGroupById(string gid)
+        {
+            List<cGoodGroupList> datas = new List<cGoodGroupList>();
+            SqlCommand comm = new SqlCommand("spGetGoodGroupById", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+            comm.Parameters.AddWithValue("@gid", gid);
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cGoodGroupList data = new cGoodGroupList();
+                data.GoodGroupID = rdr["GoodGroupID"].ToString();
+                data.GoodGroupCode = rdr["GoodGroupCode"].ToString();
+                data.GoodGroupDesc = rdr["GoodGroupDesc"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getGoodGroupUpdateEntry(string acttrans, string gid, string GoodGroupID, string GoodGroupCode, string GoodGroupDesc, string Remark)
+        {
+            SqlCommand comm = new SqlCommand("spGetGoodGroupUpdateEntry", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            comm.Parameters.AddWithValue("@acttrans", acttrans);
+            comm.Parameters.AddWithValue("@gid", gid);
+            comm.Parameters.AddWithValue("@GoodGroupID", GoodGroupID);
+            comm.Parameters.AddWithValue("@GoodGroupCode", GoodGroupCode);
+            comm.Parameters.AddWithValue("@GoodGroupDesc", GoodGroupDesc);
+            comm.Parameters.AddWithValue("@Remark", Remark);
+            comm.ExecuteNonQuery();
+            conn.CloseConn();
+        }
+        
+        [WebMethod]
+        public void getGoodTypeList()
+        {
+            List<cGoodTypeList> datas = new List<cGoodTypeList>();
+            SqlCommand comm = new SqlCommand("spGetGoodTypeList", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cGoodTypeList data = new cGoodTypeList();
+                data.GoodTypeID = rdr["GoodTypeID"].ToString();
+                data.GoodGroupID = rdr["GoodGroupID"].ToString();
+                data.GoodGroupDesc = rdr["GoodGroupDesc"].ToString();
+                data.GoodTypeCode = rdr["GoodTypeCode"].ToString();
+                data.GoodTypeDesc = rdr["GoodTypeDesc"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                data.edit = rdr["edit"].ToString();
+                data.trash = rdr["trash"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getGoodTypeById(string gid)
+        {
+            List<cGoodTypeList> datas = new List<cGoodTypeList>();
+            SqlCommand comm = new SqlCommand("spGetGoodTypeById", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+            comm.Parameters.AddWithValue("@gid", gid);
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cGoodTypeList data = new cGoodTypeList();
+                data.GoodTypeID = rdr["GoodTypeID"].ToString();
+                data.GoodGroupID = rdr["GoodGroupID"].ToString();
+                data.GoodGroupDesc = rdr["GoodGroupDesc"].ToString();
+                data.GoodTypeCode = rdr["GoodTypeCode"].ToString();
+                data.GoodTypeDesc = rdr["GoodTypeDesc"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getGoodTypeUpdateEntry(string acttrans, string gid, string GoodTypeID, string GoodGroupID, string GoodTypeCode, string GoodTypeDesc, string Remark)
+        {
+            SqlCommand comm = new SqlCommand("spGetGoodTypeUpdateEntry", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            comm.Parameters.AddWithValue("@acttrans", acttrans);
+            comm.Parameters.AddWithValue("@gid", gid);
+            comm.Parameters.AddWithValue("@GoodTypeID", GoodTypeID);
+            comm.Parameters.AddWithValue("@GoodGroupID", GoodGroupID);
+            comm.Parameters.AddWithValue("@GoodTypeCode", GoodTypeCode);
+            comm.Parameters.AddWithValue("@GoodTypeDesc", GoodTypeDesc);
+            comm.Parameters.AddWithValue("@Remark", Remark);
+            comm.ExecuteNonQuery();
+            conn.CloseConn();
+        }
+
+
     }
 }

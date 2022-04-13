@@ -12,6 +12,7 @@ namespace medesignsoft
         public string VendorGroupName { get; set; }
         public string VendorGroupNameEng { get; set; }
         public string Remark { get; set; }
-
+        public string edit { get; set; }
+        public string trash { get; set; }
     }
 }
