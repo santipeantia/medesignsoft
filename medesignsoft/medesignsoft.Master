@@ -329,7 +329,7 @@
                                 </li>
                                 <li class="<%= optso %>">
                                     <a href="../../woodden/meenterprise-management/so-setup.aspx?opt=optso">
-                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">SO Setup</span>
                                     </a>
                                 </li>
@@ -1153,7 +1153,7 @@
                     'scrollX': true,
                     'lengthChange': true,
                     'searching': true,
-                    'ordering': false,
+                    'ordering': true,
                     'info': true,
                     'autoWidth': true,
                     'columnDefs': [{
@@ -1167,7 +1167,7 @@
                     'scrollX': true,
                     'lengthChange': true,
                     'searching': true,
-                    'ordering': false,
+                    'ordering': true,
                     'info': true,
                     'autoWidth': true,
                     'columnDefs': [{
@@ -1181,7 +1181,7 @@
                     'scrollX': true,
                     'lengthChange': true,
                     'searching': true,
-                    'ordering': false,
+                    'ordering': true,
                     'info': true,
                     'autoWidth': true,
                     'columnDefs': [{
@@ -1195,7 +1195,7 @@
                     'scrollX': true,
                     'lengthChange': true,
                     'searching': true,
-                    'ordering': false,
+                    'ordering': true,
                     'info': true,
                     'autoWidth': true,
                     'columnDefs': [{
@@ -1209,7 +1209,7 @@
                     'scrollX': true,
                     'lengthChange': true,
                     'searching': true,
-                    'ordering': false,
+                    'ordering': true,
                     'info': true,
                     'autoWidth': true,
                     'columnDefs': [{
@@ -1223,7 +1223,7 @@
                     'scrollX': true,
                     'lengthChange': true,
                     'searching': true,
-                    'ordering': false,
+                    'ordering': true,
                     'info': true,
                     'autoWidth': true,
                     'columnDefs': [{
@@ -1237,7 +1237,7 @@
                     'scrollX': true,
                     'lengthChange': true,
                     'searching': true,
-                    'ordering': false,
+                    'ordering': true,
                     'info': true,
                     'autoWidth': true,
                     'columnDefs': [{
@@ -1251,7 +1251,7 @@
                     'scrollX': true,
                     'lengthChange': true,
                     'searching': true,
-                    'ordering': false,
+                    'ordering': true,
                     'info': true,
                     'autoWidth': true,
                     'columnDefs': [{
@@ -1265,7 +1265,7 @@
                     'scrollX': true,
                     'lengthChange': true,
                     'searching': true,
-                    'ordering': false,
+                    'ordering': true,
                     'info': true,
                     'autoWidth': true,
                     'columnDefs': [{
@@ -1279,7 +1279,7 @@
                     'scrollX': true,
                     'lengthChange': true,
                     'searching': true,
-                    'ordering': false,
+                    'ordering': true,
                     'info': true,
                     'autoWidth': true,
                     'columnDefs': [{
@@ -1293,7 +1293,7 @@
                     'scrollX': true,
                     'lengthChange': true,
                     'searching': true,
-                    'ordering': false,
+                    'ordering': true,
                     'info': true,
                     'autoWidth': true,
                     'columnDefs': [{
@@ -1307,7 +1307,7 @@
                     'scrollX': true,
                     'lengthChange': true,
                     'searching': true,
-                    'ordering': false,
+                    'ordering': true,
                     'info': true,
                     'autoWidth': true,
                     'columnDefs': [{
@@ -1321,7 +1321,7 @@
                     'scrollX': true,
                     'lengthChange': true,
                     'searching': true,
-                    'ordering': false,
+                    'ordering': true,
                     'info': true,
                     'autoWidth': true,
                     'columnDefs': [{
@@ -1335,7 +1335,7 @@
                     'scrollX': true,
                     'lengthChange': true,
                     'searching': true,
-                    'ordering': false,
+                    'ordering': true,
                     'info': true,
                     'autoWidth': true,
                     'columnDefs': [{
@@ -1349,7 +1349,7 @@
                     'scrollX': true,
                     'lengthChange': true,
                     'searching': true,
-                    'ordering': false,
+                    'ordering': true,
                     'info': true,
                     'autoWidth': true,
                     'columnDefs': [{
@@ -1363,11 +1363,53 @@
                     'scrollX': true,
                     'lengthChange': true,
                     'searching': true,
-                    'ordering': false,
+                    'ordering': true,
                     'info': true,
                     'autoWidth': true,
                     'columnDefs': [{
                         targets: [0,1], className: "hide_column"
+                    }]
+                })
+                
+                $('#tblgoodunitlist').DataTable({
+                    'iDisplayLength': 25,
+                    'paging': true,
+                    'scrollX': true,
+                    'lengthChange': true,
+                    'searching': true,
+                    'ordering': true,
+                    'info': true,
+                    'autoWidth': true,
+                    'columnDefs': [{
+                        targets: [0], className: "hide_column"
+                    }]
+                })
+                
+                $('#tblgoodstatuslist').DataTable({
+                    'iDisplayLength': 25,
+                    'paging': true,
+                    'scrollX': true,
+                    'lengthChange': true,
+                    'searching': true,
+                    'ordering': true,
+                    'info': true,
+                    'autoWidth': true,
+                    'columnDefs': [{
+                        targets: [0], className: "hide_column"
+                    }]
+                })
+                
+                $('#tblgoodcolorlist').DataTable({
+                    'iDisplayLength': 25,
+                    'paging': true,
+                    'scrollX': true,
+                    'lengthChange': true,
+                    'searching': true,
+                    'ordering': true,
+                    'info': true,
+                    'autoWidth': true,
+                    'columnDefs': [{
+                        targets: [0], className: "hide_column"
                     }]
                 })
                 

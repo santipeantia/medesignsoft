@@ -11,12 +11,9 @@
                 display: none;
             }
 
-            #tblprojectlists i:hover {
-                cursor: pointer;
-            }
-
-            #tbltranswithoutsalesconsignee i:hover {
-                cursor: pointer;
+            #tblbranchlist tbody tr:hover {
+                color: red;
+                background-color: rgba(252, 241, 154, 0.63);
             }
 
             #overlay {

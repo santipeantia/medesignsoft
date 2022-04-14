@@ -4,14 +4,14 @@
         <script src="https://smtpjs.com/v3/smtp.js"></script>
         <%--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>--%>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-        <script src="../../woodden/woodden/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="../../woodden/bower_components/jquery/dist/jquery.min.js"></script>
 
         <style>
             .hide_column {
                 display: none;
             }
 
-            #tblvendorlist tbody tr:hover {
+            #tblwarehousezonelist tbody tr:hover {
                 color: red;
                 background-color: rgba(252, 241, 154, 0.63);
             }

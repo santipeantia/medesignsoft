@@ -1876,7 +1876,140 @@ namespace medesignsoft.meenterprise_management
             comm.ExecuteNonQuery();
             conn.CloseConn();
         }
+        
+        [WebMethod]
+        public void getGoodUnitList()
+        {
+            List<cGoodUnitList> datas = new List<cGoodUnitList>();
+            SqlCommand comm = new SqlCommand("spGetGoodUnitList", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
 
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cGoodUnitList data = new cGoodUnitList();
+                data.GoodUnitID = rdr["GoodUnitID"].ToString();
+                data.GoodUnitCode = rdr["GoodUnitCode"].ToString();
+                data.GoodUnitDesc = rdr["GoodUnitDesc"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                data.edit = rdr["edit"].ToString();
+                data.trash = rdr["trash"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getGoodUnitById(string gid)
+        {
+            List<cGoodUnitList> datas = new List<cGoodUnitList>();
+            SqlCommand comm = new SqlCommand("spGetGoodUnitById", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+            comm.Parameters.AddWithValue("@gid", gid);
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cGoodUnitList data = new cGoodUnitList();
+                data.GoodUnitID = rdr["GoodUnitID"].ToString();
+                data.GoodUnitCode = rdr["GoodUnitCode"].ToString();
+                data.GoodUnitDesc = rdr["GoodUnitDesc"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getGoodUnitUpdateEntry(string acttrans, string gid, string GoodUnitID, string GoodUnitCode, string GoodUnitDesc, string Remark)
+        {
+            SqlCommand comm = new SqlCommand("spGetGoodUnitUpdateEntry", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            comm.Parameters.AddWithValue("@acttrans", acttrans);
+            comm.Parameters.AddWithValue("@gid", gid);
+            comm.Parameters.AddWithValue("@GoodUnitID", GoodUnitID);
+            comm.Parameters.AddWithValue("@GoodUnitCode", GoodUnitCode);
+            comm.Parameters.AddWithValue("@GoodUnitDesc", GoodUnitDesc);
+            comm.Parameters.AddWithValue("@Remark", Remark);
+            comm.ExecuteNonQuery();
+            conn.CloseConn();
+        }
+        
+        [WebMethod]
+        public void getGoodStatusList()
+        {
+            List<cGoodStatusList> datas = new List<cGoodStatusList>();
+            SqlCommand comm = new SqlCommand("spGetGoodStatusList", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cGoodStatusList data = new cGoodStatusList();
+                data.GoodStatID = rdr["GoodStatID"].ToString();
+                data.GoodStatCode = rdr["GoodStatCode"].ToString();
+                data.GoodStatDesc = rdr["GoodStatDesc"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                data.edit = rdr["edit"].ToString();
+                data.trash = rdr["trash"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getGoodStatusById(string gid)
+        {
+            List<cGoodStatusList> datas = new List<cGoodStatusList>();
+            SqlCommand comm = new SqlCommand("spGetGoodStatusById", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+            comm.Parameters.AddWithValue("@gid", gid);
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cGoodStatusList data = new cGoodStatusList();
+                data.GoodStatID = rdr["GoodStatID"].ToString();
+                data.GoodStatCode = rdr["GoodStatCode"].ToString();
+                data.GoodStatDesc = rdr["GoodStatDesc"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getGoodStatusUpdateEntry(string acttrans, string gid, string GoodStatID, string GoodStatCode, string GoodStatDesc, string Remark)
+        {
+            SqlCommand comm = new SqlCommand("spGetGoodStatusUpdateEntry", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            comm.Parameters.AddWithValue("@acttrans", acttrans);
+            comm.Parameters.AddWithValue("@gid", gid);
+            comm.Parameters.AddWithValue("@GoodStatID", GoodStatID);
+            comm.Parameters.AddWithValue("@GoodStatCode", GoodStatCode);
+            comm.Parameters.AddWithValue("@GoodStatDesc", GoodStatDesc);
+            comm.Parameters.AddWithValue("@Remark", Remark);
+            comm.ExecuteNonQuery();
+            conn.CloseConn();
+        }
 
     }
 }

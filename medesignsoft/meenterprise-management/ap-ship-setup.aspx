@@ -11,7 +11,7 @@
                 display: none;
             }
                        
-            #tblvendorlist tbody tr:hover {
+            #tblshipmentlist tbody tr:hover {
                 color: red;
                 background-color: rgba(252, 241, 154, 0.63);
             }

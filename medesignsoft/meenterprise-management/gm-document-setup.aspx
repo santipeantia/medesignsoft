@@ -10,6 +10,12 @@
             .hide_column {
                 display: none;
             }
+
+            #tbldocumentno tbody tr:hover {
+                color: red;
+                background-color: rgba(252, 241, 154, 0.63);
+            }
+
    
             #overlay {
                 position: fixed;

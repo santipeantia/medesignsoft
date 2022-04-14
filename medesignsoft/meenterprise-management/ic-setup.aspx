@@ -145,15 +145,27 @@
                                     </a>
                                 </div>
                                 <div class="col-md-2">
-                                    <a class="btn btn-app" href="ic-goodcode-setup.aspx?opt=optic" style="width: 100%">
+                                    <a class="btn btn-app" href="ic-goodunit-setup.aspx?opt=optic" style="width: 100%">
                                         <span class="badge bg-yellow">5</span>
-                                        <i class="fa fa-cubes"></i><span class="txtLabel">กำหนดรหัสสินค้า</span>
+                                        <i class="fa fa-life-ring"></i><span class="txtLabel">กำหนดหน่วยนับ</span>
                                     </a>
                                 </div>
                                 <div class="col-md-2">
-                                    <a class=" btn btn-app" href="ic-prodstatus-setup.aspx?opt=optic" style="width: 100%">
+                                    <a class="btn btn-app " href="ic-goodcode-setup.aspx?opt=optic" style="width: 100%">
                                         <span class="badge bg-yellow">6</span>
+                                        <i class="fa fa-cubes"></i><span class="txtLabel">กำหนดรหัสสินค้า</span>
+                                    </a>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <a class=" btn btn-app"  href="ic-goodstatus-setup.aspx?opt=optic" style="width: 100%">
+                                        <span class="badge bg-yellow">7</span>
                                         <i class="fa fa-question-circle-o"></i><span class="txtLabel">กำหนดสถานะสินค้า</span>
+                                    </a>
+                                </div>
+                                 <div class="col-md-2 ">
+                                    <a class=" btn btn-app"  href="ic-goodcolor-setup.aspx?opt=optic" style="width: 100%">
+                                        <span class="badge bg-yellow">8</span>
+                                        <i class="fa fa-question-circle-o"></i><span class="txtLabel">กำหนดสีสินค้า</span>
                                     </a>
                                 </div>
                                 
