@@ -2010,6 +2010,73 @@ namespace medesignsoft.meenterprise_management
             comm.ExecuteNonQuery();
             conn.CloseConn();
         }
+        
+        [WebMethod]
+        public void getGoodColorList()
+        {
+            List<cGoodColorList> datas = new List<cGoodColorList>();
+            SqlCommand comm = new SqlCommand("spGetGoodColorList", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cGoodColorList data = new cGoodColorList();
+                data.GoodColorID = rdr["GoodColorID"].ToString();
+                data.GoodColorCode = rdr["GoodColorCode"].ToString();
+                data.GoodColorDesc = rdr["GoodColorDesc"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                data.edit = rdr["edit"].ToString();
+                data.trash = rdr["trash"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getGoodColorById(string gid)
+        {
+            List<cGoodColorList> datas = new List<cGoodColorList>();
+            SqlCommand comm = new SqlCommand("spGetGoodColorById", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+            comm.Parameters.AddWithValue("@gid", gid);
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cGoodColorList data = new cGoodColorList();
+                data.GoodColorID = rdr["GoodColorID"].ToString();
+                data.GoodColorCode = rdr["GoodColorCode"].ToString();
+                data.GoodColorDesc = rdr["GoodColorDesc"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getGoodColorUpdateEntry(string acttrans, string gid, string GoodColorID, string GoodColorCode, string GoodColorDesc, string Remark)
+        {
+            SqlCommand comm = new SqlCommand("spGetGoodColorUpdateEntry", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            comm.Parameters.AddWithValue("@acttrans", acttrans);
+            comm.Parameters.AddWithValue("@gid", gid);
+            comm.Parameters.AddWithValue("@GoodColorID", GoodColorID);
+            comm.Parameters.AddWithValue("@GoodColorCode", GoodColorCode);
+            comm.Parameters.AddWithValue("@GoodColorDesc", GoodColorDesc);
+            comm.Parameters.AddWithValue("@Remark", Remark);
+            comm.ExecuteNonQuery();
+            conn.CloseConn();
+        }
 
     }
 }

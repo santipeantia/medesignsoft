@@ -130,31 +130,51 @@
                             $('#tbvendorlist td:nth-of-type(6)').addClass('column_hover');
                             $('#tbvendorlist td:nth-of-type(8)').addClass('column_hover');
 
-                            $('#tblvendorlist td').click(function () {
-                                rIndex = this.parentElement.rowIndex;
-                                cIndex = this.cellIndex;
-                                console.log('row : ' + rIndex + ' cell: ' + cIndex)
+                            //$('#tblvendorlist td').click(function () {
+                            //    rIndex = this.parentElement.rowIndex;
+                            //    cIndex = this.cellIndex;
+                            //    console.log('row : ' + rIndex + ' cell: ' + cIndex)
 
-                                if (rIndex != 0 & cIndex == 7) {
-                                    var gid = $("#tblvendorlist").find('tr:eq(' + rIndex + ')').find('td:eq(0)');
+                            //    if (rIndex != 0 & cIndex == 7) {
+                            //        var gid = $("#tblvendorlist").find('tr:eq(' + rIndex + ')').find('td:eq(0)');
                                     
-                                    var encodedGid = btoa(gid.text());
-                                    var decodedGid = atob(encodedGid);
-                                    console.log(encodedGid);
-                                    console.log(decodedGid);
+                            //        var encodedGid = btoa(gid.text());
+                            //        var decodedGid = atob(encodedGid);
+                            //        console.log(encodedGid);
+                            //        console.log(decodedGid);
 
-                                    window.location.href = "ap-vendor-edit.aspx?opt=optap&mod=edit&gid=" + gid.text();
-                                }
+                            //        window.location.href = "ap-vendor-edit.aspx?opt=optap&mod=edit&gid=" + gid.text();
+                            //    }
 
-                                if (rIndex != 0 & cIndex == 8) {
-                                    var gid = $("#tblvendorlist").find('tr:eq(' + rIndex + ')').find('td:eq(0)');
-                                    console.log(gid.text());
-                                    window.location.href = "ap-vendor-edit.aspx?opt=optap&mod=del&gid=" + gid.text();
-                                }
+                            //    if (rIndex != 0 & cIndex == 8) {
+                            //        var gid = $("#tblvendorlist").find('tr:eq(' + rIndex + ')').find('td:eq(0)');
+                            //        console.log(gid.text());
+                            //        window.location.href = "ap-vendor-edit.aspx?opt=optap&mod=del&gid=" + gid.text();
+                            //    }
 
                                
 
-                            })
+                            //})
+
+                            $('#tblvendorlist tbody').on('click', 'td', function (e) {
+                                e.preventDefault();
+                                
+                                rIndex = this.parentElement.rowIndex;
+                                cIndex = this.cellIndex;
+
+                                //console.log(rIndex + ':' + cIndex);
+                                var gid = $("#tblvendorlist").find('tr:eq(' + rIndex + ')').find('td:eq(0)');
+
+                                //console.log(gid.text());
+                                if (rIndex != 0 & cIndex == 7) {
+                                    window.location.href = "ap-vendor-edit.aspx?opt=optic&mod=edit&gid=" + gid.text();
+                                }
+
+                                if (rIndex != 0 & cIndex == 8) {
+                                    window.location.href = "ap-vendor-edit.aspx?opt=optic&mod=del&gid=" + gid.text();
+                                }
+                            });
+
                         }
                     });
                 }

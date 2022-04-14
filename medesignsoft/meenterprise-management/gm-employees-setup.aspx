@@ -137,30 +137,53 @@
                             $('#tblemployeeslist td:nth-of-type(6)').addClass('column_hover');
                             $('#tblemployeeslist td:nth-of-type(8)').addClass('column_hover');
 
-                            $('#tblemployeeslist td').click(function () {
+                            //$('#tblemployeeslist td').click(function () {
+                            //    rIndex = this.parentElement.rowIndex;
+                            //    cIndex = this.cellIndex;
+                            //    console.log('row : ' + rIndex + ' cell: ' + cIndex)
+
+                            //    if (rIndex != 0 & cIndex == 5 || cIndex == 7 || cIndex == 42) {
+                            //        var gid = $("#tblemployeeslist").find('tr:eq(' + rIndex + ')').find('td:eq(0)');
+                            //        console.log(gid.text());
+                            //        window.location.href = "gm-employees-edit.aspx?opt=optgen&mod=edit&gid=" + gid.text();
+                            //    }
+
+                            //    if (rIndex != 0 & cIndex == 5 || cIndex == 7 || cIndex == 43) {
+                            //        var gid = $("#tblemployeeslist").find('tr:eq(' + rIndex + ')').find('td:eq(0)');
+                            //        console.log(gid.text());
+                            //        window.location.href = "gm-employees-edit.aspx?opt=optgen&mod=del&gid=" + gid.text();
+                            //    }
+
+                            //    if (rIndex != 0 & cIndex == 44) {
+                            //        var gid = $("#tblemployeeslist").find('tr:eq(' + rIndex + ')').find('td:eq(0)');
+                            //        console.log(gid.text());
+                            //        window.location.href = "gm-changepassword-edit.aspx?opt=optgen&mod=edit&gid=" + gid.text();
+                            //    }
+
+                            //})
+
+                            $('#tblemployeeslist tbody').on('click', 'td', function (e) {
+                                e.preventDefault();
+                                
                                 rIndex = this.parentElement.rowIndex;
                                 cIndex = this.cellIndex;
-                                console.log('row : ' + rIndex + ' cell: ' + cIndex)
 
-                                if (rIndex != 0 & cIndex == 5 || cIndex == 7 || cIndex == 42) {
-                                    var gid = $("#tblemployeeslist").find('tr:eq(' + rIndex + ')').find('td:eq(0)');
-                                    console.log(gid.text());
-                                    window.location.href = "gm-employees-edit.aspx?opt=optgen&mod=edit&gid=" + gid.text();
+                                //console.log(rIndex + ':' + cIndex);
+                                var gid = $("#tblemployeeslist").find('tr:eq(' + rIndex + ')').find('td:eq(0)');
+
+                                //console.log(gid.text());
+                                if (rIndex != 0 & cIndex == 42) {
+                                    window.location.href = "gm-employees-edit.aspx?opt=optic&mod=edit&gid=" + gid.text();
                                 }
 
-                                if (rIndex != 0 & cIndex == 5 || cIndex == 7 || cIndex == 43) {
-                                    var gid = $("#tblemployeeslist").find('tr:eq(' + rIndex + ')').find('td:eq(0)');
-                                    console.log(gid.text());
-                                    window.location.href = "gm-employees-edit.aspx?opt=optgen&mod=del&gid=" + gid.text();
+                                if (rIndex != 0 & cIndex == 43) {
+                                    window.location.href = "gm-employees-edit.aspx?opt=optic&mod=del&gid=" + gid.text();
                                 }
 
                                 if (rIndex != 0 & cIndex == 44) {
-                                    var gid = $("#tblemployeeslist").find('tr:eq(' + rIndex + ')').find('td:eq(0)');
-                                    console.log(gid.text());
-                                    window.location.href = "gm-changepassword-edit.aspx?opt=optgen&mod=edit&gid=" + gid.text();
+                                    window.location.href = "gm-changepassword-edit.aspx?opt=optic&mod=edit&gid=" + gid.text();
                                 }
-
-                            })
+                            });
                         }
                     });
                 }

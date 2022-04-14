@@ -89,7 +89,7 @@
 
                 var btnaddnew = $('#btnaddnew');
                 btnaddnew.click(function () {
-                    window.location.href = "ic-warehouse-edit.aspx?opt=optic&mod=new";
+                    window.location.href = "ic-goodcolor-edit.aspx?opt=optic&mod=new";
                 });
 
                 var btnreload = $('#btnreload');
@@ -99,7 +99,7 @@
 
                 function reloaddata() {
                     $.ajax({
-                        url: 'general-services.asmx/getWarehouseList',
+                        url: 'general-services.asmx/getGoodColorList',
                         method: 'post',
                         //data: {
                         //    yearstart: yearstart,
@@ -110,49 +110,69 @@
                         datatype: 'json',
                         beforeSend: function () {
                             $('#loader').show();
-                            $("#tblwarehouselist tr td").remove();
+                            $("#tblgoodcolorlist tr td").remove();
 
                         },
                         success: function (data) {
                             var table;
-                            table = $('#tblwarehouselist').DataTable();
+                            table = $('#tblgoodcolorlist').DataTable();
                             table.clear();
 
                             if (data != '') {
                                 $.each(data, function (i, item) {
-                                    table.row.add([data[i].WhID, data[i].WhCode, data[i].WhDesc
+                                    table.row.add([data[i].GoodColorID, data[i].GoodColorCode, data[i].GoodColorDesc
                                         , data[i].Remark, data[i].edit, data[i].trash]);
                                 });
                             }
                             table.draw();
                             $('#loader').hide();
 
-                            $('#tblwarehouselist td:nth-of-type(4)').addClass('column_hover');
-                            $('#tblwarehouselist td:nth-of-type(5)').addClass('column_hover');
+                            $('#tblgoodcolorlist td:nth-of-type(4)').addClass('column_hover');
+                            $('#tblgoodcolorlist td:nth-of-type(5)').addClass('column_hover');
 
-                            $('#tblwarehouselist td').click(function () {
+                            //$('#tblgoodcolorlist td').click(function () {
+                            //    rIndex = this.parentElement.rowIndex;
+                            //    cIndex = this.cellIndex;
+                            //    console.log('row : ' + rIndex + ' cell: ' + cIndex)
+
+                            //    if (rIndex != 0 & cIndex == 4) {
+                            //        var gid = $("#tblgoodcolorlist").find('tr:eq(' + rIndex + ')').find('td:eq(0)');
+
+                            //        var encodedGid = btoa(gid.text());
+                            //        var decodedGid = atob(encodedGid);
+                            //        console.log(encodedGid);
+                            //        console.log(decodedGid);
+
+                            //        window.location.href = "ic-goodcolor-edit.aspx?opt=optic&mod=edit&gid=" + gid.text();
+                            //    }
+
+                            //    if (rIndex != 0 & cIndex == 5) {
+                            //        var gid = $("#tblgoodcolorlist").find('tr:eq(' + rIndex + ')').find('td:eq(0)');
+                            //        console.log(gid.text());
+                            //        window.location.href = "ic-goodcolor-edit.aspx?opt=optic&mod=del&gid=" + gid.text();
+                            //    }
+
+                            //})
+
+                            $('#tblgoodcolorlist tbody').on('click', 'td', function (e) {
+                                e.preventDefault();
+                                
                                 rIndex = this.parentElement.rowIndex;
                                 cIndex = this.cellIndex;
-                                console.log('row : ' + rIndex + ' cell: ' + cIndex)
 
+                                //console.log(rIndex + ':' + cIndex);
+                                var gid = $("#tblgoodcolorlist").find('tr:eq(' + rIndex + ')').find('td:eq(0)');
+
+                                //console.log(gid.text());
                                 if (rIndex != 0 & cIndex == 4) {
-                                    var gid = $("#tblwarehouselist").find('tr:eq(' + rIndex + ')').find('td:eq(0)');
-
-                                    var encodedGid = btoa(gid.text());
-                                    var decodedGid = atob(encodedGid);
-                                    console.log(encodedGid);
-                                    console.log(decodedGid);
-
-                                    window.location.href = "ic-warehouse-edit.aspx?opt=optic&mod=edit&gid=" + gid.text();
+                                    window.location.href = "ic-goodcolor-edit.aspx?opt=optic&mod=edit&gid=" + gid.text();
                                 }
 
                                 if (rIndex != 0 & cIndex == 5) {
-                                    var gid = $("#tblwarehouselist").find('tr:eq(' + rIndex + ')').find('td:eq(0)');
-                                    console.log(gid.text());
-                                    window.location.href = "ic-warehouse-edit.aspx?opt=optic&mod=del&gid=" + gid.text();
+                                    window.location.href = "ic-goodcolor-edit.aspx?opt=optic&mod=del&gid=" + gid.text();
                                 }
+                            });
 
-                            })
                         }
                     });
                 }
@@ -166,7 +186,7 @@
 
         </script>
 
-        <h1>Warehouse Setup <%--step 1 check pages content name--%>
+        <h1>Goods Color Setup <%--step 1 check pages content name--%>
             <small>Control panel</small>
         </h1>
     </section>

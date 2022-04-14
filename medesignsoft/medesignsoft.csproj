@@ -13514,6 +13514,7 @@
     <Content Include="meenterprise-management\gm-terms-edit.aspx" />
     <Content Include="meenterprise-management\gm-terms-setup.aspx" />
     <Content Include="meenterprise-management\ic-goodcode-setup.aspx" />
+    <Content Include="meenterprise-management\ic-goodcolor-edit.aspx" />
     <Content Include="meenterprise-management\ic-goodcolor-setup.aspx" />
     <Content Include="meenterprise-management\ic-goodgroup-edit.aspx" />
     <Content Include="meenterprise-management\ic-goodgroup-setup.aspx" />
@@ -13724,6 +13725,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="meenterprise-management\cGoodColorList.cs" />
     <Compile Include="meenterprise-management\cGoodStatusList.cs" />
     <Compile Include="meenterprise-management\cGoodUnitList.cs" />
     <Compile Include="meenterprise-management\cGoodTypeList.cs" />
@@ -13991,6 +13993,13 @@
     </Compile>
     <Compile Include="meenterprise-management\ic-goodcode-setup.aspx.designer.cs">
       <DependentUpon>ic-goodcode-setup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="meenterprise-management\ic-goodcolor-edit.aspx.cs">
+      <DependentUpon>ic-goodcolor-edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="meenterprise-management\ic-goodcolor-edit.aspx.designer.cs">
+      <DependentUpon>ic-goodcolor-edit.aspx</DependentUpon>
     </Compile>
     <Compile Include="meenterprise-management\ic-goodcolor-setup.aspx.cs">
       <DependentUpon>ic-goodcolor-setup.aspx</DependentUpon>
