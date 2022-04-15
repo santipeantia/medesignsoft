@@ -2077,6 +2077,233 @@ namespace medesignsoft.meenterprise_management
             comm.ExecuteNonQuery();
             conn.CloseConn();
         }
+        
+        [WebMethod]
+        public void getGoodCodeList()
+        {
+            List<cGoodCodeList> datas = new List<cGoodCodeList>();
+            SqlCommand comm = new SqlCommand("spGetGoodCodeList", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cGoodCodeList data = new cGoodCodeList();                
+                data.GoodCodeID = rdr["GoodCodeID"].ToString();
+                data.GoodGroupID = rdr["GoodGroupID"].ToString();
+                data.GoodGroupDesc = rdr["GoodGroupDesc"].ToString();
+                data.GoodTypeID = rdr["GoodTypeID"].ToString();
+                data.GoodTypeDesc = rdr["GoodTypeDesc"].ToString();
+                data.GoodCode = rdr["GoodCode"].ToString();
+                data.GoodName = rdr["GoodName"].ToString();
+                data.GoodColorID = rdr["GoodColorID"].ToString();
+                data.GoodColorDesc = rdr["GoodColorDesc"].ToString();
+                data.GoodUnitID = rdr["GoodUnitID"].ToString();
+                data.GoodUnitDesc = rdr["GoodUnitDesc"].ToString();
+                data.Price1 = rdr["Price1"].ToString();
+                data.Price2 = rdr["Price2"].ToString();
+                data.Price3 = rdr["Price3"].ToString();
+                data.PurLeadTime = rdr["PurLeadTime"].ToString();
+                data.GoodWeight = rdr["GoodWeight"].ToString();
+                data.GoodWidth = rdr["GoodWidth"].ToString();
+                data.GoodLength = rdr["GoodLength"].ToString();
+                data.GoodHeight = rdr["GoodHeight"].ToString();
+                data.GoodStatID = rdr["GoodStatID"].ToString();
+                data.GoodStatDesc = rdr["GoodStatDesc"].ToString();
+                data.activeid = rdr["activeid"].ToString();
+                data.activename = rdr["activename"].ToString();
+                data.UserCreate = rdr["UserCreate"].ToString();
+                data.CreateDate = rdr["CreateDate"].ToString();
+                data.UserUpdate = rdr["UserUpdate"].ToString();
+                data.LasteDate = rdr["LasteDate"].ToString();
+                data.edit = rdr["edit"].ToString();
+                data.trash = rdr["trash"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        
+        [WebMethod]
+        public void getGoodCodeById(string gid)
+        {
+            List<cGoodCodeList> datas = new List<cGoodCodeList>();
+            SqlCommand comm = new SqlCommand("spGetGoodCodeById", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+            comm.Parameters.AddWithValue("@gid", gid);
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cGoodCodeList data = new cGoodCodeList();
+                data.GoodCodeID = rdr["GoodCodeID"].ToString();
+                data.GoodGroupID = rdr["GoodGroupID"].ToString();
+                data.GoodGroupDesc = rdr["GoodGroupDesc"].ToString();
+                data.GoodTypeID = rdr["GoodTypeID"].ToString();
+                data.GoodTypeDesc = rdr["GoodTypeDesc"].ToString();
+                data.GoodCode = rdr["GoodCode"].ToString();
+                data.GoodName = rdr["GoodName"].ToString();
+                data.GoodColorID = rdr["GoodColorID"].ToString();
+                data.GoodColorDesc = rdr["GoodColorDesc"].ToString();
+                data.GoodUnitID = rdr["GoodUnitID"].ToString();
+                data.GoodUnitDesc = rdr["GoodUnitDesc"].ToString();
+                data.Price1 = rdr["Price1"].ToString();
+                data.Price2 = rdr["Price2"].ToString();
+                data.Price3 = rdr["Price3"].ToString();
+                data.PurLeadTime = rdr["PurLeadTime"].ToString();
+                data.GoodWeight = rdr["GoodWeight"].ToString();
+                data.GoodWidth = rdr["GoodWidth"].ToString();
+                data.GoodLength = rdr["GoodLength"].ToString();
+                data.GoodHeight = rdr["GoodHeight"].ToString();
+                data.GoodStatID = rdr["GoodStatID"].ToString();
+                data.GoodStatDesc = rdr["GoodStatDesc"].ToString();
+                data.activeid = rdr["activeid"].ToString();
+                data.activename = rdr["activename"].ToString();
+                data.UserCreate = rdr["UserCreate"].ToString();
+                data.CreateDate = rdr["CreateDate"].ToString();
+                data.UserUpdate = rdr["UserUpdate"].ToString();
+                data.LasteDate = rdr["LasteDate"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getGoodCodeUpdateEntry(string acttrans, string gid, string GoodCodeID, string GoodGroupID, string GoodTypeID, string GoodCode, string GoodName, string GoodColorID, 
+            string GoodColorDesc, string GoodUnitID, string GoodUnitDesc, string Price1, string Price2, string Price3, string PurLeadTime, string GoodWeight, string GoodWidth, 
+            string GoodLength, string GoodHeight, string GoodStatID, string GoodStatDesc, string activeid, string UserCreate, string CreateDate, string UserUpdate, string LasteDate, string Remark)
+        {
+            SqlCommand comm = new SqlCommand("spGetGoodCodeUpdateEntry", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            comm.Parameters.AddWithValue("@acttrans", acttrans);
+            comm.Parameters.AddWithValue("@gid", gid);
+            comm.Parameters.AddWithValue("@GoodCodeID", GoodCodeID);
+            comm.Parameters.AddWithValue("@GoodGroupID", GoodGroupID);
+            comm.Parameters.AddWithValue("@GoodTypeID", GoodTypeID);
+            comm.Parameters.AddWithValue("@GoodCode", GoodCode);
+            comm.Parameters.AddWithValue("@GoodName", GoodName);
+            comm.Parameters.AddWithValue("@GoodColorID", GoodColorID);
+            comm.Parameters.AddWithValue("@GoodColorDesc", GoodColorDesc);
+            comm.Parameters.AddWithValue("@GoodUnitID", GoodUnitID);
+            comm.Parameters.AddWithValue("@GoodUnitDesc", GoodUnitDesc);
+            comm.Parameters.AddWithValue("@Price1", Price1);
+            comm.Parameters.AddWithValue("@Price2", Price2);
+            comm.Parameters.AddWithValue("@Price3", Price3);
+            comm.Parameters.AddWithValue("@PurLeadTime", PurLeadTime);
+            comm.Parameters.AddWithValue("@GoodWeight", GoodWeight);
+            comm.Parameters.AddWithValue("@GoodWidth", GoodWidth);
+            comm.Parameters.AddWithValue("@GoodLength", GoodLength);
+            comm.Parameters.AddWithValue("@GoodHeight", GoodHeight);
+            comm.Parameters.AddWithValue("@GoodStatID", GoodStatID);
+            comm.Parameters.AddWithValue("@GoodStatDesc", GoodStatDesc);
+            comm.Parameters.AddWithValue("@activeid", activeid);
+            comm.Parameters.AddWithValue("@UserCreate", UserCreate);
+            comm.Parameters.AddWithValue("@CreateDate", CreateDate);
+            comm.Parameters.AddWithValue("@UserUpdate", UserUpdate);
+            comm.Parameters.AddWithValue("@LasteDate", LasteDate);
+            comm.Parameters.AddWithValue("@Remark", Remark);
+            comm.ExecuteNonQuery();
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getSoApprovalList()
+        {
+            List<cSOApproveList> datas = new List<cSOApproveList>();
+            SqlCommand comm = new SqlCommand("spGetSOApprovalList", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cSOApproveList data = new cSOApproveList();
+                data.SoApproveID = rdr["SoApproveID"].ToString();
+                data.imEmployeeGidU = rdr["imEmployeeGidU"].ToString();
+                data.UFullName = rdr["UFullName"].ToString();
+                data.UPositionName = rdr["UPositionName"].ToString();
+                data.imEmployeeGidH = rdr["imEmployeeGidH"].ToString();
+                data.HFullName = rdr["HFullName"].ToString();
+                data.HPositionName = rdr["HPositionName"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                data.UserCreate = rdr["UserCreate"].ToString();
+                data.CreateDate = rdr["CreateDate"].ToString();
+                data.UserUpdate = rdr["UserUpdate"].ToString();
+                data.LasteDate = rdr["LasteDate"].ToString();
+                data.edit = rdr["edit"].ToString();
+                data.trash = rdr["trash"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getSOApprovalById(string gid)
+        {
+            List<cSOApproveList> datas = new List<cSOApproveList>();
+            SqlCommand comm = new SqlCommand("spGetSOApprovalById", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+            comm.Parameters.AddWithValue("@gid", gid);
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cSOApproveList data = new cSOApproveList();
+                data.SoApproveID = rdr["SoApproveID"].ToString();
+                data.imEmployeeGidU = rdr["imEmployeeGidU"].ToString();
+                data.UFullName = rdr["UFullName"].ToString();
+                data.UPositionName = rdr["UPositionName"].ToString();
+                data.imEmployeeGidH = rdr["imEmployeeGidH"].ToString();
+                data.HFullName = rdr["HFullName"].ToString();
+                data.HPositionName = rdr["HPositionName"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                data.UserCreate = rdr["UserCreate"].ToString();
+                data.CreateDate = rdr["CreateDate"].ToString();
+                data.UserUpdate = rdr["UserUpdate"].ToString();
+                data.LasteDate = rdr["LasteDate"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getSOApprovalUpdateEntry(string acttrans, string gid, string SoApproveID, string imEmployeeGidU, string imEmployeeGidH, string Remark, 
+            string UserCreate, string CreateDate, string UserUpdate, string LasteDate)
+        {
+            SqlCommand comm = new SqlCommand("spGetSOApprovalUpdateEntry", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            comm.Parameters.AddWithValue("@acttrans", acttrans);
+            comm.Parameters.AddWithValue("@gid", gid);
+            comm.Parameters.AddWithValue("@SoApproveID", SoApproveID);
+            comm.Parameters.AddWithValue("@imEmployeeGidU", imEmployeeGidU);
+            comm.Parameters.AddWithValue("@imEmployeeGidH", imEmployeeGidH);
+            comm.Parameters.AddWithValue("@Remark", Remark);
+            comm.Parameters.AddWithValue("@UserCreate", UserCreate);
+            comm.Parameters.AddWithValue("@CreateDate", CreateDate);
+            comm.Parameters.AddWithValue("@UserUpdate", UserUpdate);
+            comm.Parameters.AddWithValue("@LasteDate", LasteDate);
+            comm.ExecuteNonQuery();
+            conn.CloseConn();
+        }
+
 
     }
 }

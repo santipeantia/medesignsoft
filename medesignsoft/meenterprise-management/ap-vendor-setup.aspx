@@ -213,7 +213,7 @@
                                 <button type="button" id="btnaddnew" class="btn btn-default btn-sm" data-toggle="tooltip" title="new"><i class="fa fa-plus text-green"></i></button>
                                 <button type="button" id="btnreload" class="btn btn-default btn-sm" data-toggle="tooltip" title="reload"><i class="fa fa-refresh text-blue"></i></button>
                                 <button type="button" id="btnPdf1011" class="btn btn-default btn-sm" data-toggle="tooltip" title="pdf"><i class="fa fa-file-pdf-o text-orange"></i></button>
-                                <button type="button" id="btnExportExcel" class="btn btn-default btn-sm" data-toggle="tooltip" title="excel"><i class="fa fa-table text-green"></i></button>
+                                <button type="button" id="btnExcel" class="btn btn-default btn-sm" runat="server" onserverclick="btnExportExcel_click" data-toggle="tooltip" title="excel"><i class="fa fa-table text-green"></i></button>
                             </span>
 
                             <label class="txtLabel">Vendor List</label>

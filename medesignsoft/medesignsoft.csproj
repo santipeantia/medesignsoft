@@ -13468,6 +13468,7 @@
     <Content Include="documentation\style.css" />
     <Content Include="errorpage.aspx" />
     <Content Include="Favicon.ico" />
+    <Content Include="ic-soapproval-setup.aspx" />
     <Content Include="icon.ico" />
     <Content Include="image\accepted.png" />
     <Content Include="image\arrow_green.jpg" />
@@ -13513,6 +13514,7 @@
     <Content Include="meenterprise-management\gm-section-setup.aspx" />
     <Content Include="meenterprise-management\gm-terms-edit.aspx" />
     <Content Include="meenterprise-management\gm-terms-setup.aspx" />
+    <Content Include="meenterprise-management\ic-goodcode-edit.aspx" />
     <Content Include="meenterprise-management\ic-goodcode-setup.aspx" />
     <Content Include="meenterprise-management\ic-goodcolor-edit.aspx" />
     <Content Include="meenterprise-management\ic-goodcolor-setup.aspx" />
@@ -13529,6 +13531,8 @@
     <Content Include="meenterprise-management\ic-warehouse-setup.aspx" />
     <Content Include="meenterprise-management\ic-warehousezone-edit.aspx" />
     <Content Include="meenterprise-management\ic-warehousezone-setup.aspx" />
+    <Content Include="meenterprise-management\so-approval-edit.aspx" />
+    <Content Include="meenterprise-management\so-approval-setup.aspx" />
     <Content Include="meenterprise-management\so-setup.aspx" />
     <Content Include="pages\charts\chartjs.aspx" />
     <Content Include="pages\charts\chartjs.html" />
@@ -13725,6 +13729,15 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cSOApproveList.cs" />
+    <Compile Include="ic-soapproval-setup.aspx.cs">
+      <DependentUpon>ic-soapproval-setup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ic-soapproval-setup.aspx.designer.cs">
+      <DependentUpon>ic-soapproval-setup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="meenterprise-management\cGoodCodeList.cs" />
     <Compile Include="meenterprise-management\cGoodColorList.cs" />
     <Compile Include="meenterprise-management\cGoodStatusList.cs" />
     <Compile Include="meenterprise-management\cGoodUnitList.cs" />
@@ -13987,6 +14000,13 @@
     <Compile Include="meenterprise-management\gm-terms-setup.aspx.designer.cs">
       <DependentUpon>gm-terms-setup.aspx</DependentUpon>
     </Compile>
+    <Compile Include="meenterprise-management\ic-goodcode-edit.aspx.cs">
+      <DependentUpon>ic-goodcode-edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="meenterprise-management\ic-goodcode-edit.aspx.designer.cs">
+      <DependentUpon>ic-goodcode-edit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="meenterprise-management\ic-goodcode-setup.aspx.cs">
       <DependentUpon>ic-goodcode-setup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -14098,6 +14118,20 @@
     </Compile>
     <Compile Include="meenterprise-management\ic-warehousezone-setup.aspx.designer.cs">
       <DependentUpon>ic-warehousezone-setup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="meenterprise-management\so-approval-edit.aspx.cs">
+      <DependentUpon>so-approval-edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="meenterprise-management\so-approval-edit.aspx.designer.cs">
+      <DependentUpon>so-approval-edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="meenterprise-management\so-approval-setup.aspx.cs">
+      <DependentUpon>so-approval-setup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="meenterprise-management\so-approval-setup.aspx.designer.cs">
+      <DependentUpon>so-approval-setup.aspx</DependentUpon>
     </Compile>
     <Compile Include="meenterprise-management\so-setup.aspx.cs">
       <DependentUpon>so-setup.aspx</DependentUpon>

@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/medesignsoft.Master" AutoEventWireup="true" CodeBehind="ic-goodcolor-edit.aspx.cs" Inherits="medesignsoft.meenterprise_management.ic_goodcolor_edit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <section class="content-header">
+    <section class="content-header">
         <script src="https://smtpjs.com/v3/smtp.js"></script>
         <%--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>--%>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
@@ -9,7 +9,7 @@
         <style>
             .hide_column {
                 display: none;
-            }          
+            }
 
             #overlay {
                 position: fixed;
@@ -440,12 +440,7 @@
                 }
             });
 
-
-
-
-
         </script>
-
         <h1>Warehouse Edit <%--step 1 check pages content name--%>
             <small>Control panel</small>
         </h1>

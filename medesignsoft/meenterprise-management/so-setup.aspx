@@ -120,32 +120,32 @@
 
                             <div class="col-md-12">
                                 <div class="col-md-2">
-                                    <a class="btn btn-app" href="ic-soapproval-setup.aspx?opt=optic" style="width: 100%">
+                                    <a class="btn btn-app" href="so-approval-setup.aspx?opt=optso" style="width: 100%">
                                         <span class="badge bg-yellow">1</span>
                                         <i class="fa fa-users"></i><span class="txtLabel">กำหนดผู้อนุมัติรายการ</span>
                                     </a>
                                 </div>
                                 <div class="col-md-2">
-                                    <a class="btn btn-app" href="ic-soapprovelevel-setup.aspx?opt=optic" style="width: 100%">
+                                    <a class="btn btn-app" href="so-approvelevel-setup.aspx?opt=optic" style="width: 100%">
                                         <span class="badge bg-yellow">2</span>
                                         <i class="fa fa-server"></i><span class="txtLabel">กำหนดระดับการอนุมัติ</span>
                                     </a>
                                 </div>
                                 
                                 <div class="col-md-2">
-                                    <a class="btn btn-app" href="ic-sooption-setup.aspx?opt=optic" style="width: 100%">
+                                    <a class="btn btn-app" href="so-option-setup.aspx?opt=optso" style="width: 100%">
                                         <span class="badge bg-yellow">3</span>
                                         <i class="fa fa-delicious"></i><span class="txtLabel">กำหนดเงื่อนไขการขาย</span>
                                     </a>
                                 </div>
                                 <div class="col-md-2">
-                                    <a class="btn btn-app" href="ic-socreditapproval-setup.aspx?opt=optic" style="width: 100%">
+                                    <a class="btn btn-app" href="so-creditapproval-setup.aspx?opt=optso" style="width: 100%">
                                         <span class="badge bg-yellow">4</span>
                                         <i class="fa fa-credit-card"></i><span class="txtLabel">อนุมัติวงเงินเครดิต</span>
                                     </a>
                                 </div>
                                 <div class="col-md-2">
-                                    <a class="btn btn-app" href="ic-sotarget-setup.aspx?opt=optic" style="width: 100%">
+                                    <a class="btn btn-app" href="so-target-setup.aspx?opt=optso" style="width: 100%">
                                         <span class="badge bg-yellow">5</span>
                                         <i class="fa fa-life-ring"></i><span class="txtLabel">กำหนดเป้าการขาย</span>
                                     </a>

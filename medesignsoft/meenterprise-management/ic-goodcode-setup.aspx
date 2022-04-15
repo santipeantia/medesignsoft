@@ -99,7 +99,7 @@
 
                 function reloaddata() {
                     $.ajax({
-                        url: 'general-services.asmx/getWarehouseList',
+                        url: 'general-services.asmx/getGoodCodeList',
                         method: 'post',
                         //data: {
                         //    yearstart: yearstart,
@@ -120,39 +120,63 @@
 
                             if (data != '') {
                                 $.each(data, function (i, item) {
-                                    table.row.add([data[i].WhID, data[i].WhCode, data[i].WhDesc
-                                        , data[i].Remark, data[i].edit, data[i].trash]);
+                                    table.row.add([data[i].GoodCodeID, data[i].GoodGroupID, data[i].GoodGroupDesc, data[i].GoodTypeID, data[i].GoodTypeDesc,
+                                        data[i].GoodCode, data[i].GoodName, data[i].GoodColorID, data[i].GoodColorDesc, data[i].GoodUnitID, data[i].GoodUnitDesc,
+                                        data[i].Price1, data[i].Price2, data[i].Price3, data[i].PurLeadTime, data[i].GoodWeight, data[i].GoodWidth,
+                                        data[i].GoodLength, data[i].GoodHeight, data[i].GoodStatID, data[i].GoodStatDesc, data[i].activeid, data[i].activename,
+                                        data[i].UserCreate, data[i].CreateDate, data[i].UserUpdate, data[i].LasteDate, data[i].edit, data[i].trash]);
                                 });
                             }
                             table.draw();
                             $('#loader').hide();
 
-                            $('#tblgoodcodelist td:nth-of-type(4)').addClass('column_hover');
-                            $('#tblgoodcodelist td:nth-of-type(5)').addClass('column_hover');
+                            $('#tblgoodcodelist td:nth-of-type(27)').addClass('column_hover');
+                            $('#tblgoodcodelist td:nth-of-type(28)').addClass('column_hover');
 
-                            $('#tblgoodcodelist td').click(function () {
+                            //$('#tblgoodcodelist td').click(function () {
+                            //    rIndex = this.parentElement.rowIndex;
+                            //    cIndex = this.cellIndex;
+                            //    console.log('row : ' + rIndex + ' cell: ' + cIndex)
+
+                            //    if (rIndex != 0 & cIndex == 4) {
+                            //        var gid = $("#tblgoodcodelist").find('tr:eq(' + rIndex + ')').find('td:eq(0)');
+
+                            //        var encodedGid = btoa(gid.text());
+                            //        var decodedGid = atob(encodedGid);
+                            //        console.log(encodedGid);
+                            //        console.log(decodedGid);
+
+                            //        window.location.href = "ic-goodcode-edit.aspx?opt=optic&mod=edit&gid=" + gid.text();
+                            //    }
+
+                            //    if (rIndex != 0 & cIndex == 5) {
+                            //        var gid = $("#tblgoodcodelist").find('tr:eq(' + rIndex + ')').find('td:eq(0)');
+                            //        console.log(gid.text());
+                            //        window.location.href = "ic-goodcode-edit.aspx?opt=optic&mod=del&gid=" + gid.text();
+                            //    }
+
+                            //})
+
+                            $('#tblgoodcodelist tbody').on('click', 'td', function (e) {
+                                e.preventDefault();
+                                
                                 rIndex = this.parentElement.rowIndex;
                                 cIndex = this.cellIndex;
-                                console.log('row : ' + rIndex + ' cell: ' + cIndex)
 
-                                if (rIndex != 0 & cIndex == 4) {
-                                    var gid = $("#tblgoodcodelist").find('tr:eq(' + rIndex + ')').find('td:eq(0)');
+                                //console.log(rIndex + ':' + cIndex);
+                                var gid = $("#tblgoodcodelist").find('tr:eq(' + rIndex + ')').find('td:eq(0)');
 
-                                    var encodedGid = btoa(gid.text());
-                                    var decodedGid = atob(encodedGid);
-                                    console.log(encodedGid);
-                                    console.log(decodedGid);
-
+                                //console.log(gid.text());
+                                if (rIndex != 0 & cIndex == 27) {
                                     window.location.href = "ic-goodcode-edit.aspx?opt=optic&mod=edit&gid=" + gid.text();
                                 }
 
-                                if (rIndex != 0 & cIndex == 5) {
-                                    var gid = $("#tblgoodcodelist").find('tr:eq(' + rIndex + ')').find('td:eq(0)');
-                                    console.log(gid.text());
+                                if (rIndex != 0 & cIndex == 28) {
                                     window.location.href = "ic-goodcode-edit.aspx?opt=optic&mod=del&gid=" + gid.text();
                                 }
+                            });
 
-                            })
+
                         }
                     });
                 }
@@ -190,8 +214,8 @@
                             <span class="btn-group pull-right">
                                 <button type="button" id="btnaddnew" class="btn btn-default btn-sm" data-toggle="tooltip" title="new"><i class="fa fa-plus text-green"></i></button>
                                 <button type="button" id="btnreload" class="btn btn-default btn-sm" data-toggle="tooltip" title="reload"><i class="fa fa-refresh text-blue"></i></button>
-                                <button type="button" id="btnPdf1011" class="btn btn-default btn-sm" data-toggle="tooltip" title="pdf"><i class="fa fa-file-pdf-o text-orange"></i></button>
-                                <button type="button" id="btnExportExcel" class="btn btn-default btn-sm" data-toggle="tooltip" title="excel"><i class="fa fa-table text-green"></i></button>
+                                <button type="button" id="btnPdf1" class="btn btn-default btn-sm" data-toggle="tooltip" title="pdf"><i class="fa fa-file-pdf-o text-orange"></i></button>
+                                <button type="button" id="btnExcel" class="btn btn-default btn-sm" runat="server" onserverclick="btnExportExcel_click" data-toggle="tooltip" title="excel"><i class="fa fa-table text-green"></i></button>
                             </span>
 
                             <label class="txtLabel">Warehouse List</label>
@@ -205,9 +229,32 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
+                                        <th>GROUPCODE</th>
+                                        <th>GROUP</th>
+                                        <th>GoodTypeID</th>
+                                        <th>TYPE</th>
                                         <th>CODE</th>
-                                        <th>DESC</th>
-                                        <th>REMARK</th>
+                                        <th>GOODNAME</th>
+                                        <th>GoodColorID</th>
+                                        <th>COLOR</th>
+                                        <th>GoodUnitID</th>
+                                        <th>UNIT</th>
+                                        <th>Price1</th>
+                                        <th>Price2</th>
+                                        <th>Price3</th>
+                                        <th>LeadTime</th>
+                                        <th>WEIGHT</th>
+                                        <th>WIDTH</th>
+                                        <th>LENGTH</th>
+                                        <th>HEIGHT</th>
+                                        <th>STATUSID</th>
+                                        <th>STATUS</th>
+                                        <th>activeid</th>
+                                        <th>ACTIVE</th>
+                                        <th>UserCreate</th>
+                                        <th>CreateDate</th>
+                                        <th>UserUpdate</th>
+                                        <th>LasteDate</th>
                                         <th style="width: 30px; text-align: right;">#</th>
                                         <th style="width: 30px; text-align: right;">#</th>
                                     </tr>

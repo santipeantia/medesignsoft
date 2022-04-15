@@ -333,7 +333,7 @@
                                         <span class="txtLabel">SO Setup</span>
                                     </a>
                                 </li>
-                                <li class="<%= opttax %>">
+                                <li class="<%= opttax %> hidden">
                                     <a href="../../woodden/meenterprise-management/tax-setup.aspx?opt=opttax">
                                         <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">Tax Setup</span>
@@ -350,7 +350,7 @@
 
 
                         <%--Accounts Payable--%>
-                        <li class="treeview <%= optaccoutspayment %>" style="border-top: 1px solid #dddddd;">
+                        <li class="hidden treeview <%= optaccoutspayment %>" style="border-top: 1px solid #dddddd;">
                             <a href="javascript:void(0)" class="waves-effect waves-dark">
                                 <i class="fa fa-lock text-red"></i><i class="fa fa-gear"></i>
                                 <span class="txtLabel">Accounts Payable</span>
@@ -394,7 +394,7 @@
 
 
                         <%--Accounts Receivable--%>
-                        <li class="treeview <%= optaccoutsreceivable %>" style="border-top: 1px solid #dddddd;">
+                        <li class="hidden treeview <%= optaccoutsreceivable %>" style="border-top: 1px solid #dddddd;">
                             <a href="javascript:void(0)">
                                 <i class="fa fa-lock text-red"></i><i class="fa fa-gear"></i>
                                 <span class="txtLabel">Accounts Receivable</span>
@@ -438,7 +438,7 @@
 
 
                         <%--Budget Controls--%>
-                        <li class="treeview <%= optbudgetcontrol %>" style="border-top: 1px solid #dddddd;">
+                        <li class="hidden treeview <%= optbudgetcontrol %>" style="border-top: 1px solid #dddddd;">
                             <a href="#">
                                 <i class="fa fa-lock text-red"></i><i class="fa fa-gear"></i>
                                 <span class="txtLabel">Budget Controls</span>
@@ -464,7 +464,7 @@
 
 
                         <%--Cheque and Bank--%>
-                        <li class="treeview <%= optchequerec %>" style="border-top: 1px solid #dddddd;">
+                        <li class="hidden treeview <%= optchequerec %>" style="border-top: 1px solid #dddddd;">
                             <a href="javascript:void(0)">
                                 <i class="fa fa-lock text-red"></i><i class="fa fa-gear"></i>
                                 <span class="txtLabel">Cheque and Bank</span>
@@ -519,7 +519,7 @@
                         </li>
 
                         <%--Financial Management--%>
-                        <li class="treeview <%= optfinancial %>" style="border-top: 1px solid #dddddd;">
+                        <li class="hidden treeview <%= optfinancial %>" style="border-top: 1px solid #dddddd;">
                             <a href="javascript:void(0)">
                                 <i class="fa fa-lock text-red"></i><i class="fa fa-gear"></i>
                                 <span class="txtLabel">Financial Management</span>
@@ -1413,6 +1413,33 @@
                     }]
                 })
                 
+                $('#tblgoodcodelist').DataTable({
+                    'iDisplayLength': 25,
+                    'paging': true,
+                    'scrollX': true,
+                    'lengthChange': true,
+                    'searching': true,
+                    'ordering': true,
+                    'info': true,
+                    'autoWidth': true,
+                    'columnDefs': [{
+                        targets: [0,1,3,7,9,19, 21,23,24,25,26], className: "hide_column"
+                    }]
+                })
+                
+                $('#tblsoapprovelist').DataTable({
+                    'iDisplayLength': 25,
+                    'paging': true,
+                    'scrollX': true,
+                    'lengthChange': true,
+                    'searching': true,
+                    'ordering': true,
+                    'info': true,
+                    'autoWidth': true,
+                    'columnDefs': [{
+                        targets: [0,1,4,8,9,10,11], className: "hide_column"
+                    }]
+                })
             })
         </script>
 
