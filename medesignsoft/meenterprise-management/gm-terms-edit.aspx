@@ -509,7 +509,7 @@
 
 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">ชื่อประเภทชำระเงิน (TH) <span id="errpaymentth" class="text-red txtLabel hidden">***</span></label>
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">ชื่อประเภทชำระเงิน (TH) <span id="errpaymentth" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
                                         <input type="text" id="txtpaymentdesc" class="form-control ">
                                     </div>
@@ -517,14 +517,14 @@
                                 </div>                               
 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">ชื่อประเภทชำระเงิน (EN)<span id="errpaymenten" class="text-red txtLabel hidden">***</span></label>
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">ชื่อประเภทชำระเงิน (EN)<span id="errpaymenten" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
                                         <input type="text" id="txtpaymentdesc2" class="form-control ">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">มีผลใช้งาน</label>
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">มีผลใช้งาน</label>
                                     <div class="col-sm-8">
                                         <span class="txtLabel " style="width: 100%">
                                             <select id="selectactive" class="form-control input-sm ">
@@ -534,7 +534,7 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">วันที่เริ่มใช้งาน</label>
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">วันที่เริ่มใช้งาน</label>
                                     <div class="col-sm-8 ">
                                         <div class="input-group date">
                                             <input type="text" class="form-control input-sm pull-left txtLabel" id="datestart" autocomplete="off">
@@ -546,7 +546,7 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">วันที่สิ้นสุด</label>
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">วันที่สิ้นสุด</label>
                                     <div class="col-sm-8 ">
                                         <div class="input-group date">
                                             <input type="text" class="form-control pull-right" id="datestop" autocomplete="off">

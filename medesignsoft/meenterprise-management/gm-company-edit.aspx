@@ -708,75 +708,75 @@
                                 <input type="hidden" id="hiddengid" class="form-control ">                                
 
                                 <div class="form-group row">
-                                <label class="col-sm-4 col-form-label txtLabel">รหัสบริษัทฯ <span id="errcomcode" class="text-red txtLabel hidden">***</span></label>
+                                <label class="col-sm-4 col-form-label txtLabel text-right">รหัสบริษัทฯ <span id="errcomcode" class="text-red txtLabel hidden">***</span></label>
                                 <div class="col-sm-8">                                   
                                     <input type="text" id="txtcomcode" class="form-control "> 
                                 </div>
                                 
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label txtLabel">ชื่อเต็มบริษัทฯ (ภาษาไทย)<span id="errfullnameth" class="text-red txtLabel hidden">***</span></label>
+                                <label class="col-sm-4 col-form-label txtLabel text-right">ชื่อเต็มบริษัทฯ (ภาษาไทย)<span id="errfullnameth" class="text-red txtLabel hidden">***</span></label>
                                 <div class="col-sm-8">
                                     <input type="text" id="txtfullnameth" class="form-control ">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label txtLabel">ชื่อเต็มบริษัทฯ (อังกฤษ)<span id="errfullnameeng" class="text-red txtLabel hidden">***</span></label>
+                                <label class="col-sm-4 col-form-label txtLabel text-right">ชื่อเต็มบริษัทฯ (อังกฤษ)<span id="errfullnameeng" class="text-red txtLabel hidden">***</span></label>
                                 <div class="col-sm-8">
                                     <input type="text" id="txtfullnameeng" class="form-control ">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label txtLabel">ชื่อย่อบริษัทฯ (ภาษาไทย)<span id="errshortnameth" class="text-red txtLabel hidden">***</span></label>
+                                <label class="col-sm-4 col-form-label txtLabel text-right">ชื่อย่อบริษัทฯ (ภาษาไทย)<span id="errshortnameth" class="text-red txtLabel hidden">***</span></label>
                                 <div class="col-sm-8">
                                     <input type="text" id="txtshortnameth" class="form-control ">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label txtLabel">ชื่อย่อบริษัทฯ (อังกฤษ)<span id="errshortnameeng" class="text-red txtLabel hidden">***</span></label>
+                                <label class="col-sm-4 col-form-label txtLabel text-right">ชื่อย่อบริษัทฯ (อังกฤษ)<span id="errshortnameeng" class="text-red txtLabel hidden">***</span></label>
                                 <div class="col-sm-8">
                                     <input type="text" id="txtshortnameeng" class="form-control ">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label txtLabel">ที่อยู่บริษัทฯ1 (ภาษาไทย)<span id="erraddressth1" class="text-red txtLabel hidden">***</span></label>
+                                <label class="col-sm-4 col-form-label txtLabel text-right">ที่อยู่บริษัทฯ1 (ภาษาไทย)<span id="erraddressth1" class="text-red txtLabel hidden">***</span></label>
                                 <div class="col-sm-8">
                                     <input type="text" id="txtaddressth1" class="form-control ">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label txtLabel">ที่อยู่บริษัทฯ2 (ภาษาไทย)</label>
+                                <label class="col-sm-4 col-form-label txtLabel text-right">ที่อยู่บริษัทฯ2 (ภาษาไทย)</label>
                                 <div class="col-sm-8">
                                     <input type="text" id="txtaddressth2" class="form-control ">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label txtLabel">ที่อยู่บริษัทฯ3 (ภาษาไทย)</label>
+                                <label class="col-sm-4 col-form-label txtLabel text-right">ที่อยู่บริษัทฯ3 (ภาษาไทย)</label>
                                 <div class="col-sm-8">
                                     <input type="text" id="txtaddressth3" class="form-control ">
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label txtLabel">ที่อยู่บริษัทฯ1 (ภาษาอังกฤษ)</label>
+                                <label class="col-sm-4 col-form-label txtLabel text-right">ที่อยู่บริษัทฯ1 (ภาษาอังกฤษ)</label>
                                 <div class="col-sm-8">
                                     <input type="text" id="txtaddressen1" class="form-control ">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label txtLabel">ที่อยู่บริษัทฯ2 (ภาษอังกฤษ)</label>
+                                <label class="col-sm-4 col-form-label txtLabel text-right">ที่อยู่บริษัทฯ2 (ภาษอังกฤษ)</label>
                                 <div class="col-sm-8">
                                     <input type="text" id="txtaddressen2" class="form-control ">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label txtLabel">ที่อยู่บริษัทฯ3 (ภาษาอังกฤษ)</label>
+                                <label class="col-sm-4 col-form-label txtLabel text-right">ที่อยู่บริษัทฯ3 (ภาษาอังกฤษ)</label>
                                 <div class="col-sm-8">
                                     <input type="text" id="txtaddressen3" class="form-control ">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label txtLabel">จังหวัด</label>
+                                <label class="col-sm-4 col-form-label txtLabel text-right">จังหวัด</label>
                                 <div class="col-sm-8">
                                     <span class="txtLabel " style="width: 100%">                                       
                                         <select id="selectprovince" class="form-control input-sm ">
@@ -786,13 +786,13 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label txtLabel">รหัสไปรษณีย์</label>
+                                <label class="col-sm-4 col-form-label txtLabel text-right">รหัสไปรษณีย์</label>
                                 <div class="col-sm-8">
                                     <input type="text" id="txtpostcode" class="form-control ">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label txtLabel">รหัสประเทศ</label>
+                                <label class="col-sm-4 col-form-label txtLabel text-right">รหัสประเทศ</label>
                                 <div class="col-sm-8">
                                     <span class="txtLabel " style="width: 100%">
                                         <select id="selectcountry" class="form-control input-sm ">
@@ -802,37 +802,37 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label txtLabel">เบอร์โทรศัทพ์</label>
+                                <label class="col-sm-4 col-form-label txtLabel text-right">เบอร์โทรศัทพ์</label>
                                 <div class="col-sm-8">
                                     <input type="text" id="txtphone" class="form-control ">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label txtLabel">เบอร์แฟกซ์</label>
+                                <label class="col-sm-4 col-form-label txtLabel text-right">เบอร์แฟกซ์</label>
                                 <div class="col-sm-8">
                                     <input type="text" id="txtfaxno" class="form-control ">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label txtLabel">อีเมล์</label>
+                                <label class="col-sm-4 col-form-label txtLabel text-right">อีเมล์</label>
                                 <div class="col-sm-8">
                                     <input type="text" id="txtemail" class="form-control ">
                                 </div>                                
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label txtLabel">ชื่อผู้ติดต่อ</label>
+                                <label class="col-sm-4 col-form-label txtLabel text-right">ชื่อผู้ติดต่อ</label>
                                 <div class="col-sm-8">
                                     <input type="text" id="txtcontact" class="form-control ">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label txtLabel">เลขที่ผู้เสียภาษี</label>
+                                <label class="col-sm-4 col-form-label txtLabel text-right">เลขที่ผู้เสียภาษี</label>
                                 <div class="col-sm-8">
                                     <input type="text" id="txttaxno" class="form-control ">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label txtLabel">มีผลใช้งาน</label>
+                                <label class="col-sm-4 col-form-label txtLabel text-right">มีผลใช้งาน</label>
                                 <div class="col-sm-8">
                                     <span class="txtLabel " style="width: 100%">
                                         <select id="selectactive" class="form-control input-sm ">                                           
@@ -843,7 +843,7 @@
                             </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">วันที่เริ่มใช้งาน</label>
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">วันที่เริ่มใช้งาน</label>
                                     <div class="col-sm-8 ">
                                         <div class="input-group date">
                                             <input type="text" class="form-control input-sm pull-left txtLabel" id="datestart">
@@ -855,7 +855,7 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">วันที่สิ้นสุด</label>
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">วันที่สิ้นสุด</label>
                                     <div class="col-sm-8 ">
                                         <div class="input-group date">
                                             <input type="text" class="form-control pull-right" id="datestop">

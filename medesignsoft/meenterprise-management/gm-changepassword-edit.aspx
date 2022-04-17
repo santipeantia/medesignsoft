@@ -568,7 +568,7 @@
                                 <input type="hidden" id="hiddengid" class="form-control ">
 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">ชื่อสาขา</label>
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">ชื่อสาขา</label>
                                     <div class="col-sm-8">
                                         <span class="txtLabel " style="width: 100%">
                                             <select id="selectbranch" class="form-control input-sm " disabled>
@@ -578,7 +578,7 @@
                                 </div>
 
                                  <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">รหัสพนักงาน gid <span id="erremployeesgid" class="text-red txtLabel hidden">***</span></label>
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">รหัสพนักงาน gid <span id="erremployeesgid" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
                                         <input type="text" id="txtemployeegid" class="form-control ">
                                     </div>
@@ -586,7 +586,7 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">รหัสพนักงาน <span id="erremployeescode" class="text-red txtLabel hidden">***</span></label>
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">รหัสพนักงาน <span id="erremployeescode" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
                                         <input type="text" id="txtemployeeid" class="form-control ">
                                     </div>
@@ -594,42 +594,42 @@
                                 </div>                               
 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">ชื่อพนักงาน<span id="erremployeename" class="text-red txtLabel hidden">***</span></label>
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">ชื่อพนักงาน<span id="erremployeename" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
                                         <input type="text" id="txtemployeename" class="form-control ">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">นามสกุล<span id="errlastname" class="text-red txtLabel hidden">***</span></label>
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">นามสกุล<span id="errlastname" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
                                         <input type="text" id="txtlastname" class="form-control ">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">ชื่อผู้เข้าใช้งาน<span id="errorusername" class="text-red txtLabel hidden">***</span></label>
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">ชื่อผู้เข้าใช้งาน<span id="errorusername" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
                                         <input type="text" id="txtusername" class="form-control ">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">รหัสผ่าน<span id="erruserpassword" class="text-red txtLabel hidden">***</span></label>
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">รหัสผ่าน<span id="erruserpassword" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
                                         <input type="password" id="txtuserpassword" maxlength="6" class="form-control ">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">ยืนยันรหัสผ่าน<span id="erruserpassword2" class="text-red txtLabel hidden">***</span></label>
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">ยืนยันรหัสผ่าน<span id="erruserpassword2" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
                                         <input type="password" id="txtuserpassword2" maxlength="6" class="form-control ">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">ประเภทผู้ใช้งาน</label>
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">ประเภทผู้ใช้งาน</label>
                                     <div class="col-sm-8">
                                         <span class="txtLabel " style="width: 100%">
                                             <select id="selectusertype" class="form-control input-sm ">

@@ -513,7 +513,7 @@
 
                                 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">กลุ่มสินค้า <span id="errwhid" class="text-red txtLabel hidden">***</span></label>
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">กลุ่มสินค้า <span id="errwhid" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
                                        <span class="txtLabel " style="width: 100%">
                                             <select id="selectgoodgroup" class="form-control input-sm " style="width: 100%" >
@@ -524,21 +524,21 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">รหัสรายการ <span id="errwhcode" class="text-red txtLabel hidden">***</span></label>
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">รหัสรายการ <span id="errwhcode" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
                                         <input type="text" id="txtGoodTypeCode" class="form-control ">
                                     </div>
 
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">ชื่อรายการ<span id="errwhdesc" class="text-red txtLabel hidden">***</span></label>
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">ชื่อรายการ<span id="errwhdesc" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
                                         <input type="text" id="txtGoodTypeDesc" class="form-control ">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">หมายเหตุ<span id="errremark" class="text-red txtLabel hidden">***</span></label>
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">หมายเหตุ<span id="errremark" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
 
                                         <textarea id="txtRemark" rows="3" class="form-control txtLabel"></textarea>

@@ -126,14 +126,14 @@
                                     </a>
                                 </div>
                                 <div class="col-md-2">
-                                    <a class="btn btn-app" href="so-approvelevel-setup.aspx?opt=optic" style="width: 100%">
+                                    <a class="btn btn-app" href="so-approvelevel-setup.aspx?opt=optso" style="width: 100%">
                                         <span class="badge bg-yellow">2</span>
                                         <i class="fa fa-server"></i><span class="txtLabel">กำหนดระดับการอนุมัติ</span>
                                     </a>
                                 </div>
                                 
                                 <div class="col-md-2">
-                                    <a class="btn btn-app" href="so-option-setup.aspx?opt=optso" style="width: 100%">
+                                    <a class="btn btn-app" href="so-option-setup.aspx?opt=optso&mod=edit" style="width: 100%">
                                         <span class="badge bg-yellow">3</span>
                                         <i class="fa fa-delicious"></i><span class="txtLabel">กำหนดเงื่อนไขการขาย</span>
                                     </a>

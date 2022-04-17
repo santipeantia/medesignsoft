@@ -72,6 +72,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="404.html" />
     <Content Include="alertifyjs\alertify.js" />
     <Content Include="alertifyjs\alertify.min.js" />
     <Content Include="alertifyjs\css\alertify.css" />
@@ -13533,7 +13534,11 @@
     <Content Include="meenterprise-management\ic-warehousezone-setup.aspx" />
     <Content Include="meenterprise-management\so-approval-edit.aspx" />
     <Content Include="meenterprise-management\so-approval-setup.aspx" />
+    <Content Include="meenterprise-management\so-approvelevel-edit.aspx" />
+    <Content Include="meenterprise-management\so-approvelevel-setup.aspx" />
+    <Content Include="meenterprise-management\so-option-setup.aspx" />
     <Content Include="meenterprise-management\so-setup.aspx" />
+    <Content Include="meenterprise-management\wh-setup.aspx" />
     <Content Include="pages\charts\chartjs.aspx" />
     <Content Include="pages\charts\chartjs.html" />
     <Content Include="pages\charts\flot.html" />
@@ -13729,7 +13734,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="cSOApproveList.cs" />
+    <Compile Include="meenterprise-management\cSOApproveLevelList.cs" />
+    <Compile Include="meenterprise-management\cSOOptionList.cs" />
+    <Compile Include="meenterprise-management\cSOApproveList.cs" />
+    <Compile Include="meenterprise-management\cSOLevelList.cs" />
     <Compile Include="ic-soapproval-setup.aspx.cs">
       <DependentUpon>ic-soapproval-setup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -14133,12 +14141,40 @@
     <Compile Include="meenterprise-management\so-approval-setup.aspx.designer.cs">
       <DependentUpon>so-approval-setup.aspx</DependentUpon>
     </Compile>
+    <Compile Include="meenterprise-management\so-approvelevel-edit.aspx.cs">
+      <DependentUpon>so-approvelevel-edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="meenterprise-management\so-approvelevel-edit.aspx.designer.cs">
+      <DependentUpon>so-approvelevel-edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="meenterprise-management\so-approvelevel-setup.aspx.cs">
+      <DependentUpon>so-approvelevel-setup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="meenterprise-management\so-approvelevel-setup.aspx.designer.cs">
+      <DependentUpon>so-approvelevel-setup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="meenterprise-management\so-option-setup.aspx.cs">
+      <DependentUpon>so-option-setup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="meenterprise-management\so-option-setup.aspx.designer.cs">
+      <DependentUpon>so-option-setup.aspx</DependentUpon>
+    </Compile>
     <Compile Include="meenterprise-management\so-setup.aspx.cs">
       <DependentUpon>so-setup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="meenterprise-management\so-setup.aspx.designer.cs">
       <DependentUpon>so-setup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="meenterprise-management\wh-setup.aspx.cs">
+      <DependentUpon>wh-setup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="meenterprise-management\wh-setup.aspx.designer.cs">
+      <DependentUpon>wh-setup.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\charts\chartjs.aspx.cs">
       <DependentUpon>chartjs.aspx</DependentUpon>

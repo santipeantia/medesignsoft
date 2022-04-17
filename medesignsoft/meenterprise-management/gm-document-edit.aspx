@@ -523,7 +523,7 @@
                                 <input type="hidden" id="hiddengid" class="form-control ">
 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">ชื่อสาขา</label>
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">ชื่อสาขา</label>
                                     <div class="col-sm-8">
                                         <span class="txtLabel " style="width: 100%">
                                             <select id="selectbranch" class="form-control input-sm readonly">
@@ -533,7 +533,7 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">รหัสเอกสาร <span id="errautoruncode" class="text-red txtLabel hidden">***</span></label>
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">รหัสเอกสาร <span id="errautoruncode" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
                                         <input type="text" id="txtAutoRunCode" class="form-control ">
                                     </div>
@@ -541,21 +541,21 @@
                                 </div>                               
 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">คำอธิบาย<span id="errautorundesc" class="text-red txtLabel hidden">***</span></label>
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">คำอธิบาย<span id="errautorundesc" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
                                         <input type="text" id="txtAutoRunDesc" class="form-control ">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">รูปแบบเอกสาร<span id="errautorunformat" class="text-red txtLabel hidden">***</span></label>
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">รูปแบบเอกสาร<span id="errautorunformat" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
                                         <input type="text" id="txtAutoRunFormat" class="form-control ">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">คำขึ้นต้นเอกสาร<span id="errautoruntitle" class="text-red txtLabel hidden">***</span></label>
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">คำขึ้นต้นเอกสาร<span id="errautoruntitle" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
                                         <input type="text" id="txtAutoRunTitle" class="form-control ">
                                     </div>
@@ -564,19 +564,19 @@
                                
 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">เลขที่ปีเอกสาร<span id="errautorunyear" class="text-red txtLabel hidden">***</span></label>
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">เลขที่ปีเอกสาร<span id="errautorunyear" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
                                         <input type="text" id="txtAutoRunYear" class="form-control ">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">อักษรขั้น<span id="errautorunsplit" class="text-red txtLabel hidden">***</span></label>
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">อักษรขั้น<span id="errautorunsplit" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
                                         <input type="text" id="txtAutoRunSplit" class="form-control ">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">เลขที่เอกสารล่าสุด<span id="errautorunno" class="text-red txtLabel hidden">***</span></label>
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">เลขที่เอกสารล่าสุด<span id="errautorunno" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
                                         <input type="text" id="txtAutoRunNo" class="form-control ">
                                     </div>

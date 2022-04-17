@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/medesignsoft.Master" AutoEventWireup="true" CodeBehind="so-approval-edit.aspx.cs" Inherits="medesignsoft.meenterprise_management.so_approval_edit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <section class="content-header">
+    <section class="content-header">
         <script src="https://smtpjs.com/v3/smtp.js"></script>
         <%--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>--%>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
@@ -97,17 +97,18 @@
                         }
                 });
 
-                getEmployeeUser();
+                var isPuased = 'true';
+
+                //getEmployeeUser();
                 //getEmployeeHead();
+                              
 
                 var param = getQueryStrings();
                 var gid = param["gid"];
                 var mod = param["mod"];
 
                 if (mod == 'new') {
-                    //alert('mode edit');
-
-                    //$('#selectcompany').prop('disabled', false);
+                    getEmployeeUser();
 
                     $('#btncancel').removeClass('hidden');
                     $('#btnsavenew').removeClass('hidden');
@@ -116,12 +117,20 @@
                 } else if (mod == 'edit') {
 
                     // $('#selectcompany').prop('disabled', true);
+                    (async () => {
+                        await getSOApprovebyid(gid);                        
+                    })();
 
                     $('#btncancel').removeClass('hidden');
                     $('#btnsavenew').addClass('hidden');
                     $('#btnsavechange').removeClass('hidden');
                     $('#btndelete').addClass('hidden');
                 } else if (mod == 'del') {
+
+                    (async () => {
+                        await getSOApprovebyid(gid);                        
+                    })();
+
                     $('#btncancel').removeClass('hidden');
                     $('#btnsavenew').addClass('hidden');
                     $('#btnsavechange').addClass('hidden');
@@ -133,11 +142,8 @@
                     $('#btndelete').addClass('hidden');
                 }
 
-                
 
-                if (mod == 'edit' || mod == 'del') {
-                    getSOApprovebyid(gid);
-                }
+
 
                 var employeeid = '<%= Session["imEmployeeGid"] %>';
 
@@ -158,8 +164,8 @@
 
                 var selectemployeeuser = $('#selectemployeeuser');
                 var selectemployeehead = $('#selectemployeehead');
-                function getEmployeeUser() {
-                    $.ajax({
+                async function getEmployeeUser() {
+                    const result = await $.ajax({
                         url: 'general-services.asmx/getEmployeesList',
                         method: 'post',
                         datatype: 'json',
@@ -175,10 +181,13 @@
 
                             $(data).each(function (index, item) {
                                 selectemployeeuser.append($('<option/>', { value: item.imEmployeeGid, text: item.FirstName + ' ' + item.LastName }));
-                                selectemployeehead.append($('<option/>', { value: item.imEmployeeGid, text: item.FirstName + ' ' +  item.LastName}));
+                                selectemployeehead.append($('<option/>', { value: item.imEmployeeGid, text: item.FirstName + ' ' + item.LastName }));
                             });
+
+                            //console.log(data);
                         }
                     });
+                    return result;
                 }
 
                 //var selectemployeehead = $('#selectemployeehead');
@@ -219,34 +228,44 @@
                     });
                 }
 
-                function getSOApprovebyid(gid) {
-                    $.ajax({
-                        url: 'general-services.asmx/getSOApprovalById',
-                        method: 'post',
-                        data: {
-                            gid: gid,
-                        },
-                        datatype: 'json',
-                        beforeSend: function () {
-                            $('#overlay').show();
-                        },
-                        success: function (data) {
-                            var obj = jQuery.parseJSON(JSON.stringify(data));
-                            if (obj != '') {
-                                $.each(obj, function (i, data) {
-                                    $('#hiddengid').val(data["SoApproveID"]);
-                                    $('#selectemployeeuser').val(data["imEmployeeGidU"]);
-                                    $('#selectemployeeuser').change();
-                                    $('#selectemployeehead').val(data["imEmployeeGidH"]);
-                                    $('#selectemployeehead').change();
-                                    $('#txtRemark').val(data["Remark"]);
-                                })
+                async function getSOApprovebyid(gid) {
+                    try {
+                        const res = await getEmployeeUser();
+                        
+                        $.ajax({
+                            url: 'general-services.asmx/getSOApprovalById',
+                            method: 'post',
+                            data: {
+                                gid: gid,
+                            },
+                            datatype: 'json',
+                            beforeSend: function () {
+                                $('#overlay').show();
+                            },
+                            success: function (data) {
+                                var obj = jQuery.parseJSON(JSON.stringify(data));
+                                if (obj != '') {
+                                    $.each(obj, function (i, data) {
+                                        $('#hiddengid').val(data["SoApproveID"]);
+                                        $('#selectemployeeuser').val(data["imEmployeeGidU"]);
+                                        $('#selectemployeeuser').change();
+                                        $('#selectemployeehead').val(data["imEmployeeGidH"]);
+                                        $('#selectemployeehead').change();
+                                        $('#txtRemark').val(data["Remark"]);
+                                    })                                    
+                                }
+
+                               
+                                setTimeout(function () {
+                                    $('#overlay').hide();
+                                   
+                                }, 600);
                             }
-                            setTimeout(function () {
-                                $('#overlay').hide();
-                            }, 600);
-                        }
-                    });
+                        });
+                    }
+                    catch (error) {
+                        console.log(error.message);
+                    }                 
                 }
 
                 function getQueryStrings() {
@@ -273,7 +292,7 @@
 
                 var btnreload = $('#btnreload');
                 btnreload.click(function () {
-                    getWerehousebyid(gid);
+                    getSOApprovebyid(gid);
                 });
 
                 //btnsavenew
@@ -503,7 +522,7 @@
             });
 
         </script>
-        <h1>Warehouse Edit <%--step 1 check pages content name--%>
+        <h1>SO Approval Edit <%--step 1 check pages content name--%>
             <small>Control panel</small>
         </h1>
     </section>
@@ -539,8 +558,8 @@
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label txtLabel text-right">พนักงานขาย <span id="erremployeeuser" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
-                                       <span class="txtLabel " style="width: 100%">
-                                            <select id="selectemployeeuser" class="form-control input-sm " style="width: 100%" >
+                                        <span class="txtLabel " style="width: 100%">
+                                            <select id="selectemployeeuser" class="form-control input-sm " style="width: 100%">
                                             </select>
                                         </span>
                                     </div>
@@ -549,8 +568,8 @@
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label txtLabel text-right">ชื่อผู้อนุมัติ <span id="erremployeehead" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
-                                       <span class="txtLabel " style="width: 100%">
-                                            <select id="selectemployeehead" class="form-control input-sm " style="width: 100%" >
+                                        <span class="txtLabel " style="width: 100%">
+                                            <select id="selectemployeehead" class="form-control input-sm " style="width: 100%">
                                             </select>
                                         </span>
                                     </div>
@@ -558,7 +577,7 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label txtLabel">หมายเหตุ<span id="errremark" class="text-red txtLabel hidden">***</span></label>
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">หมายเหตุ<span id="errremark" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
 
                                         <textarea id="txtRemark" rows="3" class="form-control txtLabel"></textarea>

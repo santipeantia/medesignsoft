@@ -2304,6 +2304,193 @@ namespace medesignsoft.meenterprise_management
             conn.CloseConn();
         }
 
+        [WebMethod]
+        public void getSoLevelList()
+        {
+            List<cSOLevelList> datas = new List<cSOLevelList>();
+            SqlCommand comm = new SqlCommand("spGetSOLevelList", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cSOLevelList data = new cSOLevelList();
+                data.SoLevelID = rdr["SoLevelID"].ToString();
+                data.SoLevelCode = rdr["SoLevelCode"].ToString();
+                data.SoLevelDesc = rdr["SoLevelDesc"].ToString();                
+                data.Remark = rdr["Remark"].ToString();
+                data.UserCreate = rdr["UserCreate"].ToString();
+                data.CreateDate = rdr["CreateDate"].ToString();
+                data.UserUpdate = rdr["UserUpdate"].ToString();
+                data.LasteDate = rdr["LasteDate"].ToString();
+                data.edit = rdr["edit"].ToString();
+                data.trash = rdr["trash"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        
+        [WebMethod]
+        public void getSoApprovalLevelList()
+        {
+            List<cSOApproveLevelList> datas = new List<cSOApproveLevelList>();
+            SqlCommand comm = new SqlCommand("spGetSOApprovalLevelList", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cSOApproveLevelList data = new cSOApproveLevelList();
+                
+                data.SoAppLevelID = rdr["SoAppLevelID"].ToString();
+                data.imEmployeeGid = rdr["imEmployeeGid"].ToString();
+                data.FullName = rdr["FullName"].ToString();
+                data.SoLevelID = rdr["SoLevelID"].ToString();
+                data.SoLevelCode = rdr["SoLevelCode"].ToString();
+                data.SoLevelDesc = rdr["SoLevelDesc"].ToString();
+                data.PositionName = rdr["PositionName"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                data.UserCreate = rdr["UserCreate"].ToString();
+                data.CreateDate = rdr["CreateDate"].ToString();
+                data.UserUpdate = rdr["UserUpdate"].ToString();
+                data.LasteDate = rdr["LasteDate"].ToString();
+                data.edit = rdr["edit"].ToString();
+                data.trash = rdr["trash"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getSOApprovalLevelById(string gid)
+        {
+            List<cSOApproveLevelList> datas = new List<cSOApproveLevelList>();
+            SqlCommand comm = new SqlCommand("spGetSOApprovalLevelById", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+            comm.Parameters.AddWithValue("@gid", gid);
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cSOApproveLevelList data = new cSOApproveLevelList();
+
+                data.SoAppLevelID = rdr["SoAppLevelID"].ToString();
+                data.imEmployeeGid = rdr["imEmployeeGid"].ToString();
+                data.FullName = rdr["FullName"].ToString();
+                data.SoLevelID = rdr["SoLevelID"].ToString();
+                data.SoLevelCode = rdr["SoLevelCode"].ToString();
+                data.SoLevelDesc = rdr["SoLevelDesc"].ToString();
+                data.PositionName = rdr["PositionName"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                data.UserCreate = rdr["UserCreate"].ToString();
+                data.CreateDate = rdr["CreateDate"].ToString();
+                data.UserUpdate = rdr["UserUpdate"].ToString();
+                data.LasteDate = rdr["LasteDate"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getSoApprovalLevelUpdateEntry(string acttrans, string gid, string SoAppLevelID, string imEmployeeGid, string SoLevelID, string Remark,
+            string UserCreate, string CreateDate, string UserUpdate, string LasteDate)
+        {
+            SqlCommand comm = new SqlCommand("spGetSOApprovalLevelUpdateEntry", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            comm.Parameters.AddWithValue("@acttrans", acttrans);
+            comm.Parameters.AddWithValue("@gid", gid);
+            comm.Parameters.AddWithValue("@SoAppLevelID", SoAppLevelID);
+            comm.Parameters.AddWithValue("@imEmployeeGid", imEmployeeGid);
+            comm.Parameters.AddWithValue("@SoLevelID", SoLevelID);
+            comm.Parameters.AddWithValue("@Remark", Remark);
+            comm.Parameters.AddWithValue("@UserCreate", UserCreate);
+            comm.Parameters.AddWithValue("@CreateDate", CreateDate);
+            comm.Parameters.AddWithValue("@UserUpdate", UserUpdate);
+            comm.Parameters.AddWithValue("@LasteDate", LasteDate);
+            comm.ExecuteNonQuery();
+            conn.CloseConn();
+        }
+
+        
+            [WebMethod]
+        public void getSOOptionList()
+        {
+            List<cSOOptionList> datas = new List<cSOOptionList>();
+            SqlCommand comm = new SqlCommand("spGetSOOptionList", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cSOOptionList data = new cSOOptionList();
+                data.SoOptionID = rdr["SoOptionID"].ToString();
+                data.QtoverCredit = rdr["QtoverCredit"].ToString();
+                data.ResoverCredit = rdr["ResoverCredit"].ToString();
+                data.SooverCredit = rdr["SooverCredit"].ToString();
+                data.AmountOverCredit = rdr["AmountOverCredit"].ToString();
+                data.SooverReserv = rdr["SooverReserv"].ToString();
+                data.AlertDeposit = rdr["AlertDeposit"].ToString();
+                data.ResoverQt = rdr["ResoverQt"].ToString();
+                data.SooverQuotation = rdr["SooverQuotation"].ToString();
+                data.StockoverSpend = rdr["StockoverSpend"].ToString();
+                data.QtacceptApproval = rdr["QtacceptApproval"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                data.UserCreate = rdr["UserCreate"].ToString();
+                data.CreateDate = rdr["CreateDate"].ToString();
+                data.UserUpdate = rdr["UserUpdate"].ToString();
+                data.LasteDate = rdr["LasteDate"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+        
+        [WebMethod]
+        public void getSoOptionUpdateEntry(string acttrans, string gid, string SoOptionID, string QtoverCredit, string ResoverCredit, string SooverCredit, string AmountOverCredit,
+            string SooverReserv, string AlertDeposit, string ResoverQt, string SooverQuotation, string StockoverSpend, string QtacceptApproval, string Remark,
+            string UserCreate, string CreateDate, string UserUpdate, string LasteDate)
+        {
+            SqlCommand comm = new SqlCommand("spGetSOOptionUpdateEntry", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            comm.Parameters.AddWithValue("@acttrans", acttrans);
+            comm.Parameters.AddWithValue("@gid", gid);
+            comm.Parameters.AddWithValue("@SoOptionID", SoOptionID);
+            comm.Parameters.AddWithValue("@QtoverCredit", QtoverCredit);
+            comm.Parameters.AddWithValue("@ResoverCredit", ResoverCredit);
+            comm.Parameters.AddWithValue("@SooverCredit", SooverCredit);
+            comm.Parameters.AddWithValue("@AmountOverCredit", AmountOverCredit);
+            comm.Parameters.AddWithValue("@SooverReserv", SooverReserv);
+            comm.Parameters.AddWithValue("@AlertDeposit", AlertDeposit);
+            comm.Parameters.AddWithValue("@ResoverQt", ResoverQt);
+            comm.Parameters.AddWithValue("@SooverQuotation", SooverQuotation);
+            comm.Parameters.AddWithValue("@StockoverSpend", StockoverSpend);
+            comm.Parameters.AddWithValue("@QtacceptApproval", QtacceptApproval);
+            comm.Parameters.AddWithValue("@Remark", Remark);
+            comm.Parameters.AddWithValue("@UserCreate", UserCreate);
+            comm.Parameters.AddWithValue("@CreateDate", CreateDate);
+            comm.Parameters.AddWithValue("@UserUpdate", UserUpdate);
+            comm.Parameters.AddWithValue("@LasteDate", LasteDate);
+            comm.ExecuteNonQuery();
+            conn.CloseConn();
+        }
 
     }
 }

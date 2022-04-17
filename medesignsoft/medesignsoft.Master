@@ -192,7 +192,7 @@
         <div class="wrapper">
             <header class="main-header">
                 <!-- Logo -->
-                <a href="../../woodden/index.aspx" class="logo">
+                <a href="http://medesignsoft.ddns.net/woodden/index.aspx" class="logo">
                     <%--<span class="logo-mini"><b><%=stradCompanyID %></span>
                     <span class="logo-lg"><b><%=stradCompanyID %></b></span>   --%>
                          <span class="pull-left">   <img src="../../woodden/image/Logo-woodden.png" class="user-image" alt="User Image" width="80" /></span>
@@ -272,7 +272,7 @@
                         <%--Enterprise Management--%>
                         <li class="treeview <%= optenterprise %>" style="border-top: 1px solid #dddddd;">
                             <a href="#!">
-                                <i class="fa fa-gear"></i>
+                                <i class="fa fa-gear text-green"></i>
                                 <span class="txtLabel">Enterprise Manager</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
@@ -330,7 +330,7 @@
                                 <li class="<%= optso %>">
                                     <a href="../../woodden/meenterprise-management/so-setup.aspx?opt=optso">
                                         <i class="fa fa-caret-right"></i>
-                                        <span class="txtLabel">SO Setup</span>
+                                        <span class="txtLabel <%= optso %>">SO Setup</span>
                                     </a>
                                 </li>
                                 <li class="<%= opttax %> hidden">
@@ -341,7 +341,7 @@
                                 </li>
                                 <li class="<%= optwh %>">
                                     <a href="../../woodden/meenterprise-management/wh-setup.aspx?opt=optwh">
-                                        <i class="fa fa-lock text-red"></i><i class="fa fa-caret-right"></i>
+                                        <i class="fa fa-caret-right"></i>
                                         <span class="txtLabel">WH Setup</span>
                                     </a>
                                 </li>
@@ -350,7 +350,7 @@
 
 
                         <%--Accounts Payable--%>
-                        <li class="hidden treeview <%= optaccoutspayment %>" style="border-top: 1px solid #dddddd;">
+                        <li class="treeview <%= optaccoutspayment %>" style="border-top: 1px solid #dddddd;">
                             <a href="javascript:void(0)" class="waves-effect waves-dark">
                                 <i class="fa fa-lock text-red"></i><i class="fa fa-gear"></i>
                                 <span class="txtLabel">Accounts Payable</span>
@@ -394,7 +394,7 @@
 
 
                         <%--Accounts Receivable--%>
-                        <li class="hidden treeview <%= optaccoutsreceivable %>" style="border-top: 1px solid #dddddd;">
+                        <li class="treeview <%= optaccoutsreceivable %>" style="border-top: 1px solid #dddddd;">
                             <a href="javascript:void(0)">
                                 <i class="fa fa-lock text-red"></i><i class="fa fa-gear"></i>
                                 <span class="txtLabel">Accounts Receivable</span>
@@ -438,7 +438,7 @@
 
 
                         <%--Budget Controls--%>
-                        <li class="hidden treeview <%= optbudgetcontrol %>" style="border-top: 1px solid #dddddd;">
+                        <li class="treeview <%= optbudgetcontrol %>" style="border-top: 1px solid #dddddd;">
                             <a href="#">
                                 <i class="fa fa-lock text-red"></i><i class="fa fa-gear"></i>
                                 <span class="txtLabel">Budget Controls</span>
@@ -464,7 +464,7 @@
 
 
                         <%--Cheque and Bank--%>
-                        <li class="hidden treeview <%= optchequerec %>" style="border-top: 1px solid #dddddd;">
+                        <li class="treeview <%= optchequerec %>" style="border-top: 1px solid #dddddd;">
                             <a href="javascript:void(0)">
                                 <i class="fa fa-lock text-red"></i><i class="fa fa-gear"></i>
                                 <span class="txtLabel">Cheque and Bank</span>
@@ -519,7 +519,7 @@
                         </li>
 
                         <%--Financial Management--%>
-                        <li class="hidden treeview <%= optfinancial %>" style="border-top: 1px solid #dddddd;">
+                        <li class="treeview <%= optfinancial %>" style="border-top: 1px solid #dddddd;">
                             <a href="javascript:void(0)">
                                 <i class="fa fa-lock text-red"></i><i class="fa fa-gear"></i>
                                 <span class="txtLabel">Financial Management</span>
@@ -584,7 +584,7 @@
                         <%--Inventory Controls--%>
                         <li class="treeview <%= optinventory %>" style="border-top: 1px solid #dddddd;">
                             <a href="#" class="waves-effect waves-dark">
-                                <i class="fa fa-lock text-red"></i><i class="fa fa-gear"></i>
+                                <i class="fa fa-gear text-green"></i>
                                 <span class="txtLabel">Inventory Controls</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
@@ -723,7 +723,7 @@
                         <%--Sales Order--%>
                         <li class="treeview <%= optsalesorder %>" style="border-top: 1px solid #dddddd;">
                             <a href="javascript:void(0)" class="waves-effect waves-dark">
-                                <i class="fa fa-gear"></i>
+                                <i class="fa fa-gear text-green"></i>
                                 <span class="txtLabel">Sales Order</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
@@ -767,7 +767,7 @@
                         <%--Messenger Management--%>
                         <li class="treeview <%= optmessanger %>" style="border-top: 1px solid #dddddd;">
                             <a href="javascript:void(0)" class="waves-effect waves-dark">
-                                <i class="fa fa-gear"></i>
+                                <i class="fa fa-lock text-red"></i><i class="fa fa-gear"></i>
                                 <span class="txtLabel">Messenger Management</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
@@ -811,7 +811,7 @@
                         <%--CRM System--%>
                         <li class="treeview <%= optcrmsys %>" style="border-top: 1px solid #dddddd;">
                             <a href="javascript:void(0)" class="waves-effect waves-dark">
-                                <i class="fa fa-gear"></i>
+                                <i class="fa fa-lock text-red"></i><i class="fa fa-gear"></i>
                                 <span class="txtLabel">CRM System</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
@@ -849,7 +849,7 @@
                         <%--Advance System--%>
                         <li class="treeview <%= optadvsys %>" style="border-top: 1px solid #dddddd;">
                             <a href="javascript:void(0)" class="waves-effect waves-dark">
-                                <i class="fa fa-gear"></i>
+                                <i class="fa fa-lock text-red"></i><i class="fa fa-gear"></i>
                                 <span class="txtLabel">Advance System</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
@@ -874,7 +874,7 @@
                         <%--Warehouse Management--%>
                         <li class="treeview <%= optwhms %>" style="border-top: 1px solid #dddddd;">
                             <a href="#" class="waves-effect waves-dark">
-                                <i class="fa fa-gear"></i>
+                                <i class="fa fa-gear text-green"></i>
                                 <span class="txtLabel">Warehouse Management</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
@@ -917,7 +917,7 @@
                         <%--Commission Management--%>
                         <li class="treeview" style="border-top: 1px solid #dddddd;">
                             <a href="javascript:void(0)">
-                                <i class="fa fa-gear"></i>
+                                <i class="fa fa-lock text-red"></i><i class="fa fa-gear"></i>
                                 <span class="txtLabel">Commission Management</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
@@ -949,7 +949,7 @@
                         <%--Documentation--%>
                         <li class=" " style="border-top: 1px solid #dddddd;">
                             <a href="#" target="_blank" class="waves-effect waves-dark">
-                                <i class="fa fa-gear"></i>
+                                <i class="fa fa-gear text-green"></i>
                                 <span class="txtLabel">Documentation</span>
 
                             </a>
@@ -958,7 +958,7 @@
                         <%--Need to support--%>
                         <li class="" style="border-top: 1px solid #dddddd;">
                             <a href="#" target="_blank" class="waves-effect waves-dark">
-                                <i class="fa fa-gear"></i>
+                                <i class="fa fa-gear text-green"></i>
                                 <span class="txtLabel">Need Support ?</span>
                             </a>
                         </li>
@@ -1438,6 +1438,20 @@
                     'autoWidth': true,
                     'columnDefs': [{
                         targets: [0,1,4,8,9,10,11], className: "hide_column"
+                    }]
+                })
+                
+                $('#tblsoapprovelevellist').DataTable({
+                    'iDisplayLength': 25,
+                    'paging': true,
+                    'scrollX': true,
+                    'lengthChange': true,
+                    'searching': true,
+                    'ordering': true,
+                    'info': true,
+                    'autoWidth': true,
+                    'columnDefs': [{
+                        targets: [0,1,3,4,8,9,10,11], className: "hide_column"
                     }]
                 })
             })
