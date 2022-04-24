@@ -801,7 +801,7 @@
 
         </script>
 
-        <h1>General Setup <%--step 1 check pages content name--%>
+        <h1>Employee Edit <%--step 1 check pages content name--%>
             <small>Control panel</small>
         </h1>
     </section>

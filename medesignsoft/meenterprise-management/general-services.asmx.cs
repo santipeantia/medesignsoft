@@ -2426,7 +2426,7 @@ namespace medesignsoft.meenterprise_management
         }
 
         
-            [WebMethod]
+        [WebMethod]
         public void getSOOptionList()
         {
             List<cSOOptionList> datas = new List<cSOOptionList>();
@@ -2491,6 +2491,252 @@ namespace medesignsoft.meenterprise_management
             comm.ExecuteNonQuery();
             conn.CloseConn();
         }
+        
+        [WebMethod]
+        public void getSoCreditApprovalList()
+        {
+            List<cSOCreditApprovalList> datas = new List<cSOCreditApprovalList>();
+            SqlCommand comm = new SqlCommand("spGetSOCreditApproveList", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
 
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cSOCreditApprovalList data = new cSOCreditApprovalList();
+                data.SoAppCreditID = rdr["SoAppCreditID"].ToString();
+                data.imEmployeeGid = rdr["imEmployeeGid"].ToString();
+                data.FullName = rdr["FullName"].ToString();
+                data.PositionName = rdr["PositionName"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                data.UserCreate = rdr["UserCreate"].ToString();
+                data.CreateDate = rdr["CreateDate"].ToString();
+                data.UserUpdate = rdr["UserUpdate"].ToString();
+                data.LasteDate = rdr["LasteDate"].ToString();
+                data.edit = rdr["edit"].ToString();
+                data.trash = rdr["trash"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+                
+        [WebMethod]
+        public void getSOCreditApproveById(string gid)
+        {
+            List<cSOCreditApprovalList> datas = new List<cSOCreditApprovalList>();
+            SqlCommand comm = new SqlCommand("spGetSOCreditApproveById", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+            comm.Parameters.AddWithValue("@gid", gid);
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cSOCreditApprovalList data = new cSOCreditApprovalList();
+                data.SoAppCreditID = rdr["SoAppCreditID"].ToString();
+                data.imEmployeeGid = rdr["imEmployeeGid"].ToString();
+                data.FullName = rdr["FullName"].ToString();
+                data.PositionName = rdr["PositionName"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                data.UserCreate = rdr["UserCreate"].ToString();
+                data.CreateDate = rdr["CreateDate"].ToString();
+                data.UserUpdate = rdr["UserUpdate"].ToString();
+                data.LasteDate = rdr["LasteDate"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getSoCreditApprovalUpdateEntry(string acttrans, string gid, string SoAppCreditID, string imEmployeeGid,  string Remark,
+           string UserCreate, string CreateDate, string UserUpdate, string LasteDate)
+        {
+            SqlCommand comm = new SqlCommand("spGetSOCreditApprovalUpdateEntry", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            comm.Parameters.AddWithValue("@acttrans", acttrans);
+            comm.Parameters.AddWithValue("@gid", gid);
+            comm.Parameters.AddWithValue("@SoAppCreditID", SoAppCreditID);
+            comm.Parameters.AddWithValue("@imEmployeeGid", imEmployeeGid);
+            comm.Parameters.AddWithValue("@Remark", Remark);
+            comm.Parameters.AddWithValue("@UserCreate", UserCreate);
+            comm.Parameters.AddWithValue("@CreateDate", CreateDate);
+            comm.Parameters.AddWithValue("@UserUpdate", UserUpdate);
+            comm.Parameters.AddWithValue("@LasteDate", LasteDate);
+            comm.ExecuteNonQuery();
+            conn.CloseConn();
+        }
+                
+        [WebMethod]
+        public void getVendorCreditList()
+        {
+            List<cVendorList> datas = new List<cVendorList>();
+            SqlCommand comm = new SqlCommand("spGetVendorCreditList", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cVendorList data = new cVendorList();
+                data.VendorID = rdr["VendorID"].ToString();
+                data.VendorCode = rdr["VendorCode"].ToString();
+                data.VendorName = rdr["VendorName"].ToString();
+                data.VendorNameEng = rdr["VendorNameEng"].ToString();
+                data.VendorAddr1 = rdr["VendorAddr1"].ToString();
+                data.ProvinceName = rdr["ProvinceName"].ToString();
+                data.CreditDays = rdr["CreditDays"].ToString();
+                data.CreditAmnt = rdr["CreditAmnt"].ToString();
+                data.CreditBalance = rdr["CreditBalance"].ToString();
+                data.edit = rdr["edit"].ToString();                
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getVendorCreditUpdateEntry(string gid, string CreditDays, string CreditAmnt, string CreditBalance) {
+            SqlCommand comm = new SqlCommand("spGetVendorCreditUpdateEntry", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            comm.Parameters.AddWithValue("@gid", gid);
+            comm.Parameters.AddWithValue("@CreditDays", CreditDays);
+            comm.Parameters.AddWithValue("@CreditAmnt",  CreditAmnt.Replace(",","") );
+            comm.Parameters.AddWithValue("@CreditBalance", CreditBalance.Replace(",",""));
+            comm.ExecuteNonQuery();
+            conn.CloseConn();
+        }
+                
+        [WebMethod]
+        public void getGoodCodeStockList()
+        {
+            List<cGoodCodeStockList> datas = new List<cGoodCodeStockList>();
+            SqlCommand comm = new SqlCommand("spGetGoodCodeStockList", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cGoodCodeStockList data = new cGoodCodeStockList();
+                data.Gid = rdr["Gid"].ToString();
+                data.imBranchGid = rdr["imBranchGid"].ToString();
+                data.BranchName = rdr["BranchName"].ToString();
+                data.WhID = rdr["WhID"].ToString();
+                data.WhDesc = rdr["WhDesc"].ToString();
+                data.WhZoneID = rdr["WhZoneID"].ToString();
+                data.WhZoneDesc = rdr["WhZoneDesc"].ToString();
+                data.GoodGroupID = rdr["GoodGroupID"].ToString();
+                data.GoodGroupDesc = rdr["GoodGroupDesc"].ToString();
+                data.GoodTypeID = rdr["GoodTypeID"].ToString();
+                data.GoodTypeDesc = rdr["GoodTypeDesc"].ToString();
+
+                data.GoodCodeID = rdr["GoodCodeID"].ToString();
+                data.GoodCode = rdr["GoodCode"].ToString();
+                data.GoodName = rdr["GoodName"].ToString();
+                data.GoodUnitID = rdr["GoodUnitID"].ToString();
+                data.GoodUnitDesc = rdr["GoodUnitDesc"].ToString();
+                data.ControlNo = rdr["ControlNo"].ToString();
+                data.LotNo = rdr["LotNo"].ToString();
+                data.AdjustQty = rdr["AdjustQty"].ToString();
+                data.QCQty = rdr["QCQty"].ToString();
+                data.InvQty = rdr["InvQty"].ToString();
+                data.OrderQty = rdr["OrderQty"].ToString();
+                data.BorrowQty = rdr["BorrowQty"].ToString();
+                data.ReserveQty = rdr["ReserveQty"].ToString();
+                data.DestroyQty = rdr["DestroyQty"].ToString();
+                data.RepairQty = rdr["RepairQty"].ToString();
+                data.ReturnQty = rdr["ReturnQty"].ToString();
+                data.CNQty = rdr["CNQty"].ToString();
+                data.PurCost = rdr["PurCost"].ToString();
+                data.AddCost1 = rdr["AddCost1"].ToString();
+                data.AddCost2 = rdr["AddCost2"].ToString();
+                data.AddCost3 = rdr["AddCost3"].ToString();
+                data.UnitCost = rdr["UnitCost"].ToString();
+                data.AVCost = rdr["AVCost"].ToString();
+                data.AVCost2 = rdr["AVCost2"].ToString();
+                data.MinimumPrice = rdr["MinimumPrice"].ToString();
+                data.MaximumPrice = rdr["MaximumPrice"].ToString();
+                data.UnitPrice = rdr["UnitPrice"].ToString();
+                data.DiscPercent = rdr["DiscPercent"].ToString();
+                data.DiscCash = rdr["DiscCash"].ToString();
+                data.NetPrice = rdr["NetPrice"].ToString();
+                data.ReceiveDate = rdr["ReceiveDate"].ToString();
+                data.ExpiredDate = rdr["ExpiredDate"].ToString();
+                data.UserCreate = rdr["UserCreate"].ToString();
+                data.CreateDate = rdr["CreateDate"].ToString();
+                data.UserUpdate = rdr["UserUpdate"].ToString();
+                data.LasteDate = rdr["LasteDate"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                data.edit = rdr["edit"].ToString();
+                data.trash = rdr["trash"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getGoodCodeBeginStockUpdateEntry(string acttrans, string gid, string imBranchGid, string WhID, string WhZoneID, string GoodGroupID, string GoodCodeID, string ControlNo, string LotNo,
+                            string AdjustQty, string QCQty, string InvQty, string OrderQty, string BorrowQty, string ReserveQty, string DestroyQty, string RepairQty, string ReturnQty, string CNQty,
+                            string PurCost, string AddCost1, string AddCost2, string AddCost3, string UnitCost, string AVCost, string AVCost2, string MinimumPrice, string MaximumPrice,
+                            string UnitPrice, string DiscPercent, string DiscCash, string NetPrice, string ReceiveDate, string ExpiredDate, string UserCreate, string CreateDate, 
+                            string UserUpdate, string LasteDate, string Remark) {
+            SqlCommand comm = new SqlCommand("spGetGoodCodeBeginStockUpdateEntry", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+            
+            comm.Parameters.AddWithValue("@acttrans", acttrans);
+            comm.Parameters.AddWithValue("@gid", gid);
+            comm.Parameters.AddWithValue("@imBranchGid", imBranchGid);
+            comm.Parameters.AddWithValue("@WhID", WhID);
+            comm.Parameters.AddWithValue("@WhZoneID", WhZoneID);
+            comm.Parameters.AddWithValue("@GoodGroupID", GoodGroupID);
+            comm.Parameters.AddWithValue("@GoodCodeID", GoodCodeID);
+            comm.Parameters.AddWithValue("@ControlNo", ControlNo);
+            comm.Parameters.AddWithValue("@LotNo", LotNo);
+            comm.Parameters.AddWithValue("@AdjustQty", AdjustQty);
+            comm.Parameters.AddWithValue("@QCQty", QCQty);
+            comm.Parameters.AddWithValue("@InvQty", InvQty);
+            comm.Parameters.AddWithValue("@OrderQty", OrderQty);
+            comm.Parameters.AddWithValue("@BorrowQty", BorrowQty);
+            comm.Parameters.AddWithValue("@ReserveQty", ReserveQty);
+            comm.Parameters.AddWithValue("@DestroyQty", DestroyQty);
+            comm.Parameters.AddWithValue("@RepairQty", RepairQty);
+            comm.Parameters.AddWithValue("@ReturnQty", ReturnQty);
+            comm.Parameters.AddWithValue("@CNQty", CNQty);
+            comm.Parameters.AddWithValue("@PurCost", PurCost);
+            comm.Parameters.AddWithValue("@AddCost1", AddCost1);
+            comm.Parameters.AddWithValue("@AddCost2", AddCost2);
+            comm.Parameters.AddWithValue("@AddCost3", AddCost3);
+            comm.Parameters.AddWithValue("@UnitCost", UnitCost);
+            comm.Parameters.AddWithValue("@AVCost", AVCost);
+            comm.Parameters.AddWithValue("@AVCost2", AVCost2);
+            comm.Parameters.AddWithValue("@MinimumPrice", MinimumPrice);
+            comm.Parameters.AddWithValue("@MaximumPrice", MaximumPrice);
+            comm.Parameters.AddWithValue("@UnitPrice", UnitPrice);
+            comm.Parameters.AddWithValue("@DiscPercent", DiscPercent);
+            comm.Parameters.AddWithValue("@DiscCash", DiscCash);
+            comm.Parameters.AddWithValue("@NetPrice", NetPrice);
+            comm.Parameters.AddWithValue("@ReceiveDate", ReceiveDate);
+            comm.Parameters.AddWithValue("@ExpiredDate", ExpiredDate);
+            comm.Parameters.AddWithValue("@UserCreate", UserCreate);
+            comm.Parameters.AddWithValue("@CreateDate", CreateDate);
+            comm.Parameters.AddWithValue("@UserUpdate", UserUpdate);
+            comm.Parameters.AddWithValue("@LasteDate", LasteDate);
+            comm.Parameters.AddWithValue("@Remark", Remark);
+            comm.ExecuteNonQuery();
+            conn.CloseConn();
+        }
     }
 }

@@ -173,15 +173,15 @@
 
                                 //console.log(gid.text());
                                 if (rIndex != 0 & cIndex == 42) {
-                                    window.location.href = "gm-employees-edit.aspx?opt=optic&mod=edit&gid=" + gid.text();
+                                    window.location.href = "gm-employees-edit.aspx?opt=optgen&mod=edit&gid=" + gid.text();
                                 }
 
                                 if (rIndex != 0 & cIndex == 43) {
-                                    window.location.href = "gm-employees-edit.aspx?opt=optic&mod=del&gid=" + gid.text();
+                                    window.location.href = "gm-employees-edit.aspx?opt=optgen&mod=del&gid=" + gid.text();
                                 }
 
                                 if (rIndex != 0 & cIndex == 44) {
-                                    window.location.href = "gm-changepassword-edit.aspx?opt=optic&mod=edit&gid=" + gid.text();
+                                    window.location.href = "gm-changepassword-edit.aspx?opt=optgen&mod=edit&gid=" + gid.text();
                                 }
                             });
                         }
@@ -197,7 +197,7 @@
 
         </script>
 
-        <h1>General Setup <%--step 1 check pages content name--%>
+        <h1>Employee Setup <%--step 1 check pages content name--%>
             <small>Control panel</small>
         </h1>
     </section>

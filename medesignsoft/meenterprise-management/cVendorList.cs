@@ -50,6 +50,7 @@ namespace medesignsoft
         public string BranchName { get; set; }
         public string CreditDays { get; set; }
         public string CreditAmnt { get; set; }
+        public string CreditBalance { get; set; }
         public string CreatedBy { get; set; }
         public string CreatedDate { get; set; }
         public string UpdatedBy { get; set; }

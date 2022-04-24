@@ -742,7 +742,6 @@
                 function getvalidatefield() {
                     var gid = $('#hiddengid').val();
 
-
                     if (mod == 'edit' && gid == '') {
                         Swal.fire({
                             position: 'center',
@@ -768,6 +767,7 @@
                     }
                 }
 
+                
 
             })
 
@@ -938,11 +938,11 @@
                                  <div class="form-group row">
                                     <label class="col-sm-4 col-form-label txtLabel text-right">ระยะเวลา / วงเงินเครดิต<span id="errCreditDays" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-4">
-                                        <input type="text" id="txtCreditDays" class="form-control ">
+                                        <input type="text" id="txtCreditDays" class="form-control " disabled>
                                     </div>
 
                                     <div class="col-sm-4">
-                                        <input type="text" id="txtCreditAmnt" class="form-control ">
+                                        <input type="text" id="txtCreditAmnt" class="form-control " disabled>
                                     </div>
 
                                 </div>
