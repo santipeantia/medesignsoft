@@ -54,7 +54,7 @@
     <link href="../../woodden/alertifyjs/css/themes/semantic.min.css" rel="stylesheet" />
     <link href="../../woodden/alertifyjs/css/themes/semantic.rtl.css" rel="stylesheet" />
     <link href="../../woodden/alertifyjs/css/themes/semantic.rtl.min.css" rel="stylesheet" />
-
+    <link href="../../woodden/bower_components/bootstrap/dist/css/button-outline.css" rel="stylesheet" />
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -65,6 +65,14 @@
             font-family: 'Athiti', sans-serif;
             font-size: 15px;
             font-weight: normal;
+        }
+
+        .txtLabelFooter 
+        {
+            font-family: 'Athiti', sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            color: #808080;
         }
 
         .table-condensed {
@@ -737,7 +745,7 @@
                                 <li class="<%= optsoe %>">
                                     <a href="../../woodden/mesales-order/so-entry.aspx?opt=optsoe">
                                         <i class="fa fa-caret-right"></i>
-                                        <span class="txtLabel">SO Data Entry</span>
+                                        <span class="txtLabel <%= optsoe %>">SO Data Entry</span>
                                     </a>
                                 </li>
                                 <li class="<%= optsoc %>">
@@ -749,7 +757,7 @@
                                 <li class="<%= optsor %>">
                                     <a href="../../woodden/mesales-order/so-report.aspx?opt=optsor">
                                         <i class="fa fa-caret-right"></i>
-                                        <span class="txtLabel">SO Reports</span>
+                                        <span class="txtLabel  <%= optsor %>">SO Reports</span>
                                     </a>
                                 </li>
                                 <li class="<%= optsoa %>">
@@ -1514,6 +1522,39 @@
                     'columnDefs': [{
                         targets: [0,1,3,5,7,9,11,14,18,19,21,22,23,24,25,26,27,29,30,31,32,33,34,35,36,38,39,40,41,42,43,44,45,46], className: "hide_column"
                     }]
+                })
+
+                $('#tblsoquotationlist').DataTable({
+                    'iDisplayLength': 25,
+                    'paging': true,
+                    'scrollX': true,
+                    'lengthChange': true,
+                    'searching': true,
+                    'ordering': true,
+                    'info': true,
+                    'autoWidth': false,
+                    'columnDefs': [{
+                        targets: [0, 1, 4, 6, 7, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 26, 27, 28, 29, 30, 31, 32, 33, 35, 36, 37, 38, 39, 40, 41, 43, 44, 45, 46, 47, 48], className: "hide_column"
+                    },
+                    {
+                        render: function (data, type, full, meta) {
+                            return "<div id='dvNotes' style='white-space: normal;width: 300px;'>" + data + "</div>";
+                        },
+                        targets: 5
+                    }
+                    ]
+                })
+
+                
+                $('#tblsoquotationitem').DataTable({
+                    //'iDisplayLength': 25,
+                    'paging': false,
+                    'scrollX': true,
+                    'lengthChange': true,
+                    'searching': false,
+                    'ordering': false,
+                    'info': true,
+                    'autoWidth': true
                 })
                 
             })

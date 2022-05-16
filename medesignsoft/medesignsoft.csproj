@@ -7237,6 +7237,7 @@
     <Content Include="bower_components\bootstrap\dist\css\bootstrap-theme.min.css" />
     <Content Include="bower_components\bootstrap\dist\css\bootstrap.css" />
     <Content Include="bower_components\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="bower_components\bootstrap\dist\css\button-outline.css" />
     <Content Include="bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="bower_components\bootstrap\dist\js\bootstrap.js" />
     <Content Include="bower_components\bootstrap\dist\js\bootstrap.min.js" />
@@ -13469,7 +13470,7 @@
     <Content Include="documentation\style.css" />
     <Content Include="errorpage.aspx" />
     <Content Include="Favicon.ico" />
-    <Content Include="ic-soapproval-setup.aspx" />
+    <Content Include="meenterprise-management\ic-soapproval-setup.aspx" />
     <Content Include="icon.ico" />
     <Content Include="image\accepted.png" />
     <Content Include="image\arrow_green.jpg" />
@@ -13542,6 +13543,11 @@
     <Content Include="meenterprise-management\so-setup.aspx" />
     <Content Include="meenterprise-management\wh-beginstock-setup.aspx" />
     <Content Include="meenterprise-management\wh-setup.aspx" />
+    <Content Include="mesales-order\saleorder-services.asmx" />
+    <Content Include="mesales-order\so-entry.aspx" />
+    <Content Include="mesales-order\so-quotation-edit.aspx" />
+    <Content Include="mesales-order\so-quotation-view.aspx" />
+    <Content Include="mesales-order\so-report.aspx" />
     <Content Include="pages\charts\chartjs.aspx" />
     <Content Include="pages\charts\chartjs.html" />
     <Content Include="pages\charts\flot.html" />
@@ -13737,17 +13743,19 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\bahttext.cs" />
+    <Compile Include="mesales-order\cQuotationList.cs" />
     <Compile Include="meenterprise-management\cGoodCodeStockList.cs" />
     <Compile Include="meenterprise-management\cSOCreditApprovalList.cs" />
     <Compile Include="meenterprise-management\cSOApproveLevelList.cs" />
     <Compile Include="meenterprise-management\cSOOptionList.cs" />
     <Compile Include="meenterprise-management\cSOApproveList.cs" />
     <Compile Include="meenterprise-management\cSOLevelList.cs" />
-    <Compile Include="ic-soapproval-setup.aspx.cs">
+    <Compile Include="meenterprise-management\ic-soapproval-setup.aspx.cs">
       <DependentUpon>ic-soapproval-setup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ic-soapproval-setup.aspx.designer.cs">
+    <Compile Include="meenterprise-management\ic-soapproval-setup.aspx.designer.cs">
       <DependentUpon>ic-soapproval-setup.aspx</DependentUpon>
     </Compile>
     <Compile Include="meenterprise-management\cGoodCodeList.cs" />
@@ -14201,6 +14209,38 @@
     </Compile>
     <Compile Include="meenterprise-management\wh-setup.aspx.designer.cs">
       <DependentUpon>wh-setup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mesales-order\saleorder-services.asmx.cs">
+      <DependentUpon>saleorder-services.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="mesales-order\so-entry.aspx.cs">
+      <DependentUpon>so-entry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mesales-order\so-entry.aspx.designer.cs">
+      <DependentUpon>so-entry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mesales-order\so-quotation-edit.aspx.cs">
+      <DependentUpon>so-quotation-edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mesales-order\so-quotation-edit.aspx.designer.cs">
+      <DependentUpon>so-quotation-edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mesales-order\so-quotation-view.aspx.cs">
+      <DependentUpon>so-quotation-view.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mesales-order\so-quotation-view.aspx.designer.cs">
+      <DependentUpon>so-quotation-view.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mesales-order\so-report.aspx.cs">
+      <DependentUpon>so-report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mesales-order\so-report.aspx.designer.cs">
+      <DependentUpon>so-report.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\charts\chartjs.aspx.cs">
       <DependentUpon>chartjs.aspx</DependentUpon>
