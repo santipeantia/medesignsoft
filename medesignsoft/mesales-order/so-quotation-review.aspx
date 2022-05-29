@@ -1,7 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/medesignsoft.Master" AutoEventWireup="true" CodeBehind="so-quotation-edit.aspx.cs" Inherits="medesignsoft.mesales_order.so_quotation_edit" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/medesignsoft.Master" AutoEventWireup="true" CodeBehind="so-quotation-review.aspx.cs" Inherits="medesignsoft.mesales_order.so_quotation_review" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <section class="content-header">
+      <section class="content-header">
         <script src="https://smtpjs.com/v3/smtp.js"></script>
         <%--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>--%>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
@@ -123,7 +122,7 @@
 
                 var btncancel = $('#btncancel');
                 btncancel.click(function () {
-                    window.location.href = "so-quotation-view.aspx?opt=optsoe";
+                    window.location.href = "so-calendar.aspx?opt=optsoc";
                 })
 
 
@@ -149,6 +148,7 @@
                         getApprovalLevelList();
                         getGoodCodeSelectList();
                         getSourceList();
+                        getFlagStatuslList();
                     }, 3000);
                                        
 
@@ -180,6 +180,7 @@
                     getApprovalLevelList();
                     getGoodCodeSelectList();
                     getSourceList();
+                    getFlagStatuslList();
 
 
                     setTimeout(function () {
@@ -200,15 +201,20 @@
                     $('#btncancel').attr("disabled", false);
                     $('#btnprint').attr("disabled", false);
 
+                    
+                    $('#btnconfirm').attr("disabled", false);
+
                     $('#btnsendmail').attr("disabled", false);
+                    $('#btnsendmail').addClass('hidden');
 
                     $('#btnsavedoc').attr("disabled", true);
                     $('#btnsavedoc').addClass('hidden');
 
                     $('#btnupdatedoc').attr("disabled", false);  
-                    $('#btnupdatedoc').removeClass('hidden');
+                    $('#btnupdatedoc').addClass('hidden');
 
                     $('#btndeldoc').attr("disabled", false);
+                    $('#btndeldoc').addClass('hidden');
 
                 } else if (mod == 'del') {
 
@@ -221,6 +227,7 @@
                     getApprovalLevelList();
                     getGoodCodeSelectList();
                     getSourceList();
+                    getFlagStatuslList();
 
 
                     setTimeout(function () {
@@ -239,15 +246,19 @@
                     $('#btncancel').attr("disabled", false);
                     $('#btnprint').attr("disabled", false);
 
+                    $('#btnconfirm').attr("disabled", false);
+
                     $('#btnsendmail').attr("disabled", false);
+                    $('#btnsendmail').addClass('hidden');
 
                     $('#btnsavedoc').attr("disabled", true);
                     $('#btnsavedoc').addClass('hidden');
 
                     $('#btnupdatedoc').attr("disabled", false);  
-                    $('#btnupdatedoc').removeClass('hidden');
+                    $('#btnupdatedoc').addClass('hidden');
 
                     $('#btndeldoc').attr("disabled", false);
+                    $('#btndeldoc').addClass('hidden');
                 } else {
 
 
@@ -416,6 +427,29 @@
                     });
                     return result;
                 };
+
+
+                var selectflagstatus = $('#selectflagstatus');
+                async function getFlagStatuslList() {
+                    var result = await $.ajax({
+                        url: '../meenterprise-management/general-services.asmx/getFlagStatus',
+                        method: 'post',
+                        datatype: 'json',
+                        beforeSend: function () {
+
+                        },
+                        success: function (data) {
+                            selectflagstatus.empty();
+                            selectapproval.append($('<option/>', { value: -1, text: 'กรุณาระบุสถานะรายการ' }));
+                            $(data).each(function (index, item) {
+                                selectflagstatus.append($('<option/>', { value: item.FlagID, text: item.FlagDesc }));
+                            });
+                        }
+                    });
+                    return result;
+                };
+
+
 
                 function getGoodCodeSelectList() {
                    $.ajax({
@@ -675,12 +709,14 @@
                                         $('#selectapproval').change();
 
                                         var flagid = data["FlagID"];
-                                        $('#hidflagid').val(flagid);
 
                                         if ((flagid == '3004') || (flagid == '3005')) {
                                             $('#docuno').addClass("text-red");
                                             $('#docstatus').addClass("text-red");
                                         }
+
+                                        $('#selectflagstatus').val(flagid);
+                                        $('#selectflagstatus').change();
 
                                         $('#txtamount').val(data["TotalAmount"]);
                                         $('#txtdispercenct').val(data["DiscPercent"]);
@@ -790,31 +826,14 @@
 
                                     }
                                     if (rIndex != 0 & cIndex == 27) {
-                                        
                                         console.log(gid.text());
-
-                                        $('#hidgid').val(gid.text());
-                                        $('#txtno').val(no.text());
-                                        $('#txtgroup').val(group.text());
-                                        $('#txtgoodcode').val(goodcode.text());
-                                        $('#txtgoodname').val(goodname.text());
-
-                                        $('#txtunit').val(unit.text().replace(',', ''));
-
-                                        $('#txtquantity').val(quantity.text().replace(',',''));
-                                        $('#txtunitprice').val(unitprice.text().replace(',',''));
-                                        $('#txtitemamount').val(amount.text().replace(',',''));
-                                        $('#txtitemdiscount').val(discount.text().replace(',',''));
-                                        $('#txtitemtotalamount').val(amountafterdisc.text().replace(',',''));
-                                        $('#txtitemremark').val(remark.text());
-
-
-                                        $("#modaledititem").modal({ backdrop: false });
-                                        $('#modaledititem').modal('show');
-
                                     }
 
+
+
                                 });
+
+
                             }
                         });
 
@@ -915,6 +934,8 @@
                         )
                         return;
                     }
+
+                   
 
                     var contacttel = $('#contacttel').val();
                     if (contacttel == '') {
@@ -1051,16 +1072,6 @@
                 var btnupdatedoc = $('#btnupdatedoc');
                 btnupdatedoc.click(function () {
                     //validate input
-                    var hidflagid = $('#hidflagid').val();
-                    if (hidflagid == '3002') {
-                         Swal.fire(
-                            '<span class="txtLabel">เอกสารผ่านการอนุมัติแล้วไม่สามารถแก้ไขได้..!</span>',
-                            '',
-                            'error'
-                        )
-                        return;
-                    }
-
                     var selectbranch = $('#selectbranch').val();
                     if (selectbranch == '-1') {
                         Swal.fire(
@@ -1231,17 +1242,6 @@
 
                 var btndeldoc = $('#btndeldoc');
                 btndeldoc.click(function () {
-
-                    var hidflagid = $('#hidflagid').val();
-                    if (hidflagid == '3002') {
-                         Swal.fire(
-                            '<span class="txtLabel">เอกสารผ่านการอนุมัติแล้วไม่สามารถแก้ไขได้..!</span>',
-                            '',
-                            'error'
-                        )
-                        return;
-                    }
-
                     Swal.fire({
 
                         title: '<span class="txtLabel">ต้องการลบข้อมูล ใช่หรือไม่..?</span>',
@@ -1338,16 +1338,6 @@
 
                 var btnsendmail = $('#btnsendmail');
                 btnsendmail.click(function () {
-                    var hidflagid = $('#hidflagid').val();
-                    if (hidflagid == '3002') {
-                         Swal.fire(
-                            '<span class="txtLabel">เอกสารผ่านการอนุมัติแล้วไม่สามารถแก้ไขได้..!</span>',
-                            '',
-                            'error'
-                        )
-                        return;
-                    }
-
                      Swal.fire({
 
                         title: '<span class="txtLabel">ต้องการส่งขออนุมัติรายการ ใช่หรือไม่..?</span>',
@@ -1399,19 +1389,62 @@
                     })
                 });
 
+                var btnconfirm = $('#btnconfirm');
+                 btnconfirm.click(function () {
+                     Swal.fire({
+
+                        title: '<span class="txtLabel">ต้องการอนุมัติรายการ ใช่หรือไม่..?</span>',
+                        //text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        cancelButtonColor: '#d33',
+                        confirmButtonColor: '#449d44',
+                        cancelButtonText: '<span class="txtLabel">ยกเลิกรายการ</span>',
+                        confirmButtonText: '<span class="txtLabel">ยืนยัน, ขออนุมัติ.!</span>'
+
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+
+                            $.ajax({
+                                url: 'saleorder-services.asmx/getQuotationOrderStatus',
+                                method: 'post',
+                                data: {
+                                    gid: gid, 
+                                    flagid: $('#selectflagstatus').val()
+                                },
+                                datatype: 'json',
+                                beforSend: function () {
+
+                                },
+                                success: function (data) {
+                                    Swal.fire(
+                                        '<span class="txtLabel">บันทึกข้อมูลสำเร็จ..!</span>',
+                                        '',
+                                        'success'
+                                    )
+
+                                    setTimeout(function () {
+
+                                        window.location.href = "so-calendar.aspx?opt=optsoc";
+                                        //(async () => {
+                                        //    await getQuotationOrderById(gid);
+                                        //    await getQuotationDetails(gid);
+                                        //})();
+
+                                    }, 2000);
+
+                                },
+                                error: function (xhr, ajaxOptions, thrownError) {
+                                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                                }
+                            });
+                        }
+                    })
+                });
+
                 var btnadditemnew = $('#btnadditemnew');
                 btnadditemnew.click(function () {
 
-                     var hidflagid = $('#hidflagid').val();
-                    if (hidflagid == '3002') {
-                         Swal.fire(
-                            '<span class="txtLabel">เอกสารผ่านการอนุมัติแล้วไม่สามารถแก้ไขได้..!</span>',
-                            '',
-                            'error'
-                        )
-                        return;
-                    }
-                    
                     $("#modalgoodcode").modal({ backdrop: false });
                     $('[id=modalgoodcode]').modal('show');
 
@@ -1419,17 +1452,6 @@
 
                 var btnupdateitem = $('#btnupdateitem');
                 btnupdateitem.click(function () {
-
-                     var hidflagid = $('#hidflagid').val();
-                    if (hidflagid == '3002') {
-                         Swal.fire(
-                            '<span class="txtLabel">เอกสารผ่านการอนุมัติแล้วไม่สามารถแก้ไขได้..!</span>',
-                            '',
-                            'error'
-                        )
-                        return;
-                    }
-
                     Swal.fire({
 
                         title: '<span class="txtLabel">ต้องการบันทึกข้อมูล ใช่หรือไม่..?</span>',
@@ -1493,81 +1515,6 @@
                     })
                 }) 
 
-                var btndeleteitem = $('#btndeleteitem');
-                btndeleteitem.click(function () {
-
-                     var hidflagid = $('#hidflagid').val();
-                    if (hidflagid == '3002') {
-                         Swal.fire(
-                            '<span class="txtLabel">เอกสารผ่านการอนุมัติแล้วไม่สามารถแก้ไขได้..!</span>',
-                            '',
-                            'error'
-                        )
-                        return;
-                    }
-
-                    Swal.fire({
-
-                        title: '<span class="txtLabel">ต้องการลบข้อมูลรายการ ใช่หรือไม่..?</span>',
-                        //text: "You won't be able to revert this!",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        cancelButtonColor: '#d33',
-                        confirmButtonColor: '#449d44',
-                        cancelButtonText: '<span class="txtLabel">ยกเลิกรายการ</span>',
-                        confirmButtonText: '<span class="txtLabel">ยืนยัน,บันทึกข้อมูล!</span>'
-
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-
-                            $.ajax({
-                                url: 'saleorder-services.asmx/getQuotationItemUpdate',
-                                method: 'post',
-                                data: {
-                                    acttrans: 'del',
-                                    QtGid: gid,
-                                    gid: $('#hidgid').val(),
-                                    seqno: $('#txtno').val(),
-                                    Quantity: $('#txtquantity').val(),
-                                    PricePerUnit: $('#txtunitprice').val(),
-                                    Amount: $('#txtitemamount').val(),
-                                    DiscAmount: $('#txtitemdiscount').val(),
-                                    AmountAfterDisc: $('#txtitemtotalamount').val(),
-                                    Remark: $('#txtitemremark').val(),
-                                    adUserID: employeeid,
-                                    Lastdate: null
-
-                                },
-                                datatype: 'json',
-                                beforSend: function () {
-
-                                },
-                                success: function (data) {
-                                    Swal.fire(
-                                        '<span class="txtLabel">บันทึกข้อมูลสำเร็จ..!</span>',
-                                        '',
-                                        'success'
-                                    );
-
-                                    (async () => {
-                                        await getQuotationOrderById(gid);
-                                        await getQuotationDetails(gid);
-                                    })();
-
-                                    $("#modaledititem").modal({ backdrop: false });
-                                    $("#modaledititem").modal('hide');
-
-                                    //setTimeout(function () {
-                                    //    window.location.href = "so-quotation-edit.aspx?opt=optsoe&mod=edit&gid=" + gid;
-                                    //}, 2000);
-                                },
-                                error: function (xhr, ajaxOptions, thrownError) {
-                                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-                                }
-                            });
-                        }
-                    })
-                }) 
 
                 var txtquantity = document.getElementById('txtquantity');
                 var txtunitprice = document.getElementById('txtunitprice');
@@ -1668,10 +1615,9 @@
 
         </script>
 
-        <h1>ใบเสนอราคาสินค้า
+        <h1>รีวิวใบเสนอราคาสินค้า
            
             <span>
-                <input type="hidden" id="hidflagid" name="hidflagid" />
                 <span class="btn btn-docuno outline btn-lg pull-right text-bold " style="margin-right: 0px"><span id="docuno">QT0000000</span></span>
             </span>
 
@@ -1951,80 +1897,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <%-- <tr>
-                                        <td style="width: 50px; text-align: center;">1</td>
-                                        <td style="text-align: center;">วัสดุติดตั้ง</td>
-                                        <td style="text-align: center;">100-MO-1523-8</td>
-                                        <td style="text-align: center;">Multilayer OakMO-1523-8</td>
-                                        <td style="width: 80px; text-align: right;">2</td>
-                                        <td style="width: 80px; text-align: right;">ตรม.</td>
-                                        <td style="width: 80px; text-align: right;">1,500.00</td>
-                                        <td style="width: 80px; text-align: right;">0.00</td>
-                                        <td style="width: 100px; text-align: right;">1,500.00</td>
-                                        <td style="width: 30px; text-align: center;"><input type="button" class="btn btn-success outline text-bold " style="padding: 2px 10px" name="name" value=" + " /></td>
-                                        <td style="width: 30px; text-align: center;"><input type="button" class="btn btn-danger outline text-bold " style="padding: 2px 10px" name="name" value=" - " /></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td style="width: 50px; text-align: center;">2</td>
-                                        <td style="text-align: center;">วัสดุติดตั้ง</td>
-                                        <td style="text-align: center;">100-MO-1523-8</td>
-                                        <td style="text-align: center;">Multilayer OakMO-1523-8</td>
-                                        <td style="width: 80px; text-align: right;">2</td>
-                                        <td style="width: 80px; text-align: right;">ตรม.</td>
-                                        <td style="width: 80px; text-align: right;">1,500.00</td>
-                                        <td style="width: 80px; text-align: right;">0.00</td>
-                                        <td style="width: 100px; text-align: right;">1,500.00</td>
-                                        <td style="width: 30px; text-align: center;"><input type="button" class="btn btn-success outline text-bold " style="padding: 2px 10px" name="name" value=" + " /></td>
-                                        <td style="width: 30px; text-align: center;"><input type="button" class="btn btn-danger outline text-bold " style="padding: 2px 10px" name="name" value=" - " /></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td style="width: 50px; text-align: center;">3</td>
-                                        <td style="text-align: center;">วัสดุติดตั้ง</td>
-                                        <td style="text-align: center;">100-MO-1523-8</td>
-                                        <td style="text-align: center;">Multilayer OakMO-1523-8</td>
-                                        <td style="width: 80px; text-align: right;">2</td>
-                                        <td style="width: 80px; text-align: right;">ตรม.</td>
-                                        <td style="width: 80px; text-align: right;">1,500.00</td>
-                                        <td style="width: 80px; text-align: right;">0.00</td>
-                                        <td style="width: 100px; text-align: right;">1,500.00</td>
-                                        <td style="width: 30px; text-align: center;"><input type="button" class="btn btn-success outline text-bold " style="padding: 2px 10px" name="name" value=" + " /></td>
-                                        <td style="width: 30px; text-align: center;"><input type="button" class="btn btn-danger outline text-bold " style="padding: 2px 10px" name="name" value=" - " /></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td style="width: 50px; text-align: center;">4</td>
-                                        <td style="text-align: center;">บริการ</td>
-                                        <td style="text-align: center;">F-SK-FJP2</td>
-                                        <td style="text-align: center;">ค่าทำสีบัว FJ2",3" สีทึบ/ใส                                           </td>
-                                        <td style="width: 80px; text-align: right;">1</td>
-                                        <td style="width: 80px; text-align: right;">ชุด</td>
-                                        <td style="width: 80px; text-align: right;">1,500.00</td>
-                                        <td style="width: 80px; text-align: right;">0.00</td>
-                                        <td style="width: 100px; text-align: right;">1,500.00</td>
-                                        <td style="width: 30px; text-align: center;"><input type="button" class="btn btn-success outline text-bold " style="padding: 2px 10px" name="name" value=" + " /></td>
-                                        <td style="width: 30px; text-align: center;"><input type="button" class="btn btn-danger outline text-bold " style="padding: 2px 10px" name="name" value=" - " /></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td style="width: 50px; text-align: center;">5</td>
-                                        <td style="text-align: center;">บริการ              </td>
-                                        <td style="text-align: center;">F-UN-FL-SM</td>
-                                        <td style="text-align: center;">ค่าแรงรื้อ+ติดตั้งไม้พื้นแบบเป็นกลุ่ม</td>
-                                        <td style="width: 80px; text-align: right;">1</td>
-                                        <td style="width: 80px; text-align: right;">ชุด</td>
-                                        <td style="width: 80px; text-align: right;">1,500.00</td>
-                                        <td style="width: 80px; text-align: right;">0.00</td>
-                                        <td style="width: 100px; text-align: right;">1,500.00</td>
-                                        <td style="width: 30px; text-align: center;"><input type="button" class="btn btn-success outline text-bold " style="padding: 2px 10px" name="name" value=" + " /></td>
-                                        <td style="width: 30px; text-align: center;"><input type="button" class="btn btn-danger outline text-bold " style="padding: 2px 10px" name="name" value=" - " /></td>
-                                    </tr>--%>
+                                  
                                 </tbody>
                             </table>
 
                             <hr />
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group" style="margin-top: -10px;">
@@ -2044,14 +1922,38 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-3">
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group" style="margin-top: -10px;">
+                                            <label class="txtLabel">สถานะรายการ</label>
+                                            <span class="txtLabel ">
+                                                <select id="selectflagstatus" class="form-control input-sm " style="width: 100%">
+                                                    <option value="-1">กรุณาระบุสถานะรายการ</option>
+                                                </select>
+                                            </span>
+                                            
+                                        </div>
+                                        <div class="form-group" style="margin-top: -10px;">
+                                            <textarea class="form-control input-md txtLabel" id="txtcommentstatus" name="txtcommentstatus" rows="2" placeholder="โปรดระบุความคิดเห็น"></textarea>
+                                        </div>
+                                        <div class="form-group" style="margin-top: -10px;">
+                                             <input type="button" id="btnconfirm" class="btn btn-primary outline text-bold " style="padding: 5px 10px" name="name" value="ยืนยันผลการอนุมัติ" />
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-5">
 
                                 <div class="row">
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-5">
                                         <label class="txtLabelFooter pull-right ">รวมเป็นเงิน</label>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <label class="txtLabelFooter pull-right "></label>
                                     </div>
 
@@ -2065,10 +1967,10 @@
 
                                 <div class="row" style="padding-top: 5px">
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-5">
                                         <label class="txtLabelFooter pull-right ">ส่วนลด</label>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <div class="input-group">
                                             <input type="text" class="form-control text-right txtLabelFooter" id="txtdispercenct" name="txtdispercenct" value="0.00" onkeyup="myCalcTotal()">
                                             <span class="input-group-addon"><i class="fa fa-percent"></i></span>
@@ -2085,10 +1987,10 @@
 
                                 <div class="row" style="padding-top: 5px">
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-5">
                                         <label class="txtLabelFooter pull-right ">หลังหักส่วนลด</label>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <label class="txtLabelFooter pull-right "></label>
                                     </div>
 
@@ -2102,10 +2004,10 @@
 
                                 <div class="row" style="padding-top: 5px">
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-5">
                                         <label class="txtLabelFooter pull-right ">ภาษีมูลค่าเพิ่ม</label>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <div class="input-group">
                                             <input type="text" class="form-control text-right txtLabelFooter" id="txtvatpercent" name="txtvatpercent" value="7.00"  onkeyup="myCalcTotal()">
                                             <span class="input-group-addon"><i class="fa fa-percent"></i></span>
@@ -2122,10 +2024,10 @@
 
                                 <div class="row" style="padding-top: 5px">
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-5">
                                         <label class="txtLabelFooter pull-right ">จำนวนเงินรวม</label>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <label class="txtLabelFooter pull-right "></label>
                                     </div>
 
@@ -2158,16 +2060,22 @@
 
                                 </div>
 
+                                
+
                                 <div class="col-md-6 ">
-                                    <span class="pull-right">
+                                   
+                                        <span class="pull-right">
 
-                                        <input type="button" id="btnsendmail" class="btn btn-primary outline text-bold  " style="padding: 5px 10px" name="name" value="ส่งขออนุมัติรายการ" />
-                                        <input type="button" id="btnsavedoc" class="btn btn-primary outline text-bold  " style="padding: 5px 10px" name="name" value="บันทึกรายการ" />
-                                        <input type="button" id="btnupdatedoc" class="btn btn-primary outline text-bold  " style="padding: 5px 10px" name="name" value="อัฟเดทรายการ" />
+                                           
 
-                                        <input type="button" id="btndeldoc" class="btn btn-danger outline text-bold  " style="padding: 5px 10px" name="name" value="ลบข้อมูลรายการ" />
+                                            <input type="button" id="btnsendmail" class="btn btn-primary outline text-bold  " style="padding: 5px 10px" name="name" value="ส่งขออนุมัติรายการ" />
+                                            <input type="button" id="btnsavedoc" class="btn btn-primary outline text-bold  " style="padding: 5px 10px" name="name" value="บันทึกรายการ" />
+                                            <input type="button" id="btnupdatedoc" class="btn btn-primary outline text-bold  " style="padding: 5px 10px" name="name" value="อัฟเดทรายการ" />
 
-                                    </span>
+                                            <input type="button" id="btndeldoc" class="btn btn-danger outline text-bold  " style="padding: 5px 10px" name="name" value="ลบข้อมูลรายการ" />
+
+                                        </span>
+                                    
                                 </div>
 
 
@@ -2363,19 +2271,12 @@
 
                         </div>
 
-
+                       
 
                         <div class="modal-footer">
-
-                            <div class="container-fluid">
-                                <button type="button" class="btn btn-danger outline text-bold txtLabel pull-left " style="padding: 5px 10px" data-dismiss="modal">ยกเลิกรายการ</button>
-
-                                <button type="button" id="btndeleteitem" class="btn btn-danger outline text-bold  txtLabel " style="padding: 5px 10px">ยืนยันลบข้อมูลรายการ</button>
-                                <button type="button" id="btnupdateitem" class="btn btn-primary outline text-bold  txtLabel " style="padding: 5px 10px">อัฟเดทข้อมูลรายการ</button>
-                            </div>
-                           
+                            <button type="button"  class="btn btn-danger outline text-bold txtLabel " style="padding: 5px 10px"  data-dismiss="modal">ยกเลิกรายการ</button>                            
+                            <button type="button" id="btnupdateitem" class="btn btn-primary outline text-bold  txtLabel " style="padding: 5px 10px" >อัฟเดทข้อมูลรายการ</button>
                         </div>
-                       
                     </div>
                 </div>
             </div>

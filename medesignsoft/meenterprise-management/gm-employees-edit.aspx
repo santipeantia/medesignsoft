@@ -184,7 +184,7 @@
                         },
                         success: function (data) {
                             selectbranch.empty();
-                            selectbranch.append($('<option/>', { value: -1, text: 'please select branch..' }));
+                            selectbranch.append($('<option/>', { value: -1, text: 'กรุณาระบุชื่อสาขา' }));
                             $(data).each(function (index, item) {
                                 selectbranch.append($('<option/>', { value: item.imBranchGid, text: item.BranchName }));
                             });

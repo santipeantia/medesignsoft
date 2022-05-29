@@ -2738,5 +2738,79 @@ namespace medesignsoft.meenterprise_management
             comm.ExecuteNonQuery();
             conn.CloseConn();
         }
+
+        [WebMethod]
+        public void getProjectType() {
+            List<cProjectType> datas = new List<cProjectType>();
+            SqlCommand comm = new SqlCommand("spGetProjectType", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cProjectType data = new cProjectType();
+                data.ProjectID = rdr["ProjectID"].ToString();
+                data.ProjectCode = rdr["ProjectCode"].ToString();
+                data.ProjectDesc = rdr["ProjectDesc"].ToString();               
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getSourceList() {
+            List<cSourceList> datas = new List<cSourceList>();
+            SqlCommand comm = new SqlCommand("spGetSourceList", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cSourceList data = new cSourceList();
+                data.Gid = rdr["Gid"].ToString();
+                data.SourceCode = rdr["SourceCode"].ToString();
+                data.SourceName = rdr["SourceName"].ToString();
+                data.UserCreate = rdr["UserCreate"].ToString();
+                data.CreateDate = rdr["CreateDate"].ToString();
+                data.UserCreate = rdr["UserUpdate"].ToString();
+                data.UserUpdate = rdr["LasteDate"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                data.edit = rdr["edit"].ToString();
+                data.trash = rdr["trash"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
+
+        [WebMethod]
+        public void getFlagStatus() {
+            
+            List<cFlagStatus> datas = new List<cFlagStatus>();
+            SqlCommand comm = new SqlCommand("spGetFlagStatus", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader rdr = comm.ExecuteReader();
+            while (rdr.Read())
+            {
+                cFlagStatus data = new cFlagStatus();
+                data.FlagID = rdr["FlagID"].ToString();
+                data.FlagDesc = rdr["FlagDesc"].ToString();
+                data.Remark = rdr["Remark"].ToString();
+                datas.Add(data);
+            }
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            js.MaxJsonLength = Int32.MaxValue;
+            Context.Response.Write(js.Serialize(datas));
+            Context.Response.ContentType = "application/json";
+            conn.CloseConn();
+        }
     }
 }

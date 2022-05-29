@@ -76,8 +76,8 @@
 
 
 .btn-docuno.outline {
-    border: 1px solid #5cb85c;
-    color: #5cb85c;
+    border: 1px solid #33a6cc;
+    color: #33a6cc;
     padding: 5px 30px;
     font-family: 'Athiti', sans-serif;
     font-size: 20px;
@@ -86,12 +86,12 @@
 
     .btn-docuno.outline:hover, .btn-docuno.outline:focus, .btn-docuno.outline:active, .btn-docuno.outline.active, .open > .dropdown-toggle.btn-docuno {
         color: #ffffff;
-        border-color: #6acf6a;
-        background-color: #5cb85c;
+        border-color: #33a6cc;
+        background-color: #33a6cc;
     }
 
     .btn-docuno.outline:active, .btn-docuno.outline.active {
-        border-color: #5cb85c;
+        border-color: #33a6cc;
         color: #ffffff;
         box-shadow: none;
     }

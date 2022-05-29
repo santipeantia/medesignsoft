@@ -13544,8 +13544,10 @@
     <Content Include="meenterprise-management\wh-beginstock-setup.aspx" />
     <Content Include="meenterprise-management\wh-setup.aspx" />
     <Content Include="mesales-order\saleorder-services.asmx" />
+    <Content Include="mesales-order\so-calendar.aspx" />
     <Content Include="mesales-order\so-entry.aspx" />
     <Content Include="mesales-order\so-quotation-edit.aspx" />
+    <Content Include="mesales-order\so-quotation-review.aspx" />
     <Content Include="mesales-order\so-quotation-view.aspx" />
     <Content Include="mesales-order\so-report.aspx" />
     <Content Include="pages\charts\chartjs.aspx" />
@@ -13743,7 +13745,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cFlagStatus.cs" />
+    <Compile Include="cQuotationDetails.cs" />
+    <Compile Include="meenterprise-management\cSourceList.cs" />
+    <Compile Include="mesales-order\cGoodCodeSelectList.cs" />
     <Compile Include="Class\bahttext.cs" />
+    <Compile Include="mesales-order\cQuotationOrder.cs" />
+    <Compile Include="meenterprise-management\cProjectType.cs" />
     <Compile Include="mesales-order\cQuotationList.cs" />
     <Compile Include="meenterprise-management\cGoodCodeStockList.cs" />
     <Compile Include="meenterprise-management\cSOCreditApprovalList.cs" />
@@ -14210,9 +14218,17 @@
     <Compile Include="meenterprise-management\wh-setup.aspx.designer.cs">
       <DependentUpon>wh-setup.aspx</DependentUpon>
     </Compile>
+    <Compile Include="mesales-order\cRunningDocuNo.cs" />
     <Compile Include="mesales-order\saleorder-services.asmx.cs">
       <DependentUpon>saleorder-services.asmx</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="mesales-order\so-calendar.aspx.cs">
+      <DependentUpon>so-calendar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mesales-order\so-calendar.aspx.designer.cs">
+      <DependentUpon>so-calendar.aspx</DependentUpon>
     </Compile>
     <Compile Include="mesales-order\so-entry.aspx.cs">
       <DependentUpon>so-entry.aspx</DependentUpon>
@@ -14227,6 +14243,13 @@
     </Compile>
     <Compile Include="mesales-order\so-quotation-edit.aspx.designer.cs">
       <DependentUpon>so-quotation-edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mesales-order\so-quotation-review.aspx.cs">
+      <DependentUpon>so-quotation-review.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mesales-order\so-quotation-review.aspx.designer.cs">
+      <DependentUpon>so-quotation-review.aspx</DependentUpon>
     </Compile>
     <Compile Include="mesales-order\so-quotation-view.aspx.cs">
       <DependentUpon>so-quotation-view.aspx</DependentUpon>

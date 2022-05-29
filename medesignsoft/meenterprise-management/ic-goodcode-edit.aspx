@@ -727,7 +727,7 @@
                                 <button type="button" id="btnundo" class="btn btn-default btn-sm" data-toggle="tooltip" title="undo"><i class="fa fa-undo text-green"></i></button>
                                 <button type="button" id="btnreload" class="btn btn-default btn-sm" data-toggle="tooltip" title="reset"><i class="fa fa-refresh text-blue"></i></button>
                                 <button type="button" id="btnPdf" class="btn btn-default btn-sm" data-toggle="tooltip" title="pdf"><i class="fa fa-file-pdf-o text-orange"></i></button>
-                                <button type="button" id="btnExcel" class="btn btn-default btn-sm" runat="server" onserverclick="btnExportExcel_click"  data-toggle="tooltip" title="excel"><i class="fa fa-table text-green"></i></button>
+                                <button type="button" id="btnExcel" class="btn btn-default btn-sm" runat="server"  data-toggle="tooltip" title="excel"><i class="fa fa-table text-green"></i></button>
                             </span>
 
                             <label class="txtLabel">Group Edit</label>

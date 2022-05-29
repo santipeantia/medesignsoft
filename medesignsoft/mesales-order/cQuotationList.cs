@@ -20,6 +20,12 @@ namespace medesignsoft
         public string InYear { get; set; }
         public string VendorID { get; set; }
         public string VendorName { get; set; }
+        public string VendorAddr { get; set; }
+        public string VendorTaxID { get; set; }
+        public string SourceGid { get; set; }
+        public string VendorBranchNo { get; set; }
+        public string VendorEmail { get; set; }
+
         public string ContactName { get; set; }
         public string ContactTel { get; set; }
         public string CurrencyRate { get; set; }
@@ -51,11 +57,13 @@ namespace medesignsoft
         public string FlagID { get; set; }
         public string FlagDesc { get; set; }
         public string CreatedBy { get; set; }
+        public string CreatedDate { get; set; }
         public string CreateName { get; set; }
         public string CreateDate { get; set; }
         public string UpdatedBy { get; set; }
         public string UpdateDate { get; set; }
         public string SaleEMail { get; set; }
+        public string ReferDocuNo { get; set; }
         public string edit { get; set; }
         public string trash { get; set; }
     }
