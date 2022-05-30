@@ -187,11 +187,11 @@
                         (async () => {
                             await getQuotationOrderById(gid);
                             await getQuotationDetails(gid);
-                        })();
 
-                         $('#overlay').hide();
+                             $('#overlay').hide();
+                        })();                                                
 
-                    }, 3000);
+                    }, 4000);
 
                     // $('#selectcompany').prop('disabled', true);
 
@@ -696,6 +696,9 @@
                                         $('#docstatus').text(data["FlagDesc"]);
                                         $('#qtremark').text(data["QTRemark"]);
                                         $('#qtcomment').text(data["QTComment"]);
+
+                                        $('#hidqtgid').val(data["QtGid"]);
+                                        $('#hiddocuno').val(data["adQTNO"]);
 
                                     })
                                 }
@@ -1672,7 +1675,9 @@
            
             <span>
                 <input type="hidden" id="hidflagid" name="hidflagid" />
-                <span class="btn btn-docuno outline btn-lg pull-right text-bold " style="margin-right: 0px"><span id="docuno">QT0000000</span></span>
+                <input type="hidden" id="hidqtgid" name="hidqtgid" />
+                <input type="hidden" id="hiddocuno" name="hiddocuno" />
+                <span class="btn btn-docuno outline btn-lg pull-right text-bold " style="margin-right: 0px"><span id="docuno" >QT0000000</span></span>
             </span>
 
             <span>
@@ -2154,7 +2159,7 @@
                                 <div class="col-md-6">
                                     <input type="button" id="btncancel" class="btn btn-primary outline text-bold " style="padding: 5px 10px" name="name" value="ยกเลิกรายการ" />
 
-                                    <input type="button" id="btnprint" class="btn btn-primary outline text-bold " style="padding: 5px 10px" name="name" value="พิมพ์เอกสาร" />
+                                    <input type="button" id="btnprint" runat="server" onserverclick="btnprint_click" class="btn btn-primary outline text-bold " style="padding: 5px 10px" name="name" value="พิมพ์เอกสาร" />
 
                                 </div>
 
@@ -2260,7 +2265,7 @@
                                    <span class=" pull-right">ลำดับ</span> 
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="hidden" id="hidgid" class="form-control input-sm txtLabel" />
+                                    <input type="hidden" id="hidgid" name="hidgid" class="form-control input-sm txtLabel" />
                                     <input type="text" id="txtno" class="form-control input-sm txtLabel"  />
                                 </div>
                             </div>
