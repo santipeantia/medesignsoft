@@ -149,6 +149,7 @@
                         getApprovalLevelList();
                         getGoodCodeSelectList();
                         getSourceList();
+                        getGoodUnit();
                     }, 3000);
                                        
 
@@ -180,7 +181,7 @@
                     getApprovalLevelList();
                     getGoodCodeSelectList();
                     getSourceList();
-
+                    getGoodUnit();
 
                     setTimeout(function () {
                        
@@ -221,7 +222,7 @@
                     getApprovalLevelList();
                     getGoodCodeSelectList();
                     getSourceList();
-
+                    getGoodUnit();
 
                     setTimeout(function () {
                        
@@ -417,6 +418,26 @@
                     return result;
                 };
 
+                var selectgoodunit = $('#selectgoodunit');
+                async function getGoodUnit() {
+                    var result = await $.ajax({
+                        url: '../meenterprise-management/general-services.asmx/getGoodUnitList',
+                        method: 'post',
+                        datatype: 'json',
+                        beforeSend: function () {
+
+                        },
+                        success: function (data) {
+                            selectgoodunit.empty();
+                            selectgoodunit.append($('<option/>', { value: -1, text: 'ระบุหน่วยสินค้า' }));
+                            $(data).each(function (index, item) {
+                                selectgoodunit.append($('<option/>', { value: item.GoodUnitID, text: item.GoodUnitDesc }));
+                            });
+                        }
+                    });
+                    return result;
+                }
+
                 function getGoodCodeSelectList() {
                    $.ajax({
                         url: 'saleorder-services.asmx/getGoodCodeSelectList',
@@ -551,6 +572,8 @@
                         var pseqno = '0';
                         var pqtgid = gid;
                         var padqtno = $('#docuno').text();
+                        var pqtyunit = '-1';
+                        var pqtyrema = '1.00';
                         var pquantity = '1.00';
                         var ppriceperunit = '0.00';
                         var pamount = '0.00';
@@ -578,7 +601,9 @@
                                 goodcodeid: $('#pgoodcodeid').val(),
                                 goodname: $('#pgoodname').val(),
                                 goodunitid: $('#pgoodunitid').val(),
-                                goodunitdesc:  $('#pgoodunitdesc').val(),
+                                goodunitdesc: $('#pgoodunitdesc').val(),
+                                qtyunit:  pqtyunit,
+                                qtyrema: pqtyrema,
                                 quantity: pquantity,
                                 priceperunit: ppriceperunit,
                                 amount: pamount,
@@ -739,13 +764,14 @@
                                 if (data != '') {
                                     $.each(data, function (i, item) {
                                         table.row.add([data[i].Gid, data[i].imBranchGid, data[i].SeqNO, data[i].QtGid, data[i].adQTNO, data[i].GoodGroupID, data[i].GoodGroupDesc,
-                                            data[i].GoodCodeID, data[i].GoodCode, data[i].GoodName, data[i].GoodUnitID, data[i].GoodUnitDesc, data[i].Quantity, data[i].PricePerUnit,
+                                            data[i].GoodCodeID, data[i].GoodCode, data[i].GoodName, data[i].GoodUnitID, data[i].GoodUnitDesc, data[i].Quantity, data[i].QtyUnit, data[i].QtyUnitDesc, data[i].QtyRema,  data[i].PricePerUnit,
                                             data[i].Amount, data[i].VATAmount, data[i].AmountExcludeVAT, data[i].DiscPercent, data[i].DiscAmount, data[i].AmountAfterDisc, data[i].NetAmount,
                                             data[i].UnitCostID, data[i].UnitCost, data[i].Remark, data[i].adUserID, data[i].Lastdate, data[i].edit, data[i].trash]);
                                     });
                                 }
                                 table.draw();
-                               $('#tblsoquotationitem td:nth-of-type(19)').addClass('text-red');                              
+                               $('#tblsoquotationitem td:nth-of-type(21)').addClass('text-red');
+                               $('#tblsoquotationitem td:nth-of-type(22)').addClass('text-red');                              
 
                                 $('#loader').hide();
                                 $('#overlay').hide();
@@ -763,13 +789,20 @@
                                     var goodname = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(9)');
                                     var unit = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(11)');
                                     var quantity = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(12)');
-                                    var unitprice = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(13)');
-                                    var amount = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(14)');
-                                    var discount  = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(18)');
-                                    var amountafterdisc = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(19)');
-                                    var remark = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(23)');
 
-                                    if (rIndex != 0 & cIndex == 26) {
+                                    var qtyunit = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(13)');
+                                    var qtyunitdesc = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(14)');
+                                    var qtyrema = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(15)');
+                                    
+                                    
+                                    var unitprice = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(16)');
+                                    var amount = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(17)');
+                                    var percentdiscount  = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(20)');
+                                    var discount  = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(21)');
+                                    var amountafterdisc = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(22)');
+                                    var remark = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(26)');
+
+                                    if (rIndex != 0 & cIndex == 29) {
                                         console.log(gid.text());
 
                                         $('#hidgid').val(gid.text());
@@ -779,20 +812,34 @@
                                         $('#txtgoodname').val(goodname.text());
 
                                         $('#txtunit').val(unit.text().replace(',', ''));
+                                        $('#txtquantity').val(quantity.text().replace(',', ''));
 
-                                        $('#txtquantity').val(quantity.text().replace(',',''));
+
+                                        $('#selectgoodunit').val(qtyunit.text());
+                                        $('#selectgoodunit').change();
+                                        $('#txtQtyRema').val(qtyrema.text().replace(',', ''));
+
+
+
                                         $('#txtunitprice').val(unitprice.text().replace(',',''));
-                                        $('#txtitemamount').val(amount.text().replace(',',''));
+                                        $('#txtitemamount').val(amount.text().replace(',', ''));
+
+                                        
+                                        $('#txtitemprecentdiscount').val(percentdiscount.text().replace(',', ''));
+
                                         $('#txtitemdiscount').val(discount.text().replace(',',''));
                                         $('#txtitemtotalamount').val(amountafterdisc.text().replace(',',''));
                                         $('#txtitemremark').val(remark.text());
 
+                                      
+                                        $('#btnupdateitem').removeClass('hidden');
+                                        $('#btndeleteitem').addClass('hidden');
 
                                         $("#modaledititem").modal({ backdrop: false });
                                         $('#modaledititem').modal('show');
 
                                     }
-                                    if (rIndex != 0 & cIndex == 27) {
+                                    if (rIndex != 0 & cIndex == 30) {
                                         
                                         console.log(gid.text());
 
@@ -811,6 +858,8 @@
                                         $('#txtitemtotalamount').val(amountafterdisc.text().replace(',',''));
                                         $('#txtitemremark').val(remark.text());
 
+                                        $('#btnupdateitem').addClass('hidden');
+                                        $('#btndeleteitem').removeClass('hidden');
 
                                         $("#modaledititem").modal({ backdrop: false });
                                         $('#modaledititem').modal('show');
@@ -1455,9 +1504,12 @@
                                     QtGid: gid,
                                     gid: $('#hidgid').val(),
                                     seqno: $('#txtno').val(),
+                                    QtyUnit: $('#selectgoodunit').val(),
+                                    QtyRema: $('#txtQtyRema').val(),
                                     Quantity: $('#txtquantity').val(),
                                     PricePerUnit: $('#txtunitprice').val(),
                                     Amount: $('#txtitemamount').val(),
+                                    DiscPercent: $('#txtitemprecentdiscount').val(),
                                     DiscAmount: $('#txtitemdiscount').val(),
                                     AmountAfterDisc: $('#txtitemtotalamount').val(),
                                     Remark: $('#txtitemremark').val(),
@@ -1531,9 +1583,14 @@
                                     QtGid: gid,
                                     gid: $('#hidgid').val(),
                                     seqno: $('#txtno').val(),
+
+                                    QtyUnit: $('#selectgoodunit').val(),
+                                    QtyRema: $('#txtQtyRema').val(),
+
                                     Quantity: $('#txtquantity').val(),
                                     PricePerUnit: $('#txtunitprice').val(),
                                     Amount: $('#txtitemamount').val(),
+                                    DiscPercent: $('#txtitemprecentdiscount').val(),
                                     DiscAmount: $('#txtitemdiscount').val(),
                                     AmountAfterDisc: $('#txtitemtotalamount').val(),
                                     Remark: $('#txtitemremark').val(),
@@ -1609,23 +1666,56 @@
                     }
                 }
 
-               
+
+                var chkdiscount = $('#chkitemdiscount');
+                chkdiscount.click(function () {
+                    
+                    //var chk = $('#chkitemdiscount').prop('checked');
+                    //if (chk == true) {
+                    //    alert('checked');
+                    //}
+                    $('#txtitemprecentdiscount').val('0.00');
+                    $('#txtitemdiscount').val('0.00');
+
+                    myCalc();
+
+                })            
 
             });
 
             function myCalc() {
                 try {
-                    console.log($('#txtquantity').val());
+                    //console.log($('#txtquantity').val());
                     //txtunitprice.val();
                     //txtitemamount.val();
                     //txtitemdiscount.val();
                     //txtitemtotalamount.val();
 
                     var quantity = $('#txtquantity').val();
+
+                    var qtyrema = $('#txtQtyRema').val(); 
                     var unitprice = $('#txtunitprice').val();
 
-                    var amount = parseFloat(quantity) * parseFloat(unitprice); // $('#txtitemamount').val();
+                    var amount = parseFloat(qtyrema) * parseFloat(unitprice); // $('#txtitemamount').val();
                     $('#txtitemamount').val(amount.toFixed(2));
+
+                    var chk = $('#chkitemdiscount').prop('checked');
+                    console.log(chk);
+
+                    var perdiscount = $('#txtitemprecentdiscount').val();
+                    var caldiscount = 0;
+
+                    if (chk == true) {
+
+                        caldiscount =  parseFloat(amount)  * (parseFloat(perdiscount) / 100);
+                        $('#txtitemdiscount').val(caldiscount.toFixed(2));
+                        //console.log(caldiscount);
+                    }
+                    else {
+                         $('#txtitemprecentdiscount').val(0.00);
+                    }
+
+                   
 
                     var discount = $('#txtitemdiscount').val();
 
@@ -1633,7 +1723,6 @@
                     $('#txtitemtotalamount').val(totalmount.toFixed(2));
 
                    console.log( totalmount.toLocaleString());
-
            
                 }
                 catch {
@@ -1934,8 +2023,13 @@
                                         <th style="width: 100px; text-align: center;">GOODCODE</th>
                                         <th class="" style=" text-align: center;">GOODNAME</th>
                                         <th style="width: 50px; text-align: center;">GoodUnitID</th>
-                                        <th style="width: 100px; text-align: center;">UNIT</th>
+                                        <th style="width: 50px; text-align: center;">UNIT</th>
                                         <th style="width: 100px; text-align: right;">QTY.</th>
+
+                                        <th style="width: 50px; text-align: center;">QTYUNIT</th>
+                                        <th style="width: 50px; text-align: center;">UNIT</th>
+                                        <th style="width: 100px; text-align: right;">QTY REMA.</th>
+
                                         <th style="width: 100px; text-align: right;">UNIT PRICE</th>
                                         <th style="width: 100px; text-align: right;">AMOUNT</th>
                                         <th style="width: 50px; text-align: center;">VATAmount</th>
@@ -2295,23 +2389,39 @@
 
                             <div class="row" style="margin-top: 5px;">
                                 <div class="col-md-3">
-                                   <span class=" pull-right">หน่วยนับ</span> 
-                                </div>
-                                
-                                <div class="col-md-9">
-                                    <input type="text" id="txtunit" class="form-control input-sm txtLabel" disabled />
-                                </div>
-                            </div>
-
-                             <div class="row" style="margin-top: 5px;">
-                                <div class="col-md-3">
                                    <span class=" pull-right">จำนวน</span> 
                                 </div>
                                 
-                                <div class="col-md-9">
-                                    <input type="text" id="txtquantity" class="form-control input-sm txtLabel" onkeyup="myCalc();" />
+                                 <div class="col-md-4">
+                                    <input type="text" id="txtunit" class="form-control input-sm txtLabel" readonly />
                                 </div>
+
+                                <div class="col-md-5">
+                                    <input type="text" id="txtquantity" class="form-control input-sm txtLabel text-right" onkeyup="myCalc();" />
+                                </div>
+                                 
                             </div>
+
+                            <div class="row" style="margin-top: 5px;">
+                                <div class="col-md-3">
+                                   <span class=" pull-right">ความต้องการ</span> 
+                                </div>
+
+                                <div class="col-md-4">
+                                    <span class="txtLabel ">
+                                        <select id="selectgoodunit" class="form-control input-sm " style="width: 100%">
+                                            <option value="-1">ระบุหน่วยสินค้า</option>
+                                        </select>
+                                    </span>
+                                </div>
+                                
+                                <div class="col-md-5">
+                                    <input type="text" id="txtQtyRema" name="txtQtyRema" class="form-control input-sm txtLabel text-right" onkeyup="myCalc();" />
+                                </div>
+                                
+                            </div>
+
+                             
 
                              <div class="row" style="margin-top: 5px;">
                                 <div class="col-md-3">
@@ -2319,7 +2429,7 @@
                                 </div>
                                 
                                 <div class="col-md-9">
-                                    <input type="text" id="txtunitprice" class="form-control input-sm txtLabel"  onkeyup="myCalc();" />
+                                    <input type="text" id="txtunitprice" class="form-control input-sm txtLabel text-right"  onkeyup="myCalc();" />
                                 </div>
                             </div>
 
@@ -2329,17 +2439,26 @@
                                 </div>
                                 
                                 <div class="col-md-9">
-                                    <input type="text" id="txtitemamount" class="form-control input-sm txtLabel" disabled />
+                                    <input type="text" id="txtitemamount" class="form-control input-sm txtLabel text-right" disabled />
                                 </div>
                             </div>
 
                             <div class="row" style="margin-top: 5px;">
                                 <div class="col-md-3">
-                                   <span class=" pull-right">ส่วนลด</span> 
+                                    <span class=" pull-right">เปอร์เซ็นต์ / ส่วนลด</span>
                                 </div>
-                                
-                                <div class="col-md-9">
-                                    <input type="text" id="txtitemdiscount" class="form-control input-sm txtLabel"  onkeyup="myCalc();" />
+
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <input type="checkbox" id="chkitemdiscount" >
+                                        </span>
+                                        <input type="text" id="txtitemprecentdiscount" class="form-control input-sm txtLabel text-right" value="0.00" onkeyup="myCalc();" />
+                                    </div>
+                                </div>
+
+                                <div class="col-md-5">
+                                    <input type="text" id="txtitemdiscount" class="form-control input-sm txtLabel text-right text-right" onkeyup="myCalc();" />
                                 </div>
                             </div>
 
@@ -2349,7 +2468,7 @@
                                 </div>
                                 
                                 <div class="col-md-9">
-                                    <input type="text" id="txtitemtotalamount" class="form-control input-sm txtLabel" disabled />
+                                    <input type="text" id="txtitemtotalamount" class="form-control input-sm txtLabel text-right" disabled />
                                 </div>
                             </div>
 

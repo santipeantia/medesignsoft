@@ -19,6 +19,11 @@ namespace medesignsoft
         public string GoodName { get; set; }
         public string GoodUnitID { get; set; }
         public string GoodUnitDesc { get; set; }
+
+        public string QtyUnit { get; set; }
+        public string QtyUnitDesc { get; set; }        
+        public string QtyRema { get; set; }
+
         public string Quantity { get; set; }
         public string PricePerUnit { get; set; }
         public string Amount { get; set; }

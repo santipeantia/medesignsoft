@@ -399,7 +399,7 @@ namespace medesignsoft.mesales_order
         }
 
         [WebMethod]
-        public void getQuotationAddnewItem(string gid, string imbranchgid, string seqno, string qtgid, string adqtno, string goodcodeid, string  goodname, string  goodunitid, string  goodunitdesc, string  quantity,
+        public void getQuotationAddnewItem(string gid, string imbranchgid, string seqno, string qtgid, string adqtno, string goodcodeid, string  goodname, string  goodunitid, string  goodunitdesc, string qtyunit, string qtyrema, string  quantity,
                     string  priceperunit, string  amount, string  vatamount, string  amountexcludevat, string  discpercent, string  discamount, string  amountafterdisc, string  netamount, string  unitcostid, string unitcost, string  remark, string aduserid, string lastdate) {
             SqlCommand comm = new SqlCommand("spGetQuotationAddnewItem", conn.OpenConn());
             comm.CommandType = CommandType.StoredProcedure;
@@ -413,6 +413,10 @@ namespace medesignsoft.mesales_order
             comm.Parameters.AddWithValue("@goodname", goodname);
             comm.Parameters.AddWithValue("@goodunitid", goodunitid);
             comm.Parameters.AddWithValue("@goodunitdesc", goodunitdesc);
+
+            comm.Parameters.AddWithValue("@qtyunit", qtyunit);
+            comm.Parameters.AddWithValue("@qtyrema", qtyrema);
+
             comm.Parameters.AddWithValue("@quantity", quantity);
             comm.Parameters.AddWithValue("@priceperunit", priceperunit);
             comm.Parameters.AddWithValue("@amount", amount);
@@ -456,6 +460,11 @@ namespace medesignsoft.mesales_order
                 data.GoodUnitID = rdr["GoodUnitID"].ToString();
                 data.GoodUnitDesc = rdr["GoodUnitDesc"].ToString();
                 data.Quantity = rdr["Quantity"].ToString();
+                data.QtyUnit = rdr["QtyUnit"].ToString();
+                data.QtyUnitDesc = rdr["QtyUnitDesc"].ToString();                
+                data.QtyRema = rdr["QtyRema"].ToString();
+
+                
                 data.PricePerUnit = rdr["PricePerUnit"].ToString();
                 data.Amount = rdr["Amount"].ToString();
                 data.VATAmount = rdr["VATAmount"].ToString();
@@ -481,7 +490,7 @@ namespace medesignsoft.mesales_order
         }
 
         [WebMethod]
-        public void getQuotationItemUpdate(string acttrans, string QtGid, string gid, string seqno, string  Quantity, string PricePerUnit, string  Amount, string DiscAmount, string  AmountAfterDisc, string  Remark, string  adUserID, string Lastdate)
+        public void getQuotationItemUpdate(string acttrans, string QtGid, string gid, string seqno, string QtyUnit, string QtyRema, string  Quantity, string PricePerUnit, string  Amount, string DiscPercent, string DiscAmount, string  AmountAfterDisc, string  Remark, string  adUserID, string Lastdate)
         {
             try
             {
@@ -492,9 +501,13 @@ namespace medesignsoft.mesales_order
                 comm.Parameters.AddWithValue("@QtGid", QtGid);
                 comm.Parameters.AddWithValue("@gid", gid);
                 comm.Parameters.AddWithValue("@seqno", seqno);
+                comm.Parameters.AddWithValue("@QtyUnit", QtyUnit);
+                comm.Parameters.AddWithValue("@QtyRema", QtyRema);
                 comm.Parameters.AddWithValue("@Quantity", Quantity);
                 comm.Parameters.AddWithValue("@PricePerUnit", PricePerUnit);
                 comm.Parameters.AddWithValue("@Amount", Amount);
+
+                comm.Parameters.AddWithValue("@DiscPercent", DiscPercent);
                 comm.Parameters.AddWithValue("@DiscAmount", DiscAmount);
                 comm.Parameters.AddWithValue("@AmountAfterDisc", AmountAfterDisc);
                 comm.Parameters.AddWithValue("@Remark", Remark);

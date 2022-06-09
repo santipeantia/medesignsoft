@@ -753,7 +753,7 @@
                                     </a>
                                 </li>
                                 <li class="<%= optsoc %>">
-                                    <a href="../../woodden/mesales-order/so-calendar.aspx?opt=optsoc">
+                                    <a href="../../woodden/mesales-order/so-calendar-review.aspx?opt=optsoc">
                                         <i class="fa fa-caret-right"></i>
                                         <span class="txtLabel <%= optsoc %>">SO Calendar</span>
                                     </a>
@@ -1574,26 +1574,26 @@
                     'info': false,
                     'autoWidth': false,
                     'columnDefs': [{
-                        targets: [0, 1, 3, 4, 5, 7, 10, 15, 16, 17, 20, 21, 22, 23, 24, 25], className: "hide_column"
+                        targets: [0,1,3,4,5,7,10,13,17,18,19,23,24,25,26,27,28], className: "hide_column"
                     },
                     {
-                        "targets": [2, 12, 13, 14, 18, 19],
+                        "targets": [2, 12,14,15,16,17,18,19,20,21,22],
                         "className": "text-right",
                     },
                     {
-                        "targets": [11, 26, 27],
+                        "targets": [11, 13, 26, 27, 29,30],
                         "className": "text-center",
                     },
                     
                     {
-                        "targets": 19, "width": 100
+                        "targets": 22, "width": 100
                     }, {
-                        "targets": [6, 8, 12, 13, 14, 18], "width": 80
+                        "targets": [6, 8, 15,16,17,18,19,20,21], "width": 80
                     }, {
-                        "targets": [26, 27], "width": 30
+                        "targets": [29, 30], "width": 30
                         },
                         {
-                        "targets": [18],
+                        "targets": [20,21],
                         "className": "text-red",
                     },],
                     'fixedColumns': false

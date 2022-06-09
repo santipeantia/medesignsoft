@@ -13544,6 +13544,7 @@
     <Content Include="meenterprise-management\wh-beginstock-setup.aspx" />
     <Content Include="meenterprise-management\wh-setup.aspx" />
     <Content Include="mesales-order\saleorder-services.asmx" />
+    <Content Include="mesales-order\so-calendar-review.aspx" />
     <Content Include="mesales-order\so-calendar.aspx" />
     <Content Include="mesales-order\so-entry.aspx" />
     <Content Include="mesales-order\so-quotation-edit.aspx" />
@@ -14222,6 +14223,13 @@
     <Compile Include="mesales-order\saleorder-services.asmx.cs">
       <DependentUpon>saleorder-services.asmx</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="mesales-order\so-calendar-review.aspx.cs">
+      <DependentUpon>so-calendar-review.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mesales-order\so-calendar-review.aspx.designer.cs">
+      <DependentUpon>so-calendar-review.aspx</DependentUpon>
     </Compile>
     <Compile Include="mesales-order\so-calendar.aspx.cs">
       <DependentUpon>so-calendar.aspx</DependentUpon>
