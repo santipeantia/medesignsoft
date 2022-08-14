@@ -963,20 +963,27 @@
      */
     //LINE randomly generated data
 
-    var sin = [], cos = []
+    var sin = [], cos = [], tan = []
     for (var i = 0; i < 14; i += 0.5) {
       sin.push([i, Math.sin(i)])
       cos.push([i, Math.cos(i)])
+      tan.push([i, Math.cos(i) + 0.75])
     }
     var line_data1 = {
       data : sin,
-      color: '#3c8dbc'
+      color: '#FF5733'
     }
     var line_data2 = {
       data : cos,
       color: '#00c0ef'
     }
-    $.plot('#line-chart', [line_data1, line_data2], {
+
+    var line_data3 = {
+      data : tan,
+      color: '#E0FF33'
+    }
+
+    $.plot('#line-chart', [line_data1, line_data2, line_data3], {
       grid  : {
         hoverable  : true,
         borderColor: '#f3f3f3',

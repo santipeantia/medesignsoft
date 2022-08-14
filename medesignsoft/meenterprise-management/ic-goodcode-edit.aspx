@@ -367,6 +367,7 @@
                                     $('#selectGoodGroupID').change();
                                     $('#selectGoodTypeID').val(data["GoodTypeID"]);
                                     $('#selectGoodTypeID').change();
+                                    $('#txtGoodCate').val(data["GoodCate"]);
                                     $('#txtGoodCode').val(data["GoodCode"]);
                                     $('#txtGoodName').val(data["GoodName"]);
                                     $('#selectGoodColorID').val(data["GoodColorID"]);
@@ -459,6 +460,7 @@
                                         GoodCodeID: $('#hiddengid').val(),
                                         GoodGroupID: $('#selectGoodGroupID').val(),
                                         GoodTypeID: $('#selectGoodTypeID').val(),
+                                        GoodCate: $('#txtGoodCate').val(),
                                         GoodCode: $('#txtGoodCode').val(),
                                         GoodName: $('#txtGoodName').val(),
                                         GoodColorID: $('#selectGoodColorID').val(),
@@ -468,6 +470,8 @@
                                         Price1: $('#txtPrice1').val(),
                                         Price2: $('#txtPrice2').val(),
                                         Price3: $('#txtPrice3').val(),
+                                        Price4: $('#txtPrice4').val(),
+                                        Price5: $('#txtPrice5').val(),
                                         PurLeadTime: $('#txtPurLeadTime').val(),
                                         GoodWeight: $('#txtGoodWeight').val(),
                                         GoodWidth: $('#txtGoodWidth').val(),
@@ -537,6 +541,7 @@
                                         GoodCodeID: $('#hiddengid').val(),
                                         GoodGroupID: $('#selectGoodGroupID').val(),
                                         GoodTypeID: $('#selectGoodTypeID').val(),
+                                        GoodCate: $('#txtGoodCate').val(),
                                         GoodCode: $('#txtGoodCode').val(),
                                         GoodName: $('#txtGoodName').val(),
                                         GoodColorID: $('#selectGoodColorID').val(),
@@ -546,6 +551,8 @@
                                         Price1: $('#txtPrice1').val(),
                                         Price2: $('#txtPrice2').val(),
                                         Price3: $('#txtPrice3').val(),
+                                        Price4: $('#txtPrice4').val(),
+                                        Price5: $('#txtPrice5').val(),
                                         PurLeadTime: $('#txtPurLeadTime').val(),
                                         GoodWeight: $('#txtGoodWeight').val(),
                                         GoodWidth: $('#txtGoodWidth').val(),
@@ -619,6 +626,7 @@
                                         GoodCodeID: $('#hiddengid').val(),
                                         GoodGroupID: $('#selectGoodGroupID').val(),
                                         GoodTypeID: $('#selectGoodTypeID').val(),
+                                        GoodCate: $('#txtGoodCate').val(),
                                         GoodCode: $('#txtGoodCode').val(),
                                         GoodName: $('#txtGoodName').val(),
                                         GoodColorID: $('#selectGoodColorID').val(),
@@ -628,6 +636,8 @@
                                         Price1: $('#txtPrice1').val(),
                                         Price2: $('#txtPrice2').val(),
                                         Price3: $('#txtPrice3').val(),
+                                        Price4: $('#txtPrice4').val(),
+                                        Price5: $('#txtPrice5').val(),
                                         PurLeadTime: $('#txtPurLeadTime').val(),
                                         GoodWeight: $('#txtGoodWeight').val(),
                                         GoodWidth: $('#txtGoodWidth').val(),
@@ -758,6 +768,14 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">หมวดสินค้า <span id="errwhcate" class="text-red txtLabel hidden">***</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="txtGoodCate" class="form-control ">
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group row">
                                     <label class="col-sm-4 col-form-label txtLabel text-right">รหัสรายการ <span id="errwhcode" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">
                                         <input type="text" id="txtGoodCode" class="form-control ">
@@ -806,6 +824,19 @@
                                         <input type="text" id="txtPrice3" class="form-control " value="0.0000"> 
                                     </div>
                                 </div> 
+                                 <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">ราคาที่ 4<span id="errtxtPrice4" class="text-red txtLabel hidden">***</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="txtPrice4" class="form-control " value="0.0000"> 
+                                    </div>
+                                </div> 
+                                 <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label txtLabel text-right">ราคาที่ 5<span id="errtxtPrice5" class="text-red txtLabel hidden">***</span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" id="txtPrice5" class="form-control " value="0.0000"> 
+                                    </div>
+                                </div> 
+
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label txtLabel text-right">ระยะเวลาสั่งสินค้า<span id="errtxtPurLeadTime" class="text-red txtLabel hidden">***</span></label>
                                     <div class="col-sm-8">

@@ -399,8 +399,11 @@ namespace medesignsoft.mesales_order
         }
 
         [WebMethod]
-        public void getQuotationAddnewItem(string gid, string imbranchgid, string seqno, string qtgid, string adqtno, string goodcodeid, string  goodname, string  goodunitid, string  goodunitdesc, string qtyunit, string qtyrema, string  quantity,
-                    string  priceperunit, string  amount, string  vatamount, string  amountexcludevat, string  discpercent, string  discamount, string  amountafterdisc, string  netamount, string  unitcostid, string unitcost, string  remark, string aduserid, string lastdate) {
+        public void getQuotationAddnewItem(string gid, string imbranchgid, string seqno, string qtgid, string adqtno, string goodcodeid, string  goodname, 
+                    string  goodunitid, string  goodunitdesc, string qtyunit, string qtyrema, string  quantity,
+                    string  priceperunit, string  amount, string  vatamount, string  amountexcludevat, string  discpercent, 
+                    string  discamount, string  amountafterdisc, string  netamount, string  unitcostid, string unitcost, 
+                    string  remark, string aduserid, string lastdate, string pattern, string qtyextra) {
             SqlCommand comm = new SqlCommand("spGetQuotationAddnewItem", conn.OpenConn());
             comm.CommandType = CommandType.StoredProcedure;
            
@@ -431,6 +434,8 @@ namespace medesignsoft.mesales_order
             comm.Parameters.AddWithValue("@remark", remark);
             comm.Parameters.AddWithValue("@aduserid", aduserid);
             comm.Parameters.AddWithValue("@lastdate", lastdate);
+            comm.Parameters.AddWithValue("@pattern", pattern);
+            comm.Parameters.AddWithValue("@qtyextra", qtyextra);
             comm.ExecuteNonQuery();
             conn.CloseConn();
         }
@@ -478,6 +483,8 @@ namespace medesignsoft.mesales_order
                 data.Remark = rdr["Remark"].ToString();
                 data.adUserID = rdr["adUserID"].ToString();
                 data.Lastdate = rdr["Lastdate"].ToString();
+                data.Pattern = rdr["Pattern"].ToString();
+                data.QtyExtra = rdr["QtyExtra"].ToString();
                 data.edit = rdr["edit"].ToString();
                 data.trash = rdr["trash"].ToString();
                 datas.Add(data);
@@ -490,7 +497,9 @@ namespace medesignsoft.mesales_order
         }
 
         [WebMethod]
-        public void getQuotationItemUpdate(string acttrans, string QtGid, string gid, string seqno, string QtyUnit, string QtyRema, string  Quantity, string PricePerUnit, string  Amount, string DiscPercent, string DiscAmount, string  AmountAfterDisc, string  Remark, string  adUserID, string Lastdate)
+        public void getQuotationItemUpdate(string acttrans, string QtGid, string gid, string seqno, string QtyUnit, string QtyRema, string  Quantity, 
+            string PricePerUnit, string  Amount, string DiscPercent, string DiscAmount, string  AmountAfterDisc, string  Remark, string  adUserID, 
+            string Lastdate, string Pattern, string QtyExtra)
         {
             try
             {
@@ -513,6 +522,8 @@ namespace medesignsoft.mesales_order
                 comm.Parameters.AddWithValue("@Remark", Remark);
                 comm.Parameters.AddWithValue("@adUserID", adUserID);
                 comm.Parameters.AddWithValue("@Lastdate", Lastdate);
+                comm.Parameters.AddWithValue("@Pattern", Pattern);
+                comm.Parameters.AddWithValue("@QtyExtra", QtyExtra);
                 comm.ExecuteNonQuery();
 
                 conn.CloseConn();
@@ -540,6 +551,16 @@ namespace medesignsoft.mesales_order
             {
 
             }        
+        }
+
+        [WebMethod]
+        public void getQuotationCopyTrans(string qtgid, string docuno) {
+            SqlCommand comm = new SqlCommand("spGetQuotationCopyTrans", conn.OpenConn());
+            comm.CommandType = CommandType.StoredProcedure;
+            comm.Parameters.AddWithValue("@qtgid", qtgid);
+            comm.Parameters.AddWithValue("@docuno", docuno);
+            comm.ExecuteNonQuery();
+            conn.CloseConn();
         }
     }
 }

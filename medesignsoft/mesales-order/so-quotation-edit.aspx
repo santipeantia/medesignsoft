@@ -495,8 +495,9 @@
 
                                 //console.log(gid.text());
                                 if (rIndex != 0 & cIndex == 27) {
-                                    alert(goodcodeid.text())
+                                   // alert(goodcodeid.text())
                                     //window.location.href = "so-quotation-edit.aspx?opt=optsoe&mod=edit&gid=" + gid.text();
+                                    //getQuotationAddnewItem();
                                 }                               
                             });
 
@@ -587,7 +588,9 @@
                         var punitcost = '0.00';
                         var premark = null;
                         var paduserid = employeeid;
-                        var plastdate = null;                      
+                        var plastdate = null;     
+                        var pattern = '-1';
+                        var qtyextra = '1.00';
                                 
                         $.ajax({
                             url: 'saleorder-services.asmx/getQuotationAddnewItem',
@@ -617,7 +620,9 @@
                                 unitcost: punitcost,
                                 remark: premark,
                                 aduserid: paduserid,
-                                lastdate: plastdate
+                                lastdate: plastdate,
+                                pattern: pattern,
+                                qtyextra: qtyextra
                             },
                             datatype: 'json',
                             beforSend: function () {
@@ -764,9 +769,10 @@
                                 if (data != '') {
                                     $.each(data, function (i, item) {
                                         table.row.add([data[i].Gid, data[i].imBranchGid, data[i].SeqNO, data[i].QtGid, data[i].adQTNO, data[i].GoodGroupID, data[i].GoodGroupDesc,
-                                            data[i].GoodCodeID, data[i].GoodCode, data[i].GoodName, data[i].GoodUnitID, data[i].GoodUnitDesc, data[i].Quantity, data[i].QtyUnit, data[i].QtyUnitDesc, data[i].QtyRema,  data[i].PricePerUnit,
+                                            data[i].GoodCodeID, data[i].GoodCode, data[i].GoodName, data[i].GoodUnitID, data[i].GoodUnitDesc, data[i].Quantity, data[i].QtyUnit,
+                                            data[i].QtyUnitDesc, data[i].QtyRema, data[i].Pattern, data[i].QtyExtra, data[i].PricePerUnit,
                                             data[i].Amount, data[i].VATAmount, data[i].AmountExcludeVAT, data[i].DiscPercent, data[i].DiscAmount, data[i].AmountAfterDisc, data[i].NetAmount,
-                                            data[i].UnitCostID, data[i].UnitCost, data[i].Remark, data[i].adUserID, data[i].Lastdate, data[i].edit, data[i].trash]);
+                                            data[i].UnitCostID, data[i].UnitCost, data[i].Remark, data[i].adUserID, data[i].Lastdate,  data[i].edit, data[i].trash]);
                                     });
                                 }
                                 table.draw();
@@ -793,16 +799,20 @@
                                     var qtyunit = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(13)');
                                     var qtyunitdesc = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(14)');
                                     var qtyrema = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(15)');
-                                    
-                                    
-                                    var unitprice = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(16)');
-                                    var amount = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(17)');
-                                    var percentdiscount  = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(20)');
-                                    var discount  = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(21)');
-                                    var amountafterdisc = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(22)');
-                                    var remark = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(26)');
 
-                                    if (rIndex != 0 & cIndex == 29) {
+                                    var pattern = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(16)');
+                                    var amoutextra = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(17)');
+                                    
+                                    var unitprice = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(18)');
+                                    var amount = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(19)');
+                                    var percentdiscount  = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(22)');
+                                    var discount  = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(23)');
+                                    var amountafterdisc = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(24)');
+                                    var remark = $("#tblsoquotationitem").find('tr:eq(' + rIndex + ')').find('td:eq(28)');
+
+                                    
+
+                                    if (rIndex != 0 & cIndex == 31) {
                                         console.log(gid.text());
 
                                         $('#hidgid').val(gid.text());
@@ -831,6 +841,11 @@
                                         $('#txtitemtotalamount').val(amountafterdisc.text().replace(',',''));
                                         $('#txtitemremark').val(remark.text());
 
+                                        $('#selectpattern').val(pattern.text());
+                                        $('#selectpattern').change();
+
+                                        $('#txtQtyExtra').val(amoutextra.text());
+
                                       
                                         $('#btnupdateitem').removeClass('hidden');
                                         $('#btndeleteitem').addClass('hidden');
@@ -839,7 +854,7 @@
                                         $('#modaledititem').modal('show');
 
                                     }
-                                    if (rIndex != 0 & cIndex == 30) {
+                                    if (rIndex != 0 & cIndex == 32) {
                                         
                                         console.log(gid.text());
 
@@ -855,7 +870,13 @@
                                         $('#txtunitprice').val(unitprice.text().replace(',',''));
                                         $('#txtitemamount').val(amount.text().replace(',',''));
                                         $('#txtitemdiscount').val(discount.text().replace(',',''));
-                                        $('#txtitemtotalamount').val(amountafterdisc.text().replace(',',''));
+                                        $('#txtitemtotalamount').val(amountafterdisc.text().replace(',', ''));
+
+                                        $('#selectpattern').val(pattern.text());
+                                        $('#selectpattern').change();
+
+                                        $('#txtitemtotalamountextra').val(amoutextra.text());
+
                                         $('#txtitemremark').val(remark.text());
 
                                         $('#btnupdateitem').addClass('hidden');
@@ -1514,7 +1535,9 @@
                                     AmountAfterDisc: $('#txtitemtotalamount').val(),
                                     Remark: $('#txtitemremark').val(),
                                     adUserID: employeeid,
-                                    Lastdate: null
+                                    Lastdate: null, 
+                                    Pattern: $('#selectpattern').val(),
+                                    QtyExtra: $('#txtQtyExtra').val()
 
                                 },
                                 datatype: 'json',
@@ -1595,7 +1618,9 @@
                                     AmountAfterDisc: $('#txtitemtotalamount').val(),
                                     Remark: $('#txtitemremark').val(),
                                     adUserID: employeeid,
-                                    Lastdate: null
+                                    Lastdate: null,
+                                    Pattern: $('#selectpattern').val(),
+                                    QtyExtra: $('#txtQtyExtra').val()
 
                                 },
                                 datatype: 'json',
@@ -1628,6 +1653,75 @@
                         }
                     })
                 }) 
+
+                var btncopydocuno = $('#btncopydocuno');
+                btncopydocuno.click(function () {
+                    var qtgid = gid;
+                    var docuno = $('#docuno').text();
+                    //alert(docuno);
+
+                    Swal.fire({
+
+                        title: '<span class="txtLabel">ต้องการคัดลอกใบเสนอราคา ' + docuno + ' ใช่หรือไม่..?</span>',
+                        //text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        cancelButtonColor: '#d33',
+                        confirmButtonColor: '#449d44',
+                        cancelButtonText: '<span class="txtLabel">ยกเลิกรายการ</span>',
+                        confirmButtonText: '<span class="txtLabel">ยืนยัน,บันทึกข้อมูล!</span>'
+
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $.ajax({
+                                url: 'saleorder-services.asmx/getQuotationCopyTrans',
+                                method: 'post',
+                                data: {
+                                    qtgid: qtgid,
+                                    docuno: docuno
+                                },
+                                datatype: 'json',
+                                beforSend: function () {
+
+                                },
+                                success: function (data) {
+                                    Swal.fire(
+                                        '<span class="txtLabel">บันทึกข้อมูลสำเร็จ..!</span>',
+                                        '',
+                                        'success'
+                                    );
+                                    setTimeout(function () {
+                                        window.location.href = "../mesales-order/so-quotation-view.aspx?opt=optsoe";
+                                    }, 2000);
+                                },
+                                error: function (xhr, ajaxOptions, thrownError) {
+                                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                                }
+                            });
+                        }
+                    })
+
+                });
+
+                var chkdisc = $('#chkdisc');
+                chkdisc.click(function () {
+                    var chk =  $('#chkdisc').is(':checked');
+                    //alert('click check discount.. : ' + chk);
+
+                    if (chk == true ) {
+                        //alert('true');
+                        $('#txtdisamount').removeAttr('disabled');
+                        $('#txtdispercenct').attr('disabled', 'disabled');
+                        myCalcTotal();
+                        
+                    } else {
+                        //alert('false');
+                        $('#txtdisamount').attr('disabled', 'disabled');
+                        $('#txtdispercenct').removeAttr('disabled');
+                        myCalcTotal();
+                    }
+                   
+                });
 
                 var txtquantity = document.getElementById('txtquantity');
                 var txtunitprice = document.getElementById('txtunitprice');
@@ -1679,7 +1773,44 @@
 
                     myCalc();
 
-                })            
+                })    
+
+                var selectpattern = $('#selectpattern');
+                selectpattern.change(function () {
+                    var itemrema = $('#txtQtyRema').val();
+                    var selectpattern = $('#selectpattern');
+                    var selpatt = selectpattern.val();
+                    var itemextra;
+
+                    if (selpatt == 'R') {
+                        //Random -- > 5%
+                        itemextra = parseFloat(itemrema) + (parseFloat(itemrema) * 0.05);
+
+                    } else if (selpatt == 'B') {
+                        //Brick -- > 10%
+                        itemextra = parseFloat(itemrema) + (parseFloat(itemrema) * 0.10);
+                    } else if (selpatt == 'H') {
+                        //Herringbone -- > 20%
+                        itemextra = parseFloat(itemrema) + (parseFloat(itemrema) * 0.20);
+                    } else if (selpatt == 'C') {
+                        //Chevron -- > 20%
+                        itemextra = parseFloat(itemrema) + (parseFloat(itemrema) * 0.20);
+                    }
+                    else {
+
+                        itemextra = parseFloat(itemrema);
+                    }
+
+                    $('#txtQtyExtra').val(itemextra.toFixed(2));
+
+                    myCalc();
+
+                });
+
+               
+
+
+                
 
             });
 
@@ -1693,10 +1824,38 @@
 
                     var quantity = $('#txtquantity').val();
 
-                    var qtyrema = $('#txtQtyRema').val(); 
+                    var qtyrema = $('#txtQtyRema').val();
                     var unitprice = $('#txtunitprice').val();
 
-                    var amount = parseFloat(qtyrema) * parseFloat(unitprice); // $('#txtitemamount').val();
+                    
+                    var itemrema = $('#txtQtyRema').val();
+                    var selectpattern = $('#selectpattern');
+                    var selpatt = selectpattern.val();
+                    var itemextra;
+
+                    if (selpatt == 'R') {
+                        //Random -- > 5%
+                        itemextra = parseFloat(itemrema) + (parseFloat(itemrema) * 0.05);
+
+                    } else if (selpatt == 'B') {
+                        //Brick -- > 10%
+                        itemextra = parseFloat(itemrema) + (parseFloat(itemrema) * 0.10);
+                    } else if (selpatt == 'H') {
+                        //Herringbone -- > 20%
+                        itemextra = parseFloat(itemrema) + (parseFloat(itemrema) * 0.20);
+                    } else if (selpatt == 'C') {
+                        //Chevron -- > 20%
+                        itemextra = parseFloat(itemrema) + (parseFloat(itemrema) * 0.20);
+                    }
+                    else {
+
+                        itemextra = parseFloat(itemrema);
+                    }
+
+                    $('#txtQtyExtra').val(itemextra.toFixed(2));
+
+
+                    var amount = parseFloat(itemextra) * parseFloat(unitprice); // $('#txtitemamount').val();
                     $('#txtitemamount').val(amount.toFixed(2));
 
                     var chk = $('#chkitemdiscount').prop('checked');
@@ -1707,23 +1866,24 @@
 
                     if (chk == true) {
 
-                        caldiscount =  parseFloat(amount)  * (parseFloat(perdiscount) / 100);
+                        caldiscount = parseFloat(amount) * (parseFloat(perdiscount) / 100);
                         $('#txtitemdiscount').val(caldiscount.toFixed(2));
                         //console.log(caldiscount);
                     }
                     else {
-                         $('#txtitemprecentdiscount').val(0.00);
+                        $('#txtitemprecentdiscount').val(0.00);
                     }
 
-                   
+
 
                     var discount = $('#txtitemdiscount').val();
 
                     var totalmount = parseFloat(amount) - parseFloat(discount);
                     $('#txtitemtotalamount').val(totalmount.toFixed(2));
 
-                   console.log( totalmount.toLocaleString());
-           
+                    // console.log(totalmount.toLocaleString());
+
+
                 }
                 catch {
 
@@ -1733,30 +1893,68 @@
 
             function myCalcTotal() {
                 try {
-                    var amount = $('#txtamount').val().replace(',','');
-                    var dispercent = $('#txtdispercenct').val().replace(',', '');
-                    var dispamount = parseFloat(amount) * (parseFloat(dispercent) / 100);
-                     var dispamount2 = dispamount.toFixed(2);
-                    $('#txtdisamount').val(dispamount2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));  
+                    var chk = $('#chkdisc').is(':checked');
 
-                    var afterdisamount = parseFloat(amount) - parseFloat(dispamount);
-                    var afterdisamount2 = afterdisamount.toFixed(2);
-                    $('#txtafterdisamount').val(afterdisamount2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));    
+                    if (chk == false) {
+                        //case cal percentage discount...
+                        console.log(chk);
 
-                    var vatpercent = $('#txtvatpercent').val();
-                    var vatamount = parseFloat(afterdisamount) * (parseFloat(vatpercent) / 100);
-                    var vatamount2 = vatamount.toFixed(2);
-                    $('#txtvatamount').val(vatamount2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));       
+                        var amount = $('#txtamount').val().replace(',', '');
+                        var dispercent = $('#txtdispercenct').val().replace(',', '');
+                        var dispamount = parseFloat(amount) * (parseFloat(dispercent) / 100);
+                        var dispamount2 = dispamount.toFixed(2);
+                        $('#txtdisamount').val(dispamount2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 
-                    var totalamount = parseFloat(afterdisamount) + parseFloat(vatamount);
-                    var totalamount2 = totalamount.toFixed(2);
-                    $('#txttotalamount').val(totalamount2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));                    
+
+                        var afterdisamount = parseFloat(amount) - parseFloat(dispamount);
+                        var afterdisamount2 = afterdisamount.toFixed(2);
+                        $('#txtafterdisamount').val(afterdisamount2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+                        var vatpercent = $('#txtvatpercent').val();
+                        var vatamount = parseFloat(afterdisamount) * (parseFloat(vatpercent) / 100);
+                        var vatamount2 = vatamount.toFixed(2);
+                        $('#txtvatamount').val(vatamount2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+                        var totalamount = parseFloat(afterdisamount) + parseFloat(vatamount);
+                        var totalamount2 = totalamount.toFixed(2);
+                        $('#txttotalamount').val(totalamount2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+                    } else {
+                        //case cal from amount discount...
+                        console.log(chk);
+
+                        var amount = $('#txtamount').val().replace(',', '');
+                        var discount = $('#txtdisamount').val().replace(',', '');
+
+                        //var dispamount = parseFloat(amount) - parseFloat(discount);
+                        //var dispamount2 = dispamount.toFixed(2);
+                        $('#txtdisamount').val(discount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+                        //$('#txtdispercenct').val('0.00');
+
+                        var afterdisamount = parseFloat(amount) - parseFloat(discount);
+                        var afterdisamount2 = afterdisamount.toFixed(2);
+                        $('#txtafterdisamount').val(afterdisamount2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+                        var vatpercent = $('#txtvatpercent').val();
+                        var vatamount = parseFloat(afterdisamount) * (parseFloat(vatpercent) / 100);
+                        var vatamount2 = vatamount.toFixed(2);
+                        $('#txtvatamount').val(vatamount2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+                        var totalamount = parseFloat(afterdisamount) + parseFloat(vatamount);
+                        var totalamount2 = totalamount.toFixed(2);
+                        $('#txttotalamount').val(totalamount2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+                    }
+
+
 
                 }
                 catch{
 
                 }
             }
+
 
         </script>
 
@@ -2029,6 +2227,8 @@
                                         <th style="width: 50px; text-align: center;">QTYUNIT</th>
                                         <th style="width: 50px; text-align: center;">UNIT</th>
                                         <th style="width: 100px; text-align: right;">QTY REMA.</th>
+                                        <th style="width: 50px; text-align: center;">Pattern</th>
+                                        <th style="width: 50px; text-align: right;">QTY EXTRA</th>
 
                                         <th style="width: 100px; text-align: right;">UNIT PRICE</th>
                                         <th style="width: 100px; text-align: right;">AMOUNT</th>
@@ -2043,6 +2243,7 @@
                                         <th style="width: 50px; text-align: center;">Remark</th>
                                         <th style="width: 50px; text-align: center;">adUserID</th>
                                         <th style="width: 50px; text-align: center;">Lastdate</th>
+                                        
                                         <th style="width: 40px; text-align: right;">#</th>
                                         <th style="width: 40px; text-align: right;">#</th>
 
@@ -2175,8 +2376,8 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="input-group">
-                                            <input type="text" class="form-control text-right txtLabelFooter" id="txtdisamount" name="txtdisamount" value="0.00" readonly autocomplete="off">
-                                            <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                                            <input type="text" class="form-control text-right txtLabelFooter" id="txtdisamount" name="txtdisamount" value="0.00" disabled autocomplete="off" onkeyup="myCalcTotal()" >
+                                            <span class="input-group-addon"><input id="chkdisc" type="checkbox"></span>
                                         </div>
                                     </div>
 
@@ -2421,6 +2622,33 @@
                                 
                             </div>
 
+                            <div class="row" style="margin-top: 5px;">
+                                <div class="col-md-3">
+                                   <span class=" pull-right">รูปแบบ/แพทเทิร์น</span> 
+                                </div>
+                                
+                                <div class="col-md-9">
+                                    <span class="txtLabel ">
+                                        <select id="selectpattern" class="form-control input-sm " style="width: 100%">
+                                            <option value="-1">ไม่ระบุรูปแบบ</option>
+                                            <option value="R">Random</option>
+                                            <option value="B">Brick</option>
+                                            <option value="H">Herringbone</option>
+                                            <option value="C">Chevron</option>
+                                        </select>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="row" style="margin-top: 5px;">
+                                <div class="col-md-3">
+                                    <span class=" pull-right">จำนวนเงินเพิ่ม</span>
+                                </div>
+
+                                <div class="col-md-9">
+                                    <input type="text" id="txtQtyExtra" class="form-control input-sm txtLabel text-right" disabled />
+                                </div>
+                            </div>
                              
 
                              <div class="row" style="margin-top: 5px;">
@@ -2464,13 +2692,15 @@
 
                             <div class="row" style="margin-top: 5px;">
                                 <div class="col-md-3">
-                                   <span class=" pull-right">จำนวนเงินรวมสุทธิ</span> 
+                                    <span class=" pull-right">จำนวนเงินรวมสุทธิ</span>
                                 </div>
-                                
+
                                 <div class="col-md-9">
                                     <input type="text" id="txtitemtotalamount" class="form-control input-sm txtLabel text-right" disabled />
                                 </div>
                             </div>
+                            
+
 
                             <div class="row" style="margin-top: 5px;">
                                 <div class="col-md-3">

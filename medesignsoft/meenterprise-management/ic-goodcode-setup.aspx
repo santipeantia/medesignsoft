@@ -120,9 +120,9 @@
 
                             if (data != '') {
                                 $.each(data, function (i, item) {
-                                    table.row.add([data[i].GoodCodeID, data[i].GoodGroupID, data[i].GoodGroupDesc, data[i].GoodTypeID, data[i].GoodTypeDesc,
+                                    table.row.add([data[i].GoodCodeID, data[i].GoodGroupID, data[i].GoodGroupDesc, data[i].GoodTypeID, data[i].GoodTypeDesc, data[i].GoodCate,
                                         data[i].GoodCode, data[i].GoodName, data[i].GoodColorID, data[i].GoodColorDesc, data[i].GoodUnitID, data[i].GoodUnitDesc,
-                                        data[i].Price1, data[i].Price2, data[i].Price3, data[i].PurLeadTime, data[i].GoodWeight, data[i].GoodWidth,
+                                        data[i].Price1, data[i].Price2, data[i].Price3, data[i].Price4, data[i].Price5, data[i].PurLeadTime, data[i].GoodWeight, data[i].GoodWidth,
                                         data[i].GoodLength, data[i].GoodHeight, data[i].GoodStatID, data[i].GoodStatDesc, data[i].activeid, data[i].activename,
                                         data[i].UserCreate, data[i].CreateDate, data[i].UserUpdate, data[i].LasteDate, data[i].edit, data[i].trash]);
                                 });
@@ -130,8 +130,8 @@
                             table.draw();
                             $('#loader').hide();
 
-                            $('#tblgoodcodelist td:nth-of-type(27)').addClass('column_hover');
-                            $('#tblgoodcodelist td:nth-of-type(28)').addClass('column_hover');
+                            $('#tblgoodcodelist td:nth-of-type(30)').addClass('column_hover');
+                            $('#tblgoodcodelist td:nth-of-type(31)').addClass('column_hover');
 
                             //$('#tblgoodcodelist td').click(function () {
                             //    rIndex = this.parentElement.rowIndex;
@@ -167,11 +167,11 @@
                                 var gid = $("#tblgoodcodelist").find('tr:eq(' + rIndex + ')').find('td:eq(0)');
 
                                 //console.log(gid.text());
-                                if (rIndex != 0 & cIndex == 27) {
+                                if (rIndex != 0 & cIndex == 30) {
                                     window.location.href = "ic-goodcode-edit.aspx?opt=optic&mod=edit&gid=" + gid.text();
                                 }
 
-                                if (rIndex != 0 & cIndex == 28) {
+                                if (rIndex != 0 & cIndex == 31) {
                                     window.location.href = "ic-goodcode-edit.aspx?opt=optic&mod=del&gid=" + gid.text();
                                 }
                             });
@@ -233,6 +233,7 @@
                                         <th>GROUP</th>
                                         <th>GoodTypeID</th>
                                         <th>TYPE</th>
+                                        <th>CATE</th>
                                         <th>CODE</th>
                                         <th>GOODNAME</th>
                                         <th>GoodColorID</th>
@@ -242,6 +243,8 @@
                                         <th>Price1</th>
                                         <th>Price2</th>
                                         <th>Price3</th>
+                                        <th>Price4</th>
+                                        <th>Price5</th>
                                         <th>LeadTime</th>
                                         <th>WEIGHT</th>
                                         <th>WIDTH</th>

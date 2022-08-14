@@ -2094,6 +2094,7 @@ namespace medesignsoft.meenterprise_management
                 data.GoodGroupDesc = rdr["GoodGroupDesc"].ToString();
                 data.GoodTypeID = rdr["GoodTypeID"].ToString();
                 data.GoodTypeDesc = rdr["GoodTypeDesc"].ToString();
+                data.GoodCate = rdr["GoodCate"].ToString();
                 data.GoodCode = rdr["GoodCode"].ToString();
                 data.GoodName = rdr["GoodName"].ToString();
                 data.GoodColorID = rdr["GoodColorID"].ToString();
@@ -2103,6 +2104,8 @@ namespace medesignsoft.meenterprise_management
                 data.Price1 = rdr["Price1"].ToString();
                 data.Price2 = rdr["Price2"].ToString();
                 data.Price3 = rdr["Price3"].ToString();
+                data.Price4 = rdr["Price4"].ToString();
+                data.Price5 = rdr["Price5"].ToString();
                 data.PurLeadTime = rdr["PurLeadTime"].ToString();
                 data.GoodWeight = rdr["GoodWeight"].ToString();
                 data.GoodWidth = rdr["GoodWidth"].ToString();
@@ -2145,6 +2148,7 @@ namespace medesignsoft.meenterprise_management
                 data.GoodGroupDesc = rdr["GoodGroupDesc"].ToString();
                 data.GoodTypeID = rdr["GoodTypeID"].ToString();
                 data.GoodTypeDesc = rdr["GoodTypeDesc"].ToString();
+                data.GoodCate = rdr["GoodCate"].ToString();
                 data.GoodCode = rdr["GoodCode"].ToString();
                 data.GoodName = rdr["GoodName"].ToString();
                 data.GoodColorID = rdr["GoodColorID"].ToString();
@@ -2178,8 +2182,8 @@ namespace medesignsoft.meenterprise_management
         }
 
         [WebMethod]
-        public void getGoodCodeUpdateEntry(string acttrans, string gid, string GoodCodeID, string GoodGroupID, string GoodTypeID, string GoodCode, string GoodName, string GoodColorID, 
-            string GoodColorDesc, string GoodUnitID, string GoodUnitDesc, string Price1, string Price2, string Price3, string PurLeadTime, string GoodWeight, string GoodWidth, 
+        public void getGoodCodeUpdateEntry(string acttrans, string gid, string GoodCodeID, string GoodGroupID, string GoodTypeID, string GoodCate, string GoodCode, string GoodName, string GoodColorID, 
+            string GoodColorDesc, string GoodUnitID, string GoodUnitDesc, string Price1, string Price2, string Price3, string Price4, string Price5, string PurLeadTime, string GoodWeight, string GoodWidth, 
             string GoodLength, string GoodHeight, string GoodStatID, string GoodStatDesc, string activeid, string UserCreate, string CreateDate, string UserUpdate, string LasteDate, string Remark)
         {
             SqlCommand comm = new SqlCommand("spGetGoodCodeUpdateEntry", conn.OpenConn());
@@ -2190,6 +2194,7 @@ namespace medesignsoft.meenterprise_management
             comm.Parameters.AddWithValue("@GoodCodeID", GoodCodeID);
             comm.Parameters.AddWithValue("@GoodGroupID", GoodGroupID);
             comm.Parameters.AddWithValue("@GoodTypeID", GoodTypeID);
+            comm.Parameters.AddWithValue("@GoodCate", GoodCate);
             comm.Parameters.AddWithValue("@GoodCode", GoodCode);
             comm.Parameters.AddWithValue("@GoodName", GoodName);
             comm.Parameters.AddWithValue("@GoodColorID", GoodColorID);
@@ -2199,6 +2204,8 @@ namespace medesignsoft.meenterprise_management
             comm.Parameters.AddWithValue("@Price1", Price1);
             comm.Parameters.AddWithValue("@Price2", Price2);
             comm.Parameters.AddWithValue("@Price3", Price3);
+            comm.Parameters.AddWithValue("@Price4", Price4);
+            comm.Parameters.AddWithValue("@Price5", Price5);
             comm.Parameters.AddWithValue("@PurLeadTime", PurLeadTime);
             comm.Parameters.AddWithValue("@GoodWeight", GoodWeight);
             comm.Parameters.AddWithValue("@GoodWidth", GoodWidth);

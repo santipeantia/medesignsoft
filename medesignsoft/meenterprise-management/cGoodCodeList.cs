@@ -12,6 +12,7 @@ namespace medesignsoft
         public string GoodGroupDesc { get; set; }
         public string GoodTypeID { get; set; }
         public string GoodTypeDesc { get; set; }
+        public string GoodCate { get; set; }
         public string GoodCode { get; set; }
         public string GoodName { get; set; }
         public string GoodColorID { get; set; }
@@ -21,6 +22,8 @@ namespace medesignsoft
         public string Price1 { get; set; }
         public string Price2 { get; set; }
         public string Price3 { get; set; }
+        public string Price4 { get; set; }
+        public string Price5 { get; set; }
         public string PurLeadTime { get; set; }
         public string GoodWeight { get; set; }
         public string GoodWidth { get; set; }

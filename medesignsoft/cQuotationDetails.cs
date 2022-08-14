@@ -38,6 +38,8 @@ namespace medesignsoft
         public string Remark { get; set; }
         public string adUserID { get; set; }
         public string Lastdate { get; set; }
+        public string Pattern { get; set; }
+        public string QtyExtra { get; set; }
         public string edit { get; set; }
         public string trash { get; set; }
 
