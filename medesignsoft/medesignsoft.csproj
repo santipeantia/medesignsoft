@@ -13746,8 +13746,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="cFlagStatus.cs" />
-    <Compile Include="cQuotationDetails.cs" />
+    <Compile Include="Class\cFlagStatus.cs" />
+    <Compile Include="Class\cQuotationDetails.cs" />
     <Compile Include="meenterprise-management\cSourceList.cs" />
     <Compile Include="mesales-order\cGoodCodeSelectList.cs" />
     <Compile Include="Class\bahttext.cs" />
